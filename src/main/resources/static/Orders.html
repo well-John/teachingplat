@@ -1,0 +1,1787 @@
+﻿<!DOCTYPE html>
+<html>
+<head id="Head1">
+<title>上海家教兼职信息_上海家教学员_上海家庭教师招聘_【阳光家教网】,第1页</title>
+<link href="css/Default.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/My.js"></script>
+</head>
+<body>
+
+		<div class="aspNetHidden">
+			<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+			<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT"
+				value="" /> <input type="hidden" name="__VIEWSTATE"
+				id="__VIEWSTATE"
+				value="/wEPBRI2MzYwNzkyNTI5Njk1MDE1ODNkcatxh1XKJyjBEq1xyMiSxUGyA/M=" />
+		</div>
+
+		
+
+
+		<div class="aspNetHidden">
+
+			<input type="hidden" name="__VIEWSTATEGENERATOR"
+				id="__VIEWSTATEGENERATOR" value="7EE84940" /> <input type="hidden"
+				name="__EVENTVALIDATION" id="__EVENTVALIDATION"
+				value="/wEdAAYZh8VcWupXXFY0LL8tqMOIuN20alD453sk/1mHvGiRiGGOYminhPcupj254TZTVt6MNsiUUBgmBqgFt/joSCFdWd0Cl/PstotrlswLYuLs80gFaq7KyD0yKCoEvcvk0S5XWX9V0mnTa0KqKNc2leXfrKjikw==" />
+		</div>
+
+
+		<!-- 代码 开始 -->
+		<div id="leftsead">
+			<ul>
+
+				<li><a href="javascript:void(0)" class="youhui"> <img
+						src="rightimg/l02.png" width="47" height="49" class="shows" /> <img
+						src="rightimg/a.png" width="57" height="49" class="hides" /> <img
+						src="images/wx.jpg" class="2wm"
+						style="display: none; margin: -100px 57px 0 0" />
+				</a></li>
+
+				<li id="tel"><a href="javascript:void(0)">
+						<div class="hides" style="width: 161px; display: none;" id="tels">
+							<div class="hides" id="p1">
+								<img src="rightimg/ll05.png">
+
+							</div>
+							<div class="hides" id="p3">
+								<span style="color: #FFF; font-size: 12px">021-51082788</span>
+							</div>
+						</div> <img src="rightimg/l05.png" width="47" height="49" class="shows" />
+				</a></li>
+
+				<li id="btn"><a id="top_btn">
+						<div class="hides" style="width: 161px; display: none">
+							<img src="rightimg/ll06.png" width="161" height="49" />
+						</div> <img src="rightimg/l06.png" width="47" height="49" class="shows" />
+				</a></li>
+			</ul>
+		</div>
+
+		<script>
+		var area='',grade='',sex='',identity='',subject='';
+        $(document).ready(function () {
+            $("#leftsead a").hover(function () {
+                if ($(this).prop("className") == "youhui") {
+                    $(this).children("img.hides").show();
+                } else {
+                    $(this).children("div.hides").show();
+                    $(this).children("img.shows").hide();
+                    $(this).children("div.hides").animate({ marginRight: '0px' }, '0');
+                }
+            }, function () {
+                if ($(this).prop("className") == "youhui") {
+                    $(this).children("img.hides").hide();
+                } else {
+                    $(this).children("div.hides").animate({ marginRight: '-163px' }, 0, function () { $(this).hide(); $(this).next("img.shows").show(); });
+                }
+            });
+
+            $("#top_btn").click(function () { if (scroll == "off") return; $("html,body").animate({ scrollTop: 0 }, 600); });
+
+            //右侧导航 - 二维码
+            $(".youhui").mouseover(function () {
+                $(this).children(".2wm").show();
+            })
+            $(".youhui").mouseout(function () {
+                $(this).children(".2wm").hide();
+            });
+        });
+
+
+		$(function(){
+			var ele=$(".dd_lstcon");
+			var data="";
+			showBox1();
+			showOrders(ele,data)
+			$(".serarea a").click(function(){
+				if($(this).text() != "不限"){
+ 	 	        	area=$(this).text();
+ 	 	 	 	}
+				if($("div").hasClass("selected")){
+					var selected_div='<li id="areaLi"><span>'+$(this).text()+'</span><a href="javascrpit:void()" class="del delarea">&nbsp;</a></li>';
+					$('.ulItems2').append(selected_div);
+				}else{
+					var selected_div='<div class="selected"><div class="tit">   您已选择：</div><div class="items">'
+									+'<ul class="ulItems2"><li id="areaLi"><span>'+$(this).text()+'</span><a href="javascript:void(0);" class="del delarea">&nbsp;</a></li>'				
+									+'</ul></div> <div class="clear"> &nbsp;</div> </div><div class="line">&nbsp;</div>';
+					$('.searchBox').prepend(selected_div);
+				}	
+ 	 	   	  $(".serarea").hide();
+ 	 	   	  $(".serarea").find("div[class='line']").hide();
+				data="grade="+grade+"&area="+area+"&sex="+sex+"&identity="+identity+"&subject="+subject;
+			  showOrders(ele,data);
+			});
+			
+			$(document).on("click",".delarea",function(){
+				area="";
+				$(".serarea").show();
+				$(".serarea").find("div[class='line']").show();
+				$("#areaLi").remove();
+				if($(".ulItems2").find("li").length==0){
+					$(".selected").next("div").remove();
+					$(".selected").remove();
+				}
+				data="grade="+grade+"&area="+area+"&sex="+sex+"&identity="+identity+"&subject="+subject;
+			    showOrders(ele,data);
+		     });
+			$(".sergrade a").click(function(){
+				if($(this).text() != "不限"){
+ 	 	        	grade=$(this).text();
+ 	 	 	 	}
+				if($("div").hasClass("selected")){
+					var selected_div='<li id="gradeLi"><span>'+$(this).text()+'</span><a href="javascrpit:void()" class="del delgrade">&nbsp;</a></li>';
+					$('.ulItems2').append(selected_div);
+				}else{
+					var selected_div='<div class="selected"><div class="tit">   您已选择：</div><div class="items">'
+									+'<ul class="ulItems2"><li id="gradeLi"><span>'+$(this).text()+'</span><a href="javascript:void(0);" class="del delgrade">&nbsp;</a></li>'				
+									+'</ul></div> <div class="clear"> &nbsp;</div> </div><div class="line">&nbsp;</div>';
+					$('.searchBox').prepend(selected_div);
+				}	
+ 	 	   	  $(".sergrade").hide();
+ 	 	   	  $(".sergrade").find("div[class='line']").hide();
+				data="grade="+grade+"&area="+area+"&sex="+sex+"&identity="+identity+"&subject="+subject;
+			  showOrders(ele,data);
+			});
+			
+			$(document).on("click",".delgrade",function(){
+				grade="";
+				$(".sergrade").show();
+				$(".sergrade").find("div[class='line']").show();
+				$("#gradeLi").remove();
+				if($(".ulItems2").find("li").length==0){
+					$(".selected").next("div").remove();
+					$(".selected").remove();
+				}
+				data="grade="+grade+"&area="+area+"&sex="+sex+"&identity="+identity+"&subject="+subject;
+			    showOrders(ele,data);
+		     });
+
+		     $(".sersex a").click(function(){
+					if($(this).text() != "不限"){
+	 	 	        	sex=$(this).attr("data-sex");
+	 	 	 	 	}
+					if($("div").hasClass("selected")){
+						var selected_div='<li id="sexLi"><span>'+$(this).text()+'</span><a href="javascrpit:void()" class="del delsex">&nbsp;</a></li>';
+						$('.ulItems2').append(selected_div);
+					}else{
+						var selected_div='<div class="selected"><div class="tit">   您已选择：</div><div class="items">'
+										+'<ul class="ulItems2"><li id="sexLi"><span>'+$(this).text()+'</span><a href="javascript:void(0);" class="del delsex">&nbsp;</a></li>'				
+										+'</ul></div> <div class="clear"> &nbsp;</div> </div><div class="line">&nbsp;</div>';
+						$('.searchBox').prepend(selected_div);
+					}	
+	 	 	   	  $(".sersex").hide();
+	 	 	   	  $(".sersex").find("div[class='line']").hide();
+					data="grade="+grade+"&area="+area+"&sex="+sex+"&identity="+identity+"&subject="+subject;
+				  showOrders(ele,data);
+				});
+				
+				$(document).on("click",".delsex",function(){
+					sex="";
+					$(".sersex").show();
+					$(".sersex").find("div[class='line']").show();
+					$("#sexLi").remove();
+					if($(".ulItems2").find("li").length==0){
+						$(".selected").next("div").remove();
+						$(".selected").remove();
+					}
+					data="grade="+grade+"&area="+area+"&sex="+sex+"&identity="+identity+"&subject="+subject;
+				    showOrders(ele,data);
+			     });
+			     
+				$(".seridentity a").click(function(){
+					if($(this).text() != "不限"){
+	 	 	        	identity=$(this).attr("data-identity");
+	 	 	 	 	}
+					if($("div").hasClass("selected")){
+						var selected_div='<li id="identityLi"><span>'+$(this).text()+'</span><a href="javascrpit:void()" class="del delidentity">&nbsp;</a></li>';
+						$('.ulItems2').append(selected_div);
+					}else{
+						var selected_div='<div class="selected"><div class="tit">   您已选择：</div><div class="items">'
+										+'<ul class="ulItems2"><li id="identityLi"><span>'+$(this).text()+'</span><a href="javascript:void(0);" class="del delidentity">&nbsp;</a></li>'				
+										+'</ul></div> <div class="clear"> &nbsp;</div> </div><div class="line">&nbsp;</div>';
+						$('.searchBox').prepend(selected_div);
+					}	
+	 	 	   	  $(".seridentity").hide();
+	 	 	   	  $(".seridentity").find("div[class='line']").hide();
+				  data="grade="+grade+"&area="+area+"&sex="+sex+"&identity="+identity+"&subject="+subject;
+				  showOrders(ele,data);
+				});
+				
+				$(document).on("click",".delidentity",function(){
+					identity="";
+					$(".seridentity").show();
+					$(".seridentity").find("div[class='line']").show();
+					$("#identityLi").remove();
+					if($(".ulItems2").find("li").length==0){
+						$(".selected").next("div").remove();
+						$(".selected").remove();
+					}
+					data="grade="+grade+"&area="+area+"&sex="+sex+"&identity="+identity+"&subject="+subject;
+				    showOrders(ele,data);
+			     });
+
+			     $("#lkbSearch").click(function(){
+				     subject=$("#txtCourse").val();
+						data="grade="+grade+"&area="+area+"&sex="+sex+"&identity="+identity+"&subject="+subject;
+				     showOrders(ele,data);
+				   });		     	     
+
+		});
+
+
+
+
+
+
+        
+
+    </script>
+		<!-- 代码 结束 -->
+		<div class="topbar">
+			<div class="topbox">
+
+				<div id="Header1_divLogout" class="box_1">
+					您好！欢迎来到阳光家教网！<a href="#">请登录</a> | <a href="register.html">免费注册</a>
+				</div>
+				<div class="box_2">
+					<div class="wxwb">
+						<div class="wb">
+							<a href="#" target="_blank" rel="nofollow"><span>&nbsp;</span>阳光家教微博</a>
+						</div>
+						<div class="wx">
+							<a href="javascript:void(0);"><span>&nbsp;</span>阳光家教微信</a>
+							<div class="wximg">
+								<img src="images/wx.jpg" />
+							</div>
+							<script type="text/javascript">
+                            $("div.wx").hover(function () {
+                                $(this).children(".wximg").show();
+                            }, function () {
+                                $(this).children(".wximg").hide();
+                            });
+                        </script>
+						</div>
+					</div>
+					<div class="fav">
+						<div class="tel">
+							全国投诉专线：<span>021-51082788*2</span>
+						</div>
+						<span>&nbsp;|&nbsp;<a
+							href="javascript:window.external.addFavorite('index.html','阳光家教网')">收藏本站</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end top-->
+		<!--head-->
+		<div class="head">
+			<div class="logo">
+				<h1>
+					<a href="index.html"><img src="images/logo.png" border="0" /></a>
+				</h1>
+			</div>
+			<div class="city">
+				<h3>上海</h3>
+				<span><a href="index.html">[切换城市]</a></span>
+			</div>
+			<div class="cityTel">
+				<span>上海热线电话</span>
+				<p>021-51082788</p>
+			</div>
+			<div class="info2" style='display: none'>
+				<p class="txt">
+					阳光家教已有<span id="Header1_teacherCount" class="num">542756</span>名注册教员<br />帮助了<span
+						id="Header1_studentCount" class="num">170624</span>名家长找家教
+				</p>
+			</div>
+		</div>
+		<!--end head-->
+		<!--nav-->
+		<div class="navBar">
+			<div class="navBox">
+				<div class="classBox">
+					<div class='class'>
+						<a href='Teacherlist.html'><font color="#ffffff">上海家教</font></a>
+					</div>
+
+				</div>
+				<div class="nav">
+					<ul>
+						<li><a href="Teacherlist.html" class=''>数学家教</a></li>
+						<li><a href="Teacherlist.html" class=''>英语家教</a></li>
+						<li><a href="Cost.html" class=''>家教价格</a></li>
+						<li><a href="Teachers.html" class=''>家教老师库</a></li>
+						<li><a href="Orders.html" class='on'>学员库</a></li>
+						<li><a href="Articles.html" class='' target="_blank">家教学堂</a></li>
+						<li><a href='Teacher.html' class=''>个人中心</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/Xslider.js"></script>
+		<script type="text/javascript">
+
+        //科目
+        $(".classBox").hover(function () {
+            $(".classBox>.class").removeClass("classOn");
+            $(".classBox>.subNav").show();
+        }, function () {
+            $(".classBox>.subNav").hide();
+            $(".classBox>.class").addClass("classOn");
+        });
+
+        $(".classBox2>.libox").hover(function () {
+            $(this).children("div.div1").addClass("on");
+            $(this).children("div.div2").show();
+        }, function () {
+            $(this).children("div.div1").removeClass("on");
+            $(this).children("div.div2").hide();
+        });
+    </script>
+		<!--end nav-->
+
+		<div class="containerBox">
+			<!--container-->
+			<div class="container">
+				<!--bread-->
+				<div class="bread">
+					<div class="dh">
+						当前位置：<a href="/">首页</a> &gt; 学员家教信息库
+					</div>
+					<div class="fx">
+
+						<!-- Baidu Button BEGIN -->
+						<div class="bdsharebuttonbox">
+							<a class="bds_more" href="#" data-cmd="more"></a><a
+								title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone"></a><a
+								title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina">
+							</a><a title="分享到腾讯微博" class="bds_tqq" href="#" data-cmd="tqq"></a><a
+								title="分享到人人网" class="bds_renren" href="#" data-cmd="renren"></a><a
+								title="分享到微信" class="bds_weixin" href="#" data-cmd="weixin"><a
+								class="bds_count" data-cmd="count"></a> </a>
+						</div>
+						<script type="text/javascript">    window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {}, "image": { "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16" }, "selectShare": { "bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/apijs/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+						<!-- Baidu Button END -->
+
+					</div>
+				</div>
+				<!--end bread-->
+				<!--search-->
+				<div class="searchBox">
+					<div class="clear10">&nbsp;</div>
+					<div class="serlst serarea">
+						<div class="tit">所在区域：</div>
+
+						<div class="bx">
+							<ul class="ulItems">
+								<li><a href="javascrpit:void(0);" class='on'>不限</a></li>
+							</ul>
+						</div>
+						<div class="items">
+							<ul class="ulItems">
+
+								<li><a href='javascrpit:void(0);' class=''>
+										闵行</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										徐汇</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										杨浦</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										虹口</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										长宁</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										静安</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										黄浦</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										闸北</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										普陀</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										浦东</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										宝山</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										嘉定</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										青浦</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										奉贤</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										金山</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										松江</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										崇明</a></li>
+
+							</ul>
+						</div>
+
+						<div class="clear">&nbsp;</div>
+					</div>
+					<div class="clear10">&nbsp;</div>
+					<div class="serlst sergrade">
+						<div class="tit">就读年级：</div>
+
+						<div class="bx">
+							<ul class="ulItems">
+								<li><a href='javascrpit:void(0);' class='on'>不限</a></li>
+							</ul>
+						</div>
+						<div class="items">
+							<ul class="ulItems">
+
+								<li><a href='javascrpit:void(0);' class=''>
+										幼儿</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										一年级</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										二年级</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										三年级</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										四年级</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										五年级</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										六年级</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										初一</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										初二</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										初三</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										高一</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										高二</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										高三</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										三校生</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										大一</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										大二</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										大三</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										大四</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										大五</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										研究生</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										成人</a></li>
+
+								<li><a href='javascrpit:void(0);' class=''>
+										其它情况</a></li>
+
+							</ul>
+						</div>
+
+						<div class="clear">&nbsp;</div>
+					</div>
+					<div class="line">&nbsp;</div>
+					<div class="serlst sersex">
+						<div class="tit">性别：</div>
+
+						<div class="bx">
+							<ul class="ulItems">
+								<li><a href='javascrpit:void(0);' class='on'>不限</a></li>
+							</ul>
+						</div>
+						<div class="items">
+							<ul class="ulItems">
+
+								<li><a href='javascrpit:void(0);' data-sex="0"  class=''>
+										男</a></li>
+
+								<li><a href='javascrpit:void(0);' data-sex="1" class=''>
+										女</a></li>
+
+							</ul>
+						</div>
+
+						<div class="clear">&nbsp;</div>
+					</div>
+					<div class="line">&nbsp;</div>
+					<div class="serlst seridentity">
+						<div class="tit">身份要求：</div>
+
+						<div class="bx">
+							<ul class="ulItems">
+								<li><a href='javascrpit:void(0);' class='on'>不限</a></li>
+							</ul>
+						</div>
+						<div class="items">
+							<ul class="ulItems">
+
+								<li><a href='javascrpit:void(0);' class='' data-identity="0">
+										专职教师</a></li>
+
+								<li><a href='javascrpit:void(0);' class='' data-identity="1">
+										大学生</a></li>
+
+								<li><a href='javascrpit:void(0);' class='' data-identity="2">
+										其他教员</a></li>
+
+							</ul>
+						</div>
+
+						<div class="clear">&nbsp;</div>
+					</div>
+					<div class="line">&nbsp;</div>
+					<div class="serlst sersubject">
+						<div class="tit">科目搜索：</div>
+						<div class="bx">
+							<ul class="ulItems">
+							</ul>
+						</div>
+						<div class="items">
+							<ul class="ulItems">
+								<li><input name="txtCourse" type="text" id="txtCourse" /></li>
+								<li><a id="lkbSearch" class="on"
+									href="javascrpit:void(0);">搜索</a></li>
+								<li><input type="checkbox" id="chkOrderType" />免、惠订单</li>
+							</ul>
+						</div>
+						<div class="clear">&nbsp;</div>
+					</div>
+				<!-- 	<div class="selected" style="display: none">
+						<div class="tit">您已选择：</div>
+						<div class="items">
+							<ul class="ulItems2">
+								<li><span>闵行</span><a href="#" class="del">&nbsp;</a></li>
+								<li><span>专职教师</span><a href="#" class="del">&nbsp;</a></li>
+							</ul>
+						</div>
+						<div class="clear">&nbsp;</div>
+						<input type="hidden" id="hidAreaID" value="0"><input
+							type="hidden" id="hidSex" value="10"><input type="hidden"
+							id="hidIds" value="0">
+
+					</div> -->
+					<div class="clear">&nbsp;</div>
+				</div>
+				<!--end search-->
+				<div class="clear10">&nbsp;</div>
+				<div class="telst">
+					<div class="left4">
+						<div class="dd_lstit">
+							<div class="tit">
+								<h2>
+									<span>全部学员家教需求单</span>
+								</h2>
+							</div>
+						</div>
+						<div class="dd_lstcon">
+							<div style="padding: 12px">
+								<div class="des">
+									阳光家教网不受理电话预约，敬请谅解！请在个人中心的“预约记录”中查看预约处理结果。</div>
+							</div>
+							<div class="clear10">&nbsp;</div>
+<!-- 
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328220.html' target="_blank"><span>
+													徐汇曹先生请计算机编程家教（编号：189677）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 17:39</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>初一[男]</p>
+										<p>徐汇植物园</p>
+										<p>优先最好是研究生以上，计算机专业，没有的话再考虑专业人士或老师</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>计算机编程</p>
+										<p>无</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328220.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328218.html' target="_blank"><span>
+													浦东周小姐请语文家教（编号：189673）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 17:37</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>五年级[男]</p>
+										<p>浦东唐镇</p>
+										<p>在职教师,有经验，耐心，最好是好点学校的，能对孩子严厉一些，最好是男老师，女老师也可以考虑</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>语文</p>
+										<p>无</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328218.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328197.html' target="_blank"><span>
+													浦东周小姐请英语家教（编号：189650）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 17:36</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>五年级[男]</p>
+										<p>浦东唐镇</p>
+										<p>在职教师,有经验，耐心，最好是好点学校的，能对孩子严厉一些，英语要男老师，语文女老师</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>英语</p>
+										<p>无</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328197.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328215.html' target="_blank"><span>
+													长宁李小姐请素描、英语、西班牙语家教（编号：189671）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 17:02</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>初一[女]</p>
+										<p>长宁</p>
+										<p>在校教员,性格开朗，英语专业或擅长英语，有初中辅导经验，耐心；素描和西班牙语要相关专业的，</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>素描、英语、西班牙语</p>
+										<p>女</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328215.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328214.html' target="_blank"><span>
+													普陀张小姐请语数外+钢琴家教（编号：189670）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 16:45</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>一年级[男]</p>
+										<p>普陀长寿路</p>
+										<p>在校教员,希望最好华师大大三以上有较多空余时间，离家近，英语好，会钢琴的女大学生，英语系和学前教育专业优先</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>语数外+钢琴</p>
+										<p>女</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328214.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328212.html' target="_blank"><span>
+													普陀黄女士请数学家教（编号：189666）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 16:40</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>六年级[女]</p>
+										<p>普陀</p>
+										<p>在职教师,优先女老师，有经验，耐心，大学生也可以考虑，要研究生以上学历，一定要认真负责，有经验，耐心</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>数学</p>
+										<p>无</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328212.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328029.html' target="_blank"><span>
+													浦东赵女士请语数外家教（编号：189531）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 16:07</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>三年级[女]</p>
+										<p>浦东</p>
+										<p>在校教员,耐心，家教经验丰富的</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>语数外</p>
+										<p>女</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328029.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328206.html' target="_blank"><span>
+													长宁王小姐请小提琴家教（编号：189661）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 15:27</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>幼儿[女]</p>
+										<p>长宁</p>
+										<p>要小提琴专业的，</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>小提琴</p>
+										<p>无</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328206.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328204.html' target="_blank"><span>
+													闵行陈小姐请作业辅导家教（编号：189658）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 15:14</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>二年级[女]</p>
+										<p>闵行</p>
+										<p>在校教员,擅长英语，有小学生辅导经验。</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>作业辅导</p>
+										<p>无</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328204.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328201.html' target="_blank"><span>
+													虹口吴小姐请全科家教（编号：189654）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 14:51</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>六年级[女]</p>
+										<p>虹口江湾镇</p>
+										<p>在校教员,有经验的，思路清楚一点。全科陪读，帮辅导功课。</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>全科</p>
+										<p>女</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328201.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328190.html' target="_blank"><span>
+													宝山张小姐请英语家教（编号：189645）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 14:19</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>初二[男]</p>
+										<p>宝山</p>
+										<p>在校教员,有经验的，负责一点的，同时带2个小男孩</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>英语</p>
+										<p>男</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328190.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328113.html' target="_blank"><span>
+													闵行潘先生请全科家教（编号：189587）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 14:11</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>三年级[女]</p>
+										<p>闵行</p>
+										<p>在校教员,有经验，耐心，最好是江浙一带的，优先上海户籍，</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>全科</p>
+										<p>女</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328113.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328147.html' target="_blank"><span>
+													浦东顾女士请数学家教（编号：189616）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 13:55</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>高一[女]</p>
+										<p>浦东</p>
+										<p>大学生也可以，。有经验一点的，在川沙地铁站附近也可以找个公共场所最好是上门的</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>数学</p>
+										<p>女</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328147.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328162.html' target="_blank"><span>
+													普陀钟女士请数学家教（编号：189632）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 11:00</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>六年级[女]</p>
+										<p>普陀</p>
+										<p>在校教员,沪籍优先 数学系，本科学历以上，有家教经验</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>数学</p>
+										<p>男</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328162.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328090.html' target="_blank"><span>
+													嘉定徐女士请物理家教（编号：189567）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-27 10:58</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>初二[女]</p>
+										<p>嘉定</p>
+										<p>在校教员,需要离的近的女大学生，一定要负责任的，不希望是接了单后推荐其他人来的</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>物理</p>
+										<p>女</p>
+									</div>
+									<div class="ch7">
+										<div class='zt1'>发布中</div>
+										<div class="zt2">
+											<a href='xueyuanshow.html#328090.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div> -->
+							</div>
+							<div class="clear"></div>
+							<div class="dd_botpage">
+								<div class="pages">
+									<div class="pagel">
+										共<span class="red">95546</span>条记录
+									</div>
+									，当前为第1页[共有6370页]
+									<div class="pager">
+										<ul>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g1/'
+												rel='nofollow'>&lt;&lt;</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g1/'
+												rel='nofollow'>&lt;</a></li>
+											<li><span class='on' rel='nofollow'>1</span></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g2/'
+												rel='nofollow'>2</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g3/'
+												rel='nofollow'>3</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g4/'
+												rel='nofollow'>4</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g5/'
+												rel='nofollow'>5</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g6/'
+												rel='nofollow'>6</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g7/'
+												rel='nofollow'>7</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g8/'
+												rel='nofollow'>8</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g9/'
+												rel='nofollow'>9</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g10/'
+												rel='nofollow'>10</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g2/'
+												rel='nofollow'>&gt;</a></li>
+											<li><a href='Teacherlist.html#0_s0_x0_t0_g6370/'
+												rel='nofollow'>&gt;&gt;</a></li>
+										</ul>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</div>
+						</div>
+					<!-- </div> -->
+					<div class="right4">
+
+						<!-- <div class="t_loginbox">
+							<div class="name">
+								欢迎您：<span class="cf60">189142</span>
+							</div>
+							<a
+								href="javascript:document.getElementById('Header1_lkbLogOut').click();"
+								class="logout"> &nbsp;</a>
+							<div class="clear5"></div>
+							<div class="img" style="width: 74px; height: 82px">
+								<img src='images/tx_0.jpg' border='0'>
+							</div>
+							<div class="notice">
+								<ul>
+									<li class="li1">证件</li>
+									<li class="li2"><span class="red"> 0</span></li>
+									<li class="li3"><a href="CardManage.html" class="link2">
+											上传</a></li>
+								</ul>
+								<ul>
+									<li class="li1">照片</li>
+									<li class="li2"><span class="red"> 1</span></li>
+									<li class="li3"><a href="PhotoManage.html" class="link2">
+											上传</a></li>
+								</ul>
+								<ul>
+									<li class="li1">待支付</li>
+									<li class="li2"><span class="red"> 0</span></li>
+									<li class="li3"><a href="Teacher/TeachList.aspx"
+										class="link2"> 查看</a></li>
+								</ul>
+								<ul>
+									<li class="li1">预约</li>
+									<li class="li2"><span class="red"> 0</span></li>
+									<li class="li3"><a href="OrderList.html" class="link2">
+											查看</a></li>
+								</ul>
+							</div>
+							<div class="clear10"></div>
+							<div class="grzx">
+								<a href="/Teacher/Index">&nbsp;</a>
+							</div>
+						</div>
+						<div class="clear10"></div> -->
+
+						<!--search-->
+						<div class="serchBox">
+							<div class="tit">
+								<ul>
+									<li class="on">快速搜索</li>
+									<li>&nbsp;</li>
+								</ul>
+							</div>
+							<div class="content">
+								<div class="ipt">
+									<input name="txtjybh" type="text" value="教员编号：" id="txtjybh"
+										class="txt" /> <input type="button" value="搜 索" class="btn"
+										id="btnjybh" />
+								</div>
+								<div class="ipt ipt2">
+									<input name="txtxybh" type="text" value="订单编号：" id="txtxybh"
+										class="txt" /> <input type="button" value="搜 索" class="btn"
+										id="btnxybh" />
+								</div>
+							</div>
+						</div>
+						<!--end search-->
+						<div class="clear10"></div>
+						<div class="qtxgjjBox">
+							<div class="tit">
+								<ul>
+									<li class='c1'>学员好评</li>
+									<li class='c2'><a href='/Teachers.aspx?good=1'>更多</a></li>
+								</ul>
+							</div>
+							<div class="content3">
+
+								<ul>
+									<li class="c1"><a href='/T523829.html' target="_blank">
+											<img
+											src='http://www.ygjj.com/bookpic2/2015-01-21/head523829-20150121110241858142.PNG'
+											border='0'>
+									</a></li>
+									<li class="c2"><a href='/T523829.html' target="_blank">
+											李教员（女）<span class="col2">180629</span>
+									</a> <span class="v" title='已审核证件'>&nbsp;&nbsp;</span>
+										<p>初三物理，化学2016年5月获好评</p></li>
+								</ul>
+								<div class="clear10"></div>
+
+								<ul>
+									<li class="c1"><a href='/T537176.html' target="_blank">
+											<img
+											src='http://www.ygjj.com/bookpic2/2016-07-28/head537176-20160728171839446453.jpeg'
+											border='0'>
+									</a></li>
+									<li class="c2"><a href='/T537176.html' target="_blank">
+											满教员（女）<span class="col2">185136</span>
+									</a> <span class="v" title='已审核证件'>&nbsp;&nbsp;</span>
+										<p>六年级钢琴2016年5月获好评</p></li>
+								</ul>
+								<div class="clear10"></div>
+
+								<ul>
+									<li class="c1"><a href='/T516544.html' target="_blank">
+											<img
+											src='http://www.ygjj.com/bookpic2/2014-07-06/head516544-20140706230516450798.jpg'
+											border='0'>
+									</a></li>
+									<li class="c2"><a href='/T516544.html' target="_blank">
+											商老师（男）<span class="col2">177381</span>
+									</a> <span class="v" title='已审核证件'>&nbsp;&nbsp;</span>
+										<p>初三数学2016年5月获好评</p></li>
+								</ul>
+								<div class="clear10"></div>
+
+								<ul>
+									<li class="c1"><a href='/T533399.html' target="_blank">
+											<img
+											src='http://www.ygjj.com/bookpic2/2015-09-13/head533399-20150913183754909799.jpg'
+											border='0'>
+									</a></li>
+									<li class="c2"><a href='/T533399.html' target="_blank">
+											朱教员（女）<span class="col2">183876</span>
+									</a> <span class="v" title='已审核证件'>&nbsp;&nbsp;</span>
+										<p>初二数学2016年5月获好评</p></li>
+								</ul>
+								<div class="clear10"></div>
+
+								<ul>
+									<li class="c1"><a href='/T539289.html' target="_blank">
+											<img
+											src='http://www.ygjj.com/bookpic2/2016-01-23/head539289-20160123221148782312.png'
+											border='0'>
+									</a></li>
+									<li class="c2"><a href='/T539289.html' target="_blank">
+											许教员（男）<span class="col2">185734</span>
+									</a> <span class="v" title='已审核证件'>&nbsp;&nbsp;</span>
+										<p>高二数学2016年5月获好评</p></li>
+								</ul>
+								<div class="clear10"></div>
+
+							</div>
+						</div>
+						<div class="clear10"></div>
+						<div class="rt_jxfx">
+							<div class="tit">家教成功记录</div>
+							<div class="con">
+
+								<a href='/T551474.html'>
+									<ul>
+										<li class="c1">08-27</li>
+										<li class="c2">刘教员</li>
+										<li class="c3">英语口语写作家教</li>
+									</ul>
+								</a> <a href='/T487664.html'>
+									<ul>
+										<li class="c1">08-27</li>
+										<li class="c2">戴教员</li>
+										<li class="c3">化学家教</li>
+									</ul>
+								</a> <a href='/T533942.html'>
+									<ul>
+										<li class="c1">08-27</li>
+										<li class="c2">黄教员</li>
+										<li class="c3">数理化家教</li>
+									</ul>
+								</a> <a href='/T519313.html'>
+									<ul>
+										<li class="c1">08-27</li>
+										<li class="c2">韩教员</li>
+										<li class="c3">数学家教</li>
+									</ul>
+								</a> <a href='/T549047.html'>
+									<ul>
+										<li class="c1">08-27</li>
+										<li class="c2">江教员</li>
+										<li class="c3">语文 英语家教</li>
+									</ul>
+								</a> <a href='/T551231.html'>
+									<ul>
+										<li class="c1">08-26</li>
+										<li class="c2">郭教员</li>
+										<li class="c3">全科家教</li>
+									</ul>
+								</a> <a href='/T550739.html'>
+									<ul>
+										<li class="c1">08-26</li>
+										<li class="c2">杭教员</li>
+										<li class="c3">全科作业家教</li>
+									</ul>
+								</a> <a href='/T551140.html'>
+									<ul>
+										<li class="c1">08-26</li>
+										<li class="c2">闻教员</li>
+										<li class="c3">语数外家教</li>
+									</ul>
+								</a> <a href='/T521434.html'>
+									<ul>
+										<li class="c1">08-22</li>
+										<li class="c2">史教员</li>
+										<li class="c3">全科家教</li>
+									</ul>
+								</a> <a href='/T506656.html'>
+									<ul>
+										<li class="c1">08-25</li>
+										<li class="c2">郭教员</li>
+										<li class="c3">全科作业辅导家教</li>
+									</ul>
+								</a>
+
+							</div>
+						</div>
+						<div class="clear10"></div>
+
+						<div class="rt_jxfx">
+							<div class="tit">帮助中心</div>
+							<div class="content">
+								<ul>
+									<li><a href='/Cost' target='_blank' title='阳光家教网收费标准'>
+											<font color='#ff00cc'>阳光家教网收费标准</font>
+									</a></li>
+
+									<li><a href='/D7173.html'> 阳光家教简介</a></li>
+
+									<li><a href='/D7151.html'> 教员签约协议</a></li>
+
+									<li><a href='/D7149.html'> 如何请家教</a></li>
+
+									<li><a href='/D6207.html'> 安排家教的工作流程</a></li>
+
+									<li><a href='/D6206.html'> 教员授课前该做些什么</a></li>
+
+									<li><a href='/D6205.html'> 如何在线选择教员</a></li>
+
+									<li><a href='/D1750.html'> 如何发布家教信息</a></li>
+
+									<li><a href='show.html#00.html'> 怎样快速得到家教工作</a></li>
+
+									<li><a href='/D108.html'> 如何预约订单</a></li>
+
+								</ul>
+							</div>
+						</div>
+
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!--idx end container-->
+			<div class="clear20"></div>
+		</div>
+
+		<!--idx foot nav-->
+		<div class="footNavBox">
+			<div class="footNav">
+				<div class="cityTel">
+					<span>上海热线</span>
+					<p>021-51082788</p>
+				</div>
+				<div class="navBox">
+					<dl>
+						<dt>会员指南</dt>
+						<dd>
+							<span>→ </span><a href="zx.html" rel="nofollow">帮助中心</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#149.html" rel="nofollow">如何请家教</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#150.html" rel="nofollow">如何做家教</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#151.html" rel="nofollow">教员签约协议</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>支付方式</dt>
+						<dd>
+							<span>→ </span><a href="show.html#152.html" rel="nofollow">在线支付</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html" rel="nofollow">银行转账</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="Cost.html" rel="nofollow">资费标准</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#154.html" rel="nofollow">退款说明</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>服务条款</dt>
+						<dd>
+							<span>→ </span><a href="show.html#155.html" rel="nofollow">隐私保护</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#156.html" rel="nofollow">侵权处理</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#157.html" rel="nofollow">免责说明</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>关于我们</dt>
+						<dd>
+							<span>→ </span><a href="show.html#173.html" rel="nofollow">阳光家教简介</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="zx.html" rel="nofollow">阳光家教公告</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#161.html" rel="nofollow">联系我们</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="links.html" rel="nofollow">友情链接</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="wx">
+					<div class="tit">关注微信</div>
+					<div class="con">
+						<img src="images/wx.jpg" />
+					</div>
+				</div>
+				<div class="clear10"></div>
+				<div class="ps">
+					【上海家教网】是阳光家教网的上海地区家教分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的上海家教，帮助上海小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
+						class="focus">021-51082788</span>
+				</div>
+				<div class="line">&nbsp;</div>
+				<div class="city">
+					<dl>
+						<dt>热门城市：</dt>
+						<dd>
+							<a href="#" title="上海家教网" rel="nofollow">上海家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="北京家教网" rel="nofollow">北京家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="广州家教网" rel="nofollow">广州家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="深圳家教网" rel="nofollow">深圳家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="南京家教网" rel="nofollow">南京家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="天津家教网" rel="nofollow">天津家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="武汉家教网" rel="nofollow">武汉家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="杭州家教网" rel="nofollow">杭州家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="西安家教网" rel="nofollow">西安家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="苏州家教网" rel="nofollow">苏州家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="成都家教网" rel="nofollow">成都家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="长沙家教网" rel="nofollow">长沙家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="沈阳家教网" rel="nofollow">沈阳家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="合肥家教网" rel="nofollow">合肥家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="大连家教网" rel="nofollow">大连家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="唐山家教网" rel="nofollow">唐山家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="芜湖家教网" rel="nofollow">芜湖家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="宁波家教网" rel="nofollow">宁波家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="桂林家教网" rel="nofollow">桂林家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="常州家教网" rel="nofollow">常州家教</a>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<!--idx end foot nav-->
+		<!--idx end foot rc-->
+		<div class="footRcBox">
+			<div class="footRc">
+
+				<div class="clear10">&nbsp;</div>
+				<div class="rc">
+					<div class="le1">
+						<a
+							href='https://www.sgs.gov.cn/notice/notice/view?uuid=NEK5QOkBQXpLTJQkRvxeUwsIjveo5VPC&tab=01'
+							target='_blank' rel="nofollow"><image src='images/gs.gif'
+								border=0 /></a>
+					</div>
+					<div class="ri">
+						《中华人民共和国法人营业执照》注册号：310120001560841<br />
+						《中华人民共和国组织机构代码证》：75840655-7<br /> 本站法律顾问：上海明泰律师事务所 李居利律师
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--idx end foot rc-->
+
+		<table width="99%" border="0" cellspacing="0" cellpadding="0"
+			align="center">
+			<tr align="center">
+				<td valign="top" width="50%" align="left"></td>
+				<td align="right" width="50%">
+					<!--{EBE105A1-12F7-4B74-9B3B-CC58AE565128}--> <script
+						language="javascript">
+                    /*
+                     CompanyName :上海阳光家教
+                     Domain:http://www.ygjj.com
+                     VocationName:商务服务\教育培训
+                     DESC:中国规模最大的正规、专业家教网站，阳光家教网引领家教中介不断规范家教服务，为广大学员提供各学科的兼职家教老师和专职家庭教师，帮助小学教师、中学教师和大学生家教寻求家教兼职。
+                     DateTime:2010-1-6 22:56:43
+                     */
+                    _estsalho_dma_var_SiteID = 13932;
+                </script> <!--{FF1DF55F-BA69-4846-8996-234AE75CAFBC}-->
+
+				</td>
+			</tr>
+			<tr>
+				<td align="center" height="30" valign="middle" colspan='2'>
+					版权所有 上海鸿儒教育信息咨询有限公司－阳光家教网－上海家教 投诉电话：021-51082788*2<br /> 网络实名：<a
+					href='index.html' rel="nofollow">家教</a> <a href='index.html'
+					rel="nofollow"> 上海家教</a> <a href="#" rel="nofollow">北京家教</a> <a
+					href="#" rel="nofollow">广州家教</a> <a href="#" rel="nofollow">苏州家教</a>
+					<a href="#" rel="nofollow">深圳家教</a><br /> 沪ICP备15011267号
+				</td>
+			</tr>
+		</table>
+
+
+	<script type="text/javascript">
+    //搜索
+    $("#txtjybh").focus(function () {
+        if ($("#txtjybh").val() == "教员编号：")
+            $("#txtjybh").val("");
+    });
+    $("#txtjybh").blur(function () {
+        if ($("#txtjybh").val() == "")
+            $("#txtjybh").val("教员编号：");
+    });
+    $("#txtxybh").focus(function () {
+        if ($("#txtxybh").val() == "订单编号：")
+            $("#txtxybh").val("");
+    });
+    $("#txtxybh").blur(function () {
+        if ($("#txtxybh").val() == "")
+            $("#txtxybh").val("订单编号：");
+    });
+    $("#btnjybh").click(function () {
+        var _TeacherID = $("#txtjybh").val();
+        if (_TeacherID != "教员编号：") {
+            location.href = "/Teachers.aspx?id=" + _TeacherID;
+        }
+    });
+    $("#txtjybh").keydown(function () {
+        if (event.keyCode == 13) {
+            $("#btnjybh").click();
+            return false;
+        }
+    });
+    $("#txtxybh").keydown(function () {
+        if (event.keyCode == 13) {
+            $("#btnxybh").click();
+            return false;
+        }
+    });
+
+    $("#btnxybh").click(function () {
+        var _nid = $("#txtxybh").val();
+        if (_nid != "订单编号：") {
+            location.href = "/Orders.aspx?id=" + _nid;
+        }
+    });
+    $("#chkOrderType").click(function () {
+        var _nid = $("#chkOrderType").is(':checked');
+        if (_nid) {
+            location.href = location.pathname+"?ot=1";
+        } else {
+            location.href = location.pathname;
+        }
+    });
+</script>
+</body>
+</html>

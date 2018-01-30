@@ -1,7 +1,7 @@
 package com.dgut.dao;
 
-import com.dgut.bean.TeacherDesire;
-import com.dgut.bean.TeacherDesireExample;
+import com.dgut.entity.TeacherDesire;
+import com.dgut.entity.TeacherDesireExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

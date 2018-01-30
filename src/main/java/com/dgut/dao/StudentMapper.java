@@ -3,8 +3,11 @@ package com.dgut.dao;
 import com.dgut.entity.Student;
 import com.dgut.entity.StudentExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface StudentMapper extends BaseMapper<Student, StudentExample>{
     long countByExample(StudentExample example);
 

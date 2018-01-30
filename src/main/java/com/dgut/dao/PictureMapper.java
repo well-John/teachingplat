@@ -1,7 +1,7 @@
 package com.dgut.dao;
 
-import com.dgut.bean.Picture;
-import com.dgut.bean.PictureExample;
+import com.dgut.entity.Picture;
+import com.dgut.entity.PictureExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

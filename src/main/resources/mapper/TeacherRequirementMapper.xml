@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dgut.dao.TeacherRequirementMapper">
+  <resultMap id="BaseResultMap" type="com.dgut.entity.TeacherRequirement">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="student_id" jdbcType="INTEGER" property="studentId"/>
+    <result column="concat" jdbcType="VARCHAR" property="concat" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="student_description" jdbcType="VARCHAR" property="studentDescription" />
+    <result column="student_level" jdbcType="INTEGER" property="studentLevel" />
+    <result column="teaching_time" jdbcType="VARCHAR" property="teachingTime" />
+    <result column="require_count" jdbcType="INTEGER" property="requireCount" />
+    <result column="require_sex" jdbcType="INTEGER" property="requireSex" />
+    <result column="identity" jdbcType="INTEGER" property="identity" />
+    <result column="requirement" jdbcType="VARCHAR" property="requirement" />
+    <result column="payment" jdbcType="VARCHAR" property="payment" />
+    <result column="teaching_type" jdbcType="VARCHAR" property="teachingType" />
+    <result column="riding_allowance" jdbcType="INTEGER" property="ridingAllowance" />
+    <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
+    <result column="release_status" jdbcType="INTEGER" property="releaseStatus" />
+  </resultMap>
+ 
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, student_id, concat, sex, age, grade, phone, email, area, address, subject, student_description, 
+    student_level, teaching_time, require_count, require_sex, identity, requirement, 
+    payment, teaching_type, riding_allowance, release_time, release_status
+  </sql>
+  <select id="selectByExample" parameterType="com.dgut.entity.TeacherRequirementExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from teacher_requirement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from teacher_requirement
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from teacher_requirement
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dgut.entity.TeacherRequirementExample">
+    delete from teacher_requirement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dgut.entity.TeacherRequirement">
+    insert into teacher_requirement (id, student_id, concat, 
+      sex, age, grade, phone, 
+      email, area, address, 
+      subject, student_description, student_level, 
+      teaching_time, require_count, require_sex, 
+      identity, requirement, payment, 
+      teaching_type, riding_allowance, release_time, 
+      release_status)
+    values (#{id,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, #{concat,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=INTEGER}, #{age,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{subject,jdbcType=VARCHAR}, #{studentDescription,jdbcType=VARCHAR}, #{studentLevel,jdbcType=INTEGER}, 
+      #{teachingTime,jdbcType=VARCHAR}, #{requireCount,jdbcType=INTEGER}, #{requireSex,jdbcType=INTEGER}, 
+      #{identity,jdbcType=INTEGER}, #{requirement,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR}, 
+      #{teachingType,jdbcType=VARCHAR}, #{ridingAllowance,jdbcType=INTEGER}, #{releaseTime,jdbcType=TIMESTAMP}, 
+      #{releaseStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dgut.entity.TeacherRequirement">
+    insert into teacher_requirement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="studentId != null">
+        student_id,
+      </if>
+      <if test="concat != null">
+        concat,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="studentDescription != null">
+        student_description,
+      </if>
+      <if test="studentLevel != null">
+        student_level,
+      </if>
+      <if test="teachingTime != null">
+        teaching_time,
+      </if>
+      <if test="requireCount != null">
+        require_count,
+      </if>
+      <if test="requireSex != null">
+        require_sex,
+      </if>
+      <if test="identity != null">
+        identity,
+      </if>
+      <if test="requirement != null">
+        requirement,
+      </if>
+      <if test="payment != null">
+        payment,
+      </if>
+      <if test="teachingType != null">
+        teaching_type,
+      </if>
+      <if test="ridingAllowance != null">
+        riding_allowance,
+      </if>
+      <if test="releaseTime != null">
+        release_time,
+      </if>
+      <if test="releaseStatus != null">
+        release_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="studentId != null">
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="concat != null">
+        #{concat,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="studentDescription != null">
+        #{studentDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="studentLevel != null">
+        #{studentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="teachingTime != null">
+        #{teachingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="requireCount != null">
+        #{requireCount,jdbcType=INTEGER},
+      </if>
+      <if test="requireSex != null">
+        #{requireSex,jdbcType=INTEGER},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="requirement != null">
+        #{requirement,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        #{payment,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingType != null">
+        #{teachingType,jdbcType=VARCHAR},
+      </if>
+      <if test="ridingAllowance != null">
+        #{ridingAllowance,jdbcType=INTEGER},
+      </if>
+      <if test="releaseTime != null">
+        #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseStatus != null">
+        #{releaseStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dgut.entity.TeacherRequirementExample" resultType="java.lang.Long">
+    select count(*) from teacher_requirement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update teacher_requirement
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentId != null">
+        student_id = #{record.studentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.concat != null">
+        concat = #{record.concat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.age != null">
+        age = #{record.age,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grade != null">
+        grade = #{record.grade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null">
+        area = #{record.area,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subject != null">
+        subject = #{record.subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentDescription != null">
+        student_description = #{record.studentDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentLevel != null">
+        student_level = #{record.studentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.teachingTime != null">
+        teaching_time = #{record.teachingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requireCount != null">
+        require_count = #{record.requireCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.requireSex != null">
+        require_sex = #{record.requireSex,jdbcType=INTEGER},
+      </if>
+      <if test="record.identity != null">
+        identity = #{record.identity,jdbcType=INTEGER},
+      </if>
+      <if test="record.requirement != null">
+        requirement = #{record.requirement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payment != null">
+        payment = #{record.payment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teachingType != null">
+        teaching_type = #{record.teachingType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ridingAllowance != null">
+        riding_allowance = #{record.ridingAllowance,jdbcType=INTEGER},
+      </if>
+      <if test="record.releaseTime != null">
+        release_time = #{record.releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.releaseStatus != null">
+        release_status = #{record.releaseStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update teacher_requirement
+    set id = #{record.id,jdbcType=INTEGER},
+      student_id = #{record.studentId,jdbcType=INTEGER},
+      concat = #{record.concat,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=INTEGER},
+      age = #{record.age,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      area = #{record.area,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      student_description = #{record.studentDescription,jdbcType=VARCHAR},
+      student_level = #{record.studentLevel,jdbcType=INTEGER},
+      teaching_time = #{record.teachingTime,jdbcType=VARCHAR},
+      require_count = #{record.requireCount,jdbcType=INTEGER},
+      require_sex = #{record.requireSex,jdbcType=INTEGER},
+      identity = #{record.identity,jdbcType=INTEGER},
+      requirement = #{record.requirement,jdbcType=VARCHAR},
+      payment = #{record.payment,jdbcType=VARCHAR},
+      teaching_type = #{record.teachingType,jdbcType=VARCHAR},
+      riding_allowance = #{record.ridingAllowance,jdbcType=INTEGER},
+      release_time = #{record.releaseTime,jdbcType=TIMESTAMP},
+      release_status = #{record.releaseStatus,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dgut.entity.TeacherRequirement">
+    update teacher_requirement
+    <set>
+      <if test="studentId != null">
+        student_id = #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="concat != null">
+        concat = #{concat,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="studentDescription != null">
+        student_description = #{studentDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="studentLevel != null">
+        student_level = #{studentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="teachingTime != null">
+        teaching_time = #{teachingTime,jdbcType=VARCHAR},
+      </if>
+      <if test="requireCount != null">
+        require_count = #{requireCount,jdbcType=INTEGER},
+      </if>
+      <if test="requireSex != null">
+        require_sex = #{requireSex,jdbcType=INTEGER},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="requirement != null">
+        requirement = #{requirement,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingType != null">
+        teaching_type = #{teachingType,jdbcType=VARCHAR},
+      </if>
+      <if test="ridingAllowance != null">
+        riding_allowance = #{ridingAllowance,jdbcType=INTEGER},
+      </if>
+      <if test="releaseTime != null">
+        release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseStatus != null">
+        release_status = #{releaseStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dgut.entity.TeacherRequirement">
+    update teacher_requirement
+    set student_id = #{studentId,jdbcType=INTEGER},
+      concat = #{concat,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      age = #{age,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      student_description = #{studentDescription,jdbcType=VARCHAR},
+      student_level = #{studentLevel,jdbcType=INTEGER},
+      teaching_time = #{teachingTime,jdbcType=VARCHAR},
+      require_count = #{requireCount,jdbcType=INTEGER},
+      require_sex = #{requireSex,jdbcType=INTEGER},
+      identity = #{identity,jdbcType=INTEGER},
+      requirement = #{requirement,jdbcType=VARCHAR},
+      payment = #{payment,jdbcType=VARCHAR},
+      teaching_type = #{teachingType,jdbcType=VARCHAR},
+      riding_allowance = #{ridingAllowance,jdbcType=INTEGER},
+      release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      release_status = #{releaseStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

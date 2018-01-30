@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dgut.dao.DepositMapper">
+  <resultMap id="BaseResultMap" type="com.dgut.entity.Deposit">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="charge_date" jdbcType="TIMESTAMP" property="chargeDate" />
+    <result column="charge_money" jdbcType="VARCHAR" property="chargeMoney" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="organiser" jdbcType="INTEGER" property="organiser" />
+    <result column="organiser_id" jdbcType="INTEGER" property="organiserId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, charge_date, charge_money, status, organiser, organiser_id
+  </sql>
+  <select id="selectByExample" parameterType="com.dgut.entity.DepositExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from deposit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from deposit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from deposit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dgut.entity.DepositExample">
+    delete from deposit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dgut.entity.Deposit">
+    insert into deposit (id, charge_date, charge_money, 
+      status, organiser, organiser_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{chargeDate,jdbcType=TIMESTAMP}, #{chargeMoney,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{organiser,jdbcType=INTEGER}, #{organiserId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dgut.entity.Deposit">
+    insert into deposit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="chargeDate != null">
+        charge_date,
+      </if>
+      <if test="chargeMoney != null">
+        charge_money,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="organiser != null">
+        organiser,
+      </if>
+      <if test="organiserId != null">
+        organiser_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="chargeDate != null">
+        #{chargeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargeMoney != null">
+        #{chargeMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="organiser != null">
+        #{organiser,jdbcType=INTEGER},
+      </if>
+      <if test="organiserId != null">
+        #{organiserId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dgut.entity.DepositExample" resultType="java.lang.Long">
+    select count(*) from deposit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update deposit
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.chargeDate != null">
+        charge_date = #{record.chargeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.chargeMoney != null">
+        charge_money = #{record.chargeMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.organiser != null">
+        organiser = #{record.organiser,jdbcType=INTEGER},
+      </if>
+      <if test="record.organiserId != null">
+        organiser_id = #{record.organiserId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update deposit
+    set id = #{record.id,jdbcType=INTEGER},
+      charge_date = #{record.chargeDate,jdbcType=TIMESTAMP},
+      charge_money = #{record.chargeMoney,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      organiser = #{record.organiser,jdbcType=INTEGER},
+      organiser_id = #{record.organiserId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dgut.entity.Deposit">
+    update deposit
+    <set>
+      <if test="chargeDate != null">
+        charge_date = #{chargeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargeMoney != null">
+        charge_money = #{chargeMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="organiser != null">
+        organiser = #{organiser,jdbcType=INTEGER},
+      </if>
+      <if test="organiserId != null">
+        organiser_id = #{organiserId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dgut.entity.Deposit">
+    update deposit
+    set charge_date = #{chargeDate,jdbcType=TIMESTAMP},
+      charge_money = #{chargeMoney,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      organiser = #{organiser,jdbcType=INTEGER},
+      organiser_id = #{organiserId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

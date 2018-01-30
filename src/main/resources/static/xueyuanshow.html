@@ -1,0 +1,968 @@
+﻿<!DOCTYPE html>
+<html>
+<head id="Head1">
+<title>上海初一计算机编程家教信息_上中路长桥路家教_曹先生【阳光家教网】</title>
+<link href="css/Default.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script type="text/javascript"
+	src="js/fancybox2/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css"
+	href="js/fancybox2/jquery.fancybox.css?v=2.1.5" media="screen" />
+<script type="text/javascript" src="js/My.js"></script>
+<script type="text/javascript">
+        function ShowLock() {
+            alert('该订单已被存有预付金的教员先预定，正在处理中，请稍候再试！');
+            return false;
+        }
+        function ShowPay() {
+            alert('该订单免信息费，请直接查看联系方式！');
+            return false;
+        }
+
+        function DDMap() {
+            SearchMap();
+            return;
+            var url = "ddmap.aspx"
+            url = url + "?gmapid=" + encodeURI(document.all("g_mapid").value);
+            url = url + "&gfrom=" + encodeURI(document.all("g_from").value);
+            url = url + "&gto=" + encodeURI(document.all("g_to").value);
+            url = url + "&g_type=0";
+            window.open(url);
+        }
+
+        function DDMap1() {
+            ShowMap();
+            return;
+            var url = "ddmap.aspx";
+            url = url + "?gmapid=" + document.all("g_mapid").value;
+            url = url + "&keyname=" + encodeURI(document.all("g_to").value);
+            url = url + "&g_type=1";
+            window.open(url);
+        }
+        function ShowMap() {
+            var ap = document.getElementById("g_to").value;
+            if (ap != "") {
+                var local = new BMap.LocalSearch(map, {
+                    renderOptions: { map: map }
+                });
+                local.search(ap);
+                document.getElementById("mapcontainer").style.display = "block";
+                document.getElementById("results").style.display = "none";
+            }
+            else {
+                alert('地址不明确');
+            }
+        }
+        function SearchMap() {
+            var strf = document.getElementById('g_from').value;
+            var strt = document.getElementById('g_to').value;
+            if (strf == "") {
+                alert('请输入起点');
+                document.getElementById('g_from').focus();
+                return;
+            }
+            if (strt == "") {
+                alert('请输入终点');
+                document.getElementById('g_to').focus();
+                return;
+            }
+            var url = "/BDMap.aspx";
+            url = url + "?strf=" + encodeURI(strf);
+            url = url + "&strt=" + encodeURI(strt);
+            url = url + "&c=" + encodeURI(document.getElementById('g_city').value);
+            window.open(url);
+        }
+
+
+       
+    </script>
+</head>
+<body>
+	<form method="post" action="./O328220.html" id="form1">
+		
+
+		<!-- 代码 开始 -->
+		<div id="leftsead">
+			<ul>
+
+				<li><a href="javascript:void(0)" class="youhui"> <img
+						src="rightimg/l02.png" width="47" height="49" class="shows" /> <img
+						src="rightimg/a.png" width="57" height="49" class="hides" /> <img
+						src="images/wx.jpg" class="2wm"
+						style="display: none; margin: -100px 57px 0 0" />
+				</a></li>
+
+				<li id="tel"><a href="javascript:void(0)">
+						<div class="hides" style="width: 161px; display: none;" id="tels">
+							<div class="hides" id="p1">
+								<img src="rightimg/ll05.png">
+							</div>
+							<div class="hides" id="p3">
+								<span style="color: #FFF; font-size: 12px">021-51082788</span>
+							</div>
+						</div> <img src="rightimg/l05.png" width="47" height="49" class="shows" />
+				</a></li>
+
+				<li id="btn"><a id="top_btn">
+						<div class="hides" style="width: 161px; display: none">
+							<img src="rightimg/ll06.png" width="161" height="49" />
+						</div> <img src="rightimg/l06.png" width="47" height="49" class="shows" />
+				</a></li>
+			</ul>
+		</div>
+
+		<script>
+
+        $(document).ready(function () {
+
+            $("#leftsead a").hover(function () {
+                if ($(this).prop("className") == "youhui") {
+                    $(this).children("img.hides").show();
+                } else {
+                    $(this).children("div.hides").show();
+                    $(this).children("img.shows").hide();
+                    $(this).children("div.hides").animate({ marginRight: '0px' }, '0');
+                }
+            }, function () {
+                if ($(this).prop("className") == "youhui") {
+                    $(this).children("img.hides").hide();
+                } else {
+                    $(this).children("div.hides").animate({ marginRight: '-163px' }, 0, function () { $(this).hide(); $(this).next("img.shows").show(); });
+                }
+            });
+
+            $("#top_btn").click(function () { if (scroll == "off") return; $("html,body").animate({ scrollTop: 0 }, 600); });
+
+            //右侧导航 - 二维码
+            $(".youhui").mouseover(function () {
+                $(this).children(".2wm").show();
+            })
+            $(".youhui").mouseout(function () {
+                $(this).children(".2wm").hide();
+            });
+        });
+
+        function showBuTie(data){
+			if(data==0)
+				return "无";
+			else if(data==1)
+				return "有";
+			else if(data==2)
+				return "部分";
+			else if(data==3)
+				return "协商";
+          }
+
+        function showReqSex(data){
+				if(data==0){
+					return "男";
+				}else if(data==1){
+					return "女";
+				}else if(data==2){
+					return "无要求";
+				}
+         }
+
+        function showXueYuanInfo(data){
+			$("#orderName").text(data.map.req.area+""+data.map.req.subject+"家教"+"(编号:"+data.map.req.id+")");
+			var a=$("<a></a>").attr("href","Teachers.html?subject="+data.map.req.subject).text(data.map.req.subject+"家教 ");
+			$("#subject").empty().append(a);
+			$("#grade").text(data.map.req.grade);
+			$("#sex").text((data.map.student.sex==0)?"女":"男");
+			$("#age").text(data.map.req.age);
+			$("#payment").text(data.map.req.payment);
+			$("#riding_allowance").text(showBuTie(data.map.req.ridingAllowance));
+			$("#student_description").text(data.map.req.studentDescription);
+			$("#teaching_time").text(data.map.req.teachingTime);
+			$("#require_sex").text(showReqSex(data.map.req.requireSex));
+			$("#require_count").text(data.map.req.requireCount);
+			$("#requirement").text(data.map.req.requirement);
+			$("#teaching_type").text(data.map.req.teachingType);
+         }
+
+		$(function(){
+			showBox1();
+			var id=GetQueryString("id");
+			$.ajax({
+			  url:"teacherRequirement/selectTeacherRequirement",
+			  type:"post",
+			  dataType:"json",
+			  data:"id="+id,
+			  success:function(data){
+				  if(data.code==100){
+					  showXueYuanInfo(data);
+				}else{
+				alert("非法跳转");
+			}
+	
+			}
+	  });
+
+
+	});
+
+        
+
+    </script>
+		<!-- 代码 结束 -->
+		<div class="topbar">
+			<div class="topbox">
+
+				<div id="Header1_divLogout" class="box_1">
+						您好！欢迎来到阳光家教网！<a href="index.html">请登录</a> | <a href="register.html">免费注册</a>
+				</div>
+				<div class="box_2">
+					<div class="wxwb">
+						<div class="wb">
+							<a href="#" target="_blank" rel="nofollow"><span>&nbsp;</span>阳光家教微博</a>
+						</div>
+						<div class="wx">
+							<a href="javascript:void(0);"><span>&nbsp;</span>阳光家教微信</a>
+							<div class="wximg">
+								<img src="images/wx.jpg" />
+							</div>
+							<script type="text/javascript">
+                            $("div.wx").hover(function () {
+                                $(this).children(".wximg").show();
+                            }, function () {
+                                $(this).children(".wximg").hide();
+                            });
+                        </script>
+						</div>
+					</div>
+					<div class="fav">
+						<div class="tel">
+							全国投诉专线：<span>021-51082788*2</span>
+						</div>
+						<span>&nbsp;|&nbsp;<a
+							href="javascript:window.external.addFavorite('index.html','阳光家教网')">收藏本站</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end top-->
+		<!--head-->
+		<div class="head">
+			<div class="logo">
+				<h1>
+					<a href="index.html"><img src="images/logo.png" border="0" /></a>
+				</h1>
+			</div>
+			<div class="city">
+				<h3>上海</h3>
+				<span><a href="index.html">[切换城市]</a></span>
+			</div>
+			<div class="cityTel">
+				<span>上海热线电话</span>
+				<p>021-51082788</p>
+			</div>
+			<div class="info2" style='display: none'>
+				<p class="txt">
+					阳光家教已有<span id="Header1_teacherCount" class="num">542756</span>名注册教员<br />帮助了<span
+						id="Header1_studentCount" class="num">170625</span>名家长找家教
+				</p>
+			</div>
+		</div>
+		<!--end head-->
+		<!--nav-->
+		<div class="navBar">
+			<div class="navBox">
+				<div class="classBox">
+					<div class='class'>
+						<a href='Teacherlist.html'><font color="#ffffff">上海家教</font></a>
+					</div>
+
+				</div>
+				<div class="nav">
+					<ul>
+						<li><a href="Teacherlist.html" class=''>数学家教</a></li>
+						<li><a href="Teacherlist.html" class=''>英语家教</a></li>
+						<li><a href="Cost.html" class=''>家教价格</a></li>
+						<li><a href="Teachers.html" class=''>家教老师库</a></li>
+						<li><a href="Orders.html" class='on'>学员库</a></li>
+						<li><a href="Articles.html" class='' target="_blank">家教学堂</a></li>
+						<li><a href='Teacher.html' class=''>个人中心</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/Xslider.js"></script>
+		<script type="text/javascript">
+
+        //科目
+        $(".classBox").hover(function () {
+            $(".classBox>.class").removeClass("classOn");
+            $(".classBox>.subNav").show();
+        }, function () {
+            $(".classBox>.subNav").hide();
+            $(".classBox>.class").addClass("classOn");
+        });
+
+        $(".classBox2>.libox").hover(function () {
+            $(this).children("div.div1").addClass("on");
+            $(this).children("div.div2").show();
+        }, function () {
+            $(this).children("div.div1").removeClass("on");
+            $(this).children("div.div2").hide();
+        });
+    </script>
+		<!--end nav-->
+
+		<div class="containerBox">
+			<!--container-->
+			<div class="container">
+				<!--bread-->
+				<div class="bread">
+					<div class="dh">
+						当前位置：<a href="/">首页</a> &gt; 订单信息
+					</div>
+					<div class="fx">
+
+						<!-- Baidu Button BEGIN -->
+						<div class="bdsharebuttonbox">
+							<a class="bds_more" href="#" data-cmd="more"></a><a
+								title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone"></a><a
+								title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina">
+							</a><a title="分享到腾讯微博" class="bds_tqq" href="#" data-cmd="tqq"></a><a
+								title="分享到人人网" class="bds_renren" href="#" data-cmd="renren"></a><a
+								title="分享到微信" class="bds_weixin" href="#" data-cmd="weixin"><a
+								class="bds_count" data-cmd="count"></a> </a>
+						</div>
+						<script type="text/javascript">    window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {}, "image": { "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16" }, "selectShare": { "bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/apijs/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+						<!-- Baidu Button END -->
+
+					</div>
+				</div>
+				<!--end bread-->
+				<div class="telst">
+					<input name="txtId" type="hidden" id="txtId" value="328220" />
+					<div class="left4">
+
+						<div class="dd_detail_lstit">
+							<dl>
+								<dt>
+									<span><h1 id="orderName">徐汇曹先生请计算机编程家教（编号：189677）</h1></span>
+								</dt>
+								<dd>
+									状态：<span id="release_status">发布中</span>
+								</dd>
+							</dl>
+						</div>
+						<div class="dd_detail_lstcon">
+							<div class="row">
+								<div class="ch1">
+									<p>科目：</p>
+									<p>年级：</p>
+								</div>
+								<div class="ch2">
+									<p>
+										<span class="f2" id="subject"> <a
+											href='Teacherlist.html#0_s0_x0_t0_g1/?course=%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bc%96%e7%a8%8b'>计算机编程家教</a></span>
+									</p>
+									<p id="grade">
+										<a href='Teacherlist.html#0_s8_x0_t0_g1/'>初一家教</a>
+									</p>
+								</div>
+								<div class="ch3">
+									<p>性别：</p>
+									<p>年龄：</p>
+								</div>
+								<div class="ch4">
+									<p id="sex">男</p>
+									<p id="age">11</p>
+								</div>
+							</div>
+							<div class="clear20"></div>
+							<div class="row2">
+								<table border="0" cellpadding="0" cellspacing="1">
+									<tr>
+										<th>薪酬标准</th>
+										<td id="payment">200/2H</td>
+									</tr>
+									<tr>
+										<th>乘车补贴</th>
+										<td id="riding_allowance">无</td>
+									</tr>
+									<tr>
+										<th>学员状态</th>
+										<td id="student_description">升初一 学编程计算，学校里在学，想参加比赛，pascal语言 ，之前学过一点</td>
+									</tr>
+									<tr>
+										<th>就读学校</th>
+										<td id="school">华育中学</td>
+									</tr>
+									<tr>
+										<th>教授时间</th>
+										<td id="teaching_time">一周1-2次，周末晚上7-9</td>
+									</tr>
+									<tr>
+										<th>居住区域</th>
+										<td id="area"><a href='Teacherlist.html#9_s0_x0_t0_g1/'>徐汇家教</a>&nbsp;植物园
+										</td>
+									</tr>
+									<tr>
+										<th>交通线路</th>
+										<td><!-- 上中路长桥路交界附近，824,731，180，181 -->众创金融街 &nbsp;<a href="javascript:"
+											onclick="DDMap1()"><img src="images/dtlx.gif" border="0"></a>
+											<div
+												style="z-index: 200; display: none; position: absolute; text-align: right;"
+												id="mapcontainer">
+												<span
+													onclick="document.getElementById('mapcontainer').style.display='none'"
+													style="cursor: hand"> <img src='images/close.gif'
+													alt='关闭' /></span>
+												<div
+													style="width: 520px; height: 340px; border: 1px solid gray; float: left"
+													id="container"></div>
+												<div id="results"
+													style="font-size: 13px; margin-top: 10px; width: 300px; float: left; display: none;">
+												</div>
+												<input type="hidden" id="g_mapid" value='21'><input
+													type="hidden" id="g_city" value='上海'></td>
+									</tr>
+									<tr>
+										<th colspan="2" class="titlebg">教员要求</th>
+									</tr>
+									<tr>
+										<th>性别要求</th>
+										<td id="require_sex">无</td>
+									</tr>
+									<tr>
+										<th>需求人数</th>
+										<td id="require_count">1人</td>
+									</tr>
+									<tr>
+										<th>资格要求</th>
+										<td id="requirement">优先最好是研究生以上，计算机专业，没有的话再考虑专业人士或老师<br />学员要求看简历，有意向的教员请认真完善简历。
+										</td>
+									</tr>
+									<tr>
+										<th>教学方式</th>
+										<td id="teaching_type">教员上门</td>
+									</tr>
+
+
+
+								</table>
+							</div>
+							<div class="clear10"></div>
+
+							<div class="clear10"></div>
+							<div class="row3">
+								<dl>
+									<dt>
+										<a href="show.html#150.html">接家教有疑问？</a>2016-08-27 17:39
+									</dt>
+									<dd>
+										<a href="/Board.aspx" class="btn">&nbsp;</a>
+									</dd>
+								</dl>
+							</div>
+							<div class="clear10"></div>
+							<div id="lstDetail_pnlApply_0" class="row4">
+								<div class="con">
+									<input type="submit" name="lstDetail$ctl00$ImageButton1"
+										value="在线预约" id="lstDetail_ImageButton1_0" class="btn" /> <a
+										class='awx' id="wxAttention">加微信 <em id="showWx"
+										style="display: none; position: absolute; left: 0px; bottom: 36px; border: #ddd 1px solid;">
+											<img src="images/wx.jpg" />
+									</em></a>
+									<script type="text/javascript">
+                                    $("#wxAttention").hover(function () {
+                                        $("#showWx").show();
+                                    }, function () {
+                                        $("#showWx").hide();
+                                    });
+                                </script>
+								</div>
+								<div class="clear20"></div>
+							</div>
+						</div>
+
+
+						<div class="dd_lstit">
+							<div class="tit">
+								<span>看了此家教信息的还关注了以下家教信息</span>
+							</div>
+						</div>
+						<div class="dd_lstcon">
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328030.html' target="_blank"><span>
+													徐汇徐小姐请全科家教（编号：189532）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-26 09:01</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>三年级[女]</p>
+										<p>徐汇</p>
+										<p>在校教员,有点耐心，家教经验丰富</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>全科</p>
+										<p>女</p>
+									</div>
+									<div class="ch7">
+										<div class="zt2">
+											<a href='xueyuanshow.html#328030.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328105.html' target="_blank"><span>
+													徐汇陈先生请钢琴家教（编号：189580）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-26 09:00</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>成人[男]</p>
+										<p>徐汇徐家汇</p>
+										<p>在职教师,只要19874 40659 41789，别的不考虑</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>钢琴</p>
+										<p>女</p>
+									</div>
+									<div class="ch7">
+										<div class="zt2">
+											<a href='xueyuanshow.html#328105.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+							<div class="dd_item">
+								<div class="dd_title">
+									<dl>
+										<dt>
+											<a href='xueyuanshow.html#328163.html' target="_blank"><span>
+													徐汇柳小姐请全科家教（编号：189634）</span></a>
+										</dt>
+										<dd>发布时间：2016-08-26 16:42</dd>
+									</dl>
+								</div>
+								<div class="dd_con">
+									<div class="ch1">
+										<p>学员：</p>
+										<p>所在区域：</p>
+										<p>教师资格要求：</p>
+									</div>
+									<div class="ch2">
+										<p>一年级[女]</p>
+										<p>徐汇</p>
+										<p>在职教师,一定要学校退休老师</p>
+									</div>
+									<div class="ch3">
+										<p>求教科目：</p>
+										<p>教员性别要求：</p>
+									</div>
+									<div class="ch4">
+										<p>全科</p>
+										<p>无</p>
+									</div>
+									<div class="ch7">
+										<div class="zt2">
+											<a href='xueyuanshow.html#328163.html' class="link33"
+												target="_blank">更多详细资料</a>
+										</div>
+									</div>
+									<div class="clear">&nbsp;</div>
+								</div>
+								<div class="clear">&nbsp;</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="right4">
+						<div class="btn-zjj">
+							<a href="/Signup" class="btn1" rel='nofollow'>我要请家教</a> <a
+								href="/Register" class="btn2" rel='nofollow'>我要做家教</a>
+						</div>
+						<div class="clear10"></div>
+						<div class="dd_de_search">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<th>从</th>
+									<td><input type="text" name="g_from" id="g_from"
+										class="txt" /></td>
+								</tr>
+								<tr>
+									<th>到</th>
+									<td><input name="g_to" type="text" id="g_to" class="txt"
+										value="上中路长桥路" /></td>
+								</tr>
+								<tr>
+									<th></th>
+									<td><input type="button" value="" class="btn"
+										onclick="DDMap()" /></td>
+								</tr>
+							</table>
+						</div>
+						<div class="clear10"></div>
+						<div class="qtxgjjBox" style="display: none">
+							<div class="tit">相关订单</div>
+							<div class="content">
+
+								<div class="clear"></div>
+							</div>
+						</div>
+						<div class="clear10"></div>
+						<div class="dd_de_zxcg">
+							<div class="tit">家教成功记录</div>
+							<div class="con">
+
+								<a href='/T551474.html'>
+									<ul>
+										<li class="c1">08-27</li>
+										<li class="c2">刘教员</li>
+										<li class="c3">英语口语写作家教</li>
+									</ul>
+								</a> <a href='/T487664.html'>
+									<ul>
+										<li class="c1">08-27</li>
+										<li class="c2">戴教员</li>
+										<li class="c3">化学家教</li>
+									</ul>
+								</a> <a href='/T533942.html'>
+									<ul>
+										<li class="c1">08-27</li>
+										<li class="c2">黄教员</li>
+										<li class="c3">数理化家教</li>
+									</ul>
+								</a> <a href='/T519313.html'>
+									<ul>
+										<li class="c1">08-27</li>
+										<li class="c2">韩教员</li>
+										<li class="c3">数学家教</li>
+									</ul>
+								</a> <a href='/T549047.html'>
+									<ul>
+										<li class="c1">08-27</li>
+										<li class="c2">江教员</li>
+										<li class="c3">语文 英语家教</li>
+									</ul>
+								</a> <a href='/T551231.html'>
+									<ul>
+										<li class="c1">08-26</li>
+										<li class="c2">郭教员</li>
+										<li class="c3">全科家教</li>
+									</ul>
+								</a> <a href='/T550739.html'>
+									<ul>
+										<li class="c1">08-26</li>
+										<li class="c2">杭教员</li>
+										<li class="c3">全科作业家教</li>
+									</ul>
+								</a> <a href='/T551140.html'>
+									<ul>
+										<li class="c1">08-26</li>
+										<li class="c2">闻教员</li>
+										<li class="c3">语数外家教</li>
+									</ul>
+								</a> <a href='/T521434.html'>
+									<ul>
+										<li class="c1">08-22</li>
+										<li class="c2">史教员</li>
+										<li class="c3">全科家教</li>
+									</ul>
+								</a> <a href='/T506656.html'>
+									<ul>
+										<li class="c1">08-25</li>
+										<li class="c2">郭教员</li>
+										<li class="c3">全科作业辅导家教</li>
+									</ul>
+								</a>
+
+							</div>
+						</div>
+						<div class="clear10"></div>
+						<div class="rt_jxfx">
+							<div class="tit">经验杂谈</div>
+							<div class="content">
+								<ul>
+
+									<li><a href='show.html#32636.html'>
+											美国老师的一封信被全球热议：给孩子布置作业，并不能提高成绩</a></li>
+
+									<li><a href='show.html#32510.html'>
+											这才是华人教育的致命缺陷——如何更好地引导我们的下一代?</a></li>
+
+									<li><a href='show.html#32482.html'>
+											开学第一课的7种上法（2000多名老师经验之谈！）</a></li>
+
+									<li><a href='show.html#32438.html'> 孩子,
+											这才是我送你出国背后的真正用意</a></li>
+
+									<li><a href='show.html#32365.html'>
+											孩子，听说你想坐在路边鼓掌，难道你自己不需要掌声吗？</a></li>
+
+									<li><a href='show.html#32322.html'>
+											学习缺乏目标怎么办？试试“Tap-D”策略！</a></li>
+
+									<li><a href='show.html#32287.html'> 耶鲁女孩的背单词秘诀,
+											你绝对想不到!</a></li>
+
+									<li><a href='show.html#32215.html'>
+											新学期，一个优秀语文老师给学生开的书单</a></li>
+
+									<li><a href='show.html#32151.html'>
+											天啦！这些作业本居然有“毒”，开学为孩子准备文具，一定注意这些事项！</a></li>
+
+									<li><a href='show.html#32102.html'>
+											一位作家给青少年的写作建议：年少正要多写字</a></li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!--idx end container-->
+			<div class="clear20"></div>
+		</div>
+
+		<!--idx foot nav-->
+		<div class="footNavBox">
+			<div class="footNav">
+				<div class="cityTel">
+					<span>上海热线</span>
+					<p>021-51082788</p>
+				</div>
+				<div class="navBox">
+					<dl>
+						<dt>会员指南</dt>
+						<dd>
+							<span>→ </span><a href="zx.html" rel="nofollow">帮助中心</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#149.html" rel="nofollow">如何请家教</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#150.html" rel="nofollow">如何做家教</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#151.html" rel="nofollow">教员签约协议</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>支付方式</dt>
+						<dd>
+							<span>→ </span><a href="show.html#152.html" rel="nofollow">在线支付</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html" rel="nofollow">银行转账</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="Cost.html" rel="nofollow">资费标准</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#154.html" rel="nofollow">退款说明</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>服务条款</dt>
+						<dd>
+							<span>→ </span><a href="show.html#155.html" rel="nofollow">隐私保护</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#156.html" rel="nofollow">侵权处理</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#157.html" rel="nofollow">免责说明</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt>关于我们</dt>
+						<dd>
+							<span>→ </span><a href="show.html#173.html" rel="nofollow">阳光家教简介</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="zx.html" rel="nofollow">阳光家教公告</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="show.html#161.html" rel="nofollow">联系我们</a>
+						</dd>
+						<dd>
+							<span>→ </span><a href="links.html" rel="nofollow">友情链接</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="wx">
+					<div class="tit">关注微信</div>
+					<div class="con">
+						<img src="images/wx.jpg" />
+					</div>
+				</div>
+				<div class="clear10"></div>
+				<div class="ps">
+					【上海家教网】是阳光家教网的上海地区家教分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的上海家教，帮助上海小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
+						class="focus">021-51082788</span>
+				</div>
+				<div class="line">&nbsp;</div>
+				<div class="city">
+					<dl>
+						<dt>热门城市：</dt>
+						<dd>
+							<a href="#" title="上海家教网" rel="nofollow">上海家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="北京家教网" rel="nofollow">北京家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="广州家教网" rel="nofollow">广州家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="深圳家教网" rel="nofollow">深圳家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="南京家教网" rel="nofollow">南京家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="天津家教网" rel="nofollow">天津家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="武汉家教网" rel="nofollow">武汉家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="杭州家教网" rel="nofollow">杭州家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="西安家教网" rel="nofollow">西安家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="苏州家教网" rel="nofollow">苏州家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="成都家教网" rel="nofollow">成都家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="长沙家教网" rel="nofollow">长沙家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="沈阳家教网" rel="nofollow">沈阳家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="合肥家教网" rel="nofollow">合肥家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="大连家教网" rel="nofollow">大连家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="唐山家教网" rel="nofollow">唐山家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="芜湖家教网" rel="nofollow">芜湖家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="宁波家教网" rel="nofollow">宁波家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="桂林家教网" rel="nofollow">桂林家教</a>
+						</dd>
+						<dd>
+							<a href="#" title="常州家教网" rel="nofollow">常州家教</a>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<!--idx end foot nav-->
+		<!--idx end foot rc-->
+		<div class="footRcBox">
+			<div class="footRc">
+
+				<div class="clear10">&nbsp;</div>
+				<div class="rc">
+					<div class="le1">
+						<a
+							href='https://www.sgs.gov.cn/notice/notice/view?uuid=NEK5QOkBQXpLTJQkRvxeUwsIjveo5VPC&tab=01'
+							target='_blank' rel="nofollow"><image src='images/gs.gif'
+								border=0 /></a>
+					</div>
+					<div class="ri">
+						《中华人民共和国法人营业执照》注册号：310120001560841<br />
+						《中华人民共和国组织机构代码证》：75840655-7<br /> 本站法律顾问：上海明泰律师事务所 李居利律师
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--idx end foot rc-->
+
+		<table width="99%" border="0" cellspacing="0" cellpadding="0"
+			align="center">
+			<tr align="center">
+				<td valign="top" width="50%" align="left"></td>
+				<td align="right" width="50%">
+					<!--{EBE105A1-12F7-4B74-9B3B-CC58AE565128}--> <script
+						language="javascript">
+                    /*
+                     CompanyName :上海阳光家教
+                     Domain:http://www.ygjj.com
+                     VocationName:商务服务\教育培训
+                     DESC:中国规模最大的正规、专业家教网站，阳光家教网引领家教中介不断规范家教服务，为广大学员提供各学科的兼职家教老师和专职家庭教师，帮助小学教师、中学教师和大学生家教寻求家教兼职。
+                     DateTime:2010-1-6 22:56:43
+                     */
+                    _estsalho_dma_var_SiteID = 13932;
+                </script> <!--{FF1DF55F-BA69-4846-8996-234AE75CAFBC}-->
+
+				</td>
+			</tr>
+			<tr>
+				<td align="center" height="30" valign="middle" colspan='2'>
+					版权所有 上海鸿儒教育信息咨询有限公司－阳光家教网－上海家教 投诉电话：021-51082788*2<br /> 网络实名：<a
+					href='index.html' rel="nofollow">家教</a> <a href='index.html'
+					rel="nofollow"> 上海家教</a> <a href="#" rel="nofollow">北京家教</a> <a
+					href="#" rel="nofollow">广州家教</a> <a href="#" rel="nofollow">苏州家教</a>
+					<a href="#" rel="nofollow">深圳家教</a><br /> 沪ICP备15011267号
+				</td>
+			</tr>
+		</table>
+
+		<script type="text/javascript">
+        if (document.getElementById("g_city") != null && document.getElementById("g_city") != undefined) {
+            var map = new BMap.Map("container");
+            map.centerAndZoom(encodeURIComponent(document.getElementById("g_city").value), 16);
+            map.addControl(new BMap.NavigationControl());
+        }
+    </script>
+	</form>
+</body>
+</html>

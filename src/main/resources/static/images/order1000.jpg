@@ -1,0 +1,412 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	
+        家教|数学家教|英语家教|钢琴家教|大学生家教|家教兼职|家教论坛【阳光家教网-上海家教中心-上海家教】
+    
+</title><Meta name="keywords" content="家教 家教网 家教中心 数学家教 英语家教 钢琴家教 大学生家教 家教兼职 家教论坛"><Meta name="description" content="阳光家教网引领上海家教中介不断规范上海家教服务，为广大学员提供上海语文家教、上海数学家教、上海英语家教、上海钢琴家教、上海音乐家教等各学科的兼职家教老师和专职家庭教师服务，以及为上海小学教师、上海中学教师和上海大学生家教提供家教兼职信息。"><meta content="ALL" name="robots" /><meta content="Global" name="distribution" /><meta content="General" name="rating" /><meta content="[家教]" name="copyright" /><meta content="[家教 家教网 家教服务]" name="author" /><meta content="chinese" name="language" /><meta http-equiv="PICS-Label" content="(PICS-1.1 &quot;http://www.ygjj.com&quot; l r (s 0))" /><meta content="document" name="resource-type" /><meta content="7 days" name="revisit-after" /><link href="/css/Default.css" rel="stylesheet" type="text/css" />
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <form method="post" action="./order1000.jpg?404%3bhttp%3a%2f%2fwww.ygjj.com%3a80%2fimages%2forder1000.jpg" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPBRI2MzYwNzc1NzI0NTY1OTU2NTJkrdEKz0+hNORoW4Yhq0Xc/xni2WM=" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F2DD039B" />
+    
+
+<!-- 代码 开始 -->
+<div id="leftsead">
+	<ul>
+        
+		<li>
+			<a href="javascript:void(0)" class="youhui">
+				<img src="/rightimg/l02.png" width="47" height="49" class="shows" />
+				<img src="/rightimg/a.png" width="57" height="49" class="hides" />
+				<img src="/images/wx.jpg" class="2wm" style="display:none;margin:-100px 57px 0 0" />
+			</a>
+		</li>
+        
+        <li id="tel">
+        <a href="javascript:void(0)">
+            <div class="hides" style="width:161px;display:none;" id="tels">
+                <div class="hides" id="p1">
+                    <img src="/rightimg/ll05.png">
+                </div>
+                <div class="hides" id="p3"><span style="color:#FFF;font-size:12px">021-51082788</span>
+                </div>
+            </div>
+        <img src="/rightimg/l05.png" width="47" height="49" class="shows" />
+        </a>
+        </li>
+        
+        <li id="btn">
+        <a id="top_btn">
+            <div class="hides" style="width:161px;display:none">
+                <img src="/rightimg/ll06.png" width="161" height="49" />
+            </div>
+            <img src="/rightimg/l06.png" width="47" height="49" class="shows" />
+        </a>
+        </li>
+    </ul>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#leftsead a").hover(function () {
+            if ($(this).prop("className") == "youhui") {
+                $(this).children("img.hides").show();
+            } else {
+                $(this).children("div.hides").show();
+                $(this).children("img.shows").hide();
+                $(this).children("div.hides").animate({ marginRight: '0px' }, '0');
+            }
+        }, function () {
+            if ($(this).prop("className") == "youhui") {
+                $(this).children("img.hides").hide();
+            } else {
+                $(this).children("div.hides").animate({ marginRight: '-163px' }, 0, function () { $(this).hide(); $(this).next("img.shows").show(); });
+            }
+        });
+
+        $("#top_btn").click(function () { if (scroll == "off") return; $("html,body").animate({ scrollTop: 0 }, 600); });
+
+        //右侧导航 - 二维码
+        $(".youhui").mouseover(function () {
+            $(this).children(".2wm").show();
+        })
+        $(".youhui").mouseout(function () {
+            $(this).children(".2wm").hide();
+        });
+
+
+    });
+
+
+</script>
+<!-- 代码 结束 -->
+<div class="topbar">
+    <div class="topbox">
+        <div id="Header1_divLogin" class="box_1">
+            您好！欢迎来到阳光家教网！<a href="/Login">请登录</a> | <a href="/Join">免费注册</a></div>
+        
+        <div class="box_2">
+            <div class="wxwb">
+                <div class="wb">
+                    <a href="http://weibo.com/ygjjcom" target="_blank" rel="nofollow"><span>&nbsp;</span>阳光家教微博</a>
+                </div>
+                <div class="wx">
+                    <a href="javascript:void(0);"><span>&nbsp;</span>阳光家教微信</a>
+                    <div class="wximg">
+                        <img src="/images/wx.jpg" /></div>
+                    <script type="text/javascript">
+                        $("div.wx").hover(function () {
+                            $(this).children(".wximg").show();
+                        }, function () {
+                            $(this).children(".wximg").hide();
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="fav">
+                <div class="tel">
+                    全国投诉专线：<span>021-51082788*2</span></div>
+                <span>&nbsp;|&nbsp;<a href="javascript:window.external.addFavorite('http://www.ygjj.com','阳光家教网')">收藏本站</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end top-->
+<!--head-->
+<div class="head">
+    <div class="logo">
+        <h1><a href="http://www.ygjj.com"><img src="/images/logo.png" border="0" /></a></h1></div>
+    <div class="city">
+        <h3>
+            上海</h3>
+        <span><a href="http://www.ygjj.com">[切换城市]</a></span>
+    </div>
+    <div class="cityTel" >
+        <span>上海热线电话</span>
+        <p>
+            021-51082788 
+            </p>
+    </div>
+    <div class="info2"  style='display:none'><p class="txt">阳光家教已有<span id="Header1_teacherCount" class="num">542651</span>名注册教员<br />帮助了<span id="Header1_studentCount" class="num">170589</span>名家长找家教</p></div>
+</div>
+<!--end head-->
+<!--nav-->
+<div class="navBar">
+    <div class="navBox">
+        <div class="classBox">
+            <div class='class'>
+                 <a href='/Shanghai.aspx'><font color="#ffffff">上海家教</font></a></div>
+            
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="/jy_a0_s02_c0_f0_x0_g1/" class=''>数学家教</a></li>
+                <li><a href="/jy_a0_s03_c0_f0_x0_g1/" class=''>英语家教</a></li>
+                <li><a href="/Cost.aspx" class=''>家教价格</a></li>
+                <li><a href="/Teachers.aspx" class=''>家教老师库</a></li>
+                <li><a href="/Orders.aspx"  class=''>学员库</a></li>
+                <li><a href="/Articles.aspx" class='' target="_blank">家教学堂</a></li>
+                <li><a href='/Login' class=''>个人中心</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/Xslider.js"></script>
+<script type="text/javascript">
+
+    //科目
+    $(".classBox").hover(function () {
+        $(".classBox>.class").removeClass("classOn");
+        $(".classBox>.subNav").show();
+    }, function () {
+        $(".classBox>.subNav").hide();
+        $(".classBox>.class").addClass("classOn");
+    });
+
+    $(".classBox2>.libox").hover(function () {
+        $(this).children("div.div1").addClass("on");
+        $(this).children("div.div2").show();
+    }, function () {
+        $(this).children("div.div1").removeClass("on");
+        $(this).children("div.div2").hide();
+    });
+</script>
+<!--end nav-->
+
+    <div class="containerBox">
+        <!--container-->
+        <div class="container">
+            <!--bread-->
+            <div class="bread">
+                <div class="dh">
+                    当前位置：<a href="/">首页</a> &gt; 错误信息</div>
+                <div class="fx">
+                    
+<!-- Baidu Button BEGIN -->
+<div class="bdsharebuttonbox">
+    <a class="bds_more" href="#" data-cmd="more"></a><a title="分享到QQ空间" class="bds_qzone"
+        href="#" data-cmd="qzone"></a><a title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina">
+        </a><a title="分享到腾讯微博" class="bds_tqq" href="#" data-cmd="tqq"></a><a title="分享到人人网"
+            class="bds_renren" href="#" data-cmd="renren"></a><a title="分享到微信" class="bds_weixin"
+                href="#" data-cmd="weixin"><a class="bds_count" data-cmd="count"></a>
+</a>
+</div>
+<script type="text/javascript">    window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {}, "image": { "viewList": ["qzone", "tsina", "tqq", "renren", "weixin"], "viewText": "分享到：", "viewSize": "16" }, "selectShare": { "bdContainerClass": null, "bdSelectMiniList": ["qzone", "tsina", "tqq", "renren", "weixin"]} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+                </div>
+            </div>
+            <!--end bread-->
+            <!--regbox-->
+            <div class="regBox">
+                <div class="tit">
+                    <div class="iconReg">
+                        &nbsp;</div>
+                    <h3>
+                        错误信息</h3>
+                </div>
+                <div class="faculty">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td class="f1">
+                                您访问的页面出现了错误，可能由以下原因造成：
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="f2">
+                               页面停留时间过长，请重新访问！
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="f2">
+                               您输入地址错误，请仔细检查访问地址！（<a href="http://www.ygjj.com">返回阳光家教网主页</a>）
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="f2">
+                               您填写的数据中有危险字符，被服务器拒绝！
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="f2">
+                               服务器过于繁忙，请稍候再试！
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="f2">
+                               可能由于您有危及系统的操作，被服务器拒绝！
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="f2">
+                               若问题无法解决，请将您的操作和访问页面发送给网站管理员！
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <!--end regbox-->
+        </div>
+        <!--idx end container-->
+        <div class="clear20">
+        </div>
+    </div>
+    
+<!--idx foot nav-->
+<div class="footNavBox">
+    <div class="footNav">
+        <div class="cityTel">
+            <span>上海热线</span>
+        <p>021-51082788</p></div>
+        <div class="navBox">
+            <dl>
+                <dt>会员指南</dt>
+                <dd>
+                    <span>→ </span><a href="/News/8/1" rel="nofollow">帮助中心</a></dd>
+                <dd>
+                    <span>→ </span><a href="/D7149.html" rel="nofollow">如何请家教</a></dd>
+                <dd>
+                    <span>→ </span><a href="/D7150.html" rel="nofollow">如何做家教</a></dd>
+                <dd>
+                    <span>→ </span><a href="/D7151.html" rel="nofollow">教员签约协议</a></dd>
+            </dl>
+            <dl>
+                <dt>支付方式</dt>
+                <dd>
+                    <span>→ </span><a href="/D7152.html" rel="nofollow">在线支付</a></dd>
+                <dd>
+                    <span>→ </span><a href="/Online.aspx" rel="nofollow">银行转账</a></dd>
+                <dd>
+                    <span>→ </span><a href="/Cost.aspx" rel="nofollow">资费标准</a></dd>
+                <dd>
+                    <span>→ </span><a href="/D7154.html" rel="nofollow">退款说明</a></dd>
+            </dl>
+            <dl>
+                <dt>服务条款</dt>
+                <dd>
+                    <span>→ </span><a href="/D7155.html" rel="nofollow">隐私保护</a></dd>
+                <dd>
+                    <span>→ </span><a href="/D7156.html" rel="nofollow">侵权处理</a></dd>
+                <dd>
+                    <span>→ </span><a href="/D7157.html" rel="nofollow">免责说明</a></dd>
+            </dl>
+            <dl>
+                <dt>关于我们</dt>
+                <dd>
+                    <span>→ </span><a href="/D7173.html" rel="nofollow">阳光家教简介</a></dd>
+                <dd>
+                    <span>→ </span><a href="/News/8/1/" rel="nofollow">阳光家教公告</a></dd>
+                <dd>
+                    <span>→ </span><a href="/D7161.html" rel="nofollow">联系我们</a></dd>
+                <dd>
+                    <span>→ </span><a href="/Links" rel="nofollow">友情链接</a></dd>
+            </dl>
+        </div>
+        <div class="wx">
+            <div class="tit">
+                关注微信</div>
+            <div class="con">
+                <img src="/images/wx.jpg" /></div>
+        </div>
+        <div class="clear10">
+        </div>
+        <div class="ps">
+            【上海家教网】是阳光家教网的上海地区家教分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的上海家教，帮助上海小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
+                class="focus">021-51082788</span></div>
+        <div class="line">
+            &nbsp;</div>
+        <div class="city">
+            <dl>
+                <dt>热门城市：</dt>
+                <dd>
+                    <a href="http://sh.ygjj.com" title="上海家教网" rel="nofollow">上海家教</a></dd><dd><a href="http://bj.ygjj.com"
+                        title="北京家教网" rel="nofollow">北京家教</a></dd><dd><a href="http://gz.ygjj.com/" title="广州家教网" rel="nofollow">广州家教</a></dd><dd><a
+                            href="http://sz.ygjj.com/" title="深圳家教网" rel="nofollow">深圳家教</a></dd><dd><a href="http://nj.ygjj.com"
+                                title="南京家教网" rel="nofollow">南京家教</a></dd><dd><a href="http://tj.ygjj.com/" title="天津家教网" rel="nofollow">天津家教</a></dd><dd><a
+                                    href="http://wh.ygjj.com/" title="武汉家教网" rel="nofollow">武汉家教</a></dd><dd><a href="http://hz.ygjj.com/"
+                                        title="杭州家教网" rel="nofollow">杭州家教</a></dd><dd><a href="http://xa.ygjj.com/" title="西安家教网" rel="nofollow">西安家教</a></dd><dd><a
+                                            href="http://suzhou.ygjj.com/" title="苏州家教网" rel="nofollow">苏州家教</a></dd><dd><a href="http://hz.ygjj.com/"
+                                                title="成都家教网" rel="nofollow">成都家教</a></dd><dd><a href="http://cs.ygjj.com/" title="长沙家教网" rel="nofollow">长沙家教</a></dd><dd><a
+                                                    href="http://sy.ygjj.com/" title="沈阳家教网" rel="nofollow">沈阳家教</a></dd><dd><a href="http://hf.ygjj.com/"
+                                                        title="合肥家教网" rel="nofollow">合肥家教</a></dd><dd><a href="http://dl.ygjj.com/" title="大连家教网" rel="nofollow">大连家教</a></dd><dd><a
+                                                            href="http://ts.ygjj.com/" title="唐山家教网" rel="nofollow">唐山家教</a></dd><dd><a href="http://wuhu.ygjj.com/"
+                                                                title="芜湖家教网" rel="nofollow">芜湖家教</a></dd><dd><a href="http://nb.ygjj.com/" title="宁波家教网" rel="nofollow">宁波家教</a></dd><dd><a
+                                                                    href="http://gl.ygjj.com/" title="桂林家教网" rel="nofollow">桂林家教</a></dd><dd><a href="http://cz.ygjj.com/"
+                                                                        title="常州家教网" rel="nofollow">常州家教</a></dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<!--idx end foot nav-->
+<!--idx end foot rc-->
+<div class="footRcBox">
+    <div class="footRc">
+        
+        <div class="clear10">
+            &nbsp;</div>
+        <div class="rc">
+            <div class="le1">
+                <a href='https://www.sgs.gov.cn/notice/notice/view?uuid=NEK5QOkBQXpLTJQkRvxeUwsIjveo5VPC&tab=01' target='_blank' rel="nofollow"><image src='/images/gs.gif' border=0 /></a></div>
+            <div class="ri">
+                《中华人民共和国法人营业执照》注册号：310120001560841<br />
+                《中华人民共和国组织机构代码证》：75840655-7<br />
+                本站法律顾问：上海明泰律师事务所 李居利律师
+                </div>
+        </div>
+    </div>
+</div>
+<!--idx end foot rc-->
+
+<table width="99%" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr align="center">
+        <td valign="top" width="50%" align="left">
+            <script>
+		ar _hmt = _hmt || [];
+		(function() {
+  			var hm = document.createElement("script");
+  			hm.src = "//hm.baidu.com/hm.js?546a43fe07a041f6636bffc2db1297d4";
+  			var s = document.getElementsByTagName("script")[0]; 
+  			s.parentNode.insertBefore(hm, s);
+		})();
+	    </script>
+        </td>
+        <td align="right" width="50%">
+            <!--{EBE105A1-12F7-4B74-9B3B-CC58AE565128}-->
+            <script language="javascript">
+                /*
+                CompanyName :上海阳光家教
+                Domain:http://www.ygjj.com
+                VocationName:商务服务\教育培训
+                DESC:中国规模最大的正规、专业家教网站，阳光家教网引领家教中介不断规范家教服务，为广大学员提供各学科的兼职家教老师和专职家庭教师，帮助小学教师、中学教师和大学生家教寻求家教兼职。
+                DateTime:2010-1-6 22:56:43
+                */
+                _estsalho_dma_var_SiteID = 13932;          
+            </script>
+            <!--{FF1DF55F-BA69-4846-8996-234AE75CAFBC}-->
+            <script language="javascript" src="http://count20.51yes.com/click.aspx?id=201363627&logo=8"
+                charset="gb2312"></script>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" height="30" valign="middle" colspan='2'>
+            版权所有 上海鸿儒教育信息咨询有限公司－阳光家教网－上海家教 投诉电话：021-51082788*2<br />
+            网络实名：<a href='http://www.ygjj.com' rel="nofollow">家教</a> <a href='http://www.ygjj.com/shanghai.aspx' rel="nofollow">
+                上海家教</a> <a href='http://bj.ygjj.com' rel="nofollow">北京家教</a> <a href='http://gz.ygjj.com' rel="nofollow">广州家教</a>
+            <a href='http://suzhou.ygjj.com' rel="nofollow">苏州家教</a> <a href='http://sz.ygjj.com' rel="nofollow">深圳家教</a><br />
+            沪ICP备15011267号
+        </td>
+    </tr>
+</table>
+
+    </form>
+</body>
+</html>
