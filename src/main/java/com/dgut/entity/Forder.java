@@ -19,6 +19,8 @@ public class Forder {
 
     private Integer studentId;
 
+    private Integer teacherRequirementId;
+
     public Integer getId() {
         return id;
     }
@@ -40,7 +42,7 @@ public class Forder {
     }
 
     public void setSubject(String subject) {
-        this.subject = subject;
+        this.subject = subject == null ? null : subject.trim();
     }
 
     public Integer getStatus() {
@@ -72,7 +74,7 @@ public class Forder {
     }
 
     public void setAdminName(String adminName) {
-        this.adminName = adminName;
+        this.adminName = adminName == null ? null : adminName.trim();
     }
 
     public Integer getStudentId() {
@@ -81,5 +83,13 @@ public class Forder {
 
     public void setStudentId(Integer studentId) {
         this.studentId = studentId;
+    }
+
+    public Integer getTeacherRequirementId() {
+        return teacherRequirementId;
+    }
+
+    public void setTeacherRequirementId(Integer teacherRequirementId) {
+        this.teacherRequirementId = teacherRequirementId;
     }
 }

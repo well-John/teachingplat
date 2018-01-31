@@ -5,7 +5,7 @@ import com.dgut.entity.ForderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface ForderMapper extends BaseMapper<Forder, ForderExample> {
+public interface ForderMapper extends BaseMapper<Forder,ForderExample>{
     long countByExample(ForderExample example);
 
     int deleteByExample(ForderExample example);

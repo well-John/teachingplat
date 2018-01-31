@@ -6,19 +6,24 @@ import javax.servlet.http.HttpSession;
 
 import com.dgut.entity.*;
 import com.dgut.utils.RandomValidateCode;
+import io.swagger.annotations.Api;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 
 import com.dgut.service.StudentService;
 import com.dgut.service.TeacherService;
 
 
+
+@Api
 @Controller
 public class StudentController {
+
+	private Logger logger = LoggerFactory.getLogger(StudentController.class);
 
 	@Autowired
 	StudentService studentService;
@@ -85,7 +90,7 @@ public class StudentController {
 
 	}
 
-	@RequestMapping("/student/register")
+	@RequestMapping(value = "/student/register",method = RequestMethod.POST)
 	@ResponseBody
 	public Msg register(HttpServletRequest request,Student student,String pcode) {
 		// 获取验证码
@@ -173,4 +178,10 @@ public class StudentController {
 	public String Index(){
 		return "redirect:/my?url=student_home";
 	}
+
+	/*@RequestMapping("/student/index")
+	public String Index(){
+		return "student_home";
+	}*/
+
 }

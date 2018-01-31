@@ -1,10 +1,4 @@
 package com.dgut.controller;
-
-
-
-
-
-
 import com.dgut.entity.Appointment;
 import com.dgut.entity.Msg;
 import com.dgut.entity.Student;
@@ -12,12 +6,13 @@ import com.dgut.entity.Teacher;
 import com.dgut.service.AppointmentService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +22,8 @@ import java.util.List;
 public class AppointmentController {
 
     private final Integer pageSize = 5;
+
+    private Logger logger = LoggerFactory.getLogger(AppointmentController.class);
 
     @Autowired
     AppointmentService appointmentService;
