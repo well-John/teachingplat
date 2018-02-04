@@ -51,7 +51,7 @@ public class DepositController {
 		String p5_Pid = ""; // 商品名称:
 		String p6_Pcat = ""; // 商品种类:
 		String p7_Pdesc = ""; // 商品描述:
-		String p8_Url = "http://localhost:8080/online_teacher_info/deposit/callBack"; // 商户接收支付成功数据的地址:
+		String p8_Url = "http://localhost:8081/deposit/callBack"; // 商户接收支付成功数据的地址:
 		String p9_SAF = ""; // 送货地址:
 		String pa_MP = ""; // 商户扩展信息:
 		String pd_FrpId = pd_FrpIds;// 支付通道编码:
@@ -99,7 +99,7 @@ public class DepositController {
 		}
 		deposit.setStatus(0);
 		depositService.insertSelective(deposit);
-		return "redirect:/my?url=Articles";
+		return "redirect:/my?url=student_chongzhi";
 	}
 
 	@RequestMapping("/selectAllDeposit")

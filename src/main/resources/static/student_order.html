@@ -239,7 +239,7 @@
 							+'<div class="ch4"> <span class="f1">'+showStatus(item.status)+'</div>'
 							+'<div class="ch5"><a href="ApplyList.aspx?id=359638">查看</a></div>'
 							+'<div class="ch6">'+item.adminName+'</div>'
-							+'<div class="ch7"> <a href="###" class="t" >编辑</a> <a href="###" class="t t1" >取消 </a> </div><div class="clear">&nbsp;</div></div>';
+							+'<div class="ch7"> <a class="update_forder t"  href="##" data-id="'+item.id+'" data-status="'+item.status+'" >编辑</a> <a class="cancel t t1" data-id="'+item.id+'" data-status="'+item.status+'" href="###">取消 </a> </div><div class="clear">&nbsp;</div></div>';
 							$(div_item).appendTo(order_div);
 						});
 						$(div_clear).appendTo(order_div);
@@ -256,7 +256,22 @@
 			showMyOrder();
 		});
 
-
+        $(document).on("click",".update_forder",function(){
+			var id = $(this).attr("data-id");
+			var status = $(this).attr("data-status");
+			if(status == 3){
+			    return false;
+			}
+            $.ajax({
+                url:'/forderComplete',
+                type:'post',
+				dataType:'json',
+				data:'id='+id,
+                success:function(){
+                    window.location.reload();
+                }
+            });
+        });
 
         
     </script>

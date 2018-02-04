@@ -53,7 +53,17 @@ public class ForderController {
 		}
 		return Msg.error("");
 	}
-	
+
+	@RequestMapping("/forderComplete")
+	@ResponseBody
+	public Msg complete(Integer id){
+		Forder forder = new Forder();
+		forder.setId(id);
+		forder.setStatus(3);
+		forderService.updateByPrimaryKeySelective(forder);
+		return Msg.success("");
+	}
+
 	
 
 }
