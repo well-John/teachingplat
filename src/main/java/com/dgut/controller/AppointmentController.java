@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
@@ -28,7 +29,7 @@ public class AppointmentController {
     @Autowired
     AppointmentService appointmentService;
 
-    @RequestMapping("/save")
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
     @ResponseBody
     public Msg save(Appointment appointment) {
         if (appointmentService.insertSelective(appointment) == 1) {
@@ -39,7 +40,7 @@ public class AppointmentController {
     }
 
 
-    @RequestMapping("/selectAllAppointment")
+    @RequestMapping(value = "/selectAllAppointment",method = RequestMethod.POST)
     @ResponseBody
     public Msg selectAllAppointment(HttpSession session, int organiser, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
@@ -66,5 +67,17 @@ public class AppointmentController {
 
     }
 
+    @RequestMapping(value = "/confirm",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg confirmAppointMent(int id){
+        logger.info("当前预约id为：{}",id);
+        Appointment appointment = new Appointment();
+        appointment.setId(id);
+        appointment.setStatus(2);
+        if(appointmentService.updateByPrimaryKeySelective(appointment) == 1){
+            return Msg.success("");
+        }
+        return Msg.error("预约确认失败");
+    }
 
 }

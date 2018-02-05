@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,7 +30,7 @@ public class FavoriteController {
 	@Autowired
 	FavoriteService favoriteService;
 	
-	@RequestMapping("selectAllFavorite")
+	@RequestMapping(value = "selectAllFavorite",method = RequestMethod.POST)
 	@ResponseBody
 	public Msg selectAllFavorite(HttpSession session,@RequestParam(value="pageNum",defaultValue="1")Integer pageNum){
 		Student student=(Student) session.getAttribute("student");

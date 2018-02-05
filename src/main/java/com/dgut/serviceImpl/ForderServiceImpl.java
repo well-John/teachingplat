@@ -2,14 +2,13 @@ package com.dgut.serviceImpl;
 
 import java.util.List;
 
+import com.dgut.entity.Forder;
+import com.dgut.entity.ForderExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dgut.entity.Forder;
-import com.dgut.entity.ForderExample;
 import com.dgut.entity.ForderExample.Criteria;
 import com.dgut.entity.ForderExample.Criterion;
-import com.dgut.entity.TeacherRequirementExample;
 import com.dgut.dao.ForderMapper;
 import com.dgut.dao.TeacherRequirementMapper;
 import com.dgut.service.ForderService;
@@ -29,10 +28,14 @@ public class ForderServiceImpl extends BaseServiceImpl<Forder, ForderExample> im
 	}
 
 	@Override
-	public List<Forder> selectMyForder(Integer id) {
+	public List<Forder> selectMyForder(Integer id, Integer identity) {
 		ForderExample example=new ForderExample();
 		Criteria criteria=example.createCriteria();
-		criteria.andStudentIdEqualTo(id);
+		if(identity == 1){
+			criteria.andStudentIdEqualTo(id);
+		}else {
+			criteria.andTeacherIdEqualTo(id);
+		}
 		return forderMapper.selectByExample(example);
 	}
 

@@ -5,41 +5,42 @@
 <link href="css/user.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
-<script language="javascript">
-        function CheckForm() {
-            if (document.all("txtPassword").value == "") {
-                alert("密码不能为空！");
-                document.all("txtPassword").focus();
-                return false;
-            }
-            if (document.all("txtPassword").value.length < 6 || document.all("txtPassword").value.length > 20) {
-                alert("密码位数不正确！");
-                document.all("txtPassword").focus();
-                return false;
-            }
-            if (document.all("txtPassword").value != document.all("txtPassword1").value) {
-                alert("密码输入有误！");
-                document.all("txtPassword").focus();
-                return false;
-            }
-            return true;
-        }
-    </script>
 
 </head>
 <body>
-	<form method="post" action="./PasswordManage.aspx" id="form1">
+	<form method="post" action="./PhotoManage.aspx" id="form1"
+		enctype="multipart/form-data">
 		<div class="aspNetHidden">
-			<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
-				value="/wEPDwULLTIwNzI0MjU3ODkPZBYCAgMPZBYGAgEPZBYKZg8WAh4HVmlzaWJsZWhkAgEPFgIfAGdkAgIPFgIeCWlubmVyaHRtbAUGNTQyNzIyZAIDDxYCHwEFBjE3MDYwOWQCBA8WAh8AaGQCAw8PFgIeBk1lbnVJRAUEcGFzc2RkAgkPD2QWAh4Hb25jbGljawUeaWYoIUNoZWNrRm9ybSgpKSByZXR1cm4gZmFsc2U7ZGSkNW0FVDPPpguiJKd6NS2MHe7InA==" />
+			<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+			<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT"
+				value="" /> <input type="hidden" name="__VIEWSTATE"
+				id="__VIEWSTATE"
+				value="/wEPDwULLTEyNDM0OTQwMTkPFgIeBE1hcmsFATEWAgIDDxYCHgdlbmN0eXBlBRNtdWx0aXBhcnQvZm9ybS1kYXRhFggCAQ9kFgpmDxYCHgdWaXNpYmxlaGQCAQ8WAh8CZ2QCAg8WAh4JaW5uZXJodG1sBQY1NDI3MjJkAgMPFgIfAwUGMTcwNjA5ZAIEDxYCHwJoZAIDDw8WAh4GTWVudUlEBQVwaG90b2RkAgcPFgIeC18hSXRlbUNvdW50AgEWAmYPZBYGZg8VAgnlrqHmoLjkuK1TaHR0cDovL3d3dy55Z2pqLmNvbS9ib29rcGljMi8yMDE2LTA4LTI3L1RodW1ibmFpbG5ldzU1MTQ2My0yMDE2MDgyNzAxNDYwOTk5NDgwOS5naWZkAgMPDxYCHg9Db21tYW5kQXJndW1lbnQFBjUyMzU3N2RkAgUPDxYCHwYFBjUyMzU3N2RkAgkPFgIeBFRleHQFa+aCqOW3sue7j+S4iuS8oOS6hjxzcGFuIGNsYXNzPSJmMSI+MTwvc3Bhbj7lvKDnhafniYfvvIzov5jlj6/ku6XkuIrkvKA8c3BhbiBjbGFzcz0iZjEiPjk8L3NwYW4+5byg54Wn54mH44CCZGROqgK9JuecUxlb9xkQ5lhE2Pf7hA==" />
 		</div>
+
+		<script type="text/javascript">
+        //<![CDATA[
+        var theForm = document.forms['form1'];
+        if (!theForm) {
+            theForm = document.form1;
+        }
+        function __doPostBack(eventTarget, eventArgument) {
+            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                theForm.__EVENTTARGET.value = eventTarget;
+                theForm.__EVENTARGUMENT.value = eventArgument;
+                theForm.submit();
+            }
+        }
+        //]]>
+    </script>
+
 
 		<div class="aspNetHidden">
 
 			<input type="hidden" name="__VIEWSTATEGENERATOR"
-				id="__VIEWSTATEGENERATOR" value="A1CF7442" /> <input type="hidden"
+				id="__VIEWSTATEGENERATOR" value="45E5F767" /> <input type="hidden"
 				name="__EVENTVALIDATION" id="__EVENTVALIDATION"
-				value="/wEdAAWEgZddA4pAaokODotsGZituN20alD453sk/1mHvGiRiHY2+Mc6SrnAqio3oCKbxYZqqO2nsNYUtW1WH4d+mUfyPOaW1pQztoQA36D1w/+bXTRB2eyOFaSlUq+R9Nrpeh9089b+" />
+				value="/wEdAAf4gJL7pgTkjc2cLow2LyRZuN20alD453sk/1mHvGiRiKJOPDh3Qk3423+N2QUz25Fs+gj7Lbm4/vTjH1E5gfEvY4/D8PF4Vq348beYIttOU4uLT1JSgeNAVc/5D3+iqsE85pbWlDO2hADfoPXD/5td8U5Hra3sXhFM+BWfQkbiCPsIIKQ=" />
 		</div>
 
 
@@ -114,9 +115,7 @@
 			<div class="topbox">
 
 				<div id="Header1_divLogout" class="box_1">
-					您好！欢迎来到阳光家教网！<a href='Teacher.html'>个人中心</a> | <input type="submit"
-						name="Header1$lkbLogOut" value=" " id="Header1_lkbLogOut"
-						class="headlogout" />
+						您好！欢迎来到阳光家教网！<a href="index.html">请登录</a> | <a href="register.html">免费注册</a>
 				</div>
 				<div class="box_2">
 					<div class="wxwb">
@@ -250,7 +249,7 @@
 						<div class="unav">
 							<div class="tit">&nbsp;</div>
 							<div class='item'>
-								<a href="CardManage.html">证件认证</a>
+								<a href="teacher_cardManage.html">证件认证</a>
 							</div>
 
 							<div class='item'>
@@ -262,23 +261,23 @@
 
 							<div class="tit tit2">&nbsp;</div>
 							<div class='item'>
-								<a href="TeachList.html">我的订单</a>
+								<a href="teacher_order.html">我的订单</a>
 							</div>
 							<div class='item'>
-								<a href="OrderList.html">预约记录</a>
+								<a href="teacher_yuyue.html">预约记录</a>
 							</div>
 							<div class="tit tit3">&nbsp;</div>
 							<div class='item'>
-								<a href="InfoManage.html">修改完善资料</a>
+								<a href="teacher_infoManage.html">修改完善资料</a>
 							</div>
 							<div class='item'>
 								<a href="ModeManage.html">个人状态设置</a>
 							</div>
-							<div class='item on'>
-								<a href="PasswordManage.html">更改密码</a>
-							</div>
 							<div class='item'>
-								<a href="PhotoManage.html">相册管理</a>
+								<a href="teacher_updatepassword.html">更改密码</a>
+							</div>
+							<div class='item on'>
+								<a href="teacher_photoManage.html">相册管理</a>
 							</div>
 							<div class='item'>
 								<a href="MyBoards.html">留言反馈</a>
@@ -288,33 +287,91 @@
 
 
 					<div class="uright">
-						<div class="uhead">更改密码</div>
+						<div class="uhead">相册管理</div>
 						<div class="ui_mainBox">
-							<div class="ui_changeBox">
-								<table width="100%" border="0" cellspacing="0" cellpadding="0">
-									<tr>
-										<td colspan="2" class="noteread"><span>温馨提示：</span>建议使用英文字母加数字或符号的组合密码。
-										</td>
-									</tr>
-									<tr>
-										<th>新 密 码：</th>
-										<td><input name="txtPassword" type="password"
-											id="txtPassword" class="txt" /><span
-											class="Validform_checktip">请输入新密码！</span></td>
-									</tr>
-									<tr>
-										<th>密码确认：</th>
-										<td><input name="txtPassword1" type="password"
-											id="txtPassword1" class="txt" /><span
-											class="Validform_checktip">输入新密码！</span></td>
-									</tr>
-									<tr>
-										<th>&nbsp;</th>
-										<td><input type="submit" name="btnSubmit" value=" 更新密码 "
-											onclick="if(!CheckForm()) return false;" id="btnSubmit"
-											class="btnReg" /></td>
-									</tr>
-								</table>
+							<div class="ui_photoBox">
+								<div class="prompt">
+									<p>有照片的教员关注度超出没照片会员的7倍</p>
+									<p>有照片的教员成功找到家教的比例比没照片的会员高出约6倍</p>
+									<p>有照片的教员被搜索到的比例比没照片的教员高出11倍</p>
+									<p>一张自信的照片给您带来更多机会</p>
+								</div>
+								<div class="ui_tit">
+									<dl>
+										<dt>
+											<span class="on">上传照片</span>
+										</dt>
+										<dd></dd>
+									</dl>
+								</div>
+								<div class="ui_photoCon">
+
+									<div class="item">
+										<div class="shtg">审核中</div>
+										<div class="pic">
+											<img
+												src='http://www.ygjj.com/bookpic2/2016-08-27/Thumbnailnew551463-20160827014609994809.gif'
+												onload="change_width(this,110,110)">
+										</div>
+										<div class="wzms">
+											<input name="rptPho$ctl00$txtInfo" type="text"
+												id="rptPho_txtInfo_0" class="txt" />
+										</div>
+										<div class="picbtn">
+											<a id="rptPho_lkbSave_0" class="btn"
+												href="javascript:__doPostBack(&#39;rptPho$ctl00$lkbSave&#39;,&#39;&#39;)">保存</a>
+											<a onclick="return confirm(&quot;确定删除照片吗？&quot;);"
+												id="rptPho_lkbDel_0" class="btn  btn2"
+												href="javascript:__doPostBack(&#39;rptPho$ctl00$lkbDel&#39;,&#39;&#39;)">删除</a>
+										</div>
+									</div>
+
+									<div class="clear"></div>
+								</div>
+								<div class="clear"></div>
+								<div class="sc_photoCon">
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td colspan="3">您已经上传了<span class="f1">1</span>张照片，还可以上传<span
+												class="f1">9</span>张照片。
+											</td>
+										</tr>
+										<tr>
+											<td width="18%" align="right">请选择上传的文件照片：</td>
+											<td width="56%"><input name="UploadFile" type="file"
+												id="UploadFile" style="width: 300px" class="txt" size="51" />
+											</td>
+											<td width="26%"></td>
+										</tr>
+										<tr>
+											<td width="18%" align="right">请填写简要的照片说明：</td>
+											<td><input name="txtMemo" type="text" id="txtMemo"
+												class="txt" /></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td width="18%"></td>
+											<td colspan="2"><input type="submit" name="btnSubmit"
+												value="上传" id="btnSubmit" class="btn" /></td>
+
+										</tr>
+									</table>
+								</div>
+								<div class="noteTit">
+									<div>
+										<b>温馨提示</b>
+									</div>
+								</div>
+								<div class="photoCon">
+									<p>
+										（1）自信生动的照片会给您带来更多关注，为增强效果请不要上传卡通照、合影照、婴儿照、脸部很小的照片，照片大小不超过5M，支持格式有JPG,GIF,PNG等。</p>
+									<p>
+										（2）阳光家教网提供<span><strong>10</strong></span>张真实的个人照片展示位，为了更直观的展现您的实力，也可上传自己的作品和获奖证书，（为保护隐私，请<span>隐去姓名</span>，否则将不被通过），<span>一旦发现上传非本人照片，即封帐号</span>。
+									</p>
+									<p>
+										（3）如果您的照片过大不能上传，请<a href="#" class="alink17">点击这里</a>。
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,14 +28,27 @@ public class ForderController {
 	@Autowired
 	ForderService forderService;
 
-	
-	@RequestMapping("/selectMyForder")
+
+	//根据identity来确定当前的登录用户的身份,通用查询订单
+	@RequestMapping(value = "/selectMyForder",method = RequestMethod.POST)
 	@ResponseBody
 	public Msg selectMyForder(HttpSession session,@RequestParam(value="pageNum",defaultValue="1")Integer pageNum ){
-		Student student=(Student) session.getAttribute("student");
-		PageHelper.startPage(pageNum, pageSize);
-		List<Forder> list= forderService.selectMyForder(student.getId());
-		if(list!=null&&list.size()!=0){
+		Integer identity = (Integer) session.getAttribute("identity");
+		List<Forder> list;
+		if(identity == 1){
+			Student student=(Student) session.getAttribute("student");
+			PageHelper.startPage(pageNum, pageSize);
+			list= forderService.selectMyForder(student.getId(),identity);
+		}else if(identity == 2){
+			Teacher teacher = (Teacher) session.getAttribute("teacher");
+			PageHelper.startPage(pageNum, pageSize);
+			list= forderService.selectMyForder(teacher.getId(),identity);
+		}else {
+			logger.info("identity:{}",identity);
+			return Msg.error("未知身份类型");
+		}
+
+		if(list!=null&&!list.isEmpty()){
 			PageInfo<Forder> pageInfo=new PageInfo<>(list);
 			return Msg.success("").add("pageInfo", pageInfo);
 		}
@@ -42,7 +56,7 @@ public class ForderController {
 	
 	}
 	
-	@RequestMapping("/selectAllForders")
+	@RequestMapping(value = "/selectAllForders",method = RequestMethod.POST)
 	@ResponseBody
 	public Msg selectAllForders(@RequestParam(value="pageNum",defaultValue="1")Integer pageNum){
 		PageHelper.startPage(pageNum, pageSize);
@@ -54,7 +68,7 @@ public class ForderController {
 		return Msg.error("");
 	}
 
-	@RequestMapping("/forderComplete")
+	@RequestMapping(value = "/forderComplete",method = RequestMethod.POST)
 	@ResponseBody
 	public Msg complete(Integer id){
 		Forder forder = new Forder();

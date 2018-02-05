@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -61,7 +62,7 @@ public class TeacherRequirementController {
 	 * @param teacherRequirement
 	 * @return
 	 */
-	@RequestMapping("/save")
+	@RequestMapping(value = "/save",method = RequestMethod.POST)
 	@ResponseBody
 	public Msg save(HttpSession session ,TeacherRequirement teacherRequirement){
 		System.out.println(teacherRequirement);
@@ -79,7 +80,7 @@ public class TeacherRequirementController {
 		return Msg.error("发布家教信息失败");
 	}
 	//学员库中查询的家教信息
-	@RequestMapping("/selectAllTeacherRequire")
+	@RequestMapping(value = "/selectAllTeacherRequire",method = RequestMethod.POST)
 	@ResponseBody
 	public Msg selectAllTeacherRequire(@RequestParam(value="pageNum",defaultValue="1")Integer pageNum,String area,String grade,Integer sex,Integer identity,String subject){
 		PageHelper.startPage(pageNum, pageSize);
@@ -91,7 +92,7 @@ public class TeacherRequirementController {
 		return Msg.error("");
 	}
 	
-	@RequestMapping("/selectTeacherRequirement")
+	@RequestMapping(value = "/selectTeacherRequirement",method = RequestMethod.POST)
 	@ResponseBody
 	public Msg selectTeacherRequirement(Integer id){
 		TeacherRequirement teacherRequirement=teacherRequirementService.selectByPrimaryKey(id);

@@ -35,7 +35,7 @@ public class StudentController {
 	RandomValidateCode randomValidateCode;
 	
 	
-	@RequestMapping("/checklogin")
+	@RequestMapping(value = "/checklogin", method = RequestMethod.POST)
 	@ResponseBody
 	public Msg checklogin(HttpSession session){
 		Student student=(Student) session.getAttribute("student");

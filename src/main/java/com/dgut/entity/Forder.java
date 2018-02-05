@@ -17,6 +17,8 @@ public class Forder {
 
     private String adminName;
 
+    private Integer teacherId;
+
     private Integer studentId;
 
     private Integer teacherRequirementId;
@@ -75,6 +77,14 @@ public class Forder {
 
     public void setAdminName(String adminName) {
         this.adminName = adminName == null ? null : adminName.trim();
+    }
+
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
     }
 
     public Integer getStudentId() {
