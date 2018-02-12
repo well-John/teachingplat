@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import com.dgut.service.StudentService;
 import com.dgut.service.TeacherService;
 
+import java.util.Date;
 
 
 @Api
@@ -49,8 +50,9 @@ public class StudentController {
 		return Msg.error("");
 	}
 
-	@RequestMapping("/logout")
-	public String logout(HttpSession session){
+	@RequestMapping(value = "/logout",method = RequestMethod.POST)
+	@ResponseBody
+	public void logout(HttpSession session){
 		Integer identity=(Integer) session.getAttribute("identity");
 		System.out.println("------identity-------:"+identity);
 		if((Integer)session.getAttribute("identity")==1){
@@ -62,7 +64,6 @@ public class StudentController {
 		}else{
 			session.removeAttribute("teacher");
 		}
-		return "index";
 	}
 	
 	
@@ -78,6 +79,7 @@ public class StudentController {
 				return Msg.error("您的账户已被禁用！！！");
 			} else {
 				student.setLoginTimes(student.getLoginTimes()+1);
+				student.setLastTime(new Date());
 				session.removeAttribute("teacher");
 				session.setAttribute("student", student);
 				session.setAttribute("identity", 1);

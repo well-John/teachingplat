@@ -38,7 +38,6 @@ public class TeacherRequirementServiceImpl extends BaseServiceImpl<TeacherRequir
 		if(subject!=null&&!subject.isEmpty()){
 			criteria.andSubjectLike("%"+subject.trim()+"%");
 		}
-		
 		return teacherRequirementMapper.selectByExample(example);
 	}
 

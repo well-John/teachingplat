@@ -27,4 +27,8 @@ public interface TeacherMapper extends BaseMapper<Teacher, TeacherExample>{
     int updateByPrimaryKeySelective(Teacher record);
 
     int updateByPrimaryKey(Teacher record);
+
+    int checkPhone(String phone);
+
+    int checkEmail(String email);
 }

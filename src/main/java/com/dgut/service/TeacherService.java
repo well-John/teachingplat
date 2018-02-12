@@ -11,6 +11,10 @@ public interface TeacherService extends BaseService<Teacher, TeacherExample> {
 	
 	public Integer register(Teacher teacher);
 	
-	public List<Teacher> selecTeachersByExample(String subject, String university, String area, Integer identity, Integer sex);
+	public List<Teacher> selectTeachersByExample(String subject, String university, String area, Integer identity, Integer sex);
+
+	public boolean checkPhone(String phone);
+
+	public boolean checkEmail(String email);
 
 }

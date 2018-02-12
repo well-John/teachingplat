@@ -702,6 +702,26 @@
 			}
 			return true;
 		}
+		function check_email_exist(email){
+		    var result;
+            $.ajax({
+                url:'teacher/checkEmail',
+                type:'post',
+				async:false,
+                dataType:"json",
+                data:"email="+email,
+                success:function(data){
+                    if(data.code==100){
+                        result = true;
+                    }else{
+                        result = false;
+                    }
+                }
+            });
+            return result;
+		}
+
+
 		function check_teacher(){
 			if($("div .regBox").find("span").hasClass("Validform_wrong")){
 				return false;
@@ -714,10 +734,12 @@
 				$("#email").next("span").removeClass("Validform_right Validform_wrong").addClass("Validform_wrong").text("请填写邮箱号  ");
 			}else if(!check_email($("#email").val())){
 				$("#email").next("span").removeClass("Validform_right Validform_wrong").addClass("Validform_wrong").text("请填写正确的邮箱号  ");
+			} else if(check_email_exist($("#email").val())) {
+                $("#email").next("span").removeClass("Validform_right Validform_wrong").addClass("Validform_wrong").text("邮箱号已被占用 ");
 			}else{
-				$("#email").next("span").removeClass("Validform_wrong Validform_right").addClass("Validform_right").empty();
-			}
-		});
+                $("#email").next("span").removeClass("Validform_wrong Validform_right").addClass("Validform_right").empty();
+            }
+        });
 		$("#password").blur(function(){
 			if($("#password").val()==""){
 				$("#password").next("span").removeClass("Validform_right").addClass("Validform_wrong").text("请输入密码  ");

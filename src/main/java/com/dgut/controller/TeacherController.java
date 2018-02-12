@@ -47,13 +47,12 @@ public class TeacherController {
 		// 获取验证码
 				teacher.setRegisterTime(new Date());
 				String code = (String) request.getSession().getAttribute("RANDOM_CODE_KEY");
-				if(!code.equals(pcode)){
+				if(!code.equals(pcode.trim())){
 					return Msg.error("验证码错误");
 				}
-				Integer id=teacherService.register(teacher);
-				if (id!=null) {
+				if (teacherService.register(teacher)== 1) {
 					request.getSession().removeAttribute("RANDOM_CODE_KEY");
-					return Msg.success("注册成功").add("id", id);
+					return Msg.success("注册成功");
 				}
 				return Msg.error("注册失败");
 	}
@@ -63,7 +62,7 @@ public class TeacherController {
 	public Msg selectAllTeacher(@RequestParam(value="pageNum",defaultValue="1")Integer pageNum,String subject,String university,String area,Integer identity,Integer sex){
 		System.out.println("subject="+subject+" university="+university+" area="+area+" identity="+identity+" sex="+sex);
 		PageHelper.startPage(pageNum, PAGESIZE);
-		List<Teacher> list=teacherService.selecTeachersByExample(subject, university, area, identity, sex);
+		List<Teacher> list=teacherService.selectTeachersByExample(subject, university, area, identity, sex);
 		System.out.println("list:"+list);
 		if(list!=null&&!list.isEmpty()){
 			PageInfo<Teacher> pageInfo=new PageInfo<>(list);
@@ -81,5 +80,14 @@ public class TeacherController {
 			return Msg.error("所查询的教师信息不存在！！！");
 		}
 		return Msg.success("").add("teacher", teacher);
+	}
+
+	@RequestMapping("/checkEmail")
+	@ResponseBody
+	public Msg checkEmail(String email){
+		if(teacherService.checkEmail(email.trim())){
+			return Msg.success("");
+		}
+		return Msg.error("");
 	}
 }

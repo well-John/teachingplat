@@ -36,13 +36,13 @@ public class TeacherServiceImpl extends BaseServiceImpl<Teacher, TeacherExample>
 	}
 	@Override
 	public Integer register(Teacher teacher) {
-		teacherMapper.insertSelective(teacher);
-		return teacher.getId();
+
+		return teacherMapper.insertSelective(teacher);
 	}
 
 
 	@Override
-	public List<Teacher> selecTeachersByExample(String subject, String university, String area, Integer identity, Integer sex) {
+	public List<Teacher> selectTeachersByExample(String subject, String university, String area, Integer identity, Integer sex) {
 		TeacherExample example=new TeacherExample();
 		Criteria criteria=example.createCriteria();
 		if(subject!=null&&!subject.equals("")){
@@ -61,6 +61,14 @@ public class TeacherServiceImpl extends BaseServiceImpl<Teacher, TeacherExample>
 			criteria.andSexEqualTo(sex);
 		}
 		return teacherMapper.selectByExample(example);
+	}
+
+	public boolean checkPhone(String phone){
+		return teacherMapper.checkPhone(phone)!=0?true:false;
+	}
+
+	public boolean checkEmail(String email){
+		return teacherMapper.checkEmail(email)!=0?true:false;
 	}
 
 }

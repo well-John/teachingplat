@@ -64,7 +64,7 @@
 	//显示学生个人信息框
 	function showStudentLoginBox(data){
 		var w1='<div class="s_loginbox">'+'<div class="name">欢迎您：<span class="cf60">'
-			+data.map.student.name+'</span></div><a class="logout">&nbsp;</a>'
+			+data.map.student.name+'</span></div><a href="" class="logout">&nbsp;</a>'
 			+'<div class="clear10"></div><ul><li class="li1">我的订单</li><li class="li2"><span class="red">'
 			+1+'</span></li>'+'<li class="li3"><a href="student_order.html" class="link2">查看</a></li></ul>'
 			+'<ul><li class="li1">预约记录</li><li class="li2"><span class="red">'

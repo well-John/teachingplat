@@ -1,6 +1,9 @@
 package com.dgut.entity;
 
+import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
+
 import java.io.Serializable;
+import java.util.Date;
 
 public class TeacherRequirement implements Serializable{
     /**
@@ -58,6 +61,26 @@ public class TeacherRequirement implements Serializable{
     private String teachingType;
 
     private Integer ridingAllowance;
+
+    private Date releaseTime;
+
+    private Integer releaseStatus;
+
+    public Integer getReleaseStatus() {
+        return releaseStatus;
+    }
+
+    public void setReleaseStatus(Integer releaseStatus) {
+        this.releaseStatus = releaseStatus;
+    }
+
+    public Date getReleaseTime() {
+        return releaseTime;
+    }
+
+    public void setReleaseTime(Date releaseTime) {
+        this.releaseTime = releaseTime;
+    }
 
     public Integer getId() {
         return id;

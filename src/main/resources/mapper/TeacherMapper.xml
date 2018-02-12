@@ -557,4 +557,19 @@
       wechat = #{wechat,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="checkPhone" resultType="java.lang.Integer">
+    select COUNT(*) from teacher where phone = #{phone}
+  </select>
+
+  <select id="checkEmail" resultType="java.lang.Integer">
+    select count(*) from teacher where email = #{email}
+  </select>
+
+
+
+
+
+
+
 </mapper>
