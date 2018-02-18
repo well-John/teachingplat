@@ -112,7 +112,7 @@
 						var list=data.map.pageInfo.list;
 						var div_clear=$("<div></div>").addClass("clear20");
 						$(list).each(function(i,item){
-							var div_item='<div class="item"><div class="ch12">'+getMyDate(item.chargeDate)+'</div>' 
+							var div_item='<div class="item"><div class="ch12">'+getMyDateTime(item.chargeDate)+'</div>'
 							+'<div class="ch13"><span class="cor">'+item.chargeMoney+'</span>'
 							+'</div><div class="ch15"><span class="cor">'+(item.organiser==1?"学员":"教员")+'</span></div>'
 							+'<div class="ch16"><span class="cor">'+(item.status==0?"充值成功":"充值失败")+'</span></div>'

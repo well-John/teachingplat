@@ -17,7 +17,7 @@
 	}
 
 	// 处理时间字符串
-	function getMyDate(str) {
+	function getMyDateTime(str) {
 		var oDate = new Date(str), oYear = oDate.getFullYear(), oMonth = oDate
 				.getMonth() + 1, oDay = oDate.getDate(), oHour = oDate.getHours(), oMin = oDate
 				.getMinutes(), oSen = oDate.getSeconds(), oTime = oYear + '-'
@@ -25,6 +25,15 @@
 				+ getzf(oMin) + ':' + getzf(oSen);// 最后拼接时间
 		return oTime;
 	}
+
+	function getMyDate(str){
+        var oDate = new Date(str), oYear = oDate.getFullYear(), oMonth = oDate
+                .getMonth() + 1, oDay = oDate.getDate(), oHour = oDate.getHours(), oMin = oDate
+            .getMinutes(), oSen = oDate.getSeconds(), oTime = oYear + '-'
+            + getzf(oMonth) + '-' + getzf(oDay);// 最后拼接时间
+        return oTime;
+	}
+
 	// 补0操作
 	function getzf(num) {
 		if (parseInt(num) < 10) {
@@ -182,12 +191,12 @@
 					$(list).each(function(index,data){
 						var TeacherInfo='<li class="cf2"><div class="teacher_head"><a href="teacher_info.html" target="_blank" title="家教">'
 					           +'<img src="images/'+data.avatar+'" border="0" width="90" height="100"></a><div style="display: block">'
-					           +'<a href="teacher_info.html" class="teach_num">成功(<span>2</span>)</a></div>'
+					           +'<a href="teacher_info.html?id='+data.id+'" class="teach_num">成功(<span>2</span>)</a></div>'
 					           +'<div style="display: none"><a href="teacher_info.html" class="teach_view">评价(<span>0</span>)</a></div></div>'
 					           +'<div class="teacher_info"><div class="btn"><div>登录时间：<span class="eng">'+getMyDate(data.lastTime)+'</span></div>'
-					           +'<a href="teacher_info.html" target="_blank" title="家教">查看详情</a>	</div><div class="tit"><a href="teacher_info.html" target="_blank">'+showName(data.name)+'</a>'
+					           +'<a href="teacher_info.html?id='+data.id+'" target="_blank" title="家教">查看详情</a>	</div><div class="tit"><a href="teacher_info.html?id='+data.id+'" target="_blank">'+showName(data.name)+'</a>'
 					           +'<span class="honor_label"><i class="female"></i><span><i class="good" title="未签约"></i></span><span><i class="v"title="未审核证件"></i></span></span> <em>'+data.currentStatus+'</em></div>'
-					           +'<div class="tit_info"><span>编号： <a href="teacher_info.html" class="eng">'+data.id+'</a></span></div><div class="label_g"><span>'+data.university+'</span><span>'+data.major+'</span><span>'+data.education+'</span></div>'
+					           +'<div class="tit_info"><span>编号： <a href="teacher_info.html?id='+data.id+'" class="eng">'+data.id+'</a></span></div><div class="label_g"><span>'+data.university+'</span><span>'+data.major+'</span><span>'+data.education+'</span></div>'
 					           +'<div class="teacher_article"><p class="teacher_p">'+data.teachingSubject+'</p></div><div class="teacher_article"><p class="teacher_p">'+data.description+'</p></div></div></li>';
 						     $(ele).append(TeacherInfo);
 					});
@@ -212,7 +221,7 @@
 					var list=data.map.pageInfo.list;
 					$(list).each(function(index,data){
 						var TeacherRequireInfo='<div class="dd_item"><div class="dd_title"><dl><dt><a href="xueyuanshow.html?id='+data.id+'" target="_blank"><span>'+data.area+data.subject+"家教"+"(编号："+data.id+")"+'</span></a></dt>'
-											  +'<dd>发布时间：'+getMyDate(data.releaseTime)+'</dd></dl></div><div class="dd_con"><div class="ch1"><p>学员：</p><p>所在区域：</p><p>教师资格要求：</p></div><div class="ch2">'
+											  +'<dd>发布时间：'+getMyDateTime(data.releaseTime)+'</dd></dl></div><div class="dd_con"><div class="ch1"><p>学员：</p><p>所在区域：</p><p>教师资格要求：</p></div><div class="ch2">'
 											  +'<p>'+data.grade+'</p><p>'+data.area+'</p><p>'+data.requirement+'</p></div><div class="ch3"><p>求教科目：</p><p>教员性别要求：</p></div>'
 							                  +'<div class="ch4"><p>'+data.subject+'</p><p>'+showSex(data.requireSex)+'</p></div><div class="ch7"><div class="zt1">'+(data.releaseStatus==0?"发布中":"已关闭")+'</div><div class="zt2"><a href="xueyuanshow.html?id='+data.id+'" class="link33" target="_blank">更多详细资料</a></div>'
 							                  +'<div class="clear">&nbsp;</div></div><div class="clear">&nbsp;</div></div>';

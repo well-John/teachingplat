@@ -234,7 +234,7 @@
 						var div_clear=$("<div></div>").addClass("clear20");
 						$(list).each(function(i,item){
 							var div_item='<div class="item"><div class="ch1"> <span><a href="/Order?id='+item.id+'" target="_blank">'+item.id+'</a></span></div>' 
-							+'<div class="ch2">'+getMyDate(item.releaseDate)+'</div>'
+							+'<div class="ch2">'+getMyDateTime(item.releaseDate)+'</div>'
 							+'<div class="ch3" > <span style="margin-left:25px";>'+item.subject+"</span></div>"
 							+'<div class="ch4"> <span class="f1">'+showStatus(item.status)+'</div>'
 							+'<div class="ch5"><a href="ApplyList.aspx?id=359638">查看</a></div>'
