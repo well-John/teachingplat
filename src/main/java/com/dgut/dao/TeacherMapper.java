@@ -5,7 +5,7 @@ import com.dgut.entity.TeacherExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface TeacherMapper extends BaseMapper<Teacher, TeacherExample>{
+public interface TeacherMapper extends BaseMapper<Teacher,TeacherExample>{
     long countByExample(TeacherExample example);
 
     int deleteByExample(TeacherExample example);

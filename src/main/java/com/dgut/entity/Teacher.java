@@ -57,6 +57,8 @@ public class Teacher {
 
     private String wechat;
 
+    private Integer loginTimes;
+
     public Integer getId() {
         return id;
     }
@@ -70,7 +72,7 @@ public class Teacher {
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.nickname = nickname == null ? null : nickname.trim();
     }
 
     public String getName() {
@@ -78,7 +80,7 @@ public class Teacher {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getPassword() {
@@ -86,7 +88,7 @@ public class Teacher {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public Integer getSex() {
@@ -102,7 +104,7 @@ public class Teacher {
     }
 
     public void setBirthday(String birthday) {
-        this.birthday = birthday;
+        this.birthday = birthday == null ? null : birthday.trim();
     }
 
     public String getEducation() {
@@ -110,7 +112,7 @@ public class Teacher {
     }
 
     public void setEducation(String education) {
-        this.education = education;
+        this.education = education == null ? null : education.trim();
     }
 
     public String getMajor() {
@@ -118,7 +120,7 @@ public class Teacher {
     }
 
     public void setMajor(String major) {
-        this.major = major;
+        this.major = major == null ? null : major.trim();
     }
 
     public String getUniversity() {
@@ -126,7 +128,7 @@ public class Teacher {
     }
 
     public void setUniversity(String university) {
-        this.university = university;
+        this.university = university == null ? null : university.trim();
     }
 
     public String getPhone() {
@@ -134,7 +136,7 @@ public class Teacher {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getEmail() {
@@ -142,7 +144,7 @@ public class Teacher {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email == null ? null : email.trim();
     }
 
     public String getDescription() {
@@ -150,7 +152,7 @@ public class Teacher {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = description == null ? null : description.trim();
     }
 
     public String getAddress() {
@@ -158,7 +160,7 @@ public class Teacher {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = address == null ? null : address.trim();
     }
 
     public String getTeachingTime() {
@@ -166,7 +168,7 @@ public class Teacher {
     }
 
     public void setTeachingTime(String teachingTime) {
-        this.teachingTime = teachingTime;
+        this.teachingTime = teachingTime == null ? null : teachingTime.trim();
     }
 
     public String getTeachingArea() {
@@ -174,7 +176,7 @@ public class Teacher {
     }
 
     public void setTeachingArea(String teachingArea) {
-        this.teachingArea = teachingArea;
+        this.teachingArea = teachingArea == null ? null : teachingArea.trim();
     }
 
     public String getTeachingSubject() {
@@ -182,7 +184,7 @@ public class Teacher {
     }
 
     public void setTeachingSubject(String teachingSubject) {
-        this.teachingSubject = teachingSubject;
+        this.teachingSubject = teachingSubject == null ? null : teachingSubject.trim();
     }
 
     public String getForeignLevel() {
@@ -190,7 +192,7 @@ public class Teacher {
     }
 
     public void setForeignLevel(String foreignLevel) {
-        this.foreignLevel = foreignLevel;
+        this.foreignLevel = foreignLevel == null ? null : foreignLevel.trim();
     }
 
     public String getExperience() {
@@ -198,7 +200,7 @@ public class Teacher {
     }
 
     public void setExperience(String experience) {
-        this.experience = experience;
+        this.experience = experience == null ? null : experience.trim();
     }
 
     public String getAvatar() {
@@ -206,7 +208,7 @@ public class Teacher {
     }
 
     public void setAvatar(String avatar) {
-        this.avatar = avatar;
+        this.avatar = avatar == null ? null : avatar.trim();
     }
 
     public Date getLastTime() {
@@ -230,7 +232,7 @@ public class Teacher {
     }
 
     public void setLastIp(String lastIp) {
-        this.lastIp = lastIp;
+        this.lastIp = lastIp == null ? null : lastIp.trim();
     }
 
     public Integer getIsabled() {
@@ -254,7 +256,7 @@ public class Teacher {
     }
 
     public void setQq(String qq) {
-        this.qq = qq;
+        this.qq = qq == null ? null : qq.trim();
     }
 
     public String getCurrentStatus() {
@@ -262,7 +264,7 @@ public class Teacher {
     }
 
     public void setCurrentStatus(String currentStatus) {
-        this.currentStatus = currentStatus;
+        this.currentStatus = currentStatus == null ? null : currentStatus.trim();
     }
 
     public String getWechat() {
@@ -270,6 +272,14 @@ public class Teacher {
     }
 
     public void setWechat(String wechat) {
-        this.wechat = wechat;
+        this.wechat = wechat == null ? null : wechat.trim();
+    }
+
+    public Integer getLoginTimes() {
+        return loginTimes;
+    }
+
+    public void setLoginTimes(Integer loginTimes) {
+        this.loginTimes = loginTimes;
     }
 }

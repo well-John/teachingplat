@@ -9,8 +9,8 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="last_ip" jdbcType="VARCHAR" property="lastIp" />
-    <result column="last_time" jdbcType="DATE" property="lastTime" />
-    <result column="reg_time" jdbcType="DATE" property="regTime" />
+    <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+    <result column="reg_time" jdbcType="TIMESTAMP" property="regTime" />
     <result column="balance" jdbcType="VARCHAR" property="balance" />
     <result column="isabled" jdbcType="INTEGER" property="isabled" />
     <result column="login_times" jdbcType="INTEGER" property="loginTimes" />

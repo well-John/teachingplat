@@ -38,7 +38,7 @@
         </javaClientGenerator>
 
         <!-- 相关表的配置 -->
-        <table tableName="forder" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+        <table tableName="teacher" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
                enableUpdateByExample="true"/>
     </context>
 </generatorConfiguration>

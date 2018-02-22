@@ -1,15 +1,9 @@
 package com.dgut.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Picture implements Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	private Integer id;
+public class Picture {
+    private Integer id;
 
     private Integer teacherId;
 
@@ -50,7 +44,7 @@ public class Picture implements Serializable{
     }
 
     public void setPath(String path) {
-        this.path = path;
+        this.path = path == null ? null : path.trim();
     }
 
     public Date getUploadTime() {

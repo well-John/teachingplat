@@ -6,7 +6,7 @@
     <result column="teacher_id" jdbcType="INTEGER" property="teacherId" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="path" jdbcType="VARCHAR" property="path" />
-    <result column="upload_time" jdbcType="DATE" property="uploadTime" />
+    <result column="upload_time" jdbcType="TIMESTAMP" property="uploadTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -105,7 +105,7 @@
       path, upload_time, status
       )
     values (#{id,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
-      #{path,jdbcType=VARCHAR}, #{uploadTime,jdbcType=DATE}, #{status,jdbcType=INTEGER}
+      #{path,jdbcType=VARCHAR}, #{uploadTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.dgut.entity.Picture">
@@ -144,7 +144,7 @@
         #{path,jdbcType=VARCHAR},
       </if>
       <if test="uploadTime != null">
-        #{uploadTime,jdbcType=DATE},
+        #{uploadTime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -173,7 +173,7 @@
         path = #{record.path,jdbcType=VARCHAR},
       </if>
       <if test="record.uploadTime != null">
-        upload_time = #{record.uploadTime,jdbcType=DATE},
+        upload_time = #{record.uploadTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
@@ -189,7 +189,7 @@
       teacher_id = #{record.teacherId,jdbcType=INTEGER},
       type = #{record.type,jdbcType=INTEGER},
       path = #{record.path,jdbcType=VARCHAR},
-      upload_time = #{record.uploadTime,jdbcType=DATE},
+      upload_time = #{record.uploadTime,jdbcType=TIMESTAMP},
       status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -208,7 +208,7 @@
         path = #{path,jdbcType=VARCHAR},
       </if>
       <if test="uploadTime != null">
-        upload_time = #{uploadTime,jdbcType=DATE},
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -221,7 +221,7 @@
     set teacher_id = #{teacherId,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},
       path = #{path,jdbcType=VARCHAR},
-      upload_time = #{uploadTime,jdbcType=DATE},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

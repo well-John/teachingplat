@@ -2,7 +2,6 @@ package com.dgut.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class PictureExample {
@@ -104,32 +103,6 @@ public class PictureExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -393,52 +366,52 @@ public class PictureExample {
         }
 
         public Criteria andUploadTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("upload_time =", value, "uploadTime");
+            addCriterion("upload_time =", value, "uploadTime");
             return (Criteria) this;
         }
 
         public Criteria andUploadTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("upload_time <>", value, "uploadTime");
+            addCriterion("upload_time <>", value, "uploadTime");
             return (Criteria) this;
         }
 
         public Criteria andUploadTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("upload_time >", value, "uploadTime");
+            addCriterion("upload_time >", value, "uploadTime");
             return (Criteria) this;
         }
 
         public Criteria andUploadTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("upload_time >=", value, "uploadTime");
+            addCriterion("upload_time >=", value, "uploadTime");
             return (Criteria) this;
         }
 
         public Criteria andUploadTimeLessThan(Date value) {
-            addCriterionForJDBCDate("upload_time <", value, "uploadTime");
+            addCriterion("upload_time <", value, "uploadTime");
             return (Criteria) this;
         }
 
         public Criteria andUploadTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("upload_time <=", value, "uploadTime");
+            addCriterion("upload_time <=", value, "uploadTime");
             return (Criteria) this;
         }
 
         public Criteria andUploadTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("upload_time in", values, "uploadTime");
+            addCriterion("upload_time in", values, "uploadTime");
             return (Criteria) this;
         }
 
         public Criteria andUploadTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("upload_time not in", values, "uploadTime");
+            addCriterion("upload_time not in", values, "uploadTime");
             return (Criteria) this;
         }
 
         public Criteria andUploadTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("upload_time between", value1, value2, "uploadTime");
+            addCriterion("upload_time between", value1, value2, "uploadTime");
             return (Criteria) this;
         }
 
         public Criteria andUploadTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("upload_time not between", value1, value2, "uploadTime");
+            addCriterion("upload_time not between", value1, value2, "uploadTime");
             return (Criteria) this;
         }
 

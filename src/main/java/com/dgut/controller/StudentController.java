@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dgut.entity.*;
+import com.dgut.utils.IPAddressUtil;
 import com.dgut.utils.RandomValidateCode;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
@@ -57,11 +58,11 @@ public class StudentController {
 		System.out.println("------identity-------:"+identity);
 		if((Integer)session.getAttribute("identity")==1){
 			Student student=(Student) session.getAttribute("student");
-			if(student!=null){
-				studentService.updateByPrimaryKeySelective(student);
-			}
+			studentService.updateByPrimaryKeySelective(student);
 			session.removeAttribute("student");
 		}else{
+			Teacher teacher = (Teacher) session.getAttribute("teacher");
+			teacherService.updateByPrimaryKeySelective(teacher);
 			session.removeAttribute("teacher");
 		}
 	}
@@ -70,16 +71,18 @@ public class StudentController {
 	
 	@RequestMapping("/student/login")
 	@ResponseBody
-	public Msg login(HttpSession session, String email, String password) {
+	public Msg login(HttpServletRequest request, String email, String password) {
 		Student student;
+		HttpSession session = request.getSession();
 		if ((student = studentService.login(email, password)) != null) {
 			if (student.getIsabled() == 0) {
 				return Msg.error("您的邮箱还没有经过验证");
 			} else if (student.getIsabled() == 1) {
 				return Msg.error("您的账户已被禁用！！！");
 			} else {
-				student.setLoginTimes(student.getLoginTimes()+1);
+				student.setLoginTimes((student.getLoginTimes()==null?0:student.getLoginTimes())+1);
 				student.setLastTime(new Date());
+				student.setLastIp(IPAddressUtil.getIpAdrress(request));
 				session.removeAttribute("teacher");
 				session.setAttribute("student", student);
 				session.setAttribute("identity", 1);

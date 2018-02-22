@@ -5,7 +5,7 @@ import com.dgut.entity.PictureExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface PictureMapper extends BaseMapper<Picture, PictureExample>{
+public interface PictureMapper extends BaseMapper<Picture,PictureExample>{
     long countByExample(PictureExample example);
 
     int deleteByExample(PictureExample example);
