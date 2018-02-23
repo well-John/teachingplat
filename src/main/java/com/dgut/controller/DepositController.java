@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -83,7 +84,8 @@ public class DepositController {
 	}
 
 	@RequestMapping("/callBack")
-	public String callBack(HttpSession session) {
+	public String callBack(HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		System.out.println("-------充值成功--------");
 		Deposit deposit = new Deposit();
 		deposit.setChargeDate(new Date());
@@ -93,13 +95,18 @@ public class DepositController {
 		if (organiser == 1) {
 			Student student = (Student) session.getAttribute("student");
 			deposit.setOrganiserId(student.getId());
-		} else if (organiser == 2) {
+			deposit.setStatus(0);
+			depositService.insertSelective(deposit);
+			return "redirect:/my?url=student_chongzhi";
+		} else{
 			Teacher teacher = (Teacher) session.getAttribute("teacher");
 			deposit.setOrganiserId(teacher.getId());
+			deposit.setStatus(0);
+			depositService.insertSelective(deposit);
+			return "redirect:/my?url=teacher_chongzhi";
 		}
-		deposit.setStatus(0);
-		depositService.insertSelective(deposit);
-		return "redirect:/my?url=student_chongzhi";
+
+
 	}
 
 	@RequestMapping("/selectAllDeposit")

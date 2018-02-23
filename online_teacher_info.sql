@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2018-02-12 20:26:23
+Date: 2018-02-23 22:32:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -85,7 +85,7 @@ CREATE TABLE `deposit` (
   `organiser` int(11) DEFAULT NULL COMMENT '充值人身份(1:学员，2：教员)',
   `organiser_id` int(11) DEFAULT NULL COMMENT '充值人id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of deposit
@@ -96,6 +96,7 @@ INSERT INTO `deposit` VALUES ('7', '2017-11-29 13:31:23', '100', '0', '1', '3');
 INSERT INTO `deposit` VALUES ('8', '2017-11-29 13:39:29', '100', '0', '1', '3');
 INSERT INTO `deposit` VALUES ('9', '2017-11-29 13:40:34', '100', '0', '1', '3');
 INSERT INTO `deposit` VALUES ('10', '2018-02-04 21:33:33', '100', '0', '1', '3');
+INSERT INTO `deposit` VALUES ('11', '2018-02-23 21:19:05', '100', '0', '2', '1');
 
 -- ----------------------------
 -- Table structure for `favorite`
@@ -148,18 +149,21 @@ INSERT INTO `forder` VALUES ('3', '2017-11-29 08:24:36', '', '0', null, null, nu
 -- ----------------------------
 DROP TABLE IF EXISTS `picture`;
 CREATE TABLE `picture` (
-  `id` int(11) NOT NULL COMMENT '教员id',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '教员id',
   `teacher_id` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL COMMENT '图片类型',
   `path` varchar(255) DEFAULT NULL COMMENT '图片路径',
-  `upload_time` date DEFAULT NULL COMMENT '上传时间',
-  `status` int(11) DEFAULT NULL COMMENT '审核状态',
+  `upload_time` datetime DEFAULT NULL COMMENT '上传时间',
+  `status` int(11) DEFAULT '0' COMMENT '审核状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of picture
 -- ----------------------------
+INSERT INTO `picture` VALUES ('1', '1', '0', 'tx_0.jpg', '2018-02-22 00:00:00', '0');
+INSERT INTO `picture` VALUES ('2', '1', '1', 'cpsij5os.bmp', '2018-02-22 00:00:00', '0');
+INSERT INTO `picture` VALUES ('3', '1', '0', 'tx_0.jpg', '2018-02-22 16:51:45', '0');
 
 -- ----------------------------
 -- Table structure for `student`
@@ -173,8 +177,8 @@ CREATE TABLE `student` (
   `phone` varchar(255) DEFAULT NULL COMMENT '联系电话',
   `email` varchar(30) DEFAULT NULL COMMENT '注册邮箱',
   `last_ip` varchar(30) DEFAULT NULL COMMENT '上次登录ip',
-  `last_time` date DEFAULT NULL COMMENT '上次登录时间',
-  `reg_time` date DEFAULT NULL COMMENT '注册时间',
+  `last_time` datetime DEFAULT NULL COMMENT '上次登录时间',
+  `reg_time` datetime DEFAULT NULL COMMENT '注册时间',
   `balance` varchar(255) DEFAULT '0' COMMENT '账户余额',
   `isabled` int(11) DEFAULT '0' COMMENT '是否可用（0：未验证邮箱，1：禁用，2：可用）',
   `login_times` int(11) DEFAULT NULL COMMENT '登陆次数',
@@ -184,7 +188,7 @@ CREATE TABLE `student` (
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES ('3', 'xie', '1', '123', '15913756471', '2357556894@qq.com', null, null, null, '0', '2', '19');
+INSERT INTO `student` VALUES ('3', 'xie', '1', '123', '15913756471', '2357556894@qq.com', '192.168.123.164', '2018-02-22 00:00:00', null, '0', '2', '28');
 INSERT INTO `student` VALUES ('4', null, null, '111', null, '2357556894@qq.com', null, null, null, '0', '0', null);
 INSERT INTO `student` VALUES ('5', null, null, '1', null, '2357556894@qq.com', null, null, null, '0', '0', null);
 INSERT INTO `student` VALUES ('6', null, null, '1', null, '2357556894@qq.com', null, null, null, '0', '0', null);
@@ -213,23 +217,24 @@ CREATE TABLE `teacher` (
   `foreign_level` varchar(255) DEFAULT NULL COMMENT '外语水平',
   `experience` varchar(255) DEFAULT NULL COMMENT '家教经历',
   `avatar` varchar(255) DEFAULT NULL COMMENT '头像',
-  `last_time` date DEFAULT NULL COMMENT '上次登录时间',
-  `register_time` date DEFAULT NULL COMMENT '注册时间',
+  `last_time` datetime DEFAULT NULL COMMENT '上次登录时间',
+  `register_time` datetime DEFAULT NULL COMMENT '注册时间',
   `last_ip` varchar(255) DEFAULT NULL COMMENT '上次登录ip',
-  `isabled` int(1) DEFAULT NULL COMMENT '是否可用(0:可用，1：禁用)',
+  `isabled` int(1) DEFAULT NULL COMMENT '是否可用（0：未验证邮箱，1：禁用，2：可用）',
   `identity` int(1) DEFAULT NULL COMMENT '职业(0:在校大学生，1：教师)',
   `qq` varchar(30) DEFAULT NULL,
   `current_status` varchar(255) DEFAULT NULL COMMENT '目前身份',
   `wechat` varchar(30) DEFAULT NULL,
+  `login_times` int(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of teacher
 -- ----------------------------
-INSERT INTO `teacher` VALUES ('1', 'john', '李一', '1', '1', null, '本科在读', '电子信息系统', '暨南大学', '23', '2357556894@qq.com', '性格开朗', null, null, '海珠 荔湾 ', '语文,英语', null, null, 'tx_0.jpg', '2017-11-29', null, null, null, '1', null, '本科在读', null);
-INSERT INTO `teacher` VALUES ('6', '1', '1', '1', '0', '1937-02', '大专在读', '1', '广东金融学院', '1', '23575156894@qq.com', '11', '1', '16', '海珠 ', '幼小衔接 ', null, '11', 'tx_0.jpg', null, '2018-02-11', null, null, '0', '1', '在校大一学生', '1');
-INSERT INTO `teacher` VALUES ('7', '1', '11', '1', '0', '1955-11', '大专毕业', '11', '广东金融学院', '1', '23575562894@qq.com', '1', '1', '0', '白云 ', '学前教育 ', null, '1', 'tx_0.jpg', null, '2018-02-11', null, null, '0', '1', '在校大三学生', '1');
+INSERT INTO `teacher` VALUES ('1', 'john', '李一', '123', '1', null, '本科在读', '电子信息系统', '暨南大学', '23', '2357556894@qq.com', '性格开朗', null, '1', '海珠 荔湾', '语文,英语', null, '1', 'tx_0.jpg', '2018-02-22 17:57:57', null, '192.168.123.164', '2', '1', null, '在校大一学生', null, '2');
+INSERT INTO `teacher` VALUES ('6', '1', '1', '1', '0', '1937-02', '大专在读', '1', '广东金融学院', '1', '23575156894@qq.com', '11', '1', '16', '海珠 ', '幼小衔接 ', null, '11', 'tx_0.jpg', '2018-02-05 00:00:00', '2018-02-11 00:00:00', null, null, '0', '1', '在校大一学生', '1', null);
+INSERT INTO `teacher` VALUES ('7', '1', '11', '1', '0', '1955-11', '大专毕业', '11', '广东金融学院', '1', '23575562894@qq.com', '1', '1', '0', '白云 ', '学前教育 ', null, '1', 'tx_0.jpg', '2018-02-11 00:00:00', '2018-02-11 00:00:00', null, null, '0', '1', '在校大三学生', '1', null);
 
 -- ----------------------------
 -- Table structure for `teacher_desire`
