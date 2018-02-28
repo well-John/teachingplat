@@ -103,9 +103,42 @@
             $(".youhui").mouseout(function () {
                 $(this).children(".2wm").hide();
             });
-
-
         });
+
+
+        function showMyOrder(){
+            var order_div=$("#MyOrder");
+            $(order_div).empty();
+            $.ajax({
+                url:'selectMyForder',
+                type:'post',
+                dataType:'json',
+                success:function(data){
+                    if(data.code==100){
+                        var list=data.map.pageInfo.list;
+                        var div_clear=$("<div></div>").addClass("clear20");
+                        $(list).each(function(i,item){
+                            var div_item='<div class="item"><div class="ch1"> <span><a href="/Order?id='+item.id+'" target="_blank">'+item.id+'</a></span></div>'
+                                +'<div class="ch2">'+getMyDateTime(item.releaseDate)+'</div>'
+                                +'<div class="ch3" > <span style="margin-left:25px";>'+item.subject+"</span></div>"
+                                +'<div class="ch4"> <span class="f1">'+showStatus(item.status)+'</div>'
+                                +'<div class="ch5"><a href="ApplyList.aspx?id=359638">查看</a></div>'
+                                +'<div class="ch6">'+item.adminName+'</div>'
+                                +'<div class="ch7"> <a class="update_forder t"  href="##" data-id="'+item.id+'" data-status="'+item.status+'" >编辑</a> <a class="cancel t t1" data-id="'+item.id+'" data-status="'+item.status+'" href="###">取消 </a> </div><div class="clear">&nbsp;</div></div>';
+                            $(div_item).appendTo(order_div);
+                        });
+                        $(div_clear).appendTo(order_div);
+                        showPageInfo(order_div,data);
+                    }
+                }
+            });
+        }
+
+
+
+
+
+
 
 
     </script>
@@ -212,6 +245,23 @@
         });
 
 
+
+        function showStatus(status){
+            if(status==0){
+                return "待审核";
+            }else if(status==1){
+                return "待预约";
+            }else if(status==2){
+                return "已预约";
+            }else if(status==3){
+                return "成功";
+            }else{
+                return "失败";
+            }
+
+        }
+
+
         function showMyOrder(){
             var order_div=$("#MyOrder");
             $(order_div).empty();
@@ -242,16 +292,27 @@
 
         }
 
-
         $(function(){
-            checklogin();
+            showBox();
             showMyOrder();
         });
 
-
-
-
-
+        $(document).on("click",".update_forder",function(){
+            var id = $(this).attr("data-id");
+            var status = $(this).attr("data-status");
+            if(status == 3){
+                return false;
+            }
+            $.ajax({
+                url:'/forderComplete',
+                type:'post',
+                dataType:'json',
+                data:'id='+id,
+                success:function(){
+                    window.location.reload();
+                }
+            });
+        });
 
 
     </script>
@@ -337,16 +398,16 @@
 									<dl>
 										<dt>
 											<span class='on'> <a id="lkb1"
-												href="javascript:__doPostBack(&#39;lkb1&#39;,&#39;&#39;)">待支付订单（<b>0</b>）
+												href="javascript:;">待支付订单（<b>0</b>）
 											</a>
 											</span> <span class=''> <a id="lkb2"
-												href="javascript:__doPostBack(&#39;lkb2&#39;,&#39;&#39;)">成功订单（<b>0</b>）
+												href="javascript:;">成功订单（<b>0</b>）
 											</a>
 											</span> <span class=''> <a id="lkb3"
-												href="javascript:__doPostBack(&#39;lkb3&#39;,&#39;&#39;)">失败订单（<b>0</b>）
+												href="javascript:;">失败订单（<b>0</b>）
 											</a>
 											</span> <span class=''> <a id="lkb4"
-												href="javascript:__doPostBack(&#39;lkb4&#39;,&#39;&#39;)">关闭订单（<b>0</b>）
+												href="javascript:;">关闭订单（<b>0</b>）
 											</a>
 											</span>
 										</dt>
@@ -354,19 +415,16 @@
 								</div>
 								<div class="clear20"></div>
 
-								<div id="myOrder" class="lsthead">
+								<div class="lsthead">
 									<div class="ch1">订单号</div>
-									<div class="ch2">时间</div>
+									<div class="ch2">发布时间</div>
 									<div class="ch3">年级科目</div>
-									<div class="ch4">信息费</div>
-
-									<div class="ch5">会员费</div>
-
-									<div class="ch6">总计</div>
+									<div class="ch4">订单状态</div>
+									<div id="lstInfo_yut" class="ch5">预约</div>
+									<div class="ch6">处理人</div>
 									<div class="ch7">操作</div>
 								</div>
-
-
+								<div id="MyOrder"></div>
 
 								<div class="clear"></div>
 

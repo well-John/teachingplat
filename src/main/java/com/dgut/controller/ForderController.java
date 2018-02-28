@@ -2,6 +2,7 @@ package com.dgut.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -32,20 +33,18 @@ public class ForderController {
 	//根据identity来确定当前的登录用户的身份,通用查询订单
 	@RequestMapping(value = "/selectMyForder",method = RequestMethod.POST)
 	@ResponseBody
-	public Msg selectMyForder(HttpSession session,@RequestParam(value="pageNum",defaultValue="1")Integer pageNum ){
+	public Msg selectMyForder(HttpServletRequest request, @RequestParam(value="pageNum",defaultValue="1")Integer pageNum ){
+		HttpSession session = request.getSession();
 		Integer identity = (Integer) session.getAttribute("identity");
-		List<Forder> list;
+		List<Forder> list = null;
 		if(identity == 1){
 			Student student=(Student) session.getAttribute("student");
 			PageHelper.startPage(pageNum, pageSize);
 			list= forderService.selectMyForder(student.getId(),identity);
-		}else if(identity == 2){
+		}else{
 			Teacher teacher = (Teacher) session.getAttribute("teacher");
 			PageHelper.startPage(pageNum, pageSize);
 			list= forderService.selectMyForder(teacher.getId(),identity);
-		}else {
-			logger.info("identity:{}",identity);
-			return Msg.error("未知身份类型");
 		}
 
 		if(list!=null&&!list.isEmpty()){

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2018-02-23 22:32:08
+Date: 2018-02-28 22:54:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', 'xu', '123', '2018-02-02', '0:0:0:0:0:0:0:1', null);
+INSERT INTO `admin` VALUES ('1', 'xu', '123', '2018-02-02', '0:0:0:0:0:0:0:1', '谢');
 
 -- ----------------------------
 -- Table structure for `appointment`
@@ -135,14 +135,13 @@ CREATE TABLE `forder` (
   `student_id` int(11) DEFAULT NULL,
   `teacher_requirement_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of forder
 -- ----------------------------
-INSERT INTO `forder` VALUES ('1', '2017-11-28 14:51:14', '初2数学', '3', '1', '1', '谢', null, '3', '1');
-INSERT INTO `forder` VALUES ('2', '2017-11-28 16:45:04', '初2英语', '0', null, null, null, null, '3', '2');
-INSERT INTO `forder` VALUES ('3', '2017-11-29 08:24:36', '', '0', null, null, null, null, '3', '3');
+INSERT INTO `forder` VALUES ('1', '2017-11-28 14:51:14', '初2数学', '3', '1', '1', '谢', '1', '3', '1');
+INSERT INTO `forder` VALUES ('2', '2017-11-28 16:45:04', '初2英语', '3', null, '1', '谢', '1', '3', '2');
 
 -- ----------------------------
 -- Table structure for `picture`
@@ -188,7 +187,7 @@ CREATE TABLE `student` (
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES ('3', 'xie', '1', '123', '15913756471', '2357556894@qq.com', '192.168.123.164', '2018-02-22 00:00:00', null, '0', '2', '28');
+INSERT INTO `student` VALUES ('3', 'xie', '1', '123', '15913756471', '2357556894@qq.com', '0:0:0:0:0:0:0:1', '2018-02-25 00:00:00', null, '0', '2', '29');
 INSERT INTO `student` VALUES ('4', null, null, '111', null, '2357556894@qq.com', null, null, null, '0', '0', null);
 INSERT INTO `student` VALUES ('5', null, null, '1', null, '2357556894@qq.com', null, null, null, '0', '0', null);
 INSERT INTO `student` VALUES ('6', null, null, '1', null, '2357556894@qq.com', null, null, null, '0', '0', null);
@@ -232,7 +231,7 @@ CREATE TABLE `teacher` (
 -- ----------------------------
 -- Records of teacher
 -- ----------------------------
-INSERT INTO `teacher` VALUES ('1', 'john', '李一', '123', '1', null, '本科在读', '电子信息系统', '暨南大学', '23', '2357556894@qq.com', '性格开朗', null, '1', '海珠 荔湾', '语文,英语', null, '1', 'tx_0.jpg', '2018-02-22 17:57:57', null, '192.168.123.164', '2', '1', null, '在校大一学生', null, '2');
+INSERT INTO `teacher` VALUES ('1', 'john', '李一', '123', '1', null, '本科在读', '电子信息系统', '暨南大学', '23', '2357556894@qq.com', '性格开朗', null, '1', '海珠 荔湾', '语文,英语', null, '1', 'tx_0.jpg', '2018-02-28 22:14:54', null, '0:0:0:0:0:0:0:1', '2', '1', null, '在校大一学生', null, '3');
 INSERT INTO `teacher` VALUES ('6', '1', '1', '1', '0', '1937-02', '大专在读', '1', '广东金融学院', '1', '23575156894@qq.com', '11', '1', '16', '海珠 ', '幼小衔接 ', null, '11', 'tx_0.jpg', '2018-02-05 00:00:00', '2018-02-11 00:00:00', null, null, '0', '1', '在校大一学生', '1', null);
 INSERT INTO `teacher` VALUES ('7', '1', '11', '1', '0', '1955-11', '大专毕业', '11', '广东金融学院', '1', '23575562894@qq.com', '1', '1', '0', '白云 ', '学前教育 ', null, '1', 'tx_0.jpg', '2018-02-11 00:00:00', '2018-02-11 00:00:00', null, null, '0', '1', '在校大三学生', '1', null);
 
