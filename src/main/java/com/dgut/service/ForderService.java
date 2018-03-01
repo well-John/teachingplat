@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface ForderService extends BaseService<Forder, ForderExample> {
 
-	List<Forder> selectMyForder(Integer id, Integer identity);
+	List<Forder> selectMyForder(Integer id, Integer identity, Integer status);
 
 }

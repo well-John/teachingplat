@@ -106,13 +106,14 @@
         });
 
 
-        function showMyOrder(){
+        function showMyOrder(status){
             var order_div=$("#MyOrder");
             $(order_div).empty();
             $.ajax({
                 url:'selectMyForder',
                 type:'post',
                 dataType:'json',
+                data:{'status':status},
                 success:function(data){
                     if(data.code==100){
                         var list=data.map.pageInfo.list;
@@ -134,6 +135,10 @@
             });
         }
 
+        function showOrder(status) {
+
+			showMyOrder(status);
+        }
 
 
 
@@ -262,22 +267,23 @@
         }
 
 
-        function showMyOrder(){
+        function showMyOrder(status){
             var order_div=$("#MyOrder");
             $(order_div).empty();
             $.ajax({
                 url:'selectMyForder',
                 type:'post',
                 dataType:'json',
+                data:{'status':status},
                 success:function(data){
                     if(data.code==100){
                         var list=data.map.pageInfo.list;
                         var div_clear=$("<div></div>").addClass("clear20");
                         $(list).each(function(i,item){
-                            var div_item='<div class="item"><div class="ch1"> <span><a href="/Order?id='+item.id+'" target="_blank">'+item.id+'</a></span></div>'
+                            var div_item='<div class="item"><div class="ch1"> <span><a href="/xueyuanshow.html?id='+item.id+'" target="_blank">'+item.id+'</a></span></div>'
                                 +'<div class="ch2">'+getMyDateTime(item.releaseDate)+'</div>'
                                 +'<div class="ch3" > <span style="margin-left:25px";>'+item.subject+"</span></div>"
-                                +'<div class="ch4"> <span class="f1">'+showStatus(item.status)+'</div>'
+                                +'<div class="ch4"> <span class="f1">'+item.studentId+'</div>'
                                 +'<div class="ch5"><a href="ApplyList.aspx?id=359638">查看</a></div>'
                                 +'<div class="ch6">'+item.adminName+'</div>'
                                 +'<div class="ch7"> <a class="update_forder t"  href="##" data-id="'+item.id+'" data-status="'+item.status+'" >编辑</a> <a class="cancel t t1" data-id="'+item.id+'" data-status="'+item.status+'" href="###">取消 </a> </div><div class="clear">&nbsp;</div></div>';
@@ -294,7 +300,7 @@
 
         $(function(){
             showBox();
-            showMyOrder();
+            showMyOrder(1);
         });
 
         $(document).on("click",".update_forder",function(){
@@ -314,6 +320,17 @@
             });
         });
 
+        $(document).on("click",".order",function () {
+			var status = $(this).attr("data-status");
+			$("#span"+status).addClass("on");
+			for(var i=3;i>=0;i--){
+			    if(4-i == status)
+			        continue;
+			    $("#span"+(4-i)).removeClass("on");
+			}
+            showMyOrder(status);
+
+        });
 
     </script>
 		<!--end nav-->
@@ -397,17 +414,17 @@
 								<div class="ui_tit">
 									<dl>
 										<dt>
-											<span class='on'> <a id="lkb1"
-												href="javascript:;">待支付订单（<b>0</b>）
+											<span id="span1" class='on'> <a id="lkb1"
+												href="javascript:void(0);" class="order" data-status="1">待支付订单
 											</a>
-											</span> <span class=''> <a id="lkb2"
-												href="javascript:;">成功订单（<b>0</b>）
+											</span> <span id="span2" class=''> <a id="lkb2"
+												href="javascript:void(0);" class="order"  data-status="2">成功订单
 											</a>
-											</span> <span class=''> <a id="lkb3"
-												href="javascript:;">失败订单（<b>0</b>）
+											</span> <span id="span3" class=''> <a id="lkb3"
+												href="javascript:void(0);" class="order"  data-status="3">失败订单
 											</a>
-											</span> <span class=''> <a id="lkb4"
-												href="javascript:;">关闭订单（<b>0</b>）
+											</span> <span id="span4" class=''> <a id="lkb4"
+												href="javascript:void(0);" class="order"  data-status="4">关闭订单
 											</a>
 											</span>
 										</dt>
@@ -419,7 +436,7 @@
 									<div class="ch1">订单号</div>
 									<div class="ch2">发布时间</div>
 									<div class="ch3">年级科目</div>
-									<div class="ch4">订单状态</div>
+									<div class="ch4">学员</div>
 									<div id="lstInfo_yut" class="ch5">预约</div>
 									<div class="ch6">处理人</div>
 									<div class="ch7">操作</div>

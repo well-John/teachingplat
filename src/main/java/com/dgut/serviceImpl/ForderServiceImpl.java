@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dgut.entity.ForderExample.Criteria;
-import com.dgut.entity.ForderExample.Criterion;
 import com.dgut.dao.ForderMapper;
 import com.dgut.dao.TeacherRequirementMapper;
 import com.dgut.service.ForderService;
@@ -28,9 +27,12 @@ public class ForderServiceImpl extends BaseServiceImpl<Forder, ForderExample> im
 	}
 
 	@Override
-	public List<Forder> selectMyForder(Integer id, Integer identity) {
+	public List<Forder> selectMyForder(Integer id, Integer identity, Integer status) {
 		ForderExample example=new ForderExample();
 		Criteria criteria=example.createCriteria();
+		if(status != null){
+			criteria.andStatusEqualTo(status);
+		}
 		if(identity == 1){
 			criteria.andStudentIdEqualTo(id);
 		}else {
