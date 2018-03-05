@@ -7,6 +7,7 @@ import com.dgut.utils.UploadUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,15 +31,17 @@ public class uploadController {
 
     private Logger logger = LoggerFactory.getLogger(uploadController.class);
 
+    @Value("${img.location}")
+    private String location;
+
     @Autowired
     private PictureService pictureService;
 
     @RequestMapping(value = "cardManage/upload",method = RequestMethod.POST)
     public String upload(HttpServletRequest request,MultipartFile file,int ddlCard){
-        String storePath = "D:/upload/";
         String path = null;
         try {
-            path=UploadUtil.upload(file,storePath);
+            path=UploadUtil.upload(file,location);
         } catch (IOException e) {
             logger.info("上传文件失败");
             e.printStackTrace();

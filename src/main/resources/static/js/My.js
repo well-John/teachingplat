@@ -86,7 +86,7 @@
 	function showTeacherLoginBox(data){
 		var w1='<div class="t_loginbox"><div class="name">欢迎您：<span class="cf60">'+data.map.teacher.nickname+'</span></div>'
 	          + '<a href="###" class="logout">&nbsp;</a><div class="clear5"></div>'
-	          + '<div class="img" style="width: 74px; height: 82px"><img src="images/'+data.map.teacher.avatar+'" border="0"></div>'
+	          + '<div class="img" style="width: 74px; height: 82px"><img src="'+data.map.teacher.avatar+'" border="0"></div>'
 				  + '<div class="notice"><ul><li class="li1">证件</li><li class="li2"><span class="red">0</span></li><li class="li3"><a href="/Teacher/CardManage.aspx" class="link2">上传</a></li></ul>'
 	          + '<ul><li class="li1">照片</li><li class="li2"><span class="red">1</span></li><li class="li3"><a href="/Teacher/PhotoManage.aspx" class="link2"> 上传</a></li></ul>'
 	          + '<ul><li class="li1">待支付</li><li class="li2"><span class="red">0</span></li><li class="li3"><a href="Teacher/TeachList.aspx" class="link2">查看</a></li></ul>'
@@ -446,10 +446,28 @@
 		var data="subject="+subject+"&area="+area+"&university="+school+"&identity="+identity+"&sex="+sex+"&pageNum="+pageNum;
 		showTeachers(ele,data);
 	}
+
+	function getTeacherInfo() {
+		var teacher = null;
+		$.ajax({
+            url:'teacher/getInfo',
+            type:'post',
+            async:false,
+            dataType:'json',
+            success:function(data){
+                if(data.code == 100){
+                	teacher = data.map.teacher;
+				}
+            }
+		});
+		return teacher;
+    }
 		
 		
-		
-		
+    function showImg() {
+		var teacher = getTeacherInfo();
+		$(".txBox2 img").attr("src",teacher.avatar);
+    }
 		
 
 

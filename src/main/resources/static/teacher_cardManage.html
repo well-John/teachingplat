@@ -4,6 +4,7 @@
     <link href="css/user.css" rel="stylesheet" type="text/css"/>
     <script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/My.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -88,8 +89,12 @@
         $(".youhui").mouseout(function () {
             $(this).children(".2wm").hide();
         });
+    });
 
 
+    $(function () {
+       showBox();
+       showImg();
     });
 
 
@@ -310,14 +315,14 @@
                                     <tr>
                                         <td width="18%" align="right">请选择证件说明：</td>
                                         <td><select name="ddlCard" id="ddlCard" class="ddl">
-                                            <option value="0">身份证</option>
-                                            <option value="1">学生证</option>
-                                            <option value="2">毕业证</option>
-                                            <option value="3">教师资格证</option>
-                                            <option value="4">工作证</option>
-                                            <option value="5">等级证书</option>
-                                            <option value="6">其他证书</option>
-
+                                            <option value="0">头像</option>
+                                            <option value="1">身份证</option>
+                                            <option value="2">学生证</option>
+                                            <option value="3">毕业证</option>
+                                            <option value="4">教师资格证</option>
+                                            <option value="5">工作证</option>
+                                            <option value="6">等级证书</option>
+                                            <option value="7">其他证书</option>
                                         </select></td>
                                         <td></td>
                                     </tr>

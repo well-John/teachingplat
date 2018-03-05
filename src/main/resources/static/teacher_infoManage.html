@@ -4,6 +4,8 @@
 <link href="css/user.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
+<script src="js/My.js" type="text/javascript"></script>
+<script src="js/vue.min.js" type="text/javascript"></script>
 <script language="javascript">
         function AddSubject(locs,mylocs,txthh)
         {
@@ -145,7 +147,7 @@
 
 </head>
 <body>
-	<form method="post" action="./InfoManage.aspx" id="form1">
+	<form method="post" action="" id="form1">
 		<div class="aspNetHidden">
 			<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
 			<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT"
@@ -153,22 +155,6 @@
 				id="__LASTFOCUS" value="" /> <input type="hidden"
 				name="__VIEWSTATE" id="__VIEWSTATE" s />
 		</div>
-
-		<script type="text/javascript">
-        //<![CDATA[
-        var theForm = document.forms['form1'];
-        if (!theForm) {
-            theForm = document.form1;
-        }
-        function __doPostBack(eventTarget, eventArgument) {
-            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-                theForm.__EVENTTARGET.value = eventTarget;
-                theForm.__EVENTARGUMENT.value = eventArgument;
-                theForm.submit();
-            }
-        }
-        //]]>
-    </script>
 
 
 		<div class="aspNetHidden">
@@ -213,7 +199,6 @@
 		<script>
 
         $(document).ready(function () {
-
             $("#leftsead a").hover(function () {
                 if ($(this).prop("className") == "youhui") {
                     $(this).children("img.hides").show();
@@ -229,7 +214,6 @@
                     $(this).children("div.hides").animate({ marginRight: '-163px' }, 0, function () { $(this).hide(); $(this).next("img.shows").show(); });
                 }
             });
-
             $("#top_btn").click(function () { if (scroll == "off") return; $("html,body").animate({ scrollTop: 0 }, 600); });
 
             //右侧导航 - 二维码
@@ -239,6 +223,36 @@
             $(".youhui").mouseout(function () {
                 $(this).children(".2wm").hide();
             });
+        });
+
+
+
+        $(function () {
+            var vm = new Vue({
+                el: '#form1',
+                data: {
+                    teacher: null
+                },
+                filters: {
+                    showTeacherName: function (value) {
+                        if (!value) return '';
+                        value = value.toString();
+                        return value.substring(0, 1) + "教员";
+                    },
+                    showSex: function (value) {
+                        if (value == 0)
+                            return "男";
+                        else
+                            return "女";
+                    },
+                    showTime: function (value) {
+                        return getMyDate(value);
+                    }
+                }
+            });
+            vm.teacher = getTeacherInfo();
+			showBox();
+			showImg();
 
 
         });
@@ -432,21 +446,21 @@
 							<table cellpadding="0" cellspacing="0">
 								<tr>
 									<th>教员编号：</th>
-									<td colspan="3"><span id="lblDisId" style="color: Red;">189142</span>
+									<td colspan="3"><span id="lblDisId" style="color: Red;">{{teacher.id}}</span>
 									</td>
 								</tr>
 								<tr>
 									<th width="20%">会员账号：</th>
-									<td width="30%"><span id="lblAccount" style="color: Red;">fluxay</span>
+									<td width="30%"><span id="lblAccount" style="color: Red;">{{teacher.nickname}}</span>
 									</td>
 									<th width="20%">认证/签约：</th>
 									<td width="30%"></td>
 								</tr>
 								<tr>
 									<th>真实姓名：</th>
-									<td><span id="lblName">李明峰</span></td>
+									<td><span id="lblName">{{teacher.name}}</span></td>
 									<th>性&nbsp;&nbsp;&nbsp; 别：</th>
-									<td><span id="lblGendar">男</span></td>
+									<td><span id="lblGendar">{{teacher.sex | showSex}}</span></td>
 								</tr>
 								<tr style="display: none">
 									<th>身份证号：</th>
@@ -456,26 +470,26 @@
 								</tr>
 								<tr>
 									<th>出生年月：</th>
-									<td><span id="lblBirthday">1996-11</span></td>
+									<td><span id="lblBirthday">{{teacher.birthday}}</span></td>
 									<th>来自省份：</th>
 									<td><span id="lblProvince">广西</span></td>
 								</tr>
 								<tr>
 
 									<th>最高学历：</th>
-									<td colspan="3"><span id="lblTopDegree">本科在读</span></td>
+									<td colspan="3"><span id="lblTopDegree">{{teacher.education}}</span></td>
 								</tr>
 								<tr>
 									<th>高中母校：</th>
 									<td><span id="lblHighSchool">灵川中学</span></td>
 									<th>所学专业：</th>
-									<td><span id="lblMajor">会计</span></td>
+									<td><span id="lblMajor">{{teacher.major}}</span></td>
 								</tr>
 								<tr>
 									<th>就读学校：</th>
-									<td><span id="lblCollegeName">上海财经大学</span></td>
+									<td><span id="lblCollegeName">{{teacher.university}}</span></td>
 									<th>现有身份：</th>
-									<td><span id="lblIdentitys">在校大二学生</span></td>
+									<td><span id="lblIdentitys">{{teacher.currentStatus}}</span></td>
 								</tr>
 
 							</table>
@@ -486,7 +500,7 @@
 									<tr>
 										<th width="20%">现有身份：</th>
 										<td><select name="IdentityS$lstStudent"
-											id="IdentityS_lstStudent" class="ddl">
+											id="IdentityS_lstStudent" class="ddl" v-model="teacher.currentStatus">
 												<option value="在校大一学生">在校大一学生</option>
 												<option selected="selected" value="在校大二学生">在校大二学生</option>
 												<option value="在校大三学生">在校大三学生</option>
@@ -546,14 +560,14 @@
 									<th>自我描述&nbsp;&nbsp;<br />特长展示：
 									</th>
 									<td><textarea name="txtSpecial" rows="3" cols="20"
-											id="txtSpecial" class="textarea" style="width: 288px;">
+											id="txtSpecial" class="textarea" style="width: 288px;" v-model="teacher.description">
 </textarea><br /> 展示实力，增加你的魅力！比如你竞赛中获得过什么奖项，取得过什么出色的成绩，有哪些过硬的证书之类。</td>
 								</tr>
 								<tr>
 									<th>家教经历&nbsp;&nbsp;<br />教学成果：
 									</th>
 									<td><textarea name="txtExperience" rows="3" cols="20"
-											id="txtExperience" class="textarea" style="width: 288px;">
+											id="txtExperience" class="textarea" style="width: 288px;" v-model="teacher.experience">
 </textarea><br /> 这些内容是对你教学水平最有力和最直接的反映！是学员选择你的一项重要依据。</td>
 								</tr>
 							</table>
@@ -569,23 +583,23 @@
 									<th>手机号码：</th>
 									<td><input name="txtMobile" type="text"
 										value="13838190418" id="txtMobile" class="txt"
-										style="width: 144px;" /></td>
+										style="width: 144px;" v-model="teacher.phone"/></td>
 								</tr>
 								<tr>
 									<th>QQ&nbsp;号码：</th>
 									<td><input name="txtQq" type="text" value="4533289523"
-										id="txtQq" class="txt" style="width: 144px;" /></td>
+										id="txtQq" class="txt" style="width: 144px;" v-model="teacher.qq" /></td>
 								</tr>
 								<tr>
 									<th>微 信 号：</th>
 									<td><input name="txtMsn" type="text" value="13838190418"
-										id="txtMsn" class="txt" style="width: 144px;" />阳光家教网微信号：ygjjcom
+										id="txtMsn" class="txt" style="width: 144px;" v-model="teacher.wechat" />阳光家教网微信号：ygjjcom
 									</td>
 								</tr>
 								<tr>
 									<th>电子邮件：</th>
 									<td><input name="txtEmail" type="text" id="txtEmail"
-										class="txt" style="width: 224px;" /></td>
+										class="txt" style="width: 224px;" v-model="teacher.email" /></td>
 								</tr>
 								<tr>
 									<th>学校住所：</th>
@@ -660,7 +674,6 @@
 										<div id="UpdatePanel1">
 
 											大区域： <select name="lstBigArea2"
-												onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;lstBigArea2\&#39;,\&#39;\&#39;)&#39;, 0)"
 												id="lstBigArea2" class="ddl">
 												<option value="-1">---请选择---</option>
 												<option value="8">闵行</option>

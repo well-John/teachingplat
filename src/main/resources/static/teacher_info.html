@@ -105,26 +105,25 @@
         });
 
 
-
         $(function () {
-            var vm =new Vue({
-                el:'#form1',
-                data:{
-                    teacher:null
+            var vm = new Vue({
+                el: '#form1',
+                data: {
+                    teacher: null
                 },
-                filters:{
-                    showTeacherName:function(value){
-                        if(!value) return '';
+                filters: {
+                    showTeacherName: function (value) {
+                        if (!value) return '';
                         value = value.toString();
-                        return value.substring(0,1)+"教员";
+                        return value.substring(0, 1) + "教员";
                     },
-                    showSex:function(value){
-                        if(value==0)
+                    showSex: function (value) {
+                        if (value == 0)
                             return "男";
                         else
                             return "女";
                     },
-                    showTime:function(value){
+                    showTime: function (value) {
                         return getMyDate(value);
                     }
                 }
@@ -443,7 +442,7 @@
                                     </td>
                                     <th>姓名：</th>
                                     <td><span class='cor'>廖教员</span>
-                        </div>
+
                         <div class='zt qy' title='未签约'></div>
                         <div class='zt vip_on' title='已审核证件'></div>
                         </td>
