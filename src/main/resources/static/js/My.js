@@ -136,6 +136,7 @@
 		$.ajax({
 			url : 'checklogin',
 			type : 'post',
+			async : false,
 			dataType : "json",
 			success:function(data){
 				if(data.code==100){
@@ -190,7 +191,7 @@
 					
 					$(list).each(function(index,data){
 						var TeacherInfo='<li class="cf2"><div class="teacher_head"><a href="teacher_info.html" target="_blank" title="家教">'
-					           +'<img src="images/'+data.avatar+'" border="0" width="90" height="100"></a><div style="display: block">'
+					           +'<img src="'+data.avatar+'" border="0" width="90" height="100"></a><div style="display: block">'
 					           +'<a href="teacher_info.html?id='+data.id+'" class="teach_num">成功(<span>2</span>)</a></div>'
 					           +'<div style="display: none"><a href="teacher_info.html" class="teach_view">评价(<span>0</span>)</a></div></div>'
 					           +'<div class="teacher_info"><div class="btn"><div>登录时间：<span class="eng">'+getMyDate(data.lastTime)+'</span></div>'
@@ -447,12 +448,13 @@
 		showTeachers(ele,data);
 	}
 
-	function getTeacherInfo() {
+	function getTeacherInfo(id) {
 		var teacher = null;
 		$.ajax({
             url:'teacher/getInfo',
             type:'post',
             async:false,
+            data:{'id':id},
             dataType:'json',
             success:function(data){
                 if(data.code == 100){
@@ -464,8 +466,9 @@
     }
 		
 		
-    function showImg() {
-		var teacher = getTeacherInfo();
+    function showImg(id) {
+		var teacher = getTeacherInfo(id);
+		console.log(teacher);
 		$(".txBox2 img").attr("src",teacher.avatar);
     }
 		

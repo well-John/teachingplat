@@ -80,4 +80,18 @@ public class Favorite {
     public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
+
+    @Override
+    public String toString() {
+        return "Favorite{" +
+                "id=" + id +
+                ", teacherId=" + teacherId +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                ", education='" + education + '\'' +
+                ", schoolMajor='" + schoolMajor + '\'' +
+                ", subject='" + subject + '\'' +
+                ", studentId=" + studentId +
+                '}';
+    }
 }

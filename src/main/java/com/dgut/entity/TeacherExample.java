@@ -1135,6 +1135,76 @@ public class TeacherExample {
             return (Criteria) this;
         }
 
+        public Criteria andTeachingWayIsNull() {
+            addCriterion("teaching_way is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayIsNotNull() {
+            addCriterion("teaching_way is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayEqualTo(String value) {
+            addCriterion("teaching_way =", value, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayNotEqualTo(String value) {
+            addCriterion("teaching_way <>", value, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayGreaterThan(String value) {
+            addCriterion("teaching_way >", value, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayGreaterThanOrEqualTo(String value) {
+            addCriterion("teaching_way >=", value, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayLessThan(String value) {
+            addCriterion("teaching_way <", value, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayLessThanOrEqualTo(String value) {
+            addCriterion("teaching_way <=", value, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayLike(String value) {
+            addCriterion("teaching_way like", value, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayNotLike(String value) {
+            addCriterion("teaching_way not like", value, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayIn(List<String> values) {
+            addCriterion("teaching_way in", values, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayNotIn(List<String> values) {
+            addCriterion("teaching_way not in", values, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayBetween(String value1, String value2) {
+            addCriterion("teaching_way between", value1, value2, "teachingWay");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeachingWayNotBetween(String value1, String value2) {
+            addCriterion("teaching_way not between", value1, value2, "teachingWay");
+            return (Criteria) this;
+        }
+
         public Criteria andTeachingSubjectIsNull() {
             addCriterion("teaching_subject is null");
             return (Criteria) this;
@@ -1272,6 +1342,76 @@ public class TeacherExample {
 
         public Criteria andForeignLevelNotBetween(String value1, String value2) {
             addCriterion("foreign_level not between", value1, value2, "foreignLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentIsNull() {
+            addCriterion("payment is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentIsNotNull() {
+            addCriterion("payment is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentEqualTo(String value) {
+            addCriterion("payment =", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentNotEqualTo(String value) {
+            addCriterion("payment <>", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentGreaterThan(String value) {
+            addCriterion("payment >", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentGreaterThanOrEqualTo(String value) {
+            addCriterion("payment >=", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentLessThan(String value) {
+            addCriterion("payment <", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentLessThanOrEqualTo(String value) {
+            addCriterion("payment <=", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentLike(String value) {
+            addCriterion("payment like", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentNotLike(String value) {
+            addCriterion("payment not like", value, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentIn(List<String> values) {
+            addCriterion("payment in", values, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentNotIn(List<String> values) {
+            addCriterion("payment not in", values, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentBetween(String value1, String value2) {
+            addCriterion("payment between", value1, value2, "payment");
+            return (Criteria) this;
+        }
+
+        public Criteria andPaymentNotBetween(String value1, String value2) {
+            addCriterion("payment not between", value1, value2, "payment");
             return (Criteria) this;
         }
 
@@ -1992,6 +2132,66 @@ public class TeacherExample {
 
         public Criteria andLoginTimesNotBetween(Integer value1, Integer value2) {
             addCriterion("login_times not between", value1, value2, "loginTimes");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyIsNull() {
+            addCriterion("isverify is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyIsNotNull() {
+            addCriterion("isverify is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyEqualTo(Integer value) {
+            addCriterion("isverify =", value, "isverify");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyNotEqualTo(Integer value) {
+            addCriterion("isverify <>", value, "isverify");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyGreaterThan(Integer value) {
+            addCriterion("isverify >", value, "isverify");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyGreaterThanOrEqualTo(Integer value) {
+            addCriterion("isverify >=", value, "isverify");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyLessThan(Integer value) {
+            addCriterion("isverify <", value, "isverify");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyLessThanOrEqualTo(Integer value) {
+            addCriterion("isverify <=", value, "isverify");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyIn(List<Integer> values) {
+            addCriterion("isverify in", values, "isverify");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyNotIn(List<Integer> values) {
+            addCriterion("isverify not in", values, "isverify");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyBetween(Integer value1, Integer value2) {
+            addCriterion("isverify between", value1, value2, "isverify");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsverifyNotBetween(Integer value1, Integer value2) {
+            addCriterion("isverify not between", value1, value2, "isverify");
             return (Criteria) this;
         }
     }

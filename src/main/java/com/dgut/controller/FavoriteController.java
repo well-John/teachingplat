@@ -1,10 +1,13 @@
 package com.dgut.controller;
 
-import java.util.List;
-
-import javax.mail.Session;
-import javax.servlet.http.HttpSession;
-
+import com.dgut.entity.Favorite;
+import com.dgut.entity.Msg;
+import com.dgut.entity.Student;
+import com.dgut.entity.Teacher;
+import com.dgut.service.FavoriteService;
+import com.dgut.service.TeacherService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dgut.entity.*;
-
-import com.dgut.service.FavoriteService;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class FavoriteController {
@@ -29,6 +29,9 @@ public class FavoriteController {
 
 	@Autowired
 	FavoriteService favoriteService;
+
+	@Autowired
+	TeacherService teacherService;
 	
 	@RequestMapping(value = "selectAllFavorite",method = RequestMethod.POST)
 	@ResponseBody
@@ -41,5 +44,31 @@ public class FavoriteController {
 			return Msg.success("").add("pageInfo", pageInfo);
 		}
 		return Msg.error("");
+	}
+
+	@RequestMapping(value = "favorite/addFavorite",method = RequestMethod.POST)
+	@ResponseBody
+	public Msg addFavorite(HttpSession session,Integer teacherId){
+		 Integer identity = (Integer) session.getAttribute("identity");
+		logger.info("当前身份为：{}",identity);
+		 if(identity != 1){
+		 	return Msg.error("该操作仅为学员使用");
+		 }
+        Favorite favorite = new Favorite();
+		Student student = (Student) session.getAttribute("student");
+		favorite.setStudentId(student.getId());
+		Teacher teacher = teacherService.selectByPrimaryKey(teacherId);
+		favorite.setName(teacher.getName());
+		favorite.setEducation(teacher.getEducation());
+		favorite.setSchoolMajor(teacher.getUniversity()+teacher.getMajor());
+		favorite.setSex(teacher.getSex());
+		favorite.setSubject(teacher.getTeachingSubject());
+		favorite.setTeacherId(teacherId);
+		if(favoriteService.insertSelective(favorite) == 1){
+			return Msg.success("收藏教员成功");
+		}else{
+			logger.error("插入favorite记录失败;当前参数为:{}",favorite.toString());
+			return Msg.error("收藏教员失败");
+		}
 	}
 }

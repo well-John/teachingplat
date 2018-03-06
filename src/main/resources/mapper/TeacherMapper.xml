@@ -17,8 +17,10 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="teaching_time" jdbcType="VARCHAR" property="teachingTime" />
     <result column="teaching_area" jdbcType="VARCHAR" property="teachingArea" />
+    <result column="teaching_way" jdbcType="VARCHAR" property="teachingWay" />
     <result column="teaching_subject" jdbcType="VARCHAR" property="teachingSubject" />
     <result column="foreign_level" jdbcType="VARCHAR" property="foreignLevel" />
+    <result column="payment" jdbcType="VARCHAR" property="payment" />
     <result column="experience" jdbcType="VARCHAR" property="experience" />
     <result column="avatar" jdbcType="VARCHAR" property="avatar" />
     <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
@@ -30,6 +32,7 @@
     <result column="current_status" jdbcType="VARCHAR" property="currentStatus" />
     <result column="wechat" jdbcType="VARCHAR" property="wechat" />
     <result column="login_times" jdbcType="INTEGER" property="loginTimes" />
+    <result column="isverify" jdbcType="INTEGER" property="isverify" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -91,9 +94,9 @@
   </sql>
   <sql id="Base_Column_List">
     id, nickname, name, password, sex, birthday, education, major, university, phone, 
-    email, description, address, teaching_time, teaching_area, teaching_subject, foreign_level, 
-    experience, avatar, last_time, register_time, last_ip, isabled, identity, qq, current_status, 
-    wechat, login_times
+    email, description, address, teaching_time, teaching_area, teaching_way, teaching_subject, 
+    foreign_level, payment, experience, avatar, last_time, register_time, last_ip, isabled, 
+    identity, qq, current_status, wechat, login_times, isverify
   </sql>
   <select id="selectByExample" parameterType="com.dgut.entity.TeacherExample" resultMap="BaseResultMap">
     select
@@ -131,21 +134,23 @@
       education, major, university, 
       phone, email, description, 
       address, teaching_time, teaching_area, 
-      teaching_subject, foreign_level, experience, 
-      avatar, last_time, register_time, 
-      last_ip, isabled, identity, 
-      qq, current_status, wechat, 
-      login_times)
+      teaching_way, teaching_subject, foreign_level, 
+      payment, experience, avatar, 
+      last_time, register_time, last_ip, 
+      isabled, identity, qq, 
+      current_status, wechat, login_times, 
+      isverify)
     values (#{id,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{birthday,jdbcType=VARCHAR}, 
       #{education,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{university,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{teachingTime,jdbcType=VARCHAR}, #{teachingArea,jdbcType=VARCHAR}, 
-      #{teachingSubject,jdbcType=VARCHAR}, #{foreignLevel,jdbcType=VARCHAR}, #{experience,jdbcType=VARCHAR}, 
-      #{avatar,jdbcType=VARCHAR}, #{lastTime,jdbcType=TIMESTAMP}, #{registerTime,jdbcType=TIMESTAMP}, 
-      #{lastIp,jdbcType=VARCHAR}, #{isabled,jdbcType=INTEGER}, #{identity,jdbcType=INTEGER}, 
-      #{qq,jdbcType=VARCHAR}, #{currentStatus,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
-      #{loginTimes,jdbcType=INTEGER})
+      #{teachingWay,jdbcType=VARCHAR}, #{teachingSubject,jdbcType=VARCHAR}, #{foreignLevel,jdbcType=VARCHAR}, 
+      #{payment,jdbcType=VARCHAR}, #{experience,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{lastTime,jdbcType=TIMESTAMP}, #{registerTime,jdbcType=TIMESTAMP}, #{lastIp,jdbcType=VARCHAR}, 
+      #{isabled,jdbcType=INTEGER}, #{identity,jdbcType=INTEGER}, #{qq,jdbcType=VARCHAR}, 
+      #{currentStatus,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{loginTimes,jdbcType=INTEGER}, 
+      #{isverify,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.dgut.entity.Teacher">
     insert into teacher
@@ -195,11 +200,17 @@
       <if test="teachingArea != null">
         teaching_area,
       </if>
+      <if test="teachingWay != null">
+        teaching_way,
+      </if>
       <if test="teachingSubject != null">
         teaching_subject,
       </if>
       <if test="foreignLevel != null">
         foreign_level,
+      </if>
+      <if test="payment != null">
+        payment,
       </if>
       <if test="experience != null">
         experience,
@@ -233,6 +244,9 @@
       </if>
       <if test="loginTimes != null">
         login_times,
+      </if>
+      <if test="isverify != null">
+        isverify,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -281,11 +295,17 @@
       <if test="teachingArea != null">
         #{teachingArea,jdbcType=VARCHAR},
       </if>
+      <if test="teachingWay != null">
+        #{teachingWay,jdbcType=VARCHAR},
+      </if>
       <if test="teachingSubject != null">
         #{teachingSubject,jdbcType=VARCHAR},
       </if>
       <if test="foreignLevel != null">
         #{foreignLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        #{payment,jdbcType=VARCHAR},
       </if>
       <if test="experience != null">
         #{experience,jdbcType=VARCHAR},
@@ -319,6 +339,9 @@
       </if>
       <if test="loginTimes != null">
         #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="isverify != null">
+        #{isverify,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -376,11 +399,17 @@
       <if test="record.teachingArea != null">
         teaching_area = #{record.teachingArea,jdbcType=VARCHAR},
       </if>
+      <if test="record.teachingWay != null">
+        teaching_way = #{record.teachingWay,jdbcType=VARCHAR},
+      </if>
       <if test="record.teachingSubject != null">
         teaching_subject = #{record.teachingSubject,jdbcType=VARCHAR},
       </if>
       <if test="record.foreignLevel != null">
         foreign_level = #{record.foreignLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payment != null">
+        payment = #{record.payment,jdbcType=VARCHAR},
       </if>
       <if test="record.experience != null">
         experience = #{record.experience,jdbcType=VARCHAR},
@@ -415,6 +444,9 @@
       <if test="record.loginTimes != null">
         login_times = #{record.loginTimes,jdbcType=INTEGER},
       </if>
+      <if test="record.isverify != null">
+        isverify = #{record.isverify,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -437,8 +469,10 @@
       address = #{record.address,jdbcType=VARCHAR},
       teaching_time = #{record.teachingTime,jdbcType=VARCHAR},
       teaching_area = #{record.teachingArea,jdbcType=VARCHAR},
+      teaching_way = #{record.teachingWay,jdbcType=VARCHAR},
       teaching_subject = #{record.teachingSubject,jdbcType=VARCHAR},
       foreign_level = #{record.foreignLevel,jdbcType=VARCHAR},
+      payment = #{record.payment,jdbcType=VARCHAR},
       experience = #{record.experience,jdbcType=VARCHAR},
       avatar = #{record.avatar,jdbcType=VARCHAR},
       last_time = #{record.lastTime,jdbcType=TIMESTAMP},
@@ -449,7 +483,8 @@
       qq = #{record.qq,jdbcType=VARCHAR},
       current_status = #{record.currentStatus,jdbcType=VARCHAR},
       wechat = #{record.wechat,jdbcType=VARCHAR},
-      login_times = #{record.loginTimes,jdbcType=INTEGER}
+      login_times = #{record.loginTimes,jdbcType=INTEGER},
+      isverify = #{record.isverify,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -499,11 +534,17 @@
       <if test="teachingArea != null">
         teaching_area = #{teachingArea,jdbcType=VARCHAR},
       </if>
+      <if test="teachingWay != null">
+        teaching_way = #{teachingWay,jdbcType=VARCHAR},
+      </if>
       <if test="teachingSubject != null">
         teaching_subject = #{teachingSubject,jdbcType=VARCHAR},
       </if>
       <if test="foreignLevel != null">
         foreign_level = #{foreignLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=VARCHAR},
       </if>
       <if test="experience != null">
         experience = #{experience,jdbcType=VARCHAR},
@@ -538,6 +579,9 @@
       <if test="loginTimes != null">
         login_times = #{loginTimes,jdbcType=INTEGER},
       </if>
+      <if test="isverify != null">
+        isverify = #{isverify,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -557,8 +601,10 @@
       address = #{address,jdbcType=VARCHAR},
       teaching_time = #{teachingTime,jdbcType=VARCHAR},
       teaching_area = #{teachingArea,jdbcType=VARCHAR},
+      teaching_way = #{teachingWay,jdbcType=VARCHAR},
       teaching_subject = #{teachingSubject,jdbcType=VARCHAR},
       foreign_level = #{foreignLevel,jdbcType=VARCHAR},
+      payment = #{payment,jdbcType=VARCHAR},
       experience = #{experience,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
       last_time = #{lastTime,jdbcType=TIMESTAMP},
@@ -569,7 +615,8 @@
       qq = #{qq,jdbcType=VARCHAR},
       current_status = #{currentStatus,jdbcType=VARCHAR},
       wechat = #{wechat,jdbcType=VARCHAR},
-      login_times = #{loginTimes,jdbcType=INTEGER}
+      login_times = #{loginTimes,jdbcType=INTEGER},
+      isverify = #{isverify,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
@@ -580,5 +627,4 @@
   <select id="checkEmail" resultType="java.lang.Integer">
     select count(*) from teacher where email = #{email}
   </select>
-
 </mapper>

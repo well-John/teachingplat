@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -111,11 +112,37 @@ public class TeacherController {
 
         @RequestMapping("/getInfo")
         @ResponseBody
-        public Msg getTeacherInfo (HttpSession session){
+        public Msg getTeacherInfo (HttpSession session,Integer id){
             Teacher teacher = null;
+            if(id != null){
+                teacher = teacherService.selectByPrimaryKey(id);
+                return Msg.success("").add("teacher",teacher);
+            }
             if ((teacher = (Teacher) session.getAttribute("teacher")) != null) {
                 return Msg.success("").add("teacher", teacher);
             }
             return Msg.error("");
+        }
+
+        @RequestMapping(value = "/updateInfo",method = RequestMethod.POST)
+        @ResponseBody
+        public Msg updateTeacherInfo(Teacher teacher){
+            if(teacherService.updateByPrimaryKeySelective(teacher)==1){
+                return Msg.success("");
+            }else{
+                return Msg.error("");
+            }
+        }
+
+        @RequestMapping(value = "/changePass",method = RequestMethod.POST)
+        @ResponseBody
+        public Msg updatePassword(HttpSession session,String password){
+            Teacher teacher = (Teacher) session.getAttribute("teacher");
+            teacher.setPassword(password.trim());
+            if(teacherService.updateByPrimaryKeySelective(teacher)==1){
+                return Msg.success("更新密码成功");
+            }else{
+                return Msg.error("更新密码失败");
+            }
         }
     }

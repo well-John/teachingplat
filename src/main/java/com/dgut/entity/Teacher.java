@@ -1,5 +1,7 @@
 package com.dgut.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Teacher {
@@ -33,16 +35,21 @@ public class Teacher {
 
     private String teachingArea;
 
+    private String teachingWay;
+
     private String teachingSubject;
 
     private String foreignLevel;
+
+    private String payment;
 
     private String experience;
 
     private String avatar;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastTime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date registerTime;
 
     private String lastIp;
@@ -58,6 +65,8 @@ public class Teacher {
     private String wechat;
 
     private Integer loginTimes;
+
+    private Integer isverify;
 
     public Integer getId() {
         return id;
@@ -179,6 +188,14 @@ public class Teacher {
         this.teachingArea = teachingArea == null ? null : teachingArea.trim();
     }
 
+    public String getTeachingWay() {
+        return teachingWay;
+    }
+
+    public void setTeachingWay(String teachingWay) {
+        this.teachingWay = teachingWay == null ? null : teachingWay.trim();
+    }
+
     public String getTeachingSubject() {
         return teachingSubject;
     }
@@ -193,6 +210,14 @@ public class Teacher {
 
     public void setForeignLevel(String foreignLevel) {
         this.foreignLevel = foreignLevel == null ? null : foreignLevel.trim();
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment == null ? null : payment.trim();
     }
 
     public String getExperience() {
@@ -281,5 +306,13 @@ public class Teacher {
 
     public void setLoginTimes(Integer loginTimes) {
         this.loginTimes = loginTimes;
+    }
+
+    public Integer getIsverify() {
+        return isverify;
+    }
+
+    public void setIsverify(Integer isverify) {
+        this.isverify = isverify;
     }
 }

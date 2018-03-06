@@ -853,8 +853,9 @@
 				var teachingWay='';
 				var pcode=$("#txtCode").val();
 				$("#TeachType_chkList input:checked").each(function(){
-					teachingWay+=$(this).val()+" ";
+					teachingWay+=$(this).val()+",";
 				});
+				teachingWay = teachingWay.substring(0,teachingWay.length-1)
 				var second_parms=window.localStorage.getItem("second_parms");
 				
 				var third_parms=second_parms+"&"+"foreginLevel="+foreginLevel+"&description="+description+"&experience="+experience+"&teachingTime="+teachingTime+"&payment="+payment
@@ -892,11 +893,13 @@
         
 		  function CheckThird() {
 			  $("#lstMySubject option").each(function(){
-					teachingSubject+=$(this).val()+" ";
+					teachingSubject+=$(this).val()+",";
 			 });
+			        teachingSubject = teachingSubject.substring(0,teachingSubject.length-1);
 			$("#lstMyArea option").each(function(){
-				teachingArea+=$(this).val()+" ";
+				teachingArea+=$(this).val()+",";
 			 });
+			    teachingArea = teachingArea.substring(0,teachingArea.length-1);
 			  
 	            if (teachingSubject=='') {
 	                alert("授课科目必须填写！");
