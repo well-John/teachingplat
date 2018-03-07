@@ -1,6 +1,7 @@
 package com.dgut.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TeacherRequirementExample {
@@ -1491,6 +1492,126 @@ public class TeacherRequirementExample {
 
         public Criteria andRidingAllowanceNotBetween(Integer value1, Integer value2) {
             addCriterion("riding_allowance not between", value1, value2, "ridingAllowance");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeIsNull() {
+            addCriterion("release_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeIsNotNull() {
+            addCriterion("release_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeEqualTo(Date value) {
+            addCriterion("release_time =", value, "releaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeNotEqualTo(Date value) {
+            addCriterion("release_time <>", value, "releaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeGreaterThan(Date value) {
+            addCriterion("release_time >", value, "releaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("release_time >=", value, "releaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeLessThan(Date value) {
+            addCriterion("release_time <", value, "releaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeLessThanOrEqualTo(Date value) {
+            addCriterion("release_time <=", value, "releaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeIn(List<Date> values) {
+            addCriterion("release_time in", values, "releaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeNotIn(List<Date> values) {
+            addCriterion("release_time not in", values, "releaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeBetween(Date value1, Date value2) {
+            addCriterion("release_time between", value1, value2, "releaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseTimeNotBetween(Date value1, Date value2) {
+            addCriterion("release_time not between", value1, value2, "releaseTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusIsNull() {
+            addCriterion("release_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusIsNotNull() {
+            addCriterion("release_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusEqualTo(Integer value) {
+            addCriterion("release_status =", value, "releaseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusNotEqualTo(Integer value) {
+            addCriterion("release_status <>", value, "releaseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusGreaterThan(Integer value) {
+            addCriterion("release_status >", value, "releaseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("release_status >=", value, "releaseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusLessThan(Integer value) {
+            addCriterion("release_status <", value, "releaseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("release_status <=", value, "releaseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusIn(List<Integer> values) {
+            addCriterion("release_status in", values, "releaseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusNotIn(List<Integer> values) {
+            addCriterion("release_status not in", values, "releaseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusBetween(Integer value1, Integer value2) {
+            addCriterion("release_status between", value1, value2, "releaseStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andReleaseStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("release_status not between", value1, value2, "releaseStatus");
             return (Criteria) this;
         }
     }

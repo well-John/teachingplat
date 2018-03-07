@@ -1,26 +1,9 @@
 package com.dgut.entity;
 
-import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
-
-import java.io.Serializable;
 import java.util.Date;
 
-public class TeacherRequirement implements Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Override
-	public String toString() {
-		return "TeacherRequirement [id=" + id + ", studentId=" + studentId + ", concat=" + concat + ", sex=" + sex + ", age=" + age + ", grade="
-				+ grade + ", phone=" + phone + ", email=" + email + ", area=" + area + ", address=" + address + ", subject=" + subject
-				+ ", studentDescription=" + studentDescription + ", studentLevel=" + studentLevel + ", teachingTime=" + teachingTime
-				+ ", requireCount=" + requireCount + ", requireSex=" + requireSex + ", identity=" + identity + ", requirement=" + requirement
-				+ ", payment=" + payment + ", teachingType=" + teachingType + ", ridingAllowance=" + ridingAllowance + "]";
-	}
-
-	private Integer id;
+public class TeacherRequirement {
+    private Integer id;
 
     private Integer studentId;
 
@@ -66,22 +49,6 @@ public class TeacherRequirement implements Serializable{
 
     private Integer releaseStatus;
 
-    public Integer getReleaseStatus() {
-        return releaseStatus;
-    }
-
-    public void setReleaseStatus(Integer releaseStatus) {
-        this.releaseStatus = releaseStatus;
-    }
-
-    public Date getReleaseTime() {
-        return releaseTime;
-    }
-
-    public void setReleaseTime(Date releaseTime) {
-        this.releaseTime = releaseTime;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -103,7 +70,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setConcat(String concat) {
-        this.concat = concat;
+        this.concat = concat == null ? null : concat.trim();
     }
 
     public Integer getSex() {
@@ -119,7 +86,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setAge(String age) {
-        this.age = age;
+        this.age = age == null ? null : age.trim();
     }
 
     public String getGrade() {
@@ -127,7 +94,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setGrade(String grade) {
-        this.grade = grade;
+        this.grade = grade == null ? null : grade.trim();
     }
 
     public String getPhone() {
@@ -135,7 +102,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getEmail() {
@@ -143,7 +110,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email == null ? null : email.trim();
     }
 
     public String getArea() {
@@ -151,7 +118,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setArea(String area) {
-        this.area = area;
+        this.area = area == null ? null : area.trim();
     }
 
     public String getAddress() {
@@ -159,7 +126,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = address == null ? null : address.trim();
     }
 
     public String getSubject() {
@@ -167,7 +134,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setSubject(String subject) {
-        this.subject = subject;
+        this.subject = subject == null ? null : subject.trim();
     }
 
     public String getStudentDescription() {
@@ -175,7 +142,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setStudentDescription(String studentDescription) {
-        this.studentDescription = studentDescription;
+        this.studentDescription = studentDescription == null ? null : studentDescription.trim();
     }
 
     public Integer getStudentLevel() {
@@ -191,7 +158,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setTeachingTime(String teachingTime) {
-        this.teachingTime = teachingTime;
+        this.teachingTime = teachingTime == null ? null : teachingTime.trim();
     }
 
     public Integer getRequireCount() {
@@ -223,7 +190,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setRequirement(String requirement) {
-        this.requirement = requirement;
+        this.requirement = requirement == null ? null : requirement.trim();
     }
 
     public String getPayment() {
@@ -231,7 +198,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setPayment(String payment) {
-        this.payment = payment;
+        this.payment = payment == null ? null : payment.trim();
     }
 
     public String getTeachingType() {
@@ -239,7 +206,7 @@ public class TeacherRequirement implements Serializable{
     }
 
     public void setTeachingType(String teachingType) {
-        this.teachingType = teachingType;
+        this.teachingType = teachingType == null ? null : teachingType.trim();
     }
 
     public Integer getRidingAllowance() {
@@ -248,5 +215,21 @@ public class TeacherRequirement implements Serializable{
 
     public void setRidingAllowance(Integer ridingAllowance) {
         this.ridingAllowance = ridingAllowance;
+    }
+
+    public Date getReleaseTime() {
+        return releaseTime;
+    }
+
+    public void setReleaseTime(Date releaseTime) {
+        this.releaseTime = releaseTime;
+    }
+
+    public Integer getReleaseStatus() {
+        return releaseStatus;
+    }
+
+    public void setReleaseStatus(Integer releaseStatus) {
+        this.releaseStatus = releaseStatus;
     }
 }

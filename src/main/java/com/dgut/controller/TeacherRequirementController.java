@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -79,12 +80,19 @@ public class TeacherRequirementController {
 		}
 		return Msg.error("发布家教信息失败");
 	}
-	//学员库中查询的家教信息
-	@RequestMapping(value = "/selectAllTeacherRequire",method = RequestMethod.POST)
+	//学员库中查询的家教信息，查询发布中和已关闭的订单，按时间降序
+	@RequestMapping(value = "/selectAllTeacherRequire")
 	@ResponseBody
-	public Msg selectAllTeacherRequire(@RequestParam(value="pageNum",defaultValue="1")Integer pageNum,String area,String grade,Integer sex,Integer identity,String subject){
+	public Msg selectAllTeacherRequire(@RequestParam(value="pageNum",defaultValue="1")Integer pageNum,String area,String grade,Integer sex,Integer identity,String subject,String studentId){
 		PageHelper.startPage(pageNum, pageSize);
-		List<TeacherRequirement> list=teacherRequirementService.selecTeacherRequirementsByExample(area, grade, sex, identity, subject);
+		Integer studentId1;
+		if("".equals(studentId)){
+		    studentId1 = null;
+        }else{
+		    studentId1 = Integer.parseInt(studentId);
+        }
+
+		List<TeacherRequirement> list=teacherRequirementService.selectTeacherRequirementsByExample(area, grade, sex, identity, subject,studentId1);
 		if(!list.isEmpty()&&list.size()!=0){
 			PageInfo<TeacherRequirement> pageInfo=new PageInfo<>(list);
 			return Msg.success("").add("pageInfo", pageInfo);
@@ -102,4 +110,18 @@ public class TeacherRequirementController {
 		}
 		return Msg.error("");
 	}
+
+
+	@RequestMapping("/selectTeacherRequirementByStudentId")
+    @ResponseBody
+	public Msg selectTeacherRequirementByStudentId(Integer studentId){
+        List<TeacherRequirement> teacherRequirements = teacherRequirementService.selectTeacherRequirementByStudentId(studentId);
+        List<Integer> ids = new ArrayList<>();
+        teacherRequirements.forEach(x->{ids.add(x.getId());});
+        if(ids.isEmpty()){
+            return Msg.error("对不起，您来晚了，该学员的家教订单已被他人预定了");
+        }else{
+            return Msg.success("").add("list",ids);
+        }
+    }
 }

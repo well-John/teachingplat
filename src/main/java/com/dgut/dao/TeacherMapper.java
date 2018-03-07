@@ -2,8 +2,9 @@ package com.dgut.dao;
 
 import com.dgut.entity.Teacher;
 import com.dgut.entity.TeacherExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TeacherMapper extends BaseMapper<Teacher,TeacherExample>{
     long countByExample(TeacherExample example);
@@ -31,4 +32,6 @@ public interface TeacherMapper extends BaseMapper<Teacher,TeacherExample>{
     int checkPhone(String phone);
 
     int checkEmail(String email);
+
+    String selectTeacherNameById(Integer id);
 }

@@ -30,4 +30,14 @@ public class FavoriteServiceImpl extends BaseServiceImpl<Favorite, FavoriteExamp
 		return favoriteMapper.selectByExample(example);
 	}
 
+	@Override
+	public boolean checkExist(Integer id, Integer teacherId) {
+		FavoriteExample example=new FavoriteExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andStudentIdEqualTo(id);
+		criteria.andTeacherIdEqualTo(teacherId);
+        List<Favorite> favorites = favoriteMapper.selectByExample(example);
+        return !favorites.isEmpty();
+	}
+
 }

@@ -32,15 +32,14 @@
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
-        <!-- Mapper 接口文件的位置 -->
+<!--        &lt;!&ndash; Mapper 接口文件的位置 &ndash;&gt;
         <javaClientGenerator targetPackage="com.dgut.dao" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
-        </javaClientGenerator>
+        </javaClientGenerator>-->
 
         <!-- 相关表的配置 -->
-        <table tableName="feedback" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+        <table tableName="appointment" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
                enableUpdateByExample="true">
-            <columnOverride column="content" jdbcType="VARCHAR" />
         </table>
     </context>
 </generatorConfiguration>

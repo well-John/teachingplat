@@ -71,4 +71,9 @@ public class TeacherServiceImpl extends BaseServiceImpl<Teacher, TeacherExample>
 		return teacherMapper.checkEmail(email)!=0?true:false;
 	}
 
+	@Override
+	public String selectTeacherNameById(Integer id) {
+		return teacherMapper.selectTeacherNameById(id);
+	}
+
 }

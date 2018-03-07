@@ -54,8 +54,12 @@ public class FavoriteController {
 		 if(identity != 1){
 		 	return Msg.error("该操作仅为学员使用");
 		 }
+
         Favorite favorite = new Favorite();
 		Student student = (Student) session.getAttribute("student");
+	    if(favoriteService.checkExist(student.getId(),teacherId)){
+	    	return Msg.error("该教员已经被收藏，不能重复收藏！！！");
+		}
 		favorite.setStudentId(student.getId());
 		Teacher teacher = teacherService.selectByPrimaryKey(teacherId);
 		favorite.setName(teacher.getName());
@@ -71,4 +75,15 @@ public class FavoriteController {
 			return Msg.error("收藏教员失败");
 		}
 	}
+
+	@RequestMapping(value = "favorite/cancelFavorite")
+	@ResponseBody
+	public Msg cancelFavorite(Integer id){
+		if(favoriteService.deleteByPrimaryKey(id) == 1){
+			return Msg.success("");
+		}else {
+			return Msg.error("");
+		}
+	}
+
 }

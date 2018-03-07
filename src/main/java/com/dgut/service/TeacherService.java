@@ -1,9 +1,9 @@
 package com.dgut.service;
 
-import java.util.List;
-
 import com.dgut.entity.Teacher;
 import com.dgut.entity.TeacherExample;
+
+import java.util.List;
 
 public interface TeacherService extends BaseService<Teacher, TeacherExample> {
 
@@ -16,5 +16,7 @@ public interface TeacherService extends BaseService<Teacher, TeacherExample> {
 	public boolean checkPhone(String phone);
 
 	public boolean checkEmail(String email);
+
+	public String selectTeacherNameById(Integer id);
 
 }

@@ -92,9 +92,10 @@
 
 		$(function(){
 			var ele=$(".dd_lstcon");
+			var studentId = GetQueryString("studentId");
 			var data="";
 			showBox1();
-			showOrders(ele,data)
+			showOrders(ele,data,studentId);
 			$(".serarea a").click(function(){
 				if($(this).text() != "不限"){
  	 	        	area=$(this).text();
@@ -315,7 +316,7 @@
 						<li><a href="Teachers.html" class=''>家教老师库</a></li>
 						<li><a href="Orders.html" class='on'>学员库</a></li>
 						<li><a href="Articles.html" class='' target="_blank">家教学堂</a></li>
-						<li><a href='Teacher.html' class=''>个人中心</a></li>
+						<li><a href='myhome' class=''>个人中心</a></li>
 					</ul>
 				</div>
 			</div>

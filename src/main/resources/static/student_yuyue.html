@@ -181,7 +181,7 @@
                     <li><a href="Teachers.html" class=''>家教老师库</a></li>
                     <li><a href="Orders.html" class=''>学员库</a></li>
                     <li><a href="Articles.html" class='' target="_blank">家教学堂</a></li>
-                    <li><a href='Teacher.html' class='on'>个人中心</a></li>
+                    <li><a href='myhome' class='on'>个人中心</a></li>
                 </ul>
             </div>
         </div>
@@ -243,6 +243,8 @@
         }
 
         function showName(name) {
+            if(name == null || name == '')
+                return "";
             return name.substring(0, 1) + "教员";
         }
         function showPageInfo(ele, data) {
@@ -253,7 +255,7 @@
         }
 
         function showStatus(status){
-            if(status == 1)
+            if(status == 0)
                 return "待确认";
             else if(status == 2)
                 return "已成功";
@@ -281,7 +283,7 @@
                         $(myappoint_div).append(lsthead);*/
                         $(list).each(function (i, item) {
                             var div_item = '<div class="item"><div class="ch1">' + getMyDate(item.appointmentDate) + '</div>'
-                                + '<div class="ch2"><span class="cor">' + '<a href="/TeacherDetail.html?id=' + item.teacherId + ' target="_blank">' + item.teacherId +'('+showName(item.teacherName)+')'+'</a></span></div>'
+                                + '<div class="ch2"><span class="cor">' + '<a href="/teacher_info.html?id=' + item.teacherId + '" target="_blank" >' + item.teacherId +'('+showName(item.teacherName)+')'+'</a></span></div>'
                                 + '<div class="ch3"> <span class="f1">'+showStatus(item.status)+'</div>'
                                 + '<div class="ch4"><a  class="t t1 updateAppoint" data-id="'+item.id+'"  data-status="'+item.status+'"  href="">确认</a></div>'
                                 + '<div class="clear">&nbsp;</div></div>';

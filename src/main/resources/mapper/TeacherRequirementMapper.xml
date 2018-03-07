@@ -3,7 +3,7 @@
 <mapper namespace="com.dgut.dao.TeacherRequirementMapper">
   <resultMap id="BaseResultMap" type="com.dgut.entity.TeacherRequirement">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="student_id" jdbcType="INTEGER" property="studentId"/>
+    <result column="student_id" jdbcType="INTEGER" property="studentId" />
     <result column="concat" jdbcType="VARCHAR" property="concat" />
     <result column="sex" jdbcType="INTEGER" property="sex" />
     <result column="age" jdbcType="VARCHAR" property="age" />
@@ -26,7 +26,6 @@
     <result column="release_time" jdbcType="TIMESTAMP" property="releaseTime" />
     <result column="release_status" jdbcType="INTEGER" property="releaseStatus" />
   </resultMap>
- 
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

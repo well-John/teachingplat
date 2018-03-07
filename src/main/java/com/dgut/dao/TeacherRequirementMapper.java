@@ -2,8 +2,9 @@ package com.dgut.dao;
 
 import com.dgut.entity.TeacherRequirement;
 import com.dgut.entity.TeacherRequirementExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TeacherRequirementMapper extends BaseMapper<TeacherRequirement, TeacherRequirementExample>{
     long countByExample(TeacherRequirementExample example);

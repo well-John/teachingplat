@@ -1,15 +1,9 @@
 package com.dgut.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Appointment implements Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	private Integer id;
+public class Appointment {
+    private Integer id;
 
     private Date appointmentDate;
 
@@ -22,6 +16,8 @@ public class Appointment implements Serializable{
     private Integer status;
 
     private String teacherName;
+
+    private Integer teacherRequirementId;
 
     public Integer getId() {
         return id;
@@ -76,6 +72,14 @@ public class Appointment implements Serializable{
     }
 
     public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
+        this.teacherName = teacherName == null ? null : teacherName.trim();
+    }
+
+    public Integer getTeacherRequirementId() {
+        return teacherRequirementId;
+    }
+
+    public void setTeacherRequirementId(Integer teacherRequirementId) {
+        this.teacherRequirementId = teacherRequirementId;
     }
 }

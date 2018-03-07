@@ -141,13 +141,13 @@
                         // console.log(vm.teacher);
                     } else {
                         alert("非法跳转");
+                        window.location.href = "index.html";
                     }
 
                 }
             });
 
-            $(document).on("click","#favorite",function(){
-                alert("进来");
+            $(document).on("click", "#favorite", function () {
                 checklogin();
                 $.ajax({
                     url: "favorite/addFavorite",
@@ -241,7 +241,7 @@
                     <li><a href="Teachers.html" class=''>家教老师库</a></li>
                     <li><a href="Orders.html" class=''>学员库</a></li>
                     <li><a href="Articles.html" class='' target="_blank">家教学堂</a></li>
-                    <li><a href='Teacher.html' class='on'>个人中心</a></li>
+                    <li><a href='myhome' class='on'>个人中心</a></li>
                 </ul>
             </div>
         </div>
@@ -370,8 +370,9 @@
                                                 $("#showWx").hide();
                                             });
                                         </script>
-                                    </a> &nbsp;<input type="submit" name="lstDetail$ctl00$imgOrder"
-                                                      value="" id="yuyue" class="zxyy"/>&nbsp;<input
+
+                                    </a> &nbsp;<!--<input type="submit" name="lstDetail$ctl00$imgOrder"
+                                                      value="" id="yuyue" class="zxyy"/>-->&nbsp;<input
                                         type="button" name="lstDetail$ctl00$imgFavorite" value=""
                                         id="favorite" class="sc"/>&nbsp;
 
@@ -948,7 +949,7 @@
                             href='https://www.sgs.gov.cn/notice/notice/view?uuid=NEK5QOkBQXpLTJQkRvxeUwsIjveo5VPC&tab=01'
                             target='_blank' rel="nofollow">
                         <image src='images/gs.gif'
-                               border=0 />
+                               border=0/>
                     </a>
                 </div>
                 <div class="ri">

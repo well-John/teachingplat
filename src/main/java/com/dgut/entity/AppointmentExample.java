@@ -534,6 +534,66 @@ public class AppointmentExample {
             addCriterion("teacher_name not between", value1, value2, "teacherName");
             return (Criteria) this;
         }
+
+        public Criteria andTeacherRequirementIdIsNull() {
+            addCriterion("teacher_requirement_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdIsNotNull() {
+            addCriterion("teacher_requirement_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdEqualTo(Integer value) {
+            addCriterion("teacher_requirement_id =", value, "teacherRequirementId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdNotEqualTo(Integer value) {
+            addCriterion("teacher_requirement_id <>", value, "teacherRequirementId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdGreaterThan(Integer value) {
+            addCriterion("teacher_requirement_id >", value, "teacherRequirementId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("teacher_requirement_id >=", value, "teacherRequirementId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdLessThan(Integer value) {
+            addCriterion("teacher_requirement_id <", value, "teacherRequirementId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdLessThanOrEqualTo(Integer value) {
+            addCriterion("teacher_requirement_id <=", value, "teacherRequirementId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdIn(List<Integer> values) {
+            addCriterion("teacher_requirement_id in", values, "teacherRequirementId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdNotIn(List<Integer> values) {
+            addCriterion("teacher_requirement_id not in", values, "teacherRequirementId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdBetween(Integer value1, Integer value2) {
+            addCriterion("teacher_requirement_id between", value1, value2, "teacherRequirementId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherRequirementIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("teacher_requirement_id not between", value1, value2, "teacherRequirementId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
