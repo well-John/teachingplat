@@ -451,18 +451,20 @@ a.alink15:active{text-decoration:none;color:#90;}
 .ui_collectBox {}
 .ui_collectBox .lsthead{ border:#e2e2e2 1px solid; border-bottom:2px solid #fca000; line-height:30px; height:30px; background:#f7f7f7;}
 .ui_collectBox .lsthead div{ float:left;font-family:"微软雅黑";font-size:13px; text-align:center;}
-.ui_collectBox .lsthead .ch1{ width:170px;}
-.ui_collectBox .lsthead .ch2{ width:230px;}
-.ui_collectBox .lsthead .ch3{ width:230px;}
+.ui_collectBox .lsthead .ch1{ width:130px;}
+.ui_collectBox .lsthead .ch2{ width:130px;}
+.ui_collectBox .lsthead .ch3{ width:130px;}
 .ui_collectBox .lsthead .ch4{ width:140px;}
+.ui_collectBox .lsthead .ch5{ width:140px;}
 
 .ui_collectBox .item{ padding:10px 0px;border-bottom:1px solid #e7e7e7;}
 .ui_collectBox .r2{ background:#fffdef; }
-.ui_collectBox .item .ch1{ width:170px;float:left;text-align:center;}
-.ui_collectBox .item .ch2{ width:230px;float:left; text-align:center;}
+.ui_collectBox .item .ch1{ width:130px;float:left;text-align:center;}
+.ui_collectBox .item .ch2{ width:130px;float:left; text-align:center;}
 .ui_collectBox .item .ch2 span{color: #017AC1; font-weight:bold;}
-.ui_collectBox .item .ch3{ width:230px;float:left; text-align:center;}
+.ui_collectBox .item .ch3{ width:170px;float:left; text-align:center;}
 .ui_collectBox .item .ch4{ width:140px;float:left;overflow:hidden;}
+.ui_collectBox .item .ch5{ width:140px;float:left;overflow:hidden;}
 
 .ui_collectBox .t{width:45px;height:26px; line-height:26px;float:left;display:block;background:url(../images/btn78.jpg) no-repeat;margin-left:15px;margin-top:3px;color:#FFF;font-weight:bold; font-size:14px;font-family:"微软雅黑";text-align:center;}
 .ui_collectBox .t1{background-position:0px -52px;}
@@ -602,7 +604,7 @@ a.alink15:active{text-decoration:none;color:#90;}
 .ui_ordersBox .item .ch1 span{color:#017AC1;font-weight:bold;}
 .ui_ordersBox .item .ch1 span a{color:#017AC1;font-weight:bold;}
 .ui_ordersBox .item .ch2{ width:80px;float:left;text-align:center;line-height:20px;}
-.ui_ordersBox .item .ch3{ width:150px;height:42px;float:left;overflow:hidden;line-height:20px;}
+.ui_ordersBox .item .ch3{ width:150px;height:42px;float:left;overflow:hidden;line-height:20px;text-align: center;}
 .ui_ordersBox .item .ch4{ width:100px;float:left;text-align:center;}
 .ui_ordersBox .item .ch5{ width:90px;float:left;text-align:center;}
 .ui_ordersBox .item .ch4 span.f1{color:#C00;}

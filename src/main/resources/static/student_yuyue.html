@@ -257,7 +257,7 @@
         function showStatus(status){
             if(status == 0)
                 return "待确认";
-            else if(status == 2)
+            else if(status == 1)
                 return "已成功";
             else if(status == 3)
                 return "已取消";
@@ -284,8 +284,9 @@
                         $(list).each(function (i, item) {
                             var div_item = '<div class="item"><div class="ch1">' + getMyDate(item.appointmentDate) + '</div>'
                                 + '<div class="ch2"><span class="cor">' + '<a href="/teacher_info.html?id=' + item.teacherId + '" target="_blank" >' + item.teacherId +'('+showName(item.teacherName)+')'+'</a></span></div>'
-                                + '<div class="ch3"> <span class="f1">'+showStatus(item.status)+'</div>'
-                                + '<div class="ch4"><a  class="t t1 updateAppoint" data-id="'+item.id+'"  data-status="'+item.status+'"  href="">确认</a></div>'
+                                + '<div class="ch3"><span class="cor">' + '<a href="/xueyuanshow.html?id=' + item.teacherRequirementId + '" target="_blank" >' + item.teacherRequirementId +'</a></span></div>'
+                                + '<div class="ch4"> <span class="f1">'+showStatus(item.status)+'</div>'
+                                + '<div class="ch5"><a  class="t t1 updateAppoint" data-id="'+item.id+'"  data-status="'+item.status+'"  href="">确认</a></div>'
                                 + '<div class="clear">&nbsp;</div></div>';
                             $(div_item).appendTo(myappoint_div);
                         });
@@ -304,16 +305,17 @@
             if($("#span1").hasClass("on")){
                 return false;
             }
-            if(status == 2){
-                return false;
-            }
             $.ajax({
                 url:'appointment/confirm',
                 type:'post',
                 dataType:'json',
                 data:'id='+id,
-                success:function(){
-                    window.location.reload();
+                success:function(data){
+                    if(data.code==100){
+                        window.location.reload();
+                    }else{
+                        alert(data.msg);
+                    }
                 }
             });
         });
@@ -321,7 +323,7 @@
         $(function () {
             showBox();
             showInfomation(1);
-            $("#lkb1").click(function () {
+           /* $("#lkb1").click(function () {
                 showInfomation(1);
                 $("#span1").addClass("on");
                 $("#span2").removeClass("on");
@@ -330,7 +332,7 @@
                 showInfomation(2);
                 $("#span2").addClass("on");
                 $("#span1").removeClass("on");
-            });
+            });*/
 
         });
 
@@ -402,9 +404,9 @@
                             <div class="ui_tit">
                                 <dl>
                                     <dt>
-											<span id="span1" class='on'> <a id="lkb1"
-                                                                            href="javascript:;">我预约的教员</a>
-											</span><span id="span2" class=''><a id="lkb2"
+											<!--<span id="span1" class='on'> <a id="lkb1"
+                                                                            href="javascript:;">我预约的教员</a>-->
+											</span><span id="span2" class='on'><a id="lkb2"
                                                                                 href="javascript:;">预约我的教员</a></span>
                                     </dt>
 
@@ -414,8 +416,9 @@
                             <div class="lsthead">
                                 <div class="ch1">预约时间</div>
                                 <div class="ch2">教员编号(姓名)</div>
-                                <div class="ch3">预约状态</div>
-                                <div class="ch4">操作</div>
+                                <div class="ch3">家教信息查看</div>
+                                <div class="ch4">预约状态</div>
+                                <div class="ch5">操作</div>
                             </div>
                             <div id="myappoint"></div>
                             <!--

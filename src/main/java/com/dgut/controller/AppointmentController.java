@@ -1,9 +1,6 @@
 package com.dgut.controller;
 
-import com.dgut.entity.Appointment;
-import com.dgut.entity.Msg;
-import com.dgut.entity.Student;
-import com.dgut.entity.Teacher;
+import com.dgut.entity.*;
 import com.dgut.service.AppointmentService;
 import com.dgut.service.TeacherRequirementService;
 import com.dgut.service.TeacherService;
@@ -80,12 +77,31 @@ public class AppointmentController {
 
     @RequestMapping(value = "/confirm", method = RequestMethod.POST)
     @ResponseBody
-    public Msg confirmAppointment(int id) {
+    public Msg confirmAppointment(Integer id) {
         logger.info("当前预约id为：{}", id);
+        if(appointmentService.checkStatus(id)){
+            return Msg.error("该预约记录已确认，请不要重复确认");
+        }
+
         Appointment appointment = new Appointment();
         appointment.setId(id);
         appointment.setStatus(1);
         if (appointmentService.updateByPrimaryKeySelective(appointment) == 1) {
+            //学员确认后，生成未支付订单
+            //1.先将家教单状态设为已关闭
+            TeacherRequirement teacherRequirement = appointmentService.selectTeacherRequirementByAppointId(id);
+            teacherRequirement.setReleaseStatus(3);
+            teacherRequirementService.updateByPrimaryKeySelective(teacherRequirement);
+            //2.生成未支付订单
+            Appointment a = appointmentService.selectByPrimaryKey(id);
+            Forder forder = new Forder();
+            forder.setReleaseDate(new Date());
+            forder.setAppointmentId(id);
+            forder.setStatus(1);
+            forder.setSubject(teacherRequirement.getSubject());
+            forder.setTeacherRequirementId(teacherRequirement.getId());
+            forder.setTeacherId(a.getTeacherId());
+            forder.setStudentId(a.getStudentId());
             return Msg.success("");
         }
         return Msg.error("预约确认失败");

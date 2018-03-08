@@ -2,6 +2,8 @@ package com.dgut.serviceImpl;
 
 import java.util.List;
 
+import com.dgut.dao.TeacherRequirementMapper;
+import com.dgut.entity.TeacherRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,9 @@ public class AppointmentServiceImpl extends BaseServiceImpl<Appointment, Appoint
 
 	@Autowired
 	AppointmentMapper appointmentMapper;
+
+	@Autowired
+	TeacherRequirementMapper teacherRequirementMapper;
 	
 	@Autowired
 	public void setBaseMapper() {
@@ -38,6 +43,16 @@ public class AppointmentServiceImpl extends BaseServiceImpl<Appointment, Appoint
 		criteria.andOrganiserEqualTo(organiser);
 		criteria.andTeacherIdEqualTo(id);
 		return appointmentMapper.selectByExample(example);
+	}
+
+	@Override
+	public boolean checkStatus(Integer id) {
+		return appointmentMapper.selectByPrimaryKey(id).getStatus()==1?true:false;
+	}
+
+	@Override
+	public TeacherRequirement selectTeacherRequirementByAppointId(Integer id) {
+		return teacherRequirementMapper.selectByPrimaryKey(appointmentMapper.selectByPrimaryKey(id).getTeacherRequirementId());
 	}
 
 }
