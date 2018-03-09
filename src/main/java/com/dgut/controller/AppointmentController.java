@@ -102,7 +102,7 @@ public class AppointmentController {
             forder.setTeacherRequirementId(teacherRequirement.getId());
             forder.setTeacherId(a.getTeacherId());
             forder.setStudentId(a.getStudentId());
-            return Msg.success("");
+            return Msg.success("预约确认成功");
         }
         return Msg.error("预约确认失败");
     }

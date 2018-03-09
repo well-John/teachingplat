@@ -241,13 +241,13 @@ $(document).ready(function() {$.fancybox({
                     var list = data.map.pageInfo.list;
                     var div_clear = $("<div></div>").addClass("clear20");
                     $(list).each(function (i, item) {
-                        var div_item = '<div class="item"><div class="ch1"> <span><a href="/Order?id=' + item.id + '" target="_blank">' + item.id + '</a></span></div>'
+                        var div_item = '<div class="item"><div class="ch1"> <span><a href="###' + item.id + '" target="_blank">' + item.id + '</a></span></div>'
                             + '<div class="ch2">' + getMyDateTime(item.releaseDate) + '</div>'
                             + '<div class="ch3"><span class="cor">' + '<a href="/teacher_info.html?id=' + item.teacherId + '" target="_blank" >' + item.teacherId  + '</a></span></div>'
                             + '<div class="ch4"><span class="cor">' + '<a href="/xueyuanshow.html?id=' + item.teacherRequirementId + '" target="_blank" >' + item.teacherRequirementId + '</a></span></div>'
                             + '<div class="ch5"> <span class="f1">' + showStatus(item.status) + '</div>'
-                            + '<div class="ch6">' + item.adminName + '</div>'
-                            + '<div class="ch7"> <a class="update_forder t"  href="##" data-id="' + item.id + '" data-status="' + item.status + '" >编辑</a> <a class="cancel t t1" data-id="' + item.id + '" data-status="' + item.status + '" href="###">取消 </a> </div><div class="clear">&nbsp;</div></div>';
+                            + '<div class="ch6">' + item.subject + '</div>'
+                            + '<div class="ch7"> <a class="forder_success t"  href="##" data-id="' + item.id + '" data-status="' + item.status + '" >成功</a> <a class="forder_fail t t1" data-id="' + item.id + '" data-status="' + item.status + '" href="###">失败 </a> </div><div class="clear">&nbsp;</div></div>';
                         $(div_item).appendTo(order_div);
                     });
                     $(div_clear).appendTo(order_div);
@@ -264,18 +264,39 @@ $(document).ready(function() {$.fancybox({
         showMyOrder();
     });
 
-    $(document).on("click", ".update_forder", function () {
+    $(document).on("click", ".forder_success", function () {
         var id = $(this).attr("data-id");
         var status = $(this).attr("data-status");
-        if (status == 3) {
+        if (status != 1 ) {
+            alert("该订单已确认，无法重复确认");
             return false;
         }
         $.ajax({
             url: '/forderComplete',
             type: 'post',
             dataType: 'json',
-            data: 'id=' + id,
-            success: function () {
+            data: {'id':id,'status':2},
+            success: function (data) {
+                alert(data.msg);
+                window.location.reload();
+            }
+        });
+    });
+
+    $(document).on("click", ".forder_fail", function () {
+        var id = $(this).attr("data-id");
+        var status = $(this).attr("data-status");
+        if (status != 1 ) {
+            alert("该订单已确认，无法重复确认");
+            return false;
+        }
+        $.ajax({
+            url: '/forderComplete',
+            type: 'post',
+            dataType: 'json',
+            data: {'id':id,'status':3},
+            success: function (data) {
+                alert(data.msg);
                 window.location.reload();
             }
         });
@@ -361,7 +382,7 @@ $(document).ready(function() {$.fancybox({
                             <div class="ch3">教员id</div>
                             <div class="ch4">查看家教信息</div>
                             <div id="lstInfo_yut" class="ch5">订单状态</div>
-                            <div class="ch6">处理人</div>
+                            <div class="ch6">求教科目</div>
                             <div class="ch7">操作</div>
                         </div>
                         <div id="MyOrder"></div>
@@ -567,7 +588,7 @@ $(document).ready(function() {$.fancybox({
                         href='https://www.sgs.gov.cn/notice/notice/view?uuid=NEK5QOkBQXpLTJQkRvxeUwsIjveo5VPC&tab=01'
                         target='_blank' rel="nofollow">
                     <image src='images/gs.gif'
-                           border=0/>
+                           border=0 />
                 </a>
             </div>
             <div class="ri">

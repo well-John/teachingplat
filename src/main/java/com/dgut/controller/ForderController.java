@@ -70,12 +70,12 @@ public class ForderController {
 
 	@RequestMapping(value = "/forderComplete",method = RequestMethod.POST)
 	@ResponseBody
-	public Msg complete(Integer id){
+	public Msg complete(Integer id,Integer status){
 		Forder forder = new Forder();
 		forder.setId(id);
-		forder.setStatus(3);
+		forder.setStatus(status);
 		forderService.updateByPrimaryKeySelective(forder);
-		return Msg.success("");
+		return Msg.success("确认订单成功");
 	}
 
 	
