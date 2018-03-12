@@ -110,6 +110,7 @@
             var vm = new Vue({
                 el: '#form1',
                 data: {
+                    check: null,
                     teacher: null
                 },
                 filters: {
@@ -138,6 +139,11 @@
                 success: function (data) {
                     if (data.code == 100) {
                         vm.teacher = data.map.teacher;
+                        if (data.map.teacher.isverify == 2) {
+                            vm.check = true;
+                        } else {
+                            vm.check = false;
+                        }
                         // console.log(vm.teacher);
                     } else {
                         alert("非法跳转");
@@ -147,6 +153,7 @@
                 }
             });
 
+            showRecommendTeacher(id);
             $(document).on("click", "#favorite", function () {
                 checklogin();
                 $.ajax({
@@ -161,6 +168,27 @@
             });
 
         });
+
+        function showRecommendTeacher(id) {
+            $(".items").empty();
+            var clear = $("<div></div>").addClass("clear20");
+            $(".items").append(clear);
+            $.ajax({
+                url: 'teacher/selectRecommendTeacher',
+                type: 'post',
+                data: {'id':id},
+                success:function (data) {
+                    var list = data.map.list;
+                    $(list).each(function (index,data) {
+                        var item = '<div class="item"><div class="tx"><a href="teacher_info.html?id= '+data.id  +'" target="_blank">' +
+                            '<img src="'+ data.avatar +'" border="0" data-bd-imgshare-binded="1"></a></div> <a href="teacher_info.html?id='+data.id +'" target="_blank">' +
+                            '<div class="con"><ul><li>编号：<span class="bh">'+data.id+'</span></li> <li>就读学校:'+data.university + '</li> <li>身份：<span class="cf60">'+data.currentStatus+'</span></li> <li>时间：'+ getMyDate(data.registerTime) +'</li></ul></div></a></div>'
+
+                        $(item).appendTo($(".items"));
+                    });
+                }
+            });
+        }
 
 
     </script>
@@ -353,7 +381,7 @@
                                 姓名：<span class='cor'>{{teacher.name | showTeacherName}}</span>
                             </div>
                             <div class='zt qy' title='未签约'></div>
-                            <div class='zt vip_on' title='已审核证件'></div>
+                            <div class='zt vip' v-bind:class="{vip_on : check}" title='已审核证件'></div>
                             <div style="float: right">
                                 <div id="lstDetail_UpdatePanel3_0">
 
@@ -511,7 +539,7 @@
                                     <h3>您可能感兴趣的教员</h3>
                                 </div>
                                 <div class="items">
-                                    <div class="clear20"></div>
+                                    <!--<div class="clear20"></div>
 
                                     <div class='item'>
                                         <div class="tx">
@@ -663,7 +691,7 @@
                                                 </ul>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div>-->
 
                                     <div class="clear"></div>
                                 </div>
@@ -675,8 +703,8 @@
             </div>
             <div class="right4">
                 <div class="btn-zjj">
-                    <a href="/Signup" class="btn1" rel='nofollow'>我要请家教</a> <a
-                        href="/Register" class="btn2" rel='nofollow'>我要做家教</a>
+                    <a href="/addOrder" class="btn1" rel='nofollow'>我要请家教</a> <a
+                        href="register_teacher.html" class="btn2" rel='nofollow'>我要做家教</a>
                 </div>
                 <div class="clear10"></div>
                 <div class="qtxgjjBox">

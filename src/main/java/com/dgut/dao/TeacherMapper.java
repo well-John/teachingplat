@@ -34,4 +34,6 @@ public interface TeacherMapper extends BaseMapper<Teacher,TeacherExample>{
     int checkEmail(String email);
 
     String selectTeacherNameById(Integer id);
+
+    List<Teacher> selectTop8(Integer id);
 }

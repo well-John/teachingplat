@@ -25,7 +25,7 @@ public class TeacherController {
 
     private Logger logger = LoggerFactory.getLogger(TeacherController.class);
 
-    private final static Integer PAGESIZE = 2;
+    private final static Integer PAGESIZE = 5;
 
     @Autowired
     TeacherService teacherService;
@@ -73,10 +73,10 @@ public class TeacherController {
         @RequestMapping("selectAllTeacher")
         @ResponseBody
         public Msg selectAllTeacher (@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum, String
-        subject, String university, String area, Integer identity, Integer sex){
+        subject, String university, String area, Integer identity, Integer sex,Integer isverify){
             System.out.println("subject=" + subject + " university=" + university + " area=" + area + " identity=" + identity + " sex=" + sex);
             PageHelper.startPage(pageNum, PAGESIZE);
-            List<Teacher> list = teacherService.selectTeachersByExample(subject, university, area, identity, sex);
+            List<Teacher> list = teacherService.selectTeachersByExample(subject, university, area, identity, sex,isverify);
             System.out.println("list:" + list);
             if (list != null && !list.isEmpty()) {
                 PageInfo<Teacher> pageInfo = new PageInfo<>(list);
@@ -144,5 +144,12 @@ public class TeacherController {
             }else{
                 return Msg.error("更新密码失败");
             }
+        }
+
+        @RequestMapping("/selectRecommendTeacher")
+        @ResponseBody
+        public Msg selectRecommendTeacher(Integer id){
+            List<Teacher> list  = teacherService.recommendTeacher(id);
+            return Msg.success("").add("list",list);
         }
     }

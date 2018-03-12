@@ -69,4 +69,27 @@ public class TeacherRequirementServiceImpl extends BaseServiceImpl<TeacherRequir
         return teacherRequirementMapper.selectByPrimaryKey(teacherRequirementId).getReleaseStatus() == 3 ? true : false;
     }
 
+    @Override
+    public List<TeacherRequirement> recommendTeacherRequirement(Integer id) {
+        TeacherRequirementExample example = new TeacherRequirementExample();
+        example.setOrderByClause("release_time desc");
+        TeacherRequirement teacherRequirement = teacherRequirementMapper.selectByPrimaryKey(id);
+        TeacherRequirementExample.Criteria criteria = example.createCriteria();
+        criteria.andIdNotEqualTo(teacherRequirement.getId());
+        if (teacherRequirement.getSubject() != null) {
+            criteria.andSubjectLike("%" + teacherRequirement.getSubject().trim() + "%");
+        }
+        if (teacherRequirement.getArea() != null) {
+            criteria.andAreaLike("%" + teacherRequirement.getArea().trim() + "%");
+        }
+        if (teacherRequirement.getRequireSex() != null) {
+            criteria.andRequireSexEqualTo(teacherRequirement.getRequireSex());
+        }
+        List<TeacherRequirement> teacherRequirements = teacherRequirementMapper.selectByExample(example);
+        if (teacherRequirements.size() == 0){
+            teacherRequirements = teacherRequirementMapper.selectTop3(id);
+        }
+        return teacherRequirements;
+    }
+
 }

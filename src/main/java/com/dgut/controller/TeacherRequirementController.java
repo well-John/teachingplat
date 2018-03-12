@@ -124,4 +124,12 @@ public class TeacherRequirementController {
             return Msg.success("").add("list",ids);
         }
     }
+
+    @RequestMapping("/selectRecommendTeacherRequire")
+	@ResponseBody
+    public Msg selectRecommendTeacherRequire(Integer id){
+		List<TeacherRequirement> teacherRequirements = teacherRequirementService.recommendTeacherRequirement(id);
+		return Msg.success("").add("list",teacherRequirements);
+	}
+
 }

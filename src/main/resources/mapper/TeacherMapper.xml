@@ -631,4 +631,8 @@
   <select id="selectTeacherNameById" resultType="java.lang.String">
      SELECT name from teacher where id = #{id}
   </select>
+
+  <select id="selectTop8"  parameterType="java.lang.Integer" resultMap="BaseResultMap">
+      SELECT * FROM teacher where id != #{id}  ORDER BY last_time DESC limit 0,8
+  </select>
 </mapper>

@@ -28,4 +28,6 @@ public interface TeacherRequirementMapper extends BaseMapper<TeacherRequirement,
     int updateByPrimaryKeySelective(TeacherRequirement record);
 
     int updateByPrimaryKey(TeacherRequirement record);
+
+    List<TeacherRequirement> selectTop3(@Param("id") Integer id);
 }

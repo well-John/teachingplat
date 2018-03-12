@@ -12,4 +12,6 @@ public interface TeacherRequirementService extends BaseService<TeacherRequiremen
     List<TeacherRequirement> selectTeacherRequirementByStudentId(Integer studentId);
 
     boolean checkClosed(Integer teacherRequirementId);
+
+    List<TeacherRequirement> recommendTeacherRequirement(Integer id);
 }
