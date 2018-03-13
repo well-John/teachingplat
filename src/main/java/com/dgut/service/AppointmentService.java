@@ -15,4 +15,6 @@ public interface AppointmentService extends BaseService<Appointment, Appointment
     boolean checkStatus(Integer id);
 	//根据预约id来获取家教信息
     TeacherRequirement selectTeacherRequirementByAppointId(Integer id);
+    //查询我的预约记录数量
+    Long countMyAppointment(Integer id,Integer identity);
 }
