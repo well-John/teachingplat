@@ -55,4 +55,16 @@ public class AppointmentServiceImpl extends BaseServiceImpl<Appointment, Appoint
 		return teacherRequirementMapper.selectByPrimaryKey(appointmentMapper.selectByPrimaryKey(id).getTeacherRequirementId());
 	}
 
+	@Override
+	public Long countMyAppointment(Integer id, Integer identity) {
+		AppointmentExample example=new AppointmentExample();
+		Criteria criteria=example.createCriteria();
+		if(identity == 1){
+			criteria.andStudentIdEqualTo(id);
+		}else{
+			criteria.andTeacherIdEqualTo(id);
+		}
+		return appointmentMapper.countByExample(example);
+	}
+
 }

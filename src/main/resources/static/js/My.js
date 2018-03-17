@@ -75,9 +75,9 @@ function showStudentLoginBox(data) {
     var w1 = '<div class="s_loginbox">' + '<div class="name">欢迎您：<span class="cf60">'
         + data.map.student.name + '</span></div><a href="" class="logout">&nbsp;</a>'
         + '<div class="clear10"></div><ul><li class="li1">我的订单</li><li class="li2"><span class="red">'
-        + 1 + '</span></li>' + '<li class="li3"><a href="student_order.html" class="link2">查看</a></li></ul>'
+        + data.map.forderCount + '</span></li>' + '<li class="li3"><a href="student_order.html" class="link2">查看</a></li></ul>'
         + '<ul><li class="li1">预约记录</li><li class="li2"><span class="red">'
-        + 1 + '</span></li><li class="li3"><a href="student_yuyue.html" class="link2">查看</a></li></ul>'
+        + data.map.appointmentCount + '</span></li><li class="li3"><a href="student_yuyue.html" class="link2">查看</a></li></ul>'
         + '<div class="clear"></div><div class="xq"><a href="student_xuqiu.html">发布需求 &gt;</a></div><div class="grzx">'
         + '<a href="student/index">&nbsp;</a></div>'
     return w1;
@@ -87,10 +87,10 @@ function showTeacherLoginBox(data) {
     var w1 = '<div class="t_loginbox"><div class="name">欢迎您：<span class="cf60">' + data.map.teacher.nickname + '</span></div>'
         + '<a href="###" class="logout">&nbsp;</a><div class="clear5"></div>'
         + '<div class="img" style="width: 74px; height: 82px"><img src="' + data.map.teacher.avatar + '" border="0"></div>'
-        + '<div class="notice"><ul><li class="li1">证件</li><li class="li2"><span class="red">0</span></li><li class="li3"><a href="/Teacher/CardManage.aspx" class="link2">上传</a></li></ul>'
-        + '<ul><li class="li1">照片</li><li class="li2"><span class="red">1</span></li><li class="li3"><a href="/Teacher/PhotoManage.aspx" class="link2"> 上传</a></li></ul>'
-        + '<ul><li class="li1">待支付</li><li class="li2"><span class="red">0</span></li><li class="li3"><a href="Teacher/TeachList.aspx" class="link2">查看</a></li></ul>'
-        + '<ul><li class="li1">预约</li><li class="li2"><span class="red">0</span></li><li class="li3"><a href="/Teacher/OrderList.aspx" class="link2">查看</a></li></ul></div>'
+        + '<div class="notice"><ul><li class="li1">证件</li><li class="li2"><span class="red">' + data.map.cardCount + '</span></li><li class="li3"><a href="teacher_cardManage.html" class="link2">上传</a></li></ul>'
+        + '<ul><li class="li1">照片</li><li class="li2"><span class="red">' + data.map.lifePhotoCount + '</span></li><li class="li3"><a href="teacher_photoManage.html" class="link2"> 上传</a></li></ul>'
+        + '<ul><li class="li1">订单</li><li class="li2"><span class="red">' + data.map.forderCount + '</span></li><li class="li3"><a href="teacher_order.html" class="link2">查看</a></li></ul>'
+        + '<ul><li class="li1">预约</li><li class="li2"><span class="red">' + data.map.appointmentCount + '</span></li><li class="li3"><a href="teacher_yuyue.html" class="link2">查看</a></li></ul></div>'
         + '<div class="clear10"></div> <div class="grzx"><a href="teacher/index">&nbsp;</a></div></div>'
 
     return w1;

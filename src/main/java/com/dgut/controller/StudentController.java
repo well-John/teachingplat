@@ -37,19 +37,7 @@ public class StudentController {
 	RandomValidateCode randomValidateCode;
 	
 	
-	@RequestMapping(value = "/checklogin", method = RequestMethod.POST)
-	@ResponseBody
-	public Msg checklogin(HttpSession session){
-		Student student=(Student) session.getAttribute("student");
-		Teacher teacher=(Teacher) session.getAttribute("teacher");
-		if(student!=null){
-			return Msg.success("").add("type", 1).add("student", student);
-		}
-		if(teacher!=null){
-			return Msg.success("").add("type", 2).add("teacher", teacher);
-		}
-		return Msg.error("");
-	}
+
 
 	@RequestMapping(value = "/logout",method = RequestMethod.POST)
 	@ResponseBody

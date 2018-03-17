@@ -41,7 +41,17 @@ public class ForderServiceImpl extends BaseServiceImpl<Forder, ForderExample> im
 		return forderMapper.selectByExample(example);
 	}
 
-	
-	
+	@Override
+	public Long countMyForder(Integer id, Integer identity) {
+		ForderExample example=new ForderExample();
+		Criteria criteria=example.createCriteria();
+		if(identity == 1){
+			criteria.andStudentIdEqualTo(id);
+		}else{
+			criteria.andTeacherIdEqualTo(id);
+		}
+		return  forderMapper.countByExample(example);
+	}
+
 
 }
