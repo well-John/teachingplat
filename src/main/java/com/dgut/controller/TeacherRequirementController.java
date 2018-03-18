@@ -69,13 +69,8 @@ public class TeacherRequirementController {
 		System.out.println(teacherRequirement);
 		Student student=(Student) session.getAttribute("student");
 		teacherRequirement.setStudentId(student.getId());
+		teacherRequirement.setReleaseTime(new Date());
 		if(teacherRequirementService.insertSelective(teacherRequirement)==1){
-			Forder forder=new Forder();
-			forder.setReleaseDate(new Date());
-			forder.setStatus(0);
-			forder.setStudentId(student.getId());
-			forder.setSubject(teacherRequirement.getSubject());
-			forderService.insertSelective(forder);
 			return Msg.success("success");
 		}
 		return Msg.error("发布家教信息失败");
