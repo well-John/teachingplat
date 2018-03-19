@@ -99,6 +99,7 @@
         var pageNum;
         showTeachers(ele, data);
         showBox1();
+        getUniversity();
         $(".serSubject a[class='txt']").click(function () {
 
             if ($(this).text() != "不限") {
@@ -259,17 +260,17 @@
         });
 
         $("#allteacher").click(function () {
-           $("#li1").addClass("on");
-           $("#li2").removeClass("on");
-           $("#li3").removeClass("on");
-           showTeachers(ele,data);
+            $("#li1").addClass("on");
+            $("#li2").removeClass("on");
+            $("#li3").removeClass("on");
+            showTeachers(ele, data);
         });
 
         $("#verifyteacher").click(function () {
             $("#li1").removeClass("on");
             $("#li3").removeClass("on");
             $("#li2").addClass("on");
-            showTeachers(ele,data,2);
+            showTeachers(ele, data, 2);
         });
 
     });
@@ -581,7 +582,6 @@
             </div>
             <div class="line">&nbsp;</div>
 
-
             <div class="serlst serArea">
                 <div class="tit">授课区域：</div>
                 <div class="bx">
@@ -595,103 +595,187 @@
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 闵行</a>
+                        <a class="txt" href='javascript:void(0);'> 莞城</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 徐汇</a>
+                        <a class="txt" href='javascript:void(0);'> 南城</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 杨浦</a>
+                        <a class="txt" href='javascript:void(0);'> 万江</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 虹口</a>
+                        <a class="txt" href='javascript:void(0);'> 东城</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 长宁</a>
+                        <a class="txt" href='javascript:void(0);'> 石碣</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 静安</a>
+                        <a class="txt" href='javascript:void(0);'> 石龙</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 黄浦</a>
+                        <a class="txt" href='javascript:void(0);'> 茶山</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 闸北</a>
+                        <a class="txt" href='javascript:void(0);'> 石排</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 普陀</a>
+                        <a class="txt" href='javascript:void(0);'> 企石</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 浦东</a>
+                        <a class="txt" href='javascript:void(0);'> 横沥</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 宝山</a>
+                        <a class="txt" href='javascript:void(0);'> 桥头</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 嘉定</a>
+                        <a class="txt" href='javascript:void(0);'> 谢岗</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 青浦</a>
+                        <a class="txt" href='javascript:void(0);'> 东坑</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 奉贤</a>
+                        <a class="txt" href='javascript:void(0);'> 常平</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 金山</a>
+                        <a class="txt" href='javascript:void(0);'> 寮步</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 松江</a>
+                        <a class="txt" href='javascript:void(0);'> 大朗</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
                     <div class='item'>
                         <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 崇明</a>
+                        <a class="txt" href='javascript:void(0);'> 清溪</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 塘厦</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 凤岗</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 长安</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 虎门</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 厚街</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 沙田</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 道滘</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 洪梅</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 麻涌</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 中堂</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 高埗</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 樟木头</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 大岭山</a>
+                        <div class="s2">&nbsp;</div>
+                    </div>
+
+                    <div class='item'>
+                        <div class="s1">&nbsp;</div>
+                        <a class="txt" href='javascript:void(0);'> 望牛墩</a>
                         <div class="s2">&nbsp;</div>
                     </div>
 
@@ -2411,6 +2495,26 @@ teacher_cardManage.htmlc='images/tx_0.jpg' border='0'>
     function showMore() {
         document.getElementById("moreClick").style.display = "none";
         document.getElementById("moreSchool").style.display = "block";
+    }
+
+
+    function getUniversity() {
+        $.ajax({
+            url: 'json/data.json',
+            type: 'get',
+            success: function (data) {
+                var universitys = [];
+                universitys = data.campus[18].guangdong;
+               for (var i =0 ;i<universitys.length;i++) {
+
+                    var div = '<div class="item"><div class="s1">&nbsp;</div><a class="txt" href="javascript:void(0);">' + universitys[i] + '</a> <div class="s2">&nbsp;</div> </div>'
+                    $(div).appendTo($(".items"));
+                }
+                console.log(universitys);
+
+            }
+
+        });
     }
 
 
