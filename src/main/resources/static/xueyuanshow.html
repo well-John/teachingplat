@@ -67,7 +67,7 @@
                 document.getElementById('g_to').focus();
                 return;
             }
-            var url = "/BDMap.aspx";
+            var url = "/map.html";
             url = url + "?strf=" + encodeURI(strf);
             url = url + "&strt=" + encodeURI(strt);
             url = url + "&c=" + encodeURI(document.getElementById('g_city').value);
@@ -187,7 +187,9 @@
         $("#teaching_type").text(data.map.req.teachingType);
         $("#release_status").text(data.map.req.releaseStatus == 1 ? "发布中" : "已关闭");
         $("#release_time").text(getMyDateTime(data.map.req.releaseTime));
-        var area_div ='<a href="Teachers.html">'+data.map.req.area+'家教</a>&nbsp;'+data.map.req.address;
+        $("#traffic").text(data.map.req.address);
+        $("#g_to").val(data.map.req.address);
+        var area_div = '<a href="Teachers.html">' + data.map.req.area + '家教</a>&nbsp;' + data.map.req.address;
         $("#area").empty().append(area_div);
     }
 
@@ -467,7 +469,7 @@
                             </tr>
                             <tr>
                                 <th>交通线路</th>
-                                <td><!-- 上中路长桥路交界附近，824,731，180，181 -->众创金融街 &nbsp;<a href="javascript:"
+                                <td ><span id="traffic">众创金融街 </span>&nbsp;<a href="javascript:"
                                                                                       onclick="DDMap1()"><img
                                         src="images/dtlx.gif" border="0"></a>
                                     <div
@@ -484,7 +486,7 @@
                                              style="font-size: 13px; margin-top: 10px; width: 300px; float: left; display: none;">
                                         </div>
                                         <input type="hidden" id="g_mapid" value='21'><input
-                                            type="hidden" id="g_city" value='东莞'>
+                                            type="hidden" id="g_city" value='东莞'></div>
                                 </td>
                             </tr>
                             <tr>

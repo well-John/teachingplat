@@ -1,10 +1,545 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <title>Baidu Map </title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/My.js"></script>
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/getscript?v=2.0&ak=wZeZcsIpOR2PWaferl8gmBxWk4qxK5Xr&services=&t=20180201111639"></script>
+    <style type="text/css">
+        html {
+            height: 100%
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+
+        #container {
+            height: 100%
+        }
+    </style>
+    <!-- <script type="text/javascript">
+         var map = new BMap.Map("container");          // 创建地图实例
+         var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
+         map.centerAndZoom(point, 15);                 // 初始化地图，设置中心点坐标和地图级别
+         map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+     </script>-->
 </head>
 <body>
+<input name="strf" type="hidden" id="strf" value="东莞">
+<input name="city" type="hidden" id="city" value="东莞">
+<input name="strt" type="hidden" id="strt" value="星河湾星河湾">
+<table>
+    <tbody>
+    <tr>
+        <td valign="top">
+            <div style="width: 800px; height: 800px; border: 1px solid gray; float: left; overflow: hidden; position: relative; z-index: 0; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;"
+                 id="container">
+                <div style="overflow: visible; position: absolute; z-index: 0; left: 0px; top: 0px; cursor: url(&quot;http://api.map.baidu.com/images/openhand.cur&quot;) 8 8, default;">
+                    <div class="BMap_mask"
+                         style="position: absolute; left: 0px; top: 0px; z-index: 9; overflow: hidden; user-select: none; width: 800px; height: 800px;"></div>
+                    <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;">
+                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 800;"></div>
+                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 700;">
+                            <span class="BMap_Marker BMap_noprint" unselectable="on" title="东莞市"
+                                  style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 42px; height: 34px; left: 575px; top: 406px; z-index: -1105460;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="星河湾"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 42px; height: 34px; left: 208px; top: 403px; z-index: -1106164;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="行政中心西"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 575px; top: 431px; z-index: -4604920;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="宏远工业区"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 563px; top: 438px; z-index: -4603348;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="宏远工业区"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 563px; top: 438px; z-index: -4603370;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="麻涌市场(古梅美食街)"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 423px; top: 400px; z-index: -4611626;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="麻涌市场(古梅美食街)"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 423px; top: 400px; z-index: -4611628;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="地铁文冲站"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 333px; top: 352px; z-index: -4621842;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="文冲"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 333px; top: 351px; z-index: -4621896;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="珠江新城"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 204px; top: 336px; z-index: -4625042;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="珠江新城"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 204px; top: 336px; z-index: -4625042;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="厦滘"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 204px; top: 413px; z-index: -4608664;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="五洲装饰材料城"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 201px; top: 415px; z-index: -4608336;"></span><span
+                                class="BMap_Marker BMap_noprint" unselectable="on" title="星河湾"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 21px; height: 21px; left: 212px; top: 425px; z-index: -4606164;"></span>
+                        </div>
+                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 600;"></div>
+                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 500;"></div>
+                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 400;">
+                            <span class="BMap_Marker" unselectable="on"
+                                  style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 575px; top: 406px; z-index: -1105460;"><div
+                                    style="position: absolute; margin: 0px; padding: 0px; width: 42px; height: 34px; overflow: hidden;"><img
+                                    src="./阳光家教网--在线地图查询_files/dest_markers.png"
+                                    style="border:none;left:0px; top:0px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 208px; top: 403px; z-index: -1106164;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 42px; height: 34px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/dest_markers.png"
+                                style="border:none;left:0px; top:-34px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 575px; top: 431px; z-index: -4604920;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-55px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 563px; top: 438px; z-index: -4603348;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-55px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 563px; top: 438px; z-index: -4603370;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-55px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 423px; top: 400px; z-index: -4611626;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-55px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 423px; top: 400px; z-index: -4611628;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-55px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 333px; top: 352px; z-index: -4621842;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-55px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 333px; top: 351px; z-index: -4621896;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-76px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 204px; top: 336px; z-index: -4625042;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-76px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 204px; top: 336px; z-index: -4625042;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-76px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 204px; top: 413px; z-index: -4608664;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-76px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 201px; top: 415px; z-index: -4608336;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-55px; position:absolute;"></div></span><span
+                                class="BMap_Marker" unselectable="on"
+                                style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 212px; top: 425px; z-index: -4606164;"><div
+                                style="position: absolute; margin: 0px; padding: 0px; width: 21px; height: 21px; overflow: hidden;"><img
+                                src="./阳光家教网--在线地图查询_files/trans_icons.png"
+                                style="border:none;left:0px; top:-55px; position:absolute;"></div></span></div>
+                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 300;"></div>
+                        <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;">
+                            <svg version="1.1" type="system" x="1800px" y="1800px" viewBox="-500 -500 1800 1800"
+                                 style="position: absolute; top: -500px; left: -500px; width: 1800px; height: 1800px;">
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#0030ff" stroke-width="6" stroke-dasharray="none" stroke-opacity="0.45"
+                                      style="user-select: none;"
+                                      d="M 585 441 L 585 443 584 444 580 443 580 444 580 445 579 445 576 450 575 449 573 448"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#fff" stroke-width="4" stroke-dasharray="none" stroke-opacity="0.3"
+                                      style="user-select: none;"
+                                      d="M 585 441 L 585 443 584 444 580 443 580 444 580 445 579 445 576 450 575 449 573 448"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#30a208" stroke-width="4" stroke-dasharray="8" stroke-opacity="0.55"
+                                      style="user-select: none;" d="M 589 438 L 588 438 587 438 586 438 585 441"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#0030ff" stroke-width="6" stroke-dasharray="none" stroke-opacity="0.45"
+                                      style="user-select: none;"
+                                      d="M 573 448 L 571 447 570 447 566 442 561 432 561 431 561 429 562 429 561 430 560 431 557 432 556 430 556 429 556 428 552 429 550 429 549 430 546 431 545 432 544 432 541 435 532 443 532 444 531 444 530 444 529 444 527 445 525 446 524 446 523 446 521 447 520 447 519 447 518 446 517 446 516 446 515 446 511 448 510 449 505 452 504 453 503 451 500 450 498 450 497 451 496 452 495 453 494 454 491 454 483 451 472 445 469 444 469 443 467 443 465 442 464 442 459 442 458 442 448 441 447 440 445 440 442 439 442 438 438 437 435 436 434 436 433 434 434 429 438 423 438 422 439 417 439 416 442 410 441 410 433 410"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#fff" stroke-width="4" stroke-dasharray="none" stroke-opacity="0.3"
+                                      style="user-select: none;"
+                                      d="M 573 448 L 571 447 570 447 566 442 561 432 561 431 561 429 562 429 561 430 560 431 557 432 556 430 556 429 556 428 552 429 550 429 549 430 546 431 545 432 544 432 541 435 532 443 532 444 531 444 530 444 529 444 527 445 525 446 524 446 523 446 521 447 520 447 519 447 518 446 517 446 516 446 515 446 511 448 510 449 505 452 504 453 503 451 500 450 498 450 497 451 496 452 495 453 494 454 491 454 483 451 472 445 469 444 469 443 467 443 465 442 464 442 459 442 458 442 448 441 447 440 445 440 442 439 442 438 438 437 435 436 434 436 433 434 434 429 438 423 438 422 439 417 439 416 442 410 441 410 433 410"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#30a208" stroke-width="4" stroke-dasharray="8" stroke-opacity="0.55"
+                                      style="user-select: none;" d="M -9999,-9999"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#0030ff" stroke-width="6" stroke-dasharray="none" stroke-opacity="0.45"
+                                      style="user-select: none;"
+                                      d="M 433 410 L 419 408 418 408 417 407 417 406 413 400 412 399 411 399 410 399 409 401 409 402 410 403 411 403 411 402 411 401 410 401 409 400 404 398 403 398 401 398 398 397 396 400 396 405 396 406 395 405 392 405 391 405 392 403 392 399 392 397 392 390 392 388 392 387 392 386 391 384 390 382 390 380 389 379 388 377 387 376 387 375 387 371 387 370 386 368 386 367 383 362 381 358 381 357 381 356 380 356 380 357 379 356 377 356 376 356 376 357 374 357 373 358 373 357 372 357 367 356 366 356 365 355 364 355 363 355 362 355 361 355 360 356 359 356 359 357 358 357 358 358 358 359 356 362 355 363 355 364 352 363 349 363 347 362 346 362 344 362 343 362"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#fff" stroke-width="4" stroke-dasharray="none" stroke-opacity="0.3"
+                                      style="user-select: none;"
+                                      d="M 433 410 L 419 408 418 408 417 407 417 406 413 400 412 399 411 399 410 399 409 401 409 402 410 403 411 403 411 402 411 401 410 401 409 400 404 398 403 398 401 398 398 397 396 400 396 405 396 406 395 405 392 405 391 405 392 403 392 399 392 397 392 390 392 388 392 387 392 386 391 384 390 382 390 380 389 379 388 377 387 376 387 375 387 371 387 370 386 368 386 367 383 362 381 358 381 357 381 356 380 356 380 357 379 356 377 356 376 356 376 357 374 357 373 358 373 357 372 357 367 356 366 356 365 355 364 355 363 355 362 355 361 355 360 356 359 356 359 357 358 357 358 358 358 359 356 362 355 363 355 364 352 363 349 363 347 362 346 362 344 362 343 362"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#30a208" stroke-width="4" stroke-dasharray="8" stroke-opacity="0.55"
+                                      style="user-select: none;" d="M -9999,-9999"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#0030ff" stroke-width="6" stroke-dasharray="none" stroke-opacity="0.45"
+                                      style="user-select: none;"
+                                      d="M 343 361 L 339 360 338 359 331 359 330 359 327 359 326 360 318 365 317 365 311 364 306 364 305 364 289 357 281 354 279 352 278 351 270 348 263 346 261 346 260 346 259 346 258 347 256 349 255 350 254 350 253 350 251 350 237 349 231 348 224 347 219 347 214 346"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#fff" stroke-width="4" stroke-dasharray="none" stroke-opacity="0.3"
+                                      style="user-select: none;"
+                                      d="M 343 361 L 339 360 338 359 331 359 330 359 327 359 326 360 318 365 317 365 311 364 306 364 305 364 289 357 281 354 279 352 278 351 270 348 263 346 261 346 260 346 259 346 258 347 256 349 255 350 254 350 253 350 251 350 237 349 231 348 224 347 219 347 214 346"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#30a208" stroke-width="4" stroke-dasharray="8" stroke-opacity="0.55"
+                                      style="user-select: none;" d="M 343 362 L 343 361 343 362 343 361"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#0030ff" stroke-width="6" stroke-dasharray="none" stroke-opacity="0.45"
+                                      style="user-select: none;"
+                                      d="M 214 346 L 214 351 214 352 214 354 216 356 216 358 216 359 216 361 216 362 214 366 214 367 214 369 215 384 215 386 212 406 212 407 212 409 213 414 214 423"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#fff" stroke-width="4" stroke-dasharray="none" stroke-opacity="0.3"
+                                      style="user-select: none;"
+                                      d="M 214 346 L 214 351 214 352 214 354 216 356 216 358 216 359 216 361 216 362 214 366 214 367 214 369 215 384 215 386 212 406 212 407 212 409 213 414 214 423"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#30a208" stroke-width="4" stroke-dasharray="8" stroke-opacity="0.55"
+                                      style="user-select: none;" d="M -9999,-9999"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#0030ff" stroke-width="6" stroke-dasharray="none" stroke-opacity="0.45"
+                                      style="user-select: none;"
+                                      d="M 211 425 L 221 426 221 427 222 433 222 434 222 435"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#fff" stroke-width="4" stroke-dasharray="none" stroke-opacity="0.3"
+                                      style="user-select: none;"
+                                      d="M 211 425 L 221 426 221 427 222 433 222 434 222 435"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#30a208" stroke-width="4" stroke-dasharray="8" stroke-opacity="0.55"
+                                      style="user-select: none;"
+                                      d="M 214 423 L 213 423 213 424 213 425 214 425 213 425 212 425 211 425"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none"
+                                      stroke="#30a208" stroke-width="4" stroke-dasharray="8" stroke-opacity="0.55"
+                                      style="user-select: none;" d="M -9999,-9999"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div style="position: absolute; top: 0px; left: 0px; z-index: 1; backface-visibility: hidden;">
+                        <div style="position: absolute; z-index: -100; left: 400px; top: 400px;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: -186px; top: -241px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(1)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: -442px; top: -241px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(2)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: 70px; top: -241px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(3)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: -186px; top: -497px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(4)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: -186px; top: 15px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(5)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: 326px; top: -241px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(6)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: -442px; top: 15px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(7)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: -442px; top: -497px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(8)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: 326px; top: -497px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(9)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: -186px; top: 271px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(10)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: 70px; top: 15px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(11)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: 70px; top: 271px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(12)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: 326px; top: 271px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(13)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: -442px; top: 271px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(14)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: 326px; top: 15px; opacity: 1;"><img
+                                src="./阳光家教网--在线地图查询_files/saved_resource(15)"
+                                style="position: absolute; border: none; width: 256px; height: 256px; left: 70px; top: -497px; opacity: 1;">
+                        </div>
+                    </div>
+                    <div style="position: absolute; top: 0px; left: 0px; z-index: 2;"></div>
+                </div>
+                <div id="zoomer"
+                     style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:url(http://api.map.baidu.com/images/openhand.cur) 8 8,default">
+                    <div class="BMap_zoomer" style="top:0;left:0;"></div>
+                    <div class="BMap_zoomer" style="top:0;right:0;"></div>
+                    <div class="BMap_zoomer" style="bottom:0;left:0;"></div>
+                    <div class="BMap_zoomer" style="bottom:0;right:0;"></div>
+                </div>
+                <div unselectable="on" class=" BMap_stdMpCtrl BMap_stdMpType0 BMap_noprint anchorTL"
+                     style="width: 62px; height: 204px; bottom: auto; right: auto; top: 10px; left: 10px; position: absolute; z-index: 1100; text-size-adjust: none;">
+                    <div class="BMap_stdMpPan">
+                        <div class="BMap_button BMap_panN" title="向上平移"></div>
+                        <div class="BMap_button BMap_panW" title="向左平移"></div>
+                        <div class="BMap_button BMap_panE" title="向右平移"></div>
+                        <div class="BMap_button BMap_panS" title="向下平移"></div>
+                        <div class="BMap_stdMpPanBg BMap_smcbg"></div>
+                    </div>
+                    <div class="BMap_stdMpZoom" style="height: 159px; width: 62px;">
+                        <div class="BMap_button BMap_stdMpZoomIn" title="放大一级">
+                            <div class="BMap_smcbg"></div>
+                        </div>
+                        <div class="BMap_button BMap_stdMpZoomOut" title="缩小一级" style="top: 138px;">
+                            <div class="BMap_smcbg"></div>
+                        </div>
+                        <div class="BMap_stdMpSlider" style="height: 120px;">
+                            <div class="BMap_stdMpSliderBgTop" style="height: 120px;">
+                                <div class="BMap_smcbg"></div>
+                            </div>
+                            <div class="BMap_stdMpSliderBgBot" style="top: 49px; height: 75px;"></div>
+                            <div class="BMap_stdMpSliderMask" title="放置到此级别"></div>
+                            <div class="BMap_stdMpSliderBar" title="拖动缩放"
+                                 style="cursor: url(&quot;http://api.map.baidu.com/images/openhand.cur&quot;) 8 8, default; top: 49px;">
+                                <div class="BMap_smcbg"></div>
+                            </div>
+                        </div>
+                        <div class="BMap_zlHolder">
+                            <div class="BMap_zlSt">
+                                <div class="BMap_smcbg"></div>
+                            </div>
+                            <div class="BMap_zlCity">
+                                <div class="BMap_smcbg"></div>
+                            </div>
+                            <div class="BMap_zlProv">
+                                <div class="BMap_smcbg"></div>
+                            </div>
+                            <div class="BMap_zlCountry">
+                                <div class="BMap_smcbg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div unselectable="on" class=" BMap_cpyCtrl anchorBL"
+                     style="cursor: default; white-space: nowrap; color: black; background: none; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 11px; line-height: 15px; font-family: arial, sans-serif; bottom: 2px; right: auto; top: auto; left: 2px; position: absolute; z-index: 10; text-size-adjust: none;">
+                    <span _cid="1" style="display: inline;"><span
+                            style="background: rgba(255, 255, 255, 0.701961);padding: 0px 1px;line-height: 16px;display: inline;height: 16px;">©&nbsp;2018 Baidu - GS(2016)2089号 - 甲测资字1100930 - 京ICP证030173号 - Data © 长地万方</span></span>
+                </div>
+                <div class=" anchorBL"
+                     style="height: 32px; position: absolute; z-index: 30; text-size-adjust: none; bottom: 20px; right: auto; top: auto; left: 1px;">
+                    <a title="到百度地图查看此区域" target="_blank" href="http://map.baidu.com/?sr=1" style="outline: none;"><img
+                            style="border:none;width:77px;height:32px"
+                            src="./阳光家教网--在线地图查询_files/copyright_logo.png"></a></div>
+                <div unselectable="on" class="BMap_contextMenu"
+                     style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: arial, sans-serif; box-shadow: rgb(102, 102, 102) 1px 2px 6px; cursor: url(&quot;http://api.map.baidu.com/images/openhand.cur&quot;) 8 8, default;">
+                    <div unselectable="on"
+                         style="padding: 2px 6px; margin: 0px 2px; font-size: 12px; line-height: 17px; width: 100px; color: rgb(0, 0, 0); cursor: pointer;">
+                        <span>将这里设置为起点</span></div>
+                    <div unselectable="on"
+                         style="padding: 2px 6px; margin: 0px 2px; font-size: 12px; line-height: 17px; width: 100px; color: rgb(0, 0, 0); cursor: pointer;">
+                        <span>将这里设置为终点</span></div>
+                    <div unselectable="on"
+                         style="padding: 2px 6px; margin: 0px 2px; font-size: 12px; line-height: 17px; width: 100px; color: rgb(0, 0, 0); cursor: pointer;">
+                        <span>定位到起点附近</span></div>
+                    <div unselectable="on"
+                         style="padding: 2px 6px; margin: 0px 2px; font-size: 12px; line-height: 17px; width: 100px; color: rgb(0, 0, 0); cursor: pointer;">
+                        <span>定位到终点附近</span></div>
+                </div>
+            </div>
+        </td>
+        <td valign="top" align="left">
+            <div id="results" style="font-size: 12px; margin-top: 10px; width: 300px; float: left">
+                <div style="font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: arial, sans-serif; background: rgb(255, 255, 255);">
+                    <h1 style="margin:0;border-top:1px solid #ccc;padding:10px 0 9px 7px;font:bold 16px arial,sans-serif">
+                        乘公共交通工具前往 星河湾 的路线</h1>
+                    <div style="border-bottom:1px solid #ccc;border-top:1px solid #ccc">
+                        <div style="cursor:pointer;background:url(http://api.map.baidu.com/img/trans_icons.png) no-repeat 5px 5px;padding:8px 0 8px 33px;line-height:15px"
+                             onclick="Instance(&quot;TANGRAM__1e&quot;)._select(0)"><span
+                                style="white-space:nowrap">东莞市</span></div>
+                    </div>
+                    <table style="font:12px arial,sans-serif;border-collapse:collapse" cellpadding="0" cellspacing="0"
+                           border="0">
+                        <tbody>
+                        <tr style="cursor: pointer; background: rgb(240, 240, 240);"
+                            onclick="Instance(&quot;TANGRAM__1e&quot;)._selectPlan(0)">
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;width:20px;text-align:right;padding:4px 3px">
+                                1.
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;padding:2px;line-height:18px"><b>步行</b>约650米，到达<b>行政中心西</b>，乘坐<b>x22路</b>，经过4站，到达<b>宏远工业区</b>，<b>步行</b>约20米，到达<b>宏远工业区</b>，乘坐<b>601路</b>，经过27站，到达<b>麻涌市场(古梅美食街)</b>，<b>步行</b>约10米，到达<b>麻涌市场(古梅美食街)</b>，乘坐<b>广369路</b>，经过22站，到达<b>地铁文冲站</b>，<b>步行</b>约200米，到达<b>文冲</b>，乘坐<b>地铁5号线</b>，经过11站，到达<b>珠江新城</b>，<b>步行</b>约10米，到达<b>珠江新城</b>，乘坐<b>地铁3号线</b>，经过5站，到达<b>厦滘</b>，<b>步行</b>约620米，到达<b>五洲装饰材料城</b>，乘坐<b>夜88路</b>，经过2站，到达<b>星河湾</b>，<b>步行</b>约10米，到达<b>终点</b>
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;text-align:right;padding:4px 3px;white-space:nowrap">
+                                74.6公里 / 4小时30分钟
+                            </td>
+                        </tr>
+                        <tr style="cursor:pointer" onclick="Instance(&quot;TANGRAM__1e&quot;)._selectPlan(1)">
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;width:20px;text-align:right;padding:4px 3px">
+                                2.
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;padding:2px;line-height:18px"><b>步行</b>约660米，到达<b>行政中心西</b>，乘坐<b>59路</b>，经过4站，到达<b>宏远工业区</b>，<b>步行</b>约30米，到达<b>宏远工业区</b>，乘坐<b>601路</b>，经过27站，到达<b>麻涌市场(古梅美食街)</b>，<b>步行</b>约10米，到达<b>麻涌市场(古梅美食街)</b>，乘坐<b>广369路</b>，经过22站，到达<b>地铁文冲站</b>，<b>步行</b>约200米，到达<b>文冲</b>，乘坐<b>地铁5号线</b>，经过11站，到达<b>珠江新城</b>，<b>步行</b>约10米，到达<b>珠江新城</b>，乘坐<b>地铁3号线</b>，经过5站，到达<b>厦滘</b>，<b>步行</b>约620米，到达<b>五洲装饰材料城</b>，乘坐<b>夜88路</b>，经过2站，到达<b>星河湾</b>，<b>步行</b>约10米，到达<b>终点</b>
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;text-align:right;padding:4px 3px;white-space:nowrap">
+                                74.7公里 / 4小时30分钟
+                            </td>
+                        </tr>
+                        <tr style="cursor:pointer" onclick="Instance(&quot;TANGRAM__1e&quot;)._selectPlan(2)">
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;width:20px;text-align:right;padding:4px 3px">
+                                3.
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;padding:2px;line-height:18px"><b>步行</b>约650米，到达<b>行政中心西</b>，乘坐<b>x22路</b>，经过4站，到达<b>宏远工业区</b>，<b>步行</b>约20米，到达<b>宏远工业区</b>，乘坐<b>601路</b>，经过27站，到达<b>麻涌市场(古梅美食街)</b>，<b>步行</b>约10米，到达<b>麻涌市场(古梅美食街)</b>，乘坐<b>广369路</b>，经过11站，到达<b>青年路口</b>，<b>步行</b>约20米，到达<b>青年路口</b>，乘坐<b>高峰快线28路</b>，经过14站，到达<b>天河北路</b>，<b>步行</b>约150米，到达<b>天河北路</b>，乘坐<b>节假日公交专线11路</b>，经过6站，到达<b>星河湾</b>，<b>步行</b>约40米，到达<b>终点</b>
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;text-align:right;padding:4px 3px;white-space:nowrap">
+                                76.9公里 / 4小时40分钟
+                            </td>
+                        </tr>
+                        <tr style="cursor:pointer" onclick="Instance(&quot;TANGRAM__1e&quot;)._selectPlan(3)">
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;width:20px;text-align:right;padding:4px 3px">
+                                4.
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;padding:2px;line-height:18px"><b>步行</b>约650米，到达<b>行政中心西</b>，乘坐<b>x22路</b>，经过4站，到达<b>宏远工业区</b>，<b>步行</b>约20米，到达<b>宏远工业区</b>，乘坐<b>601路</b>，经过27站，到达<b>麻涌市场(古梅美食街)</b>，<b>步行</b>约10米，到达<b>麻涌市场(古梅美食街)</b>，乘坐<b>广369路</b>，经过22站，到达<b>地铁文冲站</b>，<b>步行</b>约200米，到达<b>文冲</b>，乘坐<b>地铁5号线</b>，经过11站，到达<b>珠江新城</b>，<b>步行</b>约10米，到达<b>珠江新城</b>，乘坐<b>地铁3号线</b>，经过5站，到达<b>厦滘</b>，<b>步行</b>约700米，到达<b>五洲装饰材料城</b>，乘坐<b>303a路</b>，经过2站，到达<b>星河湾</b>，<b>步行</b>约40米，到达<b>终点</b>
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;text-align:right;padding:4px 3px;white-space:nowrap">
+                                74.8公里 / 4小时30分钟
+                            </td>
+                        </tr>
+                        <tr style="cursor:pointer" onclick="Instance(&quot;TANGRAM__1e&quot;)._selectPlan(4)">
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;width:20px;text-align:right;padding:4px 3px">
+                                5.
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;padding:2px;line-height:18px"><b>步行</b>约650米，到达<b>行政中心西</b>，乘坐<b>x22路</b>，经过4站，到达<b>宏远工业区</b>，<b>步行</b>约20米，到达<b>宏远工业区</b>，乘坐<b>601路</b>，经过27站，到达<b>麻涌市场(古梅美食街)</b>，<b>步行</b>约10米，到达<b>麻涌市场(古梅美食街)</b>，乘坐<b>广369路</b>，经过22站，到达<b>地铁文冲站</b>，<b>步行</b>约200米，到达<b>文冲</b>，乘坐<b>地铁5号线</b>，经过11站，到达<b>珠江新城</b>，<b>步行</b>约10米，到达<b>珠江新城</b>，乘坐<b>地铁3号线</b>，经过5站，到达<b>厦滘</b>，<b>步行</b>约700米，到达<b>五洲装饰材料城</b>，乘坐<b>303路</b>，经过2站，到达<b>星河湾</b>，<b>步行</b>约50米，到达<b>终点</b>
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;text-align:right;padding:4px 3px;white-space:nowrap">
+                                74.8公里 / 4小时30分钟
+                            </td>
+                        </tr>
+                        <tr style="cursor:pointer" onclick="Instance(&quot;TANGRAM__1e&quot;)._selectPlan(5)">
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;width:20px;text-align:right;padding:4px 3px">
+                                6.
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;padding:2px;line-height:18px"><b>步行</b>约650米，到达<b>行政中心西</b>，乘坐<b>x22路</b>，经过4站，到达<b>宏远工业区</b>，<b>步行</b>约20米，到达<b>宏远工业区</b>，乘坐<b>601路</b>，经过27站，到达<b>麻涌市场(古梅美食街)</b>，<b>步行</b>约10米，到达<b>麻涌市场(古梅美食街)</b>，乘坐<b>广369路</b>，经过22站，到达<b>地铁文冲站</b>，<b>步行</b>约200米，到达<b>文冲</b>，乘坐<b>地铁5号线</b>，经过11站，到达<b>珠江新城</b>，<b>步行</b>约10米，到达<b>珠江新城</b>，乘坐<b>地铁3号线</b>，经过5站，到达<b>厦滘</b>，<b>步行</b>约700米，到达<b>五洲装饰材料城</b>，乘坐<b>129路</b>，经过2站，到达<b>星河湾</b>，<b>步行</b>约10米，到达<b>终点</b>
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;text-align:right;padding:4px 3px;white-space:nowrap">
+                                74.8公里 / 4小时30分钟
+                            </td>
+                        </tr>
+                        <tr style="cursor:pointer" onclick="Instance(&quot;TANGRAM__1e&quot;)._selectPlan(6)">
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;width:20px;text-align:right;padding:4px 3px">
+                                7.
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;padding:2px;line-height:18px"><b>步行</b>约520米，到达<b>行政中心西</b>，乘坐<b>17路</b>，经过3站，到达<b>石竹新花园</b>，<b>步行</b>约210米，到达<b>石竹新花园</b>，乘坐<b>601路</b>，经过29站，到达<b>麻涌市场(古梅美食街)</b>，<b>步行</b>约10米，到达<b>麻涌市场(古梅美食街)</b>，乘坐<b>广369路</b>，经过22站，到达<b>地铁文冲站</b>，<b>步行</b>约200米，到达<b>文冲</b>，乘坐<b>地铁5号线</b>，经过11站，到达<b>珠江新城</b>，<b>步行</b>约10米，到达<b>珠江新城</b>，乘坐<b>地铁3号线</b>，经过5站，到达<b>厦滘</b>，<b>步行</b>约190米，到达<b>地铁厦滘站</b>，乘坐<b>番58路</b>，经过4站，到达<b>星河湾</b>，<b>步行</b>约40米，到达<b>终点</b>
+                            </td>
+                            <td style="border-bottom:1px solid #ccc;vertical-align:top;text-align:right;padding:4px 3px;white-space:nowrap">
+                                78.1公里 / 4小时40分钟
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div style="border-bottom:1px solid #ccc">
+                        <div style="cursor:pointer;background:url(http://api.map.baidu.com/img/trans_icons.png) no-repeat 5px -21px;padding:8px 0 8px 33px;line-height:15px"
+                             onclick="Instance(&quot;TANGRAM__1e&quot;)._selectLast()"><span style="white-space:nowrap">星河湾</span>
+                        </div>
+                    </div>
+                    <div style="border-bottom:1px solid #ccc;margin-bottom:10px;color:#7777cc;background:#e5ecf9;overflow:hidden;padding:2px;text-align:right">
+                        <a style="color:#7777cc"
+                           href="http://map.baidu.com/?s=bt%26c%3D10001%26sy%3D0%26sn%3D2%24%24%24%24%24%24%E4%B8%9C%E8%8E%9E%24%24%24%24%26en%3D2%24%24%24%24%24%24%E6%98%9F%E6%B2%B3%E6%B9%BE%E6%98%9F%E6%B2%B3%E6%B9%BE%24%24%24%24%26sq%3D%E4%B8%9C%E8%8E%9E%26eq%3D%E6%98%9F%E6%B2%B3%E6%B9%BE%E6%98%9F%E6%B2%B3%E6%B9%BE&amp;sr=1"
+                           target="_blank">到百度地图查看»</a>&nbsp;
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    var pStart;
+    var pEnd;
+    var map = new BMap.Map("container");
+    var flag = 0;
+    map.centerAndZoom(encodeURIComponent(document.getElementById("city").value), 16);
+    map.addControl(new BMap.NavigationControl());
+    map.addEventListener("tilesloaded", function () {
+        flag++;
+        if (flag == 1) {
+            var menu = new BMap.ContextMenu();
+            var txtMenuItem = [
+                {
+                    text: '将这里设置为起点',
+                    callback: function (e) {
+                        var pp = new BMap.Point(e.lng, e.lat);
+                        if (pEnd)
+                            transit.search(pp, pEnd);
+                        else
+                            transit.search(pp, document.getElementById("strt").value);
+                    }
+                },
+                {
+                    text: '将这里设置为终点',
+                    callback: function (e) {
+                        var pp = new BMap.Point(e.lng, e.lat);
+                        if (pStart)
+                            transit.search(pStart, document.getElementById("strt").value);
+                        else
+                            transit.search(document.getElementById("strf").value, pp);
+                    }
+                },
+                {
+                    text: '定位到起点附近',
+                    callback: function (e) {
+                        if (pStart) {
+                            map.centerAndZoom(pStart, 16);
+                        }
+                    }
+                },
+                {
+                    text: '定位到终点附近',
+                    callback: function (e) {
+                        if (pEnd) {
+                            map.centerAndZoom(pEnd, 16);
+                        }
+                    }
+                }
+            ];
+            for (var i = 0; i < txtMenuItem.length; i++) {
+                menu.addItem(new BMap.MenuItem(txtMenuItem[i].text, txtMenuItem[i].callback, 100));
+            }
+            map.addContextMenu(menu);
+            var transit = new BMap.TransitRoute(map, {
+                renderOptions: {map: map, panel: "results"}
+            });
+         /*   transit.setSearchCompleteCallback(function (results) {
+                if (transit.getStatus() == BMAP_STATUS_SUCCESS) {
+                }
+                else {
+                    var localStart = new BMap.LocalSearch(map, {
+                        renderOptions: {map: map}
+                    });
+                    localStart.setSearchCompleteCallback(function (results) {
+                        if (localStart.getStatus() == BMAP_STATUS_SUCCESS) {
+                            pStart = results.getPoi(0).point;
+                        } else {
+                            alert('没有找到起点，请使用右键设置正确的起点');
+                        }
+                    });
+                    localStart.search(document.getElementById("strf").value);
+                    var localEnd = new BMap.LocalSearch(map, {
+                        renderOptions: {map: map}
+                    });
+                    localEnd.setSearchCompleteCallback(function (results) {
+                        if (localEnd.getStatus() == BMAP_STATUS_SUCCESS) {
+                            pEnd = results.getPoi(0).point;
+                        } else {
+                            alert('没有找到终点，请使用右键设置正确的终点');
+                        }
+                    });
+                    localEnd.search(document.getElementById("strt").value);
+                    alert('没有找到路线!请在地图上使用鼠标右键设置正确的起点和终点');
+                }
+            });*/
+            //transit.search(document.getElementById("strf").value, document.getElementById("strt").value);
+            transit.search(pStart, pEnd);
+        }
 
+    });
+</script>
+
+<script>
+    $(function(){
+        pStart = decodeURI( GetQueryString("strf"));
+        pEnd =  decodeURI( GetQueryString("strt"));
+    });
+
+</script>
 </body>
 </html>
