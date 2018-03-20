@@ -1,5 +1,6 @@
 package com.dgut.entity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -235,62 +236,52 @@ public class DepositExample {
             return (Criteria) this;
         }
 
-        public Criteria andChargeMoneyEqualTo(String value) {
+        public Criteria andChargeMoneyEqualTo(BigDecimal value) {
             addCriterion("charge_money =", value, "chargeMoney");
             return (Criteria) this;
         }
 
-        public Criteria andChargeMoneyNotEqualTo(String value) {
+        public Criteria andChargeMoneyNotEqualTo(BigDecimal value) {
             addCriterion("charge_money <>", value, "chargeMoney");
             return (Criteria) this;
         }
 
-        public Criteria andChargeMoneyGreaterThan(String value) {
+        public Criteria andChargeMoneyGreaterThan(BigDecimal value) {
             addCriterion("charge_money >", value, "chargeMoney");
             return (Criteria) this;
         }
 
-        public Criteria andChargeMoneyGreaterThanOrEqualTo(String value) {
+        public Criteria andChargeMoneyGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("charge_money >=", value, "chargeMoney");
             return (Criteria) this;
         }
 
-        public Criteria andChargeMoneyLessThan(String value) {
+        public Criteria andChargeMoneyLessThan(BigDecimal value) {
             addCriterion("charge_money <", value, "chargeMoney");
             return (Criteria) this;
         }
 
-        public Criteria andChargeMoneyLessThanOrEqualTo(String value) {
+        public Criteria andChargeMoneyLessThanOrEqualTo(BigDecimal value) {
             addCriterion("charge_money <=", value, "chargeMoney");
             return (Criteria) this;
         }
 
-        public Criteria andChargeMoneyLike(String value) {
-            addCriterion("charge_money like", value, "chargeMoney");
-            return (Criteria) this;
-        }
-
-        public Criteria andChargeMoneyNotLike(String value) {
-            addCriterion("charge_money not like", value, "chargeMoney");
-            return (Criteria) this;
-        }
-
-        public Criteria andChargeMoneyIn(List<String> values) {
+        public Criteria andChargeMoneyIn(List<BigDecimal> values) {
             addCriterion("charge_money in", values, "chargeMoney");
             return (Criteria) this;
         }
 
-        public Criteria andChargeMoneyNotIn(List<String> values) {
+        public Criteria andChargeMoneyNotIn(List<BigDecimal> values) {
             addCriterion("charge_money not in", values, "chargeMoney");
             return (Criteria) this;
         }
 
-        public Criteria andChargeMoneyBetween(String value1, String value2) {
+        public Criteria andChargeMoneyBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("charge_money between", value1, value2, "chargeMoney");
             return (Criteria) this;
         }
 
-        public Criteria andChargeMoneyNotBetween(String value1, String value2) {
+        public Criteria andChargeMoneyNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("charge_money not between", value1, value2, "chargeMoney");
             return (Criteria) this;
         }

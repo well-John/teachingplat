@@ -33,6 +33,7 @@
     <result column="wechat" jdbcType="VARCHAR" property="wechat" />
     <result column="login_times" jdbcType="INTEGER" property="loginTimes" />
     <result column="isverify" jdbcType="INTEGER" property="isverify" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -96,7 +97,7 @@
     id, nickname, name, password, sex, birthday, education, major, university, phone, 
     email, description, address, teaching_time, teaching_area, teaching_way, teaching_subject, 
     foreign_level, payment, experience, avatar, last_time, register_time, last_ip, isabled, 
-    identity, qq, current_status, wechat, login_times, isverify
+    identity, qq, current_status, wechat, login_times, isverify, balance
   </sql>
   <select id="selectByExample" parameterType="com.dgut.entity.TeacherExample" resultMap="BaseResultMap">
     select
@@ -139,7 +140,7 @@
       last_time, register_time, last_ip, 
       isabled, identity, qq, 
       current_status, wechat, login_times, 
-      isverify)
+      isverify, balance)
     values (#{id,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{birthday,jdbcType=VARCHAR}, 
       #{education,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{university,jdbcType=VARCHAR}, 
@@ -150,7 +151,7 @@
       #{lastTime,jdbcType=TIMESTAMP}, #{registerTime,jdbcType=TIMESTAMP}, #{lastIp,jdbcType=VARCHAR}, 
       #{isabled,jdbcType=INTEGER}, #{identity,jdbcType=INTEGER}, #{qq,jdbcType=VARCHAR}, 
       #{currentStatus,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{loginTimes,jdbcType=INTEGER}, 
-      #{isverify,jdbcType=INTEGER})
+      #{isverify,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.dgut.entity.Teacher">
     insert into teacher
@@ -248,6 +249,9 @@
       <if test="isverify != null">
         isverify,
       </if>
+      <if test="balance != null">
+        balance,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -342,6 +346,9 @@
       </if>
       <if test="isverify != null">
         #{isverify,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -447,6 +454,9 @@
       <if test="record.isverify != null">
         isverify = #{record.isverify,jdbcType=INTEGER},
       </if>
+      <if test="record.balance != null">
+        balance = #{record.balance,jdbcType=DECIMAL},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -484,7 +494,8 @@
       current_status = #{record.currentStatus,jdbcType=VARCHAR},
       wechat = #{record.wechat,jdbcType=VARCHAR},
       login_times = #{record.loginTimes,jdbcType=INTEGER},
-      isverify = #{record.isverify,jdbcType=INTEGER}
+      isverify = #{record.isverify,jdbcType=INTEGER},
+      balance = #{record.balance,jdbcType=DECIMAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -582,6 +593,9 @@
       <if test="isverify != null">
         isverify = #{isverify,jdbcType=INTEGER},
       </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DECIMAL},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -616,7 +630,8 @@
       current_status = #{currentStatus,jdbcType=VARCHAR},
       wechat = #{wechat,jdbcType=VARCHAR},
       login_times = #{loginTimes,jdbcType=INTEGER},
-      isverify = #{isverify,jdbcType=INTEGER}
+      isverify = #{isverify,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
@@ -629,10 +644,12 @@
   </select>
 
   <select id="selectTeacherNameById" resultType="java.lang.String">
-     SELECT name from teacher where id = #{id}
+    SELECT name from teacher where id = #{id}
   </select>
 
   <select id="selectTop8"  parameterType="java.lang.Integer" resultMap="BaseResultMap">
-      SELECT * FROM teacher where id != #{id}  ORDER BY last_time DESC limit 0,8
+    SELECT * FROM teacher where id != #{id}  ORDER BY last_time DESC limit 0,8
   </select>
+  
+  
 </mapper>

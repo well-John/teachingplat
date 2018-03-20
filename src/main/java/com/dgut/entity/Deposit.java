@@ -1,5 +1,6 @@
 package com.dgut.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Deposit {
@@ -7,7 +8,7 @@ public class Deposit {
 
     private Date chargeDate;
 
-    private String chargeMoney;
+    private BigDecimal chargeMoney;
 
     private Integer status;
 
@@ -31,11 +32,11 @@ public class Deposit {
         this.chargeDate = chargeDate;
     }
 
-    public String getChargeMoney() {
+    public BigDecimal getChargeMoney() {
         return chargeMoney;
     }
 
-    public void setChargeMoney(String chargeMoney) {
+    public void setChargeMoney(BigDecimal chargeMoney) {
         this.chargeMoney = chargeMoney;
     }
 

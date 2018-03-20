@@ -38,7 +38,7 @@
         </javaClientGenerator>-->
 
         <!-- 相关表的配置 -->
-        <table tableName="appointment" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
+        <table tableName="deposit" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true"
                enableUpdateByExample="true">
         </table>
     </context>

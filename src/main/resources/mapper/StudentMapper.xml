@@ -11,9 +11,9 @@
     <result column="last_ip" jdbcType="VARCHAR" property="lastIp" />
     <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
     <result column="reg_time" jdbcType="TIMESTAMP" property="regTime" />
-    <result column="balance" jdbcType="VARCHAR" property="balance" />
     <result column="isabled" jdbcType="INTEGER" property="isabled" />
     <result column="login_times" jdbcType="INTEGER" property="loginTimes" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, sex, password, phone, email, last_ip, last_time, reg_time, balance, isabled, 
-    login_times
+    id, name, sex, password, phone, email, last_ip, last_time, reg_time, isabled, login_times, 
+    balance
   </sql>
   <select id="selectByExample" parameterType="com.dgut.entity.StudentExample" resultMap="BaseResultMap">
     select
@@ -111,15 +111,15 @@
     insert into student (id, name, sex, 
       password, phone, email, 
       last_ip, last_time, reg_time, 
-      balance, isabled, login_times
+      isabled, login_times, balance
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
       #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{lastIp,jdbcType=VARCHAR}, #{lastTime,jdbcType=DATE}, #{regTime,jdbcType=DATE}, 
-      #{balance,jdbcType=VARCHAR}, #{isabled,jdbcType=INTEGER}, #{loginTimes,jdbcType=INTEGER}
+      #{lastIp,jdbcType=VARCHAR}, #{lastTime,jdbcType=TIMESTAMP}, #{regTime,jdbcType=TIMESTAMP}, 
+      #{isabled,jdbcType=INTEGER}, #{loginTimes,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.dgut.entity.Student" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+  <insert id="insertSelective" parameterType="com.dgut.entity.Student">
     insert into student
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -149,14 +149,14 @@
       <if test="regTime != null">
         reg_time,
       </if>
-      <if test="balance != null">
-        balance,
-      </if>
       <if test="isabled != null">
         isabled,
       </if>
       <if test="loginTimes != null">
         login_times,
+      </if>
+      <if test="balance != null">
+        balance,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -182,19 +182,19 @@
         #{lastIp,jdbcType=VARCHAR},
       </if>
       <if test="lastTime != null">
-        #{lastTime,jdbcType=DATE},
+        #{lastTime,jdbcType=TIMESTAMP},
       </if>
       <if test="regTime != null">
-        #{regTime,jdbcType=DATE},
-      </if>
-      <if test="balance != null">
-        #{balance,jdbcType=VARCHAR},
+        #{regTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isabled != null">
         #{isabled,jdbcType=INTEGER},
       </if>
       <if test="loginTimes != null">
         #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -229,19 +229,19 @@
         last_ip = #{record.lastIp,jdbcType=VARCHAR},
       </if>
       <if test="record.lastTime != null">
-        last_time = #{record.lastTime,jdbcType=DATE},
+        last_time = #{record.lastTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.regTime != null">
-        reg_time = #{record.regTime,jdbcType=DATE},
-      </if>
-      <if test="record.balance != null">
-        balance = #{record.balance,jdbcType=VARCHAR},
+        reg_time = #{record.regTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.isabled != null">
         isabled = #{record.isabled,jdbcType=INTEGER},
       </if>
       <if test="record.loginTimes != null">
         login_times = #{record.loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.balance != null">
+        balance = #{record.balance,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null">
@@ -257,11 +257,11 @@
       phone = #{record.phone,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       last_ip = #{record.lastIp,jdbcType=VARCHAR},
-      last_time = #{record.lastTime,jdbcType=DATE},
-      reg_time = #{record.regTime,jdbcType=DATE},
-      balance = #{record.balance,jdbcType=VARCHAR},
+      last_time = #{record.lastTime,jdbcType=TIMESTAMP},
+      reg_time = #{record.regTime,jdbcType=TIMESTAMP},
       isabled = #{record.isabled,jdbcType=INTEGER},
-      login_times = #{record.loginTimes,jdbcType=INTEGER}
+      login_times = #{record.loginTimes,jdbcType=INTEGER},
+      balance = #{record.balance,jdbcType=DECIMAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -288,19 +288,19 @@
         last_ip = #{lastIp,jdbcType=VARCHAR},
       </if>
       <if test="lastTime != null">
-        last_time = #{lastTime,jdbcType=DATE},
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
       </if>
       <if test="regTime != null">
-        reg_time = #{regTime,jdbcType=DATE},
-      </if>
-      <if test="balance != null">
-        balance = #{balance,jdbcType=VARCHAR},
+        reg_time = #{regTime,jdbcType=TIMESTAMP},
       </if>
       <if test="isabled != null">
         isabled = #{isabled,jdbcType=INTEGER},
       </if>
       <if test="loginTimes != null">
         login_times = #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        balance = #{balance,jdbcType=DECIMAL},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -313,11 +313,11 @@
       phone = #{phone,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       last_ip = #{lastIp,jdbcType=VARCHAR},
-      last_time = #{lastTime,jdbcType=DATE},
-      reg_time = #{regTime,jdbcType=DATE},
-      balance = #{balance,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=TIMESTAMP},
+      reg_time = #{regTime,jdbcType=TIMESTAMP},
       isabled = #{isabled,jdbcType=INTEGER},
-      login_times = #{loginTimes,jdbcType=INTEGER}
+      login_times = #{loginTimes,jdbcType=INTEGER},
+      balance = #{balance,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

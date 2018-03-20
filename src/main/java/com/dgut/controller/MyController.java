@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.soap.Addressing;
 
 /**
  * 用于页面跳转
@@ -92,6 +91,21 @@ public class MyController {
 					.add("lifePhotoCount",lifePhotoCount);
 		}
 		return Msg.error("");
+	}
+
+	@RequestMapping(value = "/getBalance",method = RequestMethod.POST)
+	@ResponseBody
+	public Msg getBalance(HttpSession session){
+		Integer organiser = (Integer) session.getAttribute("identity");
+		if(organiser == null){
+			return Msg.error("");
+		}else if(organiser == 1){
+			Student student = (Student) session.getAttribute("student");
+			return Msg.success("").add("organiser",organiser).add("amount",student.getBalance()) ;
+		}else{
+			Teacher teacher = (Teacher) session.getAttribute("teacher");
+			return Msg.success("").add("organiser",organiser).add("amount",teacher.getBalance());
+		}
 	}
 
 }

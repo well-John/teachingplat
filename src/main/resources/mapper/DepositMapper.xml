@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.dgut.entity.Deposit">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="charge_date" jdbcType="TIMESTAMP" property="chargeDate" />
-    <result column="charge_money" jdbcType="VARCHAR" property="chargeMoney" />
+    <result column="charge_money" jdbcType="DECIMAL" property="chargeMoney" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="organiser" jdbcType="INTEGER" property="organiser" />
     <result column="organiser_id" jdbcType="INTEGER" property="organiserId" />
@@ -104,7 +104,7 @@
     insert into deposit (id, charge_date, charge_money, 
       status, organiser, organiser_id
       )
-    values (#{id,jdbcType=INTEGER}, #{chargeDate,jdbcType=TIMESTAMP}, #{chargeMoney,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{chargeDate,jdbcType=TIMESTAMP}, #{chargeMoney,jdbcType=DECIMAL}, 
       #{status,jdbcType=INTEGER}, #{organiser,jdbcType=INTEGER}, #{organiserId,jdbcType=INTEGER}
       )
   </insert>
@@ -138,7 +138,7 @@
         #{chargeDate,jdbcType=TIMESTAMP},
       </if>
       <if test="chargeMoney != null">
-        #{chargeMoney,jdbcType=VARCHAR},
+        #{chargeMoney,jdbcType=DECIMAL},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -167,7 +167,7 @@
         charge_date = #{record.chargeDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.chargeMoney != null">
-        charge_money = #{record.chargeMoney,jdbcType=VARCHAR},
+        charge_money = #{record.chargeMoney,jdbcType=DECIMAL},
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
@@ -187,7 +187,7 @@
     update deposit
     set id = #{record.id,jdbcType=INTEGER},
       charge_date = #{record.chargeDate,jdbcType=TIMESTAMP},
-      charge_money = #{record.chargeMoney,jdbcType=VARCHAR},
+      charge_money = #{record.chargeMoney,jdbcType=DECIMAL},
       status = #{record.status,jdbcType=INTEGER},
       organiser = #{record.organiser,jdbcType=INTEGER},
       organiser_id = #{record.organiserId,jdbcType=INTEGER}
@@ -202,7 +202,7 @@
         charge_date = #{chargeDate,jdbcType=TIMESTAMP},
       </if>
       <if test="chargeMoney != null">
-        charge_money = #{chargeMoney,jdbcType=VARCHAR},
+        charge_money = #{chargeMoney,jdbcType=DECIMAL},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -219,7 +219,7 @@
   <update id="updateByPrimaryKey" parameterType="com.dgut.entity.Deposit">
     update deposit
     set charge_date = #{chargeDate,jdbcType=TIMESTAMP},
-      charge_money = #{chargeMoney,jdbcType=VARCHAR},
+      charge_money = #{chargeMoney,jdbcType=DECIMAL},
       status = #{status,jdbcType=INTEGER},
       organiser = #{organiser,jdbcType=INTEGER},
       organiser_id = #{organiserId,jdbcType=INTEGER}

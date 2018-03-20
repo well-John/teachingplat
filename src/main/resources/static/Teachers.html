@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head id="Head1">
-    <title>上海大学生家教_上海专职老师家教【阳光家教网】,第1页</title>
+    <title>东莞大学生家教_东莞专职老师家教【阳光家教网】,第1页</title>
     <link href="css/Default.css" rel="stylesheet" type="text/css"/>
     <script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
     <script src="js/My.js" type="text/javascript"></script>
@@ -55,8 +55,6 @@
 </div>
 <script>
 
-    var subject = "", area = "";
-    var school = "", sex = "", identity = '';
     var subject = "", area = "", school = "", sex = "", identity = '';
     $(document).ready(function () {
         $("#leftsead a").hover(function () {
@@ -94,8 +92,13 @@
 
 
     $(function () {
+        if (GetQueryString("university") != null)
+            school = decodeURI(GetQueryString("university"));
+        if (GetQueryString("area") != null)
+            area = decodeURI(GetQueryString("area"));
         var ele = $("#teacher_ul");
         var data = "";
+        data = "subject=" + subject + "&area=" + area + "&university=" + school + "&identity=" + identity + "&sex=" + sex;
         var pageNum;
         showTeachers(ele, data);
         showBox1();
@@ -132,12 +135,11 @@
             showTeachers(ele, data);
         });
 
-
-        $(".serArea a[class='txt']").click(function () {
-            data = "subject=" + subject + "&area=" + area + "&university=" + school + "&identity=" + identity + "&sex=" + sex;
+        $(document).on("click", ".serArea a[class='txt']", function () {
             if ($(this).text() != "不限") {
                 area = $(this).text();
             }
+            data = "subject=" + subject + "&area=" + area + "&university=" + school + "&identity=" + identity + "&sex=" + sex;
             if ($("div").hasClass("selected")) {
                 var selected_div = '<li id="areaLi"><span>' + $(this).text() + '</span><a href="javascrpit:void()" class="del delArea">&nbsp;</a></li>';
                 $('.ulItems2').append(selected_div);
@@ -152,7 +154,7 @@
             showTeachers(ele, data);
         });
         $(document).on("click", ".delArea", function () {
-            subject = "";
+            area = "";
             $(".serArea").show();
             $(".serArea").next("div[class='line']").show();
             $("#areaLi").remove();
@@ -164,8 +166,7 @@
             showTeachers(ele, data);
         });
 
-
-        $(".serSchool a[class='txt']").click(function () {
+        $(document).on("click", ".serSchool a[class='txt']", function () {
             if ($(this).text() != "不限") {
                 school = $(this).text();
             }
@@ -183,6 +184,7 @@
             data = "subject=" + subject + "&area=" + area + "&university=" + school + "&identity=" + identity + "&sex=" + sex;
             showTeachers(ele, data);
         });
+
         $(document).on("click", ".delSchool", function () {
             school = "";
             $(".serSchool").show();
@@ -195,7 +197,6 @@
             data = "subject=" + subject + "&area=" + area + "&university=" + school + "&identity=" + identity + "&sex=" + sex;
             showTeachers(ele, data);
         });
-
 
         $(".serIdentity a[class='txt']").click(function () {
             if ($(this).text() != "不限") {
@@ -322,11 +323,11 @@
         </h1>
     </div>
     <div class="city">
-        <h3>上海</h3>
+        <h3>东莞</h3>
         <span><a href="index.html">[切换城市]</a></span>
     </div>
     <div class="cityTel">
-        <span>上海热线电话</span>
+        <span>东莞热线电话</span>
         <p>021-51082788</p>
     </div>
     <div class="info2" style='display: none'>
@@ -342,7 +343,7 @@
     <div class="navBox">
         <div class="classBox">
             <div class='class'>
-                <a href='Teachers.html'><font color="#ffffff">上海家教</font></a>
+                <a href='Teachers.html'><font color="#ffffff">东莞家教</font></a>
             </div>
 
         </div>
@@ -794,55 +795,55 @@
                         <div class="s2">&nbsp;</div>
                     </div>
                 </div>
-                <div class="items">
+                <div class="items university">
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 复旦大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                    <!-- <div class='item'>
+                         <div class="s1">&nbsp;</div>
+                         <a class="txt" href='javascript:void(0);'> 复旦大学</a>
+                         <div class="s2">&nbsp;</div>
+                     </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海交通大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                     <div class='item'>
+                         <div class="s1">&nbsp;</div>
+                         <a class="txt" href='javascript:void(0);'> 东莞交通大学</a>
+                         <div class="s2">&nbsp;</div>
+                     </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 同济大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                     <div class='item'>
+                         <div class="s1">&nbsp;</div>
+                         <a class="txt" href='javascript:void(0);'> 同济大学</a>
+                         <div class="s2">&nbsp;</div>
+                     </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海外国语大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                     <div class='item'>
+                         <div class="s1">&nbsp;</div>
+                         <a class="txt" href='javascript:void(0);'> 东莞外国语大学</a>
+                         <div class="s2">&nbsp;</div>
+                     </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 华东师范大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                     <div class='item'>
+                         <div class="s1">&nbsp;</div>
+                         <a class="txt" href='javascript:void(0);'> 华东师范大学</a>
+                         <div class="s2">&nbsp;</div>
+                     </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 华东理工大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                     <div class='item'>
+                         <div class="s1">&nbsp;</div>
+                         <a class="txt" href='javascript:void(0);'> 华东理工大学</a>
+                         <div class="s2">&nbsp;</div>
+                     </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 东华大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                     <div class='item'>
+                         <div class="s1">&nbsp;</div>
+                         <a class="txt" href='javascript:void(0);'> 东华大学</a>
+                         <div class="s2">&nbsp;</div>
+                     </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                     <div class='item'>
+                         <div class="s1">&nbsp;</div>
+                         <a class="txt" href='javascript:void(0);'> 东莞大学</a>
+                         <div class="s2">&nbsp;</div>
+                     </div>-->
 
 
                     <!-- <div id="moreClick" class="item" style="float: right;">
@@ -850,199 +851,199 @@
                     </div>
 
                     <div class="items" id="moreSchool" style="display: none;"> -->
+                    <!--
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞师范大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海师范大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞财经大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海财经大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞海事大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海海事大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 华东政法大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 华东政法大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞对外经贸大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海对外经贸大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 中国美术学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 中国美术学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞音乐学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海音乐学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞戏剧学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海戏剧学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞体育学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海体育学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 第二医科大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 第二医科大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 第二军医大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 第二军医大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞中医药大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海中医药大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞理工大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海理工大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞海洋大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海海洋大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 工程技术大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 工程技术大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 第二工业大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 第二工业大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞应用技术大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海应用技术大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞电力学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海电力学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 立信会计学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 立信会计学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞金融学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海金融学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞电影艺术学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海电影艺术学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href=javascript:void(0);> 东莞电机学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href=javascript:void(0);> 上海电机学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞政法学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海政法学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞商学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海商学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞杉达学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海杉达学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞科技大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海科技大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞纽约大学</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海纽约大学</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞海关学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海海关学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞建桥学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海建桥学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'>
+                                                东莞外国语大学贤达经济人文学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'>
-                            上海外国语大学贤达经济人文学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞师范大学天华学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>
 
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海师范大学天华学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
-
-                    <div class='item'>
-                        <div class="s1">&nbsp;</div>
-                        <a class="txt" href='javascript:void(0);'> 上海健康医学院</a>
-                        <div class="s2">&nbsp;</div>
-                    </div>
+                                        <div class='item'>
+                                            <div class="s1">&nbsp;</div>
+                                            <a class="txt" href='javascript:void(0);'> 东莞健康医学院</a>
+                                            <div class="s2">&nbsp;</div>
+                                        </div>-->
 
                     <!-- 			</div> -->
                 </div>
@@ -1125,13 +1126,13 @@
                 <div class="lstit">
                     <div class="tit">
 								<span>
-									<h1>上海家教教员列表</h1>
+									<h1>东莞家教教员列表</h1>
 								</span>
                     </div>
                 </div>
                 <div class="lstcon l_part">
                     <div class="des">
-                        上海大学生家教_上海专职老师家教【阳光家教网】是阳光家教网的地方分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的家教，帮助上海小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
+                        东莞大学生家教_东莞专职老师家教【阳光家教网】是阳光家教网的地方分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的家教，帮助东莞小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
                             class="red">021-51082788</span>
                     </div>
                     <div class="clear10">&nbsp;</div>
@@ -1179,7 +1180,7 @@
                                                         186749</a></span>
                                             </div>
                                             <div class="label_g">
-                                                <span>上海中医药大学</span><span>护理</span><span> 本科在读</span>
+                                                <span>东莞中医药大学</span><span>护理</span><span> 本科在读</span>
                                             </div>
                                             <div class="teacher_article">
                                                 <p class="teacher_p">
@@ -1222,7 +1223,7 @@
                                                         188936</a></span>
                                             </div>
                                             <div class="label_g">
-                                                <span>上海外国语大学</span><span>企业管理</span><span> 硕士在读</span>
+                                                <span>东莞外国语大学</span><span>企业管理</span><span> 硕士在读</span>
                                             </div>
                                             <div class="teacher_article">
                                                 <p class="teacher_p">小学语文,小学数学,小学英语,星级英语,小学奥数</p>
@@ -1266,14 +1267,14 @@
                                                         185647</a></span>
                                             </div>
                                             <div class="label_g">
-                                                <span>上海师范大学天华学院</span><span>应用心理学</span><span> 本科在读</span>
+                                                <span>东莞师范大学天华学院</span><span>应用心理学</span><span> 本科在读</span>
                                             </div>
                                             <div class="teacher_article">
                                                 <p class="teacher_p">
                                                     小学语文,小学数学,小学英语,小学陪读,初一初二英语,陪玩,初一初二数学</p>
                                             </div>
                                             <div class="teacher_article">
-                                                <p class="teacher_p">英语四级证书 理科生，学习成绩优秀 初三以前一直在上海上学
+                                                <p class="teacher_p">英语四级证书 理科生，学习成绩优秀 初三以前一直在东莞上学
                                                     计算机一级证书 大学主修应用心理学，大一学过儿童发展心理学、教育心理学</p>
                                             </div>
                                         </div>
@@ -1400,7 +1401,7 @@
                                                         189037</a></span>
                                             </div>
                                             <div class="label_g">
-                                                <span>上海大学</span><span>电子信息工程</span><span> 本科在读</span>
+                                                <span>东莞大学</span><span>电子信息工程</span><span> 本科在读</span>
                                             </div>
                                             <div class="teacher_article">
                                                 <p class="teacher_p">
@@ -1408,7 +1409,7 @@
                                             </div>
                                             <div class="teacher_article">
                                                 <p class="teacher_p">
-                                                    上海本地人，男，大三，高中母校为世界名中学南洋模范中学，现就读于上海大学。本人擅长语文和数学，高中曾多次获得上海市古诗文大赛二等奖，初中希望杯、大同杯、科普英语均有不俗的斩获。高考数学、英语、化学均为120加。中考数学150分英语和理化均为140加。本人工作严谨，一丝不苟。</p>
+                                                    东莞本地人，男，大三，高中母校为世界名中学南洋模范中学，现就读于东莞大学。本人擅长语文和数学，高中曾多次获得东莞市古诗文大赛二等奖，初中希望杯、大同杯、科普英语均有不俗的斩获。高考数学、英语、化学均为120加。中考数学150分英语和理化均为140加。本人工作严谨，一丝不苟。</p>
                                             </div>
                                         </div>
                                     </li>
@@ -1452,7 +1453,7 @@
                                                     小学数学,小学英语,小学陪读,初一初二语文,初一初二英语,初一初二数学,初一初二化学,初三英语,初三数学,初三化学,高一高二数学,高一高二化学,高三数学,高三化学</p>
                                             </div>
                                             <div class="teacher_article">
-                                                <p class="teacher_p">毕业于市西中学 上海市重点高中 高中时数学英语成绩良好 选修化学
+                                                <p class="teacher_p">毕业于市西中学 东莞市重点高中 高中时数学英语成绩良好 选修化学
                                                     大学仍学习数学 有一定数学基础 英语四级612分</p>
                                             </div>
                                         </div>
@@ -1489,7 +1490,7 @@
                                                         164841</a></span>
                                             </div>
                                             <div class="label_g">
-                                                <span>上海外国语大学</span><span>英语</span><span> 硕士毕业</span>
+                                                <span>东莞外国语大学</span><span>英语</span><span> 硕士毕业</span>
                                             </div>
                                             <div class="teacher_article">
                                                 <p class="teacher_p">初一初二英语,初三英语,高一高二英语,高三英语</p>
@@ -1531,7 +1532,7 @@
                                                         188023</a></span>
                                             </div>
                                             <div class="label_g">
-                                                <span>上海师范大学</span><span>教育专业</span><span> 本科在读</span>
+                                                <span>东莞师范大学</span><span>教育专业</span><span> 本科在读</span>
                                             </div>
                                             <div class="teacher_article">
                                                 <p class="teacher_p">小学语文,小学数学,小学英语,小学陪读,初一初二英语,初一初二数学</p>
@@ -1573,7 +1574,7 @@
                                                         185796</a></span>
                                             </div>
                                             <div class="label_g">
-                                                <span>上海师范大学</span><span>英语师范</span><span> 本科在读</span>
+                                                <span>东莞师范大学</span><span>英语师范</span><span> 本科在读</span>
                                             </div>
                                             <div class="teacher_article">
                                                 <p class="teacher_p">小学语文,小学英语,初一初二英语</p>
@@ -1703,7 +1704,7 @@
                                                         185270</a></span>
                                             </div>
                                             <div class="label_g">
-                                                <span>上海师范大学</span><span>学前教育</span><span> 本科在读</span>
+                                                <span>东莞师范大学</span><span>学前教育</span><span> 本科在读</span>
                                             </div>
                                             <div class="teacher_article">
                                                 <p class="teacher_p">
@@ -1748,16 +1749,16 @@
                                                         188654</a></span>
                                             </div>
                                             <div class="label_g">
-                                                <span>上海视觉艺术学院</span><span>服装与服饰设计（上视） 德语（上外）</span><span>
+                                                <span>东莞视觉艺术学院</span><span>服装与服饰设计（上视） 德语（上外）</span><span>
                                                     本科在读</span>
                                             </div>
                                             <div class="teacher_article">
                                                 <p class="teacher_p">
-                                                    幼小衔接,幼儿陪玩,小学语文,小学数学,小学英语,小学陪读,小学托管,小学接送,小学英文版教材,初一初二英语,初一初二数学,初三历史,三校生数学,三校生英语,三校生历史,上海话,儿童画,卡通画,初三英语</p>
+                                                    幼小衔接,幼儿陪玩,小学语文,小学数学,小学英语,小学陪读,小学托管,小学接送,小学英文版教材,初一初二英语,初一初二数学,初三历史,三校生数学,三校生英语,三校生历史,东莞话,儿童画,卡通画,初三英语</p>
                                             </div>
                                             <div class="teacher_article">
-                                                <p class="teacher_p">上海视觉艺术学院 德稻实验班 服装与服饰设计 辅修第二专业
-                                                    上海外国语大学 德语 对于小学和初中数学英语有教学经验 能够教好 认真负责 会备课 主专业时美术大类 所以闲暇之余
+                                                <p class="teacher_p">东莞视觉艺术学院 德稻实验班 服装与服饰设计 辅修第二专业
+                                                    东莞外国语大学 德语 对于小学和初中数学英语有教学经验 能够教好 认真负责 会备课 主专业时美术大类 所以闲暇之余
                                                     学生愿意 也可以教授美术</p>
                                             </div>
                                         </div>
@@ -2214,7 +2215,7 @@ teacher_cardManage.htmlc='images/tx_0.jpg' border='0'>
 <div class="footNavBox">
     <div class="footNav">
         <div class="cityTel">
-            <span>上海热线</span>
+            <span>东莞热线</span>
             <p>021-51082788</p>
         </div>
         <div class="navBox">
@@ -2284,7 +2285,7 @@ teacher_cardManage.htmlc='images/tx_0.jpg' border='0'>
         </div>
         <div class="clear10"></div>
         <div class="ps">
-            【上海家教网】是阳光家教网的上海地区家教分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的上海家教，帮助上海小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
+            【东莞家教网】是阳光家教网的东莞地区家教分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的东莞家教，帮助东莞小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
                 class="focus">021-51082788</span>
         </div>
         <div class="line">&nbsp;</div>
@@ -2292,7 +2293,7 @@ teacher_cardManage.htmlc='images/tx_0.jpg' border='0'>
             <dl>
                 <dt>热门城市：</dt>
                 <dd>
-                    <a href="#" title="上海家教网" rel="nofollow">上海家教</a>
+                    <a href="#" title="东莞家教网" rel="nofollow">东莞家教</a>
                 </dd>
                 <dd>
                     <a href="#" title="北京家教网" rel="nofollow">北京家教</a>
@@ -2372,7 +2373,7 @@ teacher_cardManage.htmlc='images/tx_0.jpg' border='0'>
             </div>
             <div class="ri">
                 《中华人民共和国法人营业执照》注册号：310120001560841<br/>
-                《中华人民共和国组织机构代码证》：75840655-7<br/> 本站法律顾问：上海明泰律师事务所 李居利律师
+                《中华人民共和国组织机构代码证》：75840655-7<br/> 本站法律顾问：东莞明泰律师事务所 李居利律师
             </div>
         </div>
     </div>
@@ -2388,7 +2389,7 @@ teacher_cardManage.htmlc='images/tx_0.jpg' border='0'>
             <script
                     language="javascript">
                 /*
-                 CompanyName :上海阳光家教
+                 CompanyName :东莞阳光家教
                  Domain:http://www.ygjj.com
                  VocationName:商务服务\教育培训
                  DESC:中国规模最大的正规、专业家教网站，阳光家教网引领家教中介不断规范家教服务，为广大学员提供各学科的兼职家教老师和专职家庭教师，帮助小学教师、中学教师和大学生家教寻求家教兼职。
@@ -2401,9 +2402,9 @@ teacher_cardManage.htmlc='images/tx_0.jpg' border='0'>
     </tr>
     <tr>
         <td align="center" height="30" valign="middle" colspan='2'>
-            版权所有 上海鸿儒教育信息咨询有限公司－阳光家教网－上海家教 投诉电话：021-51082788*2<br/> 网络实名：<a
+            版权所有 东莞鸿儒教育信息咨询有限公司－阳光家教网－东莞家教 投诉电话：021-51082788*2<br/> 网络实名：<a
                 href='index.html' rel="nofollow">家教</a> <a href='index.html'
-                                                           rel="nofollow"> 上海家教</a> <a href="#" rel="nofollow">北京家教</a>
+                                                           rel="nofollow"> 东莞家教</a> <a href="#" rel="nofollow">北京家教</a>
             <a
                     href="#" rel="nofollow">广州家教</a> <a href="#" rel="nofollow">苏州家教</a>
             <a href="#" rel="nofollow">深圳家教</a><br/> 沪ICP备15011267号
@@ -2505,10 +2506,10 @@ teacher_cardManage.htmlc='images/tx_0.jpg' border='0'>
             success: function (data) {
                 var universitys = [];
                 universitys = data.campus[18].guangdong;
-               for (var i =0 ;i<universitys.length;i++) {
+                for (var i = 0; i < universitys.length; i++) {
 
                     var div = '<div class="item"><div class="s1">&nbsp;</div><a class="txt" href="javascript:void(0);">' + universitys[i] + '</a> <div class="s2">&nbsp;</div> </div>'
-                    $(div).appendTo($(".items"));
+                    $(div).appendTo($(".university"));
                 }
                 console.log(universitys);
 

@@ -50,12 +50,20 @@ public class AppointmentController {
 
     @RequestMapping(value = "/selectAllAppointment", method = RequestMethod.POST)
     @ResponseBody
-    public Msg selectAllAppointment(HttpSession session, int organiser, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+    public Msg selectAllAppointment(HttpSession session, int organiser, Integer id, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
         //获取当前登录人的身份
         Integer identity = (Integer) session.getAttribute("identity");
         List<Appointment> list = new ArrayList<>();
         PageInfo<Appointment> pageInfo = null;
+
+        //传id过来则直接查询，不用做判断
+        if (id != 0) {
+            list.add(appointmentService.selectByPrimaryKey(id));
+            pageInfo = new PageInfo<>(list);
+            return Msg.success("").add("pageInfo", pageInfo);
+        }
+
         //如果登录人为学员
         if (identity == 1) {
             Student student = (Student) session.getAttribute("student");
@@ -79,7 +87,7 @@ public class AppointmentController {
     @ResponseBody
     public Msg confirmAppointment(Integer id) {
         logger.info("当前预约id为：{}", id);
-        if(appointmentService.checkStatus(id)){
+        if (appointmentService.checkStatus(id)) {
             return Msg.error("该预约记录已确认，请不要重复确认");
         }
 
@@ -122,7 +130,7 @@ public class AppointmentController {
         Integer organiser = (Integer) session.getAttribute("identity");
         if (organiser == null) {
             return Msg.error("请先登录！！！");
-        }else if(organiser == 1){
+        } else if (organiser == 1) {
             return Msg.error("家教单只能由教员预约，学员无法预约");
         }
         Appointment appointment = new Appointment();

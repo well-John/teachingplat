@@ -1,8 +1,8 @@
 package com.dgut.entity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class StudentExample {
@@ -104,32 +104,6 @@ public class StudentExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -613,52 +587,52 @@ public class StudentExample {
         }
 
         public Criteria andLastTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("last_time =", value, "lastTime");
+            addCriterion("last_time =", value, "lastTime");
             return (Criteria) this;
         }
 
         public Criteria andLastTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("last_time <>", value, "lastTime");
+            addCriterion("last_time <>", value, "lastTime");
             return (Criteria) this;
         }
 
         public Criteria andLastTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("last_time >", value, "lastTime");
+            addCriterion("last_time >", value, "lastTime");
             return (Criteria) this;
         }
 
         public Criteria andLastTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("last_time >=", value, "lastTime");
+            addCriterion("last_time >=", value, "lastTime");
             return (Criteria) this;
         }
 
         public Criteria andLastTimeLessThan(Date value) {
-            addCriterionForJDBCDate("last_time <", value, "lastTime");
+            addCriterion("last_time <", value, "lastTime");
             return (Criteria) this;
         }
 
         public Criteria andLastTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("last_time <=", value, "lastTime");
+            addCriterion("last_time <=", value, "lastTime");
             return (Criteria) this;
         }
 
         public Criteria andLastTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("last_time in", values, "lastTime");
+            addCriterion("last_time in", values, "lastTime");
             return (Criteria) this;
         }
 
         public Criteria andLastTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("last_time not in", values, "lastTime");
+            addCriterion("last_time not in", values, "lastTime");
             return (Criteria) this;
         }
 
         public Criteria andLastTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("last_time between", value1, value2, "lastTime");
+            addCriterion("last_time between", value1, value2, "lastTime");
             return (Criteria) this;
         }
 
         public Criteria andLastTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("last_time not between", value1, value2, "lastTime");
+            addCriterion("last_time not between", value1, value2, "lastTime");
             return (Criteria) this;
         }
 
@@ -673,122 +647,52 @@ public class StudentExample {
         }
 
         public Criteria andRegTimeEqualTo(Date value) {
-            addCriterionForJDBCDate("reg_time =", value, "regTime");
+            addCriterion("reg_time =", value, "regTime");
             return (Criteria) this;
         }
 
         public Criteria andRegTimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("reg_time <>", value, "regTime");
+            addCriterion("reg_time <>", value, "regTime");
             return (Criteria) this;
         }
 
         public Criteria andRegTimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("reg_time >", value, "regTime");
+            addCriterion("reg_time >", value, "regTime");
             return (Criteria) this;
         }
 
         public Criteria andRegTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("reg_time >=", value, "regTime");
+            addCriterion("reg_time >=", value, "regTime");
             return (Criteria) this;
         }
 
         public Criteria andRegTimeLessThan(Date value) {
-            addCriterionForJDBCDate("reg_time <", value, "regTime");
+            addCriterion("reg_time <", value, "regTime");
             return (Criteria) this;
         }
 
         public Criteria andRegTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("reg_time <=", value, "regTime");
+            addCriterion("reg_time <=", value, "regTime");
             return (Criteria) this;
         }
 
         public Criteria andRegTimeIn(List<Date> values) {
-            addCriterionForJDBCDate("reg_time in", values, "regTime");
+            addCriterion("reg_time in", values, "regTime");
             return (Criteria) this;
         }
 
         public Criteria andRegTimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("reg_time not in", values, "regTime");
+            addCriterion("reg_time not in", values, "regTime");
             return (Criteria) this;
         }
 
         public Criteria andRegTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("reg_time between", value1, value2, "regTime");
+            addCriterion("reg_time between", value1, value2, "regTime");
             return (Criteria) this;
         }
 
         public Criteria andRegTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("reg_time not between", value1, value2, "regTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceIsNull() {
-            addCriterion("balance is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceIsNotNull() {
-            addCriterion("balance is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceEqualTo(String value) {
-            addCriterion("balance =", value, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceNotEqualTo(String value) {
-            addCriterion("balance <>", value, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceGreaterThan(String value) {
-            addCriterion("balance >", value, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceGreaterThanOrEqualTo(String value) {
-            addCriterion("balance >=", value, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceLessThan(String value) {
-            addCriterion("balance <", value, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceLessThanOrEqualTo(String value) {
-            addCriterion("balance <=", value, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceLike(String value) {
-            addCriterion("balance like", value, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceNotLike(String value) {
-            addCriterion("balance not like", value, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceIn(List<String> values) {
-            addCriterion("balance in", values, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceNotIn(List<String> values) {
-            addCriterion("balance not in", values, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceBetween(String value1, String value2) {
-            addCriterion("balance between", value1, value2, "balance");
-            return (Criteria) this;
-        }
-
-        public Criteria andBalanceNotBetween(String value1, String value2) {
-            addCriterion("balance not between", value1, value2, "balance");
+            addCriterion("reg_time not between", value1, value2, "regTime");
             return (Criteria) this;
         }
 
@@ -909,6 +813,66 @@ public class StudentExample {
 
         public Criteria andLoginTimesNotBetween(Integer value1, Integer value2) {
             addCriterion("login_times not between", value1, value2, "loginTimes");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceIsNull() {
+            addCriterion("balance is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceIsNotNull() {
+            addCriterion("balance is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceEqualTo(BigDecimal value) {
+            addCriterion("balance =", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceNotEqualTo(BigDecimal value) {
+            addCriterion("balance <>", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceGreaterThan(BigDecimal value) {
+            addCriterion("balance >", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("balance >=", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceLessThan(BigDecimal value) {
+            addCriterion("balance <", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("balance <=", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceIn(List<BigDecimal> values) {
+            addCriterion("balance in", values, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceNotIn(List<BigDecimal> values) {
+            addCriterion("balance not in", values, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("balance between", value1, value2, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("balance not between", value1, value2, "balance");
             return (Criteria) this;
         }
     }

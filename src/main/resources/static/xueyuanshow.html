@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head id="Head1">
-    <title>上海初一计算机编程家教信息_上中路长桥路家教_曹先生【阳光家教网】</title>
+    <title>东莞初一计算机编程家教信息_上中路长桥路家教_曹先生【阳光家教网】</title>
     <link href="css/Default.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
     <script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
@@ -187,6 +187,8 @@
         $("#teaching_type").text(data.map.req.teachingType);
         $("#release_status").text(data.map.req.releaseStatus == 1 ? "发布中" : "已关闭");
         $("#release_time").text(getMyDateTime(data.map.req.releaseTime));
+        var area_div ='<a href="Teachers.html">'+data.map.req.area+'家教</a>&nbsp;'+data.map.req.address;
+        $("#area").empty().append(area_div);
     }
 
     $(function () {
@@ -295,11 +297,11 @@
         </h1>
     </div>
     <div class="city">
-        <h3>上海</h3>
+        <h3>东莞</h3>
         <span><a href="index.html">[切换城市]</a></span>
     </div>
     <div class="cityTel">
-        <span>上海热线电话</span>
+        <span>东莞热线电话</span>
         <p>021-51082788</p>
     </div>
     <div class="info2" style='display: none'>
@@ -315,7 +317,7 @@
     <div class="navBox">
         <div class="classBox">
             <div class='class'>
-                <a href='Teachers.html'><font color="#ffffff">上海家教</font></a>
+                <a href='Teachers.html'><font color="#ffffff">东莞家教</font></a>
             </div>
 
         </div>
@@ -455,16 +457,12 @@
                                 <td id="student_description">升初一 学编程计算，学校里在学，想参加比赛，pascal语言 ，之前学过一点</td>
                             </tr>
                             <tr>
-                                <th>就读学校</th>
-                                <td id="school">华育中学</td>
-                            </tr>
-                            <tr>
                                 <th>教授时间</th>
                                 <td id="teaching_time">一周1-2次，周末晚上7-9</td>
                             </tr>
                             <tr>
                                 <th>居住区域</th>
-                                <td id="area"><a href='Teachers.html#9_s0_x0_t0_g1/'>徐汇家教</a>&nbsp;植物园
+                                <td id="area">
                                 </td>
                             </tr>
                             <tr>
@@ -830,7 +828,7 @@
 <div class="footNavBox">
     <div class="footNav">
         <div class="cityTel">
-            <span>上海热线</span>
+            <span>东莞热线</span>
             <p>021-51082788</p>
         </div>
         <div class="navBox">
@@ -900,7 +898,7 @@
         </div>
         <div class="clear10"></div>
         <div class="ps">
-            【上海家教网】是阳光家教网的上海地区家教分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的上海家教，帮助上海小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
+            【东莞家教网】是阳光家教网的东莞地区家教分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的东莞家教，帮助东莞小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
                 class="focus">021-51082788</span>
         </div>
         <div class="line">&nbsp;</div>
@@ -908,7 +906,7 @@
             <dl>
                 <dt>热门城市：</dt>
                 <dd>
-                    <a href="#" title="上海家教网" rel="nofollow">上海家教</a>
+                    <a href="#" title="东莞家教网" rel="nofollow">东莞家教</a>
                 </dd>
                 <dd>
                     <a href="#" title="北京家教网" rel="nofollow">北京家教</a>
@@ -988,7 +986,7 @@
             </div>
             <div class="ri">
                 《中华人民共和国法人营业执照》注册号：310120001560841<br/>
-                《中华人民共和国组织机构代码证》：75840655-7<br/> 本站法律顾问：上海明泰律师事务所 李居利律师
+                《中华人民共和国组织机构代码证》：75840655-7<br/> 本站法律顾问：东莞明泰律师事务所 李居利律师
             </div>
         </div>
     </div>
@@ -1004,7 +1002,7 @@
             <script
                     language="javascript">
                 /*
-                 CompanyName :上海阳光家教
+                 CompanyName :东莞阳光家教
                  Domain:http://www.ygjj.com
                  VocationName:商务服务\教育培训
                  DESC:中国规模最大的正规、专业家教网站，阳光家教网引领家教中介不断规范家教服务，为广大学员提供各学科的兼职家教老师和专职家庭教师，帮助小学教师、中学教师和大学生家教寻求家教兼职。
@@ -1017,9 +1015,9 @@
     </tr>
     <tr>
         <td align="center" height="30" valign="middle" colspan='2'>
-            版权所有 上海鸿儒教育信息咨询有限公司－阳光家教网－上海家教 投诉电话：021-51082788*2<br/> 网络实名：<a
+            版权所有 东莞鸿儒教育信息咨询有限公司－阳光家教网－东莞家教 投诉电话：021-51082788*2<br/> 网络实名：<a
                 href='index.html' rel="nofollow">家教</a> <a href='index.html'
-                                                           rel="nofollow"> 上海家教</a> <a href="#"
+                                                           rel="nofollow"> 东莞家教</a> <a href="#"
                                                                                        rel="nofollow">北京家教</a> <a
                 href="#" rel="nofollow">广州家教</a> <a href="#" rel="nofollow">苏州家教</a>
             <a href="#" rel="nofollow">深圳家教</a><br/> 沪ICP备15011267号

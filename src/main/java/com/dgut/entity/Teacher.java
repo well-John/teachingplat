@@ -1,7 +1,6 @@
 package com.dgut.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Teacher {
@@ -47,9 +46,8 @@ public class Teacher {
 
     private String avatar;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastTime;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+
     private Date registerTime;
 
     private String lastIp;
@@ -67,6 +65,8 @@ public class Teacher {
     private Integer loginTimes;
 
     private Integer isverify;
+
+    private BigDecimal balance;
 
     public Integer getId() {
         return id;
@@ -314,5 +314,13 @@ public class Teacher {
 
     public void setIsverify(Integer isverify) {
         this.isverify = isverify;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 }

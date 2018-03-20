@@ -192,7 +192,7 @@ function showTeachers(ele, data, verify) {
                 var list = data.map.pageInfo.list;
 
                 $(list).each(function (index, data) {
-                    var TeacherInfo = '<li class="cf2"><div class="teacher_head"><a href="teacher_info.html" target="_blank" title="家教">'
+                    var TeacherInfo = '<li class="cf2"><div class="teacher_head"><a href="teacher_info.html?id=' + data.id + '" target="_blank" title="家教">'
                         + '<img src="' + data.avatar + '" border="0" width="90" height="100"></a><div style="display: block">'
                         + '<a href="teacher_info.html?id=' + data.id + '" class="teach_num">成功(<span>2</span>)</a></div>'
                         + '<div style="display: none"><a href="teacher_info.html" class="teach_view">评价(<span>0</span>)</a></div></div>'
@@ -474,8 +474,24 @@ function showImg(id) {
     console.log(teacher);
     $(".txBox2 img").attr("src", teacher.avatar);
 }
-		
 
+function getBalance() {
+    $.ajax({
+        url: "getBalance",
+        type: "post",
+        dataType: "json",
+        success: function (data) {
+            if (data.code == 100) {
+                var div_item = '<div class="item"><div class="ch1">' + (data.map.organiser == 1 ? "学员" : "教员") + '</div>'
+                + '<div class="ch2"><span class="cor" style="color:red">' + (data.map.amount == null ? "0" : data.map.amount) + '</span></div></div>';
+                $(div_item).appendTo($("#amountInfo"));
+                console.log(data);
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+    });
+}
 
 
 

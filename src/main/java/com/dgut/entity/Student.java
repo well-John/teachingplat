@@ -1,22 +1,10 @@
 package com.dgut.entity;
 
-import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
-public class Student implements Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", sex=" + sex + ", password=" + password + ", phone=" + phone + ", email=" + email
-				+ ", lastIp=" + lastIp + ", lastTime=" + lastTime + ", regTime=" + regTime + ", balance=" + balance + ", isabled=" + isabled
-				+ ", loginTimes=" + loginTimes + "]";
-	}
-
-	private Integer id;
+public class Student {
+    private Integer id;
 
     private String name;
 
@@ -34,11 +22,11 @@ public class Student implements Serializable{
 
     private Date regTime;
 
-    private String balance;
-
     private Integer isabled;
 
     private Integer loginTimes;
+
+    private BigDecimal balance;
 
     public Integer getId() {
         return id;
@@ -53,7 +41,7 @@ public class Student implements Serializable{
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public Integer getSex() {
@@ -69,7 +57,7 @@ public class Student implements Serializable{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public String getPhone() {
@@ -77,7 +65,7 @@ public class Student implements Serializable{
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getEmail() {
@@ -85,7 +73,7 @@ public class Student implements Serializable{
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email == null ? null : email.trim();
     }
 
     public String getLastIp() {
@@ -93,7 +81,7 @@ public class Student implements Serializable{
     }
 
     public void setLastIp(String lastIp) {
-        this.lastIp = lastIp;
+        this.lastIp = lastIp == null ? null : lastIp.trim();
     }
 
     public Date getLastTime() {
@@ -112,14 +100,6 @@ public class Student implements Serializable{
         this.regTime = regTime;
     }
 
-    public String getBalance() {
-        return balance;
-    }
-
-    public void setBalance(String balance) {
-        this.balance = balance;
-    }
-
     public Integer getIsabled() {
         return isabled;
     }
@@ -134,5 +114,13 @@ public class Student implements Serializable{
 
     public void setLoginTimes(Integer loginTimes) {
         this.loginTimes = loginTimes;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 }

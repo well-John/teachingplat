@@ -135,11 +135,11 @@
 			</h1>
 		</div>
 		<div class="city">
-			<h3>上海</h3>
+			<h3>东莞</h3>
 			<span><a href="index.jsp">[切换城市]</a></span>
 		</div>
 		<div class="cityTel">
-			<span>上海热线电话</span>
+			<span>东莞热线电话</span>
 			<p>021-51082788</p>
 		</div>
 		<div class="info2" style='display: none'>
@@ -155,7 +155,7 @@
 		<div class="navBox">
 			<div class="classBox">
 				<div class='class'>
-					<a href='Teacherlist.jsp'><font color="#ffffff">上海家教</font></a>
+					<a href='Teacherlist.jsp'><font color="#ffffff">东莞家教</font></a>
 				</div>
 
 			</div>
@@ -429,7 +429,7 @@
 										<a href='/jy_a0_s75_c0_f0_x0_g1/'> 外国人中文家教</a> | <a
 											href='/jy_a0_s76_c0_f0_x0_g1/'> 精准普通话家教</a> | <a
 											href='/jy_a0_s77_c0_f0_x0_g1/'> 手语家教</a> | <a
-											href='/jy_a0_s78_c0_f0_x0_g1/'> 上海话家教</a> | <a
+											href='/jy_a0_s78_c0_f0_x0_g1/'> 东莞话家教</a> | <a
 											href='/jy_a0_s79_c0_f0_x0_g1/'> 粤语家教</a> | <a
 											href='/jy_a0_s80_c0_f0_x0_g1/'> 闽南语家教</a> |
 
@@ -764,28 +764,28 @@
 
 						<li><a href='/jy_a0_s0_c7_f0_g1/' title='复旦大学家教'> 复旦大学</a></li>
 
-						<li><a href='/jy_a0_s0_c8_f0_g1/' title='上海交通大学家教'>
-								上海交通大学</a></li>
+						<li><a href='/jy_a0_s0_c8_f0_g1/' title='东莞交通大学家教'>
+								东莞交通大学</a></li>
 
 						<li><a href='/jy_a0_s0_c9_f0_g1/' title='同济大学家教'> 同济大学</a></li>
 
-						<li><a href='/jy_a0_s0_c10_f0_g1/' title='上海外国语大学家教'>
-								上海外国语大学</a></li>
+						<li><a href='/jy_a0_s0_c10_f0_g1/' title='东莞外国语大学家教'>
+								东莞外国语大学</a></li>
 
 						<li><a href='/jy_a0_s0_c11_f0_g1/' title='华东师范大学家教'>
 								华东师范大学</a></li>
 
-						<li><a href='/jy_a0_s0_c15_f0_g1/' title='上海师范大学家教'>
-								上海师范大学</a></li>
+						<li><a href='/jy_a0_s0_c15_f0_g1/' title='东莞师范大学家教'>
+								东莞师范大学</a></li>
 
 						<li><a href='/jy_a0_s0_c20_f0_g1/' title='中国美术学院家教'>
 								中国美术学院</a></li>
 
-						<li><a href='/jy_a0_s0_c21_f0_g1/' title='上海音乐学院家教'>
-								上海音乐学院</a></li>
+						<li><a href='/jy_a0_s0_c21_f0_g1/' title='东莞音乐学院家教'>
+								东莞音乐学院</a></li>
 
-						<li><a href='/jy_a0_s0_c23_f0_g1/' title='上海体育学院家教'>
-								上海体育学院</a></li>
+						<li><a href='/jy_a0_s0_c23_f0_g1/' title='东莞体育学院家教'>
+								东莞体育学院</a></li>
 
 					</ul>
 					<ul class="hide">
@@ -1252,7 +1252,7 @@
 								<div class="con">
 									<ul>
 										<li>编号：<span class="bh">189065</span></li>
-										<li>所读学校：上海海洋大学</li>
+										<li>所读学校：东莞海洋大学</li>
 										<li>身份：<span class="cf60">在校大二学生</span></li>
 										<li>时间：08-25</li>
 									</ul>
@@ -1381,7 +1381,7 @@
 							<td><a href='xueyuanshow.html#328121.html' target='_blank'>
 									浦东</a></td>
 							<td><a href='xueyuanshow.html#328121.html' target='_blank'
-								title='有经验，耐心，上海人，最好可以长期'> 有经验，耐心，上海人，最</a></td>
+								title='有经验，耐心，东莞人，最好可以长期'> 有经验，耐心，东莞人，最</a></td>
 							<td>08-25</td>
 							<td width="40">
 								<div class="look">
@@ -1399,7 +1399,7 @@
 							<td><a href='xueyuanshow.html#327971.html' target='_blank'>
 									浦东</a></td>
 							<td><a href='xueyuanshow.html#327971.html' target='_blank'
-								title='认真负责有耐心的老师，一定要上海人'> 认真负责有耐心的老师，一</a></td>
+								title='认真负责有耐心的老师，一定要东莞人'> 认真负责有耐心的老师，一</a></td>
 							<td>08-25</td>
 							<td width="40">
 								<div class="look">
@@ -1731,7 +1731,7 @@
 	<div class="footNavBox">
 		<div class="footNav">
 			<div class="cityTel">
-				<span>上海热线</span>
+				<span>东莞热线</span>
 				<p>021-51082788</p>
 			</div>
 			<div class="navBox">
@@ -1801,7 +1801,7 @@
 			</div>
 			<div class="clear10"></div>
 			<div class="ps">
-				【上海家教网】是阳光家教网的上海地区家教分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的上海家教，帮助上海小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
+				【东莞家教网】是阳光家教网的东莞地区家教分站，是中国规模较大的正规、专业家教网站。我们为您提供最优质的东莞家教，帮助东莞小学老师、中学老师和大学生家教寻求家教兼职。欢迎致电<span
 					class="focus">021-51082788</span>
 			</div>
 			<div class="line">&nbsp;</div>
@@ -1809,7 +1809,7 @@
 				<dl>
 					<dt>热门城市：</dt>
 					<dd>
-						<a href="#" title="上海家教网" rel="nofollow">上海家教</a>
+						<a href="#" title="东莞家教网" rel="nofollow">东莞家教</a>
 					</dd>
 					<dd>
 						<a href="#" title="北京家教网" rel="nofollow">北京家教</a>
@@ -1885,11 +1885,11 @@
 					</dd>
 
 					<dd>
-						<a href='http://sh.58.com/jiaoshi/' target="_blank"> 上海教师招聘</a>
+						<a href='http://sh.58.com/jiaoshi/' target="_blank"> 东莞教师招聘</a>
 					</dd>
 
 					<dd>
-						<a href='http://shanghai.cncn.com' target="_blank"> 上海旅游</a>
+						<a href='http://shanghai.cncn.com' target="_blank"> 东莞旅游</a>
 					</dd>
 
 					<dd>
@@ -1898,12 +1898,12 @@
 
 					<dd>
 						<a href='http://www.hunt007.com/shanghai.htm ' target="_blank">
-							上海招聘网</a>
+							东莞招聘网</a>
 					</dd>
 
 					<dd>
 						<a href='http://china.findlaw.cn/shanghai' target="_blank">
-							上海律师 </a>
+							东莞律师 </a>
 					</dd>
 
 					<dd>
@@ -1941,7 +1941,7 @@
 					</dd>
 
 					<dd>
-						<a href='http://sh.ganji.com/jiajiao/' target="_blank"> 上海家教</a>
+						<a href='http://sh.ganji.com/jiajiao/' target="_blank"> 东莞家教</a>
 					</dd>
 
 					<dd>
@@ -1972,7 +1972,7 @@
 				</div>
 				<div class="ri">
 					《中华人民共和国法人营业执照》注册号：310120001560841<br />
-					《中华人民共和国组织机构代码证》：75840655-7<br /> 本站法律顾问：上海明泰律师事务所 李居利律师
+					《中华人民共和国组织机构代码证》：75840655-7<br /> 本站法律顾问：东莞明泰律师事务所 李居利律师
 				</div>
 			</div>
 		</div>
