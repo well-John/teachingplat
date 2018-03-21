@@ -2,6 +2,7 @@ package com.dgut.controller;
 
 import com.dgut.entity.*;
 import com.dgut.service.AppointmentService;
+import com.dgut.service.ForderService;
 import com.dgut.service.TeacherRequirementService;
 import com.dgut.service.TeacherService;
 import com.github.pagehelper.PageHelper;
@@ -32,6 +33,9 @@ public class AppointmentController {
     AppointmentService appointmentService;
 
     @Autowired
+    ForderService forderService;
+
+    @Autowired
     TeacherService teacherService;
 
     @Autowired
@@ -50,7 +54,7 @@ public class AppointmentController {
 
     @RequestMapping(value = "/selectAllAppointment", method = RequestMethod.POST)
     @ResponseBody
-    public Msg selectAllAppointment(HttpSession session, int organiser, Integer id, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+    public Msg selectAllAppointment(HttpSession session, Integer organiser, Integer id, @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         PageHelper.startPage(pageNum, pageSize);
         //获取当前登录人的身份
         Integer identity = (Integer) session.getAttribute("identity");
@@ -67,11 +71,11 @@ public class AppointmentController {
         //如果登录人为学员
         if (identity == 1) {
             Student student = (Student) session.getAttribute("student");
-            list = appointmentService.selectAllStudentAppointment(organiser, student.getId());
+            list = appointmentService.selectAllStudentAppointment(student.getId());
 
         } else if (identity == 2) {
             Teacher teacher = (Teacher) session.getAttribute("teacher");
-            list = appointmentService.selectAllTeacherAppointment(organiser, teacher.getId());
+            list = appointmentService.selectAllTeacherAppointment(teacher.getId());
         }
 
         if (list != null && list.size() != 0) {
@@ -110,6 +114,7 @@ public class AppointmentController {
             forder.setTeacherRequirementId(teacherRequirement.getId());
             forder.setTeacherId(a.getTeacherId());
             forder.setStudentId(a.getStudentId());
+            forderService.insertSelective(forder);
             return Msg.success("预约确认成功");
         }
         return Msg.error("预约确认失败");

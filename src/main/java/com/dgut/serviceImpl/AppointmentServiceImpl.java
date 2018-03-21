@@ -28,19 +28,17 @@ public class AppointmentServiceImpl extends BaseServiceImpl<Appointment, Appoint
 	}
 
 	@Override
-	public List<Appointment> selectAllStudentAppointment(int organiser, Integer id) {
+	public List<Appointment> selectAllStudentAppointment(Integer id) {
 		AppointmentExample example=new AppointmentExample();
 		Criteria criteria=example.createCriteria();
-		criteria.andOrganiserEqualTo(organiser);
 		criteria.andStudentIdEqualTo(id);
 		return appointmentMapper.selectByExample(example);
 	}
 
 	@Override
-	public List<Appointment> selectAllTeacherAppointment(int organiser, Integer id) {
+	public List<Appointment> selectAllTeacherAppointment(Integer id) {
 		AppointmentExample example=new AppointmentExample();
 		Criteria criteria=example.createCriteria();
-		criteria.andOrganiserEqualTo(organiser);
 		criteria.andTeacherIdEqualTo(id);
 		return appointmentMapper.selectByExample(example);
 	}

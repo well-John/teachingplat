@@ -227,8 +227,8 @@ function showOrders(ele, data, studentId) {
                 $(list).each(function (index, data) {
                     var TeacherRequireInfo = '<div class="dd_item"><div class="dd_title"><dl><dt><a href="xueyuanshow.html?id=' + data.id + '" target="_blank"><span>' + data.area + data.subject + "家教" + "(编号：" + data.id + ")" + '</span></a></dt>'
                         + '<dd>发布时间：' + getMyDateTime(data.releaseTime) + '</dd></dl></div><div class="dd_con"><div class="ch1"><p>学员：</p><p>所在区域：</p><p>教师资格要求：</p></div><div class="ch2">'
-                        + '<p>' + data.grade + '</p><p>' + data.area + '</p><p>' + data.requirement + '</p></div><div class="ch3"><p>求教科目：</p><p>教员性别要求：</p></div>'
-                        + '<div class="ch4"><p>' + data.subject + '</p><p>' + showSex(data.requireSex) + '</p></div><div class="ch7">' + (data.releaseStatus == 1 ? "<div class='zt1'> 发布中</div>" : "<div class='zt1 closed'> 已关闭</div>") + '<div class="zt2"><a href="xueyuanshow.html?id=' + data.id + '" class="link33" target="_blank">更多详细资料</a></div>'
+                        + '<p>' + data.grade + '</p><p>' + data.area + '</p><p>' + data.requirement+ '</p></div><div class="ch3"><p>求教科目：</p><p>教员性别要求：</p><p>教员身份要求:</p></div>'
+                        + '<div class="ch4"><p>' + data.subject + '</p><p>' + showSex(data.requireSex) + '</p><p>'+showidentity(data.identity)+'</p></div><div class="ch7">' + (data.releaseStatus == 1 ? "<div class='zt1'> 发布中</div>" : "<div class='zt1 closed'> 已关闭</div>") + '<div class="zt2"><a href="xueyuanshow.html?id=' + data.id + '" class="link33" target="_blank">更多详细资料</a></div>'
                         + '<div class="clear">&nbsp;</div></div><div class="clear">&nbsp;</div></div>';
                     $(ele).append(TeacherRequireInfo);
                 });
@@ -483,7 +483,7 @@ function getBalance() {
         success: function (data) {
             if (data.code == 100) {
                 var div_item = '<div class="item"><div class="ch1">' + (data.map.organiser == 1 ? "学员" : "教员") + '</div>'
-                + '<div class="ch2"><span class="cor" style="color:red">' + (data.map.amount == null ? "0" : data.map.amount) + '</span></div></div>';
+                    + '<div class="ch2"><span class="cor" style="color:red">' + (data.map.amount == null ? "0" : data.map.amount) + '</span></div></div>';
                 $(div_item).appendTo($("#amountInfo"));
                 console.log(data);
             } else {
@@ -494,4 +494,12 @@ function getBalance() {
 }
 
 
-
+function showidentity(identity) {
+    if(identity == 0){
+        return "在校大学生";
+    }else if(identity == 1){
+        return "在职教师";
+    }else{
+        return "无";
+    }
+}

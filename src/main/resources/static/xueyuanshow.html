@@ -184,6 +184,7 @@
         $("#require_sex").text(showReqSex(data.map.req.requireSex));
         $("#require_count").text(data.map.req.requireCount);
         $("#requirement").text(data.map.req.requirement);
+        $("#identity").text(showidentity(data.map.req.identity));
         $("#teaching_type").text(data.map.req.teachingType);
         $("#release_status").text(data.map.req.releaseStatus == 1 ? "发布中" : "已关闭");
         $("#release_time").text(getMyDateTime(data.map.req.releaseTime));
@@ -242,8 +243,8 @@
                     $(list).each(function (index, data) {
                         var TeacherRequireInfo = '<div class="dd_item"><div class="dd_title"><dl><dt><a href="xueyuanshow.html?id=' + data.id + '" target="_blank"><span>' + data.area + data.subject + "家教" + "(编号：" + data.id + ")" + '</span></a></dt>'
                             + '<dd>发布时间：' + getMyDateTime(data.releaseTime) + '</dd></dl></div><div class="dd_con"><div class="ch1"><p>学员：</p><p>所在区域：</p><p>教师资格要求：</p></div><div class="ch2">'
-                            + '<p>' + data.grade + '</p><p>' + data.area + '</p><p>' + data.requirement + '</p></div><div class="ch3"><p>求教科目：</p><p>教员性别要求：</p></div>'
-                            + '<div class="ch4"><p>' + data.subject + '</p><p>' + showSex(data.requireSex) + '</p></div><div class="ch7">' + (data.releaseStatus == 1 ? "<div class='zt1'> 发布中</div>" : "<div class='zt1 closed'> 已关闭</div>") + '<div class="zt2"><a href="xueyuanshow.html?id=' + data.id + '" class="link33" target="_blank">更多详细资料</a></div>'
+                            + '<p>' + data.grade + '</p><p>' + data.area + '</p><p>' + data.requirement+ '</p></div><div class="ch3"><p>求教科目：</p><p>教员性别要求：</p><p>教员身份要求:</p></div>'
+                            + '<div class="ch4"><p>' + data.subject + '</p><p>' + showSex(data.requireSex) + '</p><p>'+showidentity(data.identity)+'</p></div><div class="ch7">' + (data.releaseStatus == 1 ? "<div class='zt1'> 发布中</div>" : "<div class='zt1 closed'> 已关闭</div>") + '<div class="zt2"><a href="xueyuanshow.html?id=' + data.id + '" class="link33" target="_blank">更多详细资料</a></div>'
                             + '<div class="clear">&nbsp;</div></div><div class="clear">&nbsp;</div></div>';
                         $(".dd_lstcon").append(TeacherRequireInfo);
                     });
@@ -499,6 +500,11 @@
                             <tr>
                                 <th>需求人数</th>
                                 <td id="require_count">1人</td>
+                            </tr>
+                            <tr>
+                                <th>身份要求</th>
+                                <td id="identity">无
+                                </td>
                             </tr>
                             <tr>
                                 <th>资格要求</th>

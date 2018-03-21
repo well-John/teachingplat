@@ -285,7 +285,7 @@
                                 +'<div class="ch3" > <span style="margin-left:25px";>'+item.subject+"</span></div>"
                                 +'<div class="ch4"> <span class="f1">'+item.studentId+'</div>'
                                 +'<div class="ch5"><a href="teacher_yuyue.html?id='+item.appointmentId+'" >查看</a></div>'
-                                +'<div class="ch6">'+item.adminName+'</div>'
+                              /*  +'<div class="ch6">'+item.adminName+'</div>'*/
                                 +'<div class="ch7"> <a class="update_forder t"  href="##" data-id="'+item.id+'" data-status="'+item.status+'" >编辑</a> <a class="cancel t t1" data-id="'+item.id+'" data-status="'+item.status+'" href="###">取消 </a> </div><div class="clear">&nbsp;</div></div>';
                             $(div_item).appendTo(order_div);
                         });
@@ -435,11 +435,11 @@
 
 								<div class="lsthead">
 									<div class="ch1">订单号</div>
-									<div class="ch2">发布时间</div>
+									<div class="ch2">生成时间</div>
 									<div class="ch3">年级科目</div>
 									<div class="ch4">学员</div>
-									<div id="lstInfo_yut" class="ch5">预约</div>
-									<div class="ch6">处理人</div>
+									<div id="lstInfo_yut" class="ch5">预约</div><!--
+									<div class="ch6">处理人</div>-->
 									<div class="ch7">操作</div>
 								</div>
 								<div id="MyOrder"></div>
