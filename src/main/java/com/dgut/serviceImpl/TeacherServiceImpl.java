@@ -46,6 +46,7 @@ public class TeacherServiceImpl extends BaseServiceImpl<Teacher, TeacherExample>
     @Override
     public List<Teacher> selectTeachersByExample(String subject, String university, String area,  Integer identity, Integer sex,Integer isverify) {
         TeacherExample example = new TeacherExample();
+        example.setOrderByClause("last_time desc");
         Criteria criteria = example.createCriteria();
         if(isverify == 2){
             criteria.andIsverifyEqualTo(isverify);

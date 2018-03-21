@@ -1,23 +1,27 @@
 package com.dgut.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.dgut.entity.*;
+import com.dgut.entity.Msg;
+import com.dgut.entity.Student;
+import com.dgut.entity.Teacher;
+import com.dgut.service.StudentService;
+import com.dgut.service.TeacherService;
 import com.dgut.utils.IPAddressUtil;
+import com.dgut.utils.MD5Util;
 import com.dgut.utils.RandomValidateCode;
+import com.dgut.utils.SendMailUtil;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-
-import com.dgut.service.StudentService;
-import com.dgut.service.TeacherService;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 
@@ -62,7 +66,7 @@ public class StudentController {
 	public Msg login(HttpServletRequest request, String email, String password) {
 		Student student;
 		HttpSession session = request.getSession();
-		if ((student = studentService.login(email, password)) != null) {
+		if ((student = studentService.login(email, MD5Util.encode(password.trim()))) != null) {
 			if (student.getIsabled() == 0) {
 				return Msg.error("您的邮箱还没有经过验证");
 			} else if (student.getIsabled() == 1) {
@@ -91,9 +95,14 @@ public class StudentController {
 		if(!code.equals(pcode)){
 			return Msg.error("验证码错误");
 		}
+		student.setPassword(MD5Util.encode(student.getPassword()));
 		Integer id=studentService.register(student);
 		if (id!=null) {
+			String checkcode = MD5Util.generateCheckcode(student.getEmail(), student.getName());
 			request.getSession().removeAttribute("RANDOM_CODE_KEY");
+			request.getSession().setAttribute("checkcode", checkcode);
+			logger.info("发送参数：email：{}，id：{}，organiser:{},checkcode:{}", student.getEmail(), student.getId(), 2, checkcode);
+			SendMailUtil.send(student.getEmail(), student.getId(), 1, checkcode);
 			return Msg.success("注册成功").add("id", id);
 		}
 		return Msg.error("注册失败");
@@ -159,7 +168,7 @@ public class StudentController {
 	public Msg changePass(HttpSession session,String password){
 		System.out.println("password:"+password);
 		Student student=(Student) session.getAttribute("student");
-		student.setPassword(password);
+		student.setPassword(MD5Util.encode(password));
 		if(studentService.updateByPrimaryKeySelective(student)==1){
 			session.setAttribute("student", student);
 			return Msg.success("修改密码成功");

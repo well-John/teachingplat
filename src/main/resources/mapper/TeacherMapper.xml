@@ -153,7 +153,7 @@
       #{currentStatus,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{loginTimes,jdbcType=INTEGER}, 
       #{isverify,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.dgut.entity.Teacher">
+  <insert id="insertSelective" parameterType="com.dgut.entity.Teacher" useGeneratedKeys="true" keyProperty="id">
     insert into teacher
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

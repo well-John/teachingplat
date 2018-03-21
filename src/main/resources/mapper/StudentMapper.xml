@@ -119,7 +119,7 @@
       #{isabled,jdbcType=INTEGER}, #{loginTimes,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.dgut.entity.Student">
+  <insert id="insertSelective" parameterType="com.dgut.entity.Student" useGeneratedKeys="true" keyProperty="id">
     insert into student
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

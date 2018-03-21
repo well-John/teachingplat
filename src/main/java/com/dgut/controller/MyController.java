@@ -3,9 +3,7 @@ package com.dgut.controller;
 import com.dgut.entity.Msg;
 import com.dgut.entity.Student;
 import com.dgut.entity.Teacher;
-import com.dgut.service.AppointmentService;
-import com.dgut.service.ForderService;
-import com.dgut.service.PictureService;
+import com.dgut.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,94 +16,129 @@ import javax.servlet.http.HttpSession;
 
 /**
  * 用于页面跳转
- * @author Administrator
  *
+ * @author Administrator
  */
 
 @Controller
 public class MyController {
 
-	private Logger logger = LoggerFactory.getLogger(MyController.class);
+    private Logger logger = LoggerFactory.getLogger(MyController.class);
 
-	@Autowired
-	private ForderService forderService;
+    @Autowired
+    private StudentService studentService;
 
-	@Autowired
-	private AppointmentService appointmentService;
+    @Autowired
+    private TeacherService teacherService;
 
-	@Autowired
-	private PictureService pictureService;
+    @Autowired
+    private ForderService forderService;
 
+    @Autowired
+    private AppointmentService appointmentService;
 
-	@RequestMapping("/my")
-	public String forward(String url){
-		logger.info("当前需要转发的url为："+url);
-		return url;
-	}
-
-	@RequestMapping("/myhome")
-	public String home(HttpSession session){
-		Integer organiser = (Integer) session.getAttribute("identity");
-		if(organiser == null){
-			return "index";
-		}else if(organiser == 1){
-			return "student_home";
-		}else{
-			return "teacher_home";
-		}
-	}
-
-	@RequestMapping("/addOrder")
-	public String addOrder(HttpSession session){
-		Integer organiser = (Integer) session.getAttribute("identity");
-		if(organiser == null){
-			return "index";
-		}else if(organiser == 1){
-			return "student_xuqiu";
-		}else{
-			return "index";
-		}
-	}
+    @Autowired
+    private PictureService pictureService;
 
 
-	@RequestMapping(value = "/checklogin", method = RequestMethod.POST)
-	@ResponseBody
-	public Msg checklogin(HttpSession session){
-		Student student=(Student) session.getAttribute("student");
-		Teacher teacher=(Teacher) session.getAttribute("teacher");
-		Long forderCount;
-		Long appointmentCount;
-		if(student!=null){
-			forderCount = forderService.countMyForder(student.getId(),1);
-		    appointmentCount = appointmentService.countMyAppointment(student.getId(),1);
-			return Msg.success("").add("type", 1).add("student", student).add("forderCount",forderCount)
-					.add("appointmentCount",appointmentCount);
-		}
-		if(teacher!=null){
-			Long cardCount = pictureService.selectMyCardPhoto(teacher.getId());
-			Long lifePhotoCount = pictureService.selectMylifePhoto(teacher.getId());
-			forderCount = forderService.countMyForder(teacher.getId(),2);
-			appointmentCount = appointmentService.countMyAppointment(teacher.getId(),2);
-			return Msg.success("").add("type", 2).add("teacher", teacher).add("forderCount",forderCount)
-					.add("appointmentCount",appointmentCount).add("cardCount",cardCount)
-					.add("lifePhotoCount",lifePhotoCount);
-		}
-		return Msg.error("");
-	}
+    @RequestMapping("/my")
+    public String forward(String url) {
+        logger.info("当前需要转发的url为：" + url);
+        return url;
+    }
 
-	@RequestMapping(value = "/getBalance",method = RequestMethod.POST)
-	@ResponseBody
-	public Msg getBalance(HttpSession session){
-		Integer organiser = (Integer) session.getAttribute("identity");
-		if(organiser == null){
-			return Msg.error("");
-		}else if(organiser == 1){
-			Student student = (Student) session.getAttribute("student");
-			return Msg.success("").add("organiser",organiser).add("amount",student.getBalance()) ;
-		}else{
-			Teacher teacher = (Teacher) session.getAttribute("teacher");
-			return Msg.success("").add("organiser",organiser).add("amount",teacher.getBalance());
-		}
-	}
+    @RequestMapping("/myhome")
+    public String home(HttpSession session) {
+        Integer organiser = (Integer) session.getAttribute("identity");
+        if (organiser == null) {
+            return "index";
+        } else if (organiser == 1) {
+            return "student_home";
+        } else {
+            return "teacher_home";
+        }
+    }
+
+    @RequestMapping("/addOrder")
+    public String addOrder(HttpSession session) {
+        Integer organiser = (Integer) session.getAttribute("identity");
+        if (organiser == null) {
+            return "index";
+        } else if (organiser == 1) {
+            return "student_xuqiu";
+        } else {
+            return "index";
+        }
+    }
+
+
+    @RequestMapping(value = "/checklogin", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg checklogin(HttpSession session) {
+        Student student = (Student) session.getAttribute("student");
+        Teacher teacher = (Teacher) session.getAttribute("teacher");
+        Long forderCount;
+        Long appointmentCount;
+        if (student != null) {
+            forderCount = forderService.countMyForder(student.getId(), 1);
+            appointmentCount = appointmentService.countMyAppointment(student.getId(), 1);
+            return Msg.success("").add("type", 1).add("student", student).add("forderCount", forderCount)
+                    .add("appointmentCount", appointmentCount);
+        }
+        if (teacher != null) {
+            Long cardCount = pictureService.selectMyCardPhoto(teacher.getId());
+            Long lifePhotoCount = pictureService.selectMylifePhoto(teacher.getId());
+            forderCount = forderService.countMyForder(teacher.getId(), 2);
+            appointmentCount = appointmentService.countMyAppointment(teacher.getId(), 2);
+            return Msg.success("").add("type", 2).add("teacher", teacher).add("forderCount", forderCount)
+                    .add("appointmentCount", appointmentCount).add("cardCount", cardCount)
+                    .add("lifePhotoCount", lifePhotoCount);
+        }
+        return Msg.error("");
+    }
+
+    @RequestMapping(value = "/getBalance", method = RequestMethod.POST)
+    @ResponseBody
+    public Msg getBalance(HttpSession session) {
+        Integer organiser = (Integer) session.getAttribute("identity");
+        if (organiser == null) {
+            return Msg.error("");
+        } else if (organiser == 1) {
+            Student student = (Student) session.getAttribute("student");
+            return Msg.success("").add("organiser", organiser).add("amount", student.getBalance());
+        } else {
+            Teacher teacher = (Teacher) session.getAttribute("teacher");
+            return Msg.success("").add("organiser", organiser).add("amount", teacher.getBalance());
+        }
+    }
+
+    @RequestMapping("/email/activate")
+    public String active(Integer id, Integer organiser, String checkcode, HttpSession session) {
+        String code = (String) session.getAttribute("checkcode");
+        if (code != null) {
+            if (code.equals(checkcode)) {
+                if (organiser == 1) {
+                    Student student = new Student();
+                    student.setId(id);
+                    student.setIsabled(2);
+                    studentService.updateByPrimaryKeySelective(student);
+                    session.removeAttribute("checkcode");
+                    logger.info("激活成功——————————————————");
+                    return "redirect:/my?url=index";
+                } else if (organiser == 2) {
+                    Teacher teacher = new Teacher();
+                    teacher.setId(id);
+                    teacher.setIsabled(2);
+                    teacherService.updateByPrimaryKeySelective(teacher);
+                    session.removeAttribute("checkcode");
+                    logger.info("激活成功——————————————————");
+                    return "redirect:/my?url=index";
+                }
+            }
+
+        }
+        logger.info("激活失败——————————————————");
+        return "redirect:/my?url=index";
+    }
 
 }

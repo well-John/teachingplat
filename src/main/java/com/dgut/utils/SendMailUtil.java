@@ -42,7 +42,7 @@ public class SendMailUtil {
 		return session;
 	}
 
-	public static void send(String receiver, String content) {
+	public static void send(String receiver, Integer id,Integer organiser,String checkcode) {
 		Session session = getSession();
 		try {
 			System.out.println("-------发送中-------");
@@ -52,10 +52,11 @@ public class SendMailUtil {
 			InternetAddress[] addrs = { new InternetAddress(receiver) };
 			msg.addRecipients(Message.RecipientType.CC, InternetAddress.parse(SENDER));
 			msg.addRecipients(Message.RecipientType.TO, addrs);
-			msg.setSubject("zhouxin");
+			msg.setSubject("这是一封激活账号的邮件");
 			msg.setSentDate(new Date());
 			msg.setText("Hello");
-			msg.setContent(content, "text/html;charset=utf-8");
+			msg.setContent("请点击下面的链接完成激活：" +
+					"<a href='http://localhost:8081/email/activate?id="+id+"&checkcode="+checkcode+"&organiser="+organiser+"'>"+checkcode +"</a>" , "text/html;charset=utf-8");
 			msg.saveChanges();
 			Transport.send(msg);
 			System.out.println("-------发送完成-------");
@@ -65,4 +66,9 @@ public class SendMailUtil {
 			e.printStackTrace();
 		}
 	}
+
+	public static void main(String[] args) {
+		/*send("2357556894@qq.com","hello");*/
+	}
+
 }

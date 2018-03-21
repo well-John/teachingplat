@@ -1,45 +1,43 @@
 package com.dgut.utils;
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class MD5Util {
 
-	public static byte[] encode2bytes(String source) {
-		byte[] result = null;
+	private static final String SALT = "xieyougen";
+
+	public static String encode(String password) {
+		password = password + SALT;
+		MessageDigest md5 = null;
 		try {
-			MessageDigest md = MessageDigest.getInstance("MD5");
-			md.reset();
-			md.update(source.getBytes("UTF-8"));
-			result = md.digest();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			md5 = MessageDigest.getInstance("MD5");
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
+		char[] charArray = password.toCharArray();
+		byte[] byteArray = new byte[charArray.length];
 
-		return result;
-	}
-
-	public static String encodeToHex(String source) {
-		byte[] data = encode2bytes(source);
-		StringBuffer hexString = new StringBuffer();
-		for (int i = 0; i < data.length; i++) {
-			String hex = Integer.toHexString(0xff & data[i]);
-
-			if (hex.length() == 1) {
-				hexString.append('0');
+		for (int i = 0; i < charArray.length; i++)
+			byteArray[i] = (byte) charArray[i];
+		byte[] md5Bytes = md5.digest(byteArray);
+		StringBuffer hexValue = new StringBuffer();
+		for (int i = 0; i < md5Bytes.length; i++) {
+			int val = ((int) md5Bytes[i]) & 0xff;
+			if (val < 16) {
+				hexValue.append("0");
 			}
 
-			hexString.append(hex);
+			hexValue.append(Integer.toHexString(val));
 		}
-
-		return hexString.toString();
+		return hexValue.toString();
 	}
 
-	public static boolean validate(String unknown, String okHex) {
-		return okHex.equals(encodeToHex(unknown));
+	public static String generateCheckcode(String email,String name) {
+		return MD5Util.encode(email+":"+name);
+	}
+
+	public static void main(String[] args) {
+		System.out.println(MD5Util.encode("123"));
 	}
 
 }
