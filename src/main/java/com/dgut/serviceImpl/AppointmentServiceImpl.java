@@ -65,4 +65,15 @@ public class AppointmentServiceImpl extends BaseServiceImpl<Appointment, Appoint
 		return appointmentMapper.countByExample(example);
 	}
 
+	@Override
+	public List<Appointment> selectOtherFailAppointment(Integer id) {
+		Appointment appointment = appointmentMapper.selectByPrimaryKey(id);
+		AppointmentExample example=new AppointmentExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andTeacherRequirementIdEqualTo(appointment.getTeacherRequirementId());
+		criteria.andStatusEqualTo(0);
+		criteria.andIdNotEqualTo(id);
+		return appointmentMapper.selectByExample(example);
+	}
+
 }

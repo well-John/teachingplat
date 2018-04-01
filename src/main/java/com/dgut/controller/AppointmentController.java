@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -98,6 +99,20 @@ public class AppointmentController {
         Appointment appointment = new Appointment();
         appointment.setId(id);
         appointment.setStatus(1);
+
+        List<Appointment> appointments = appointmentService.selectOtherFailAppointment(id);
+        Teacher teacher = null;
+        //查询该家教记录出其他未成功的教员，并把钱退回其账户,并且将其状态设为失败状态
+        if (appointments != null && !appointments.isEmpty()) {
+            for (Appointment appointment1 : appointments) {
+                teacher = teacherService.selectByPrimaryKey(appointment1.getTeacherId());
+                teacher.setBalance(teacher.getBalance().add(new BigDecimal(10)));
+                teacherService.updateByPrimaryKeySelective(teacher);
+                appointment1.setStatus(2);
+                appointmentService.updateByPrimaryKeySelective(appointment1);
+            }
+        }
+
         if (appointmentService.updateByPrimaryKeySelective(appointment) == 1) {
             //学员确认后，生成未支付订单
             //1.先将家教单状态设为已关闭
@@ -138,8 +153,15 @@ public class AppointmentController {
         } else if (organiser == 1) {
             return Msg.error("家教单只能由教员预约，学员无法预约");
         }
-        Appointment appointment = new Appointment();
         Teacher teacher = (Teacher) session.getAttribute("teacher");
+        //扣款
+        if (teacher.getBalance().compareTo(new BigDecimal(10)) >= 0) {
+            teacher.setBalance(teacher.getBalance().subtract(new BigDecimal(10)));
+            teacherService.updateByPrimaryKeySelective(teacher);
+        } else {
+            return Msg.error("账户余额不足，请先充值！！！");
+        }
+        Appointment appointment = new Appointment();
         appointment.setTeacherId(teacher.getId());
         appointment.setTeacherName(teacher.getName());
         appointment.setStudentId(anotherId);

@@ -17,4 +17,6 @@ public interface AppointmentService extends BaseService<Appointment, Appointment
     TeacherRequirement selectTeacherRequirementByAppointId(Integer id);
     //查询我的预约记录数量
     Long countMyAppointment(Integer id,Integer identity);
+    //查询出其他没有被预约成功的预约记录
+    List<Appointment> selectOtherFailAppointment(Integer id);
 }
