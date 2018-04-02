@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -63,6 +64,12 @@ public class TeacherRequirementController {
     public Msg save(HttpSession session, TeacherRequirement teacherRequirement) {
         System.out.println(teacherRequirement);
         Student student = (Student) session.getAttribute("student");
+        if (student.getBalance().compareTo(new BigDecimal(10)) >= 0) {
+            student.setBalance(student.getBalance().add(new BigDecimal(10)));
+            studentService.updateByPrimaryKeySelective(student);
+        } else {
+            return Msg.error("账户余额不足，请先充值!!!");
+        }
         teacherRequirement.setStudentId(student.getId());
         teacherRequirement.setReleaseTime(new Date());
         if (teacherRequirementService.insertSelective(teacherRequirement) == 1) {
