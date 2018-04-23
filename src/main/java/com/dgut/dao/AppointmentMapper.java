@@ -2,10 +2,11 @@ package com.dgut.dao;
 
 import com.dgut.entity.Appointment;
 import com.dgut.entity.AppointmentExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface AppointmentMapper extends BaseMapper<Appointment, AppointmentExample> {
+import java.util.List;
+
+public interface AppointmentMapper extends BaseMapper<Appointment,AppointmentExample> {
     long countByExample(AppointmentExample example);
 
     int deleteByExample(AppointmentExample example);

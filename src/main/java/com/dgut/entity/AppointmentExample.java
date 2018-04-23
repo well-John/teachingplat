@@ -594,6 +594,146 @@ public class AppointmentExample {
             addCriterion("teacher_requirement_id not between", value1, value2, "teacherRequirementId");
             return (Criteria) this;
         }
+
+        public Criteria andTeacherConcatIsNull() {
+            addCriterion("teacher_concat is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatIsNotNull() {
+            addCriterion("teacher_concat is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatEqualTo(String value) {
+            addCriterion("teacher_concat =", value, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatNotEqualTo(String value) {
+            addCriterion("teacher_concat <>", value, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatGreaterThan(String value) {
+            addCriterion("teacher_concat >", value, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatGreaterThanOrEqualTo(String value) {
+            addCriterion("teacher_concat >=", value, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatLessThan(String value) {
+            addCriterion("teacher_concat <", value, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatLessThanOrEqualTo(String value) {
+            addCriterion("teacher_concat <=", value, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatLike(String value) {
+            addCriterion("teacher_concat like", value, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatNotLike(String value) {
+            addCriterion("teacher_concat not like", value, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatIn(List<String> values) {
+            addCriterion("teacher_concat in", values, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatNotIn(List<String> values) {
+            addCriterion("teacher_concat not in", values, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatBetween(String value1, String value2) {
+            addCriterion("teacher_concat between", value1, value2, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherConcatNotBetween(String value1, String value2) {
+            addCriterion("teacher_concat not between", value1, value2, "teacherConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatIsNull() {
+            addCriterion("student_concat is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatIsNotNull() {
+            addCriterion("student_concat is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatEqualTo(String value) {
+            addCriterion("student_concat =", value, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatNotEqualTo(String value) {
+            addCriterion("student_concat <>", value, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatGreaterThan(String value) {
+            addCriterion("student_concat >", value, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatGreaterThanOrEqualTo(String value) {
+            addCriterion("student_concat >=", value, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatLessThan(String value) {
+            addCriterion("student_concat <", value, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatLessThanOrEqualTo(String value) {
+            addCriterion("student_concat <=", value, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatLike(String value) {
+            addCriterion("student_concat like", value, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatNotLike(String value) {
+            addCriterion("student_concat not like", value, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatIn(List<String> values) {
+            addCriterion("student_concat in", values, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatNotIn(List<String> values) {
+            addCriterion("student_concat not in", values, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatBetween(String value1, String value2) {
+            addCriterion("student_concat between", value1, value2, "studentConcat");
+            return (Criteria) this;
+        }
+
+        public Criteria andStudentConcatNotBetween(String value1, String value2) {
+            addCriterion("student_concat not between", value1, value2, "studentConcat");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -4,8 +4,7 @@ import com.dgut.entity.Msg;
 import com.dgut.entity.Student;
 import com.dgut.entity.Teacher;
 import com.dgut.service.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +20,16 @@ import javax.servlet.http.HttpSession;
  */
 
 @Controller
+@Slf4j
 public class MyController {
 
-    private Logger logger = LoggerFactory.getLogger(MyController.class);
+    private static final String TEACHER = "teacher";
+
+    private static final String STUDENT = "student";
+
+    private static final String IDENTITY = "identity"; //当前身份 0 学员，1 教员
+
+    private static final String CHECKCODE = "checkcode"; //邮箱checkCode校验，md5(用户邮箱+用户名)
 
     @Autowired
     private StudentService studentService;
@@ -43,13 +49,13 @@ public class MyController {
 
     @RequestMapping("/my")
     public String forward(String url) {
-        logger.info("当前需要转发的url为：" + url);
+        log.info("当前需要转发的url为：" + url);
         return url;
     }
 
     @RequestMapping("/myhome")
     public String home(HttpSession session) {
-        Integer organiser = (Integer) session.getAttribute("identity");
+        Integer organiser = (Integer) session.getAttribute(IDENTITY);
         if (organiser == null) {
             return "index";
         } else if (organiser == 1) {
@@ -61,7 +67,7 @@ public class MyController {
 
     @RequestMapping("/addOrder")
     public String addOrder(HttpSession session) {
-        Integer organiser = (Integer) session.getAttribute("identity");
+        Integer organiser = (Integer) session.getAttribute(IDENTITY);
         if (organiser == null) {
             return "index";
         } else if (organiser == 1) {
@@ -75,8 +81,8 @@ public class MyController {
     @RequestMapping(value = "/checklogin", method = RequestMethod.POST)
     @ResponseBody
     public Msg checklogin(HttpSession session) {
-        Student student = (Student) session.getAttribute("student");
-        Teacher teacher = (Teacher) session.getAttribute("teacher");
+        Student student = (Student) session.getAttribute(STUDENT);
+        Teacher teacher = (Teacher) session.getAttribute(TEACHER);
         Long forderCount;
         Long appointmentCount;
         if (student != null) {
@@ -100,7 +106,7 @@ public class MyController {
     @RequestMapping(value = "/getBalance", method = RequestMethod.POST)
     @ResponseBody
     public Msg getBalance(HttpSession session) {
-        Integer organiser = (Integer) session.getAttribute("identity");
+        Integer organiser = (Integer) session.getAttribute(IDENTITY);
         if (organiser == null) {
             return Msg.error("");
         } else if (organiser == 1) {
@@ -114,7 +120,7 @@ public class MyController {
 
     @RequestMapping("/email/activate")
     public String active(Integer id, Integer organiser, String checkcode, HttpSession session) {
-        String code = (String) session.getAttribute("checkcode");
+        String code = (String) session.getAttribute(CHECKCODE);
         if (code != null) {
             if (code.equals(checkcode)) {
                 if (organiser == 1) {
@@ -123,7 +129,7 @@ public class MyController {
                     student.setIsabled(2);
                     studentService.updateByPrimaryKeySelective(student);
                     session.removeAttribute("checkcode");
-                    logger.info("激活成功——————————————————");
+                    log.info("激活成功——————————————————");
                     return "redirect:/my?url=index";
                 } else if (organiser == 2) {
                     Teacher teacher = new Teacher();
@@ -131,13 +137,13 @@ public class MyController {
                     teacher.setIsabled(2);
                     teacherService.updateByPrimaryKeySelective(teacher);
                     session.removeAttribute("checkcode");
-                    logger.info("激活成功——————————————————");
+                    log.info("激活成功——————————————————");
                     return "redirect:/my?url=index";
                 }
             }
 
         }
-        logger.info("激活失败——————————————————");
+        log.info("激活失败——————————————————");
         return "redirect:/my?url=index";
     }
 

@@ -1,8 +1,11 @@
 package com.dgut.entity;
 
+import lombok.ToString;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
+@ToString
 public class Teacher {
     private Integer id;
 

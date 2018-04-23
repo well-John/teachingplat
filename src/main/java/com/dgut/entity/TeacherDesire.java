@@ -1,7 +1,10 @@
 package com.dgut.entity;
 
+import lombok.ToString;
+
 import java.io.Serializable;
 
+@ToString
 public class TeacherDesire implements Serializable{
     /**
 	 * 

@@ -1,13 +1,14 @@
 package com.dgut.controller;
 
-import com.dgut.entity.*;
+import com.dgut.entity.Msg;
+import com.dgut.entity.Student;
+import com.dgut.entity.TeacherRequirement;
 import com.dgut.service.ForderService;
 import com.dgut.service.StudentService;
 import com.dgut.service.TeacherRequirementService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +24,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/teacherRequirement")
+@Slf4j
 public class TeacherRequirementController {
 
-    private final Integer pageSize = 5;
-
-    private Logger logger = LoggerFactory.getLogger(TeacherRequirementController.class);
+    private static final Integer pageSize = 5;
 
     @Autowired
     TeacherRequirementService teacherRequirementService;
@@ -62,7 +62,6 @@ public class TeacherRequirementController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
     public Msg save(HttpSession session, TeacherRequirement teacherRequirement) {
-        System.out.println(teacherRequirement);
         Student student = (Student) session.getAttribute("student");
         if (student.getBalance().compareTo(new BigDecimal(10)) >= 0) {
             student.setBalance(student.getBalance().add(new BigDecimal(10)));
@@ -91,7 +90,7 @@ public class TeacherRequirementController {
         }
 
         List<TeacherRequirement> list = teacherRequirementService.selectTeacherRequirementsByExample(area, grade, sex, identity, subject, studentId1);
-        if (!list.isEmpty() && list.size() != 0) {
+        if (list != null && !list.isEmpty()) {
             PageInfo<TeacherRequirement> pageInfo = new PageInfo<>(list);
             return Msg.success("").add("pageInfo", pageInfo);
         }

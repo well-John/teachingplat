@@ -1,8 +1,11 @@
 package com.dgut.entity;
 
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@ToString
 public class Admin implements Serializable{
     /**
 	 * 

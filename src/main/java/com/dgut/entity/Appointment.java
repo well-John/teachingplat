@@ -1,7 +1,8 @@
 package com.dgut.entity;
 
+import lombok.ToString;
 import java.util.Date;
-
+@ToString
 public class Appointment {
     private Integer id;
 
@@ -18,6 +19,10 @@ public class Appointment {
     private String teacherName;
 
     private Integer teacherRequirementId;
+
+    private String teacherConcat;
+
+    private String studentConcat;
 
     public Integer getId() {
         return id;
@@ -81,5 +86,21 @@ public class Appointment {
 
     public void setTeacherRequirementId(Integer teacherRequirementId) {
         this.teacherRequirementId = teacherRequirementId;
+    }
+
+    public String getTeacherConcat() {
+        return teacherConcat;
+    }
+
+    public void setTeacherConcat(String teacherConcat) {
+        this.teacherConcat = teacherConcat == null ? null : teacherConcat.trim();
+    }
+
+    public String getStudentConcat() {
+        return studentConcat;
+    }
+
+    public void setStudentConcat(String studentConcat) {
+        this.studentConcat = studentConcat == null ? null : studentConcat.trim();
     }
 }

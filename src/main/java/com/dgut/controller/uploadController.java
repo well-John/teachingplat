@@ -37,11 +37,11 @@ public class uploadController {
     @Autowired
     private PictureService pictureService;
 
-    @RequestMapping(value = "cardManage/upload",method = RequestMethod.POST)
-    public String upload(HttpServletRequest request,MultipartFile file,int ddlCard){
+    @RequestMapping(value = "cardManage/upload", method = RequestMethod.POST)
+    public String upload(HttpServletRequest request, MultipartFile file, int ddlCard) {
         String path = null;
         try {
-            path=UploadUtil.upload(file,location);
+            path = UploadUtil.upload(file, location);
         } catch (IOException e) {
             logger.info("上传文件失败");
             e.printStackTrace();
@@ -60,34 +60,24 @@ public class uploadController {
     * 前端用ssi-upload上传文件
     * */
 
-    @RequestMapping(value = "/upload2",method = RequestMethod.POST)
-    public String upload2(HttpServletRequest request){
+    @RequestMapping(value = "/upload2", method = RequestMethod.POST)
+    public String upload2(HttpServletRequest request) {
         String uploadDir = "D:/upload/";
         File dir = new File(uploadDir);
-        if(!dir.exists())
+        if (!dir.exists())
             dir.mkdirs();
         MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
-        Map<String, MultipartFile> fileMap =multipartHttpServletRequest.getFileMap();
-        for (MultipartFile file:fileMap.values()) {
-             String fileName = file.getOriginalFilename();
-             File targetFile =new File(uploadDir+fileName);
+        Map<String, MultipartFile> fileMap = multipartHttpServletRequest.getFileMap();
+        for (MultipartFile file : fileMap.values()) {
+            String fileName = file.getOriginalFilename();
+            File targetFile = new File(uploadDir + fileName);
             try {
                 file.transferTo(targetFile);
             } catch (IOException e) {
-                logger.error("文件转化失败，当前文件名：{}",file.getOriginalFilename());
+                logger.error("文件转化失败，当前文件名：{}", file.getOriginalFilename());
                 e.printStackTrace();
             }
         }
-        //获取文件后缀名
-        //String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-       /* String fileName = file.getOriginalFilename();
-        File tagetFile = new File(uploadDir+fileName);
-        try {
-            file.transferTo(tagetFile);
-        }catch (IOException e){
-            e.printStackTrace();
-            logger.error("文件转化失败");
-        }*/
         return "success";
     }
 }

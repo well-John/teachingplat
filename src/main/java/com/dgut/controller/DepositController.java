@@ -11,8 +11,7 @@ import com.dgut.utils.PaymentUtil;
 import com.dgut.utils.UUIDUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +28,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/deposit")
+@Slf4j
 public class DepositController {
 
     private final Integer pageSize = 5;
-
-    private Logger logger = LoggerFactory.getLogger(DepositController.class);
-
     @Autowired
     DepositService depositService;
 
@@ -95,7 +92,7 @@ public class DepositController {
     @RequestMapping("/callBack")
     public String callBack(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        System.out.println("-------充值成功--------");
+        log.info("进入充值回调方法");
         Deposit deposit = new Deposit();
         deposit.setChargeDate(new Date());
         deposit.setChargeMoney(new BigDecimal(100));
@@ -107,6 +104,7 @@ public class DepositController {
             studentService.updateByPrimaryKeySelective(student);
             deposit.setOrganiserId(student.getId());
             deposit.setStatus(0);
+            log.info("deposit:{}",deposit);
             depositService.insertSelective(deposit);
             return "redirect:/my?url=student_chongzhi";
         } else {
@@ -118,8 +116,6 @@ public class DepositController {
             depositService.insertSelective(deposit);
             return "redirect:/my?url=teacher_chongzhi";
         }
-
-
     }
 
     @RequestMapping("/selectAllDeposit")

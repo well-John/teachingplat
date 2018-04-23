@@ -10,6 +10,8 @@
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
     <result column="teacher_requirement_id" jdbcType="INTEGER" property="teacherRequirementId" />
+    <result column="teacher_concat" jdbcType="VARCHAR" property="teacherConcat" />
+    <result column="student_concat" jdbcType="VARCHAR" property="studentConcat" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, appointment_date, teacher_id, student_id, organiser, status, teacher_name, teacher_requirement_id
+    id, appointment_date, teacher_id, student_id, organiser, status, teacher_name, teacher_requirement_id, 
+    teacher_concat, student_concat
   </sql>
   <select id="selectByExample" parameterType="com.dgut.entity.AppointmentExample" resultMap="BaseResultMap">
     select
@@ -105,10 +108,12 @@
   <insert id="insert" parameterType="com.dgut.entity.Appointment">
     insert into appointment (id, appointment_date, teacher_id, 
       student_id, organiser, status, 
-      teacher_name, teacher_requirement_id)
+      teacher_name, teacher_requirement_id, teacher_concat, 
+      student_concat)
     values (#{id,jdbcType=INTEGER}, #{appointmentDate,jdbcType=TIMESTAMP}, #{teacherId,jdbcType=INTEGER}, 
       #{studentId,jdbcType=INTEGER}, #{organiser,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{teacherName,jdbcType=VARCHAR}, #{teacherRequirementId,jdbcType=INTEGER})
+      #{teacherName,jdbcType=VARCHAR}, #{teacherRequirementId,jdbcType=INTEGER}, #{teacherConcat,jdbcType=VARCHAR}, 
+      #{studentConcat,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dgut.entity.Appointment">
     insert into appointment
@@ -137,6 +142,12 @@
       <if test="teacherRequirementId != null">
         teacher_requirement_id,
       </if>
+      <if test="teacherConcat != null">
+        teacher_concat,
+      </if>
+      <if test="studentConcat != null">
+        student_concat,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -162,6 +173,12 @@
       </if>
       <if test="teacherRequirementId != null">
         #{teacherRequirementId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherConcat != null">
+        #{teacherConcat,jdbcType=VARCHAR},
+      </if>
+      <if test="studentConcat != null">
+        #{studentConcat,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -198,6 +215,12 @@
       <if test="record.teacherRequirementId != null">
         teacher_requirement_id = #{record.teacherRequirementId,jdbcType=INTEGER},
       </if>
+      <if test="record.teacherConcat != null">
+        teacher_concat = #{record.teacherConcat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentConcat != null">
+        student_concat = #{record.studentConcat,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +235,9 @@
       organiser = #{record.organiser,jdbcType=INTEGER},
       status = #{record.status,jdbcType=INTEGER},
       teacher_name = #{record.teacherName,jdbcType=VARCHAR},
-      teacher_requirement_id = #{record.teacherRequirementId,jdbcType=INTEGER}
+      teacher_requirement_id = #{record.teacherRequirementId,jdbcType=INTEGER},
+      teacher_concat = #{record.teacherConcat,jdbcType=VARCHAR},
+      student_concat = #{record.studentConcat,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +266,12 @@
       <if test="teacherRequirementId != null">
         teacher_requirement_id = #{teacherRequirementId,jdbcType=INTEGER},
       </if>
+      <if test="teacherConcat != null">
+        teacher_concat = #{teacherConcat,jdbcType=VARCHAR},
+      </if>
+      <if test="studentConcat != null">
+        student_concat = #{studentConcat,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -252,7 +283,9 @@
       organiser = #{organiser,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       teacher_name = #{teacherName,jdbcType=VARCHAR},
-      teacher_requirement_id = #{teacherRequirementId,jdbcType=INTEGER}
+      teacher_requirement_id = #{teacherRequirementId,jdbcType=INTEGER},
+      teacher_concat = #{teacherConcat,jdbcType=VARCHAR},
+      student_concat = #{studentConcat,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

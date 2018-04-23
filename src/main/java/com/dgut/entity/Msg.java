@@ -1,9 +1,12 @@
 package com.dgut.entity;
 
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+@ToString
 public class Msg implements Serializable{
 	/**
 	 * 

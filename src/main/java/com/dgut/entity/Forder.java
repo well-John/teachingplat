@@ -1,7 +1,10 @@
 package com.dgut.entity;
 
+import lombok.ToString;
+
 import java.util.Date;
 
+@ToString
 public class Forder {
     private Integer id;
 

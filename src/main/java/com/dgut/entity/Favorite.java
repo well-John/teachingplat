@@ -1,5 +1,8 @@
 package com.dgut.entity;
 
+import lombok.ToString;
+
+@ToString
 public class Favorite {
     private Integer id;
 

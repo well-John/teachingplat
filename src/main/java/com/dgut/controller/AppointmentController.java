@@ -26,7 +26,7 @@ import java.util.List;
 @RequestMapping("/appointment")
 public class AppointmentController {
 
-    private final Integer pageSize = 5;
+    private static final Integer pageSize = 5;
 
     private Logger logger = LoggerFactory.getLogger(AppointmentController.class);
 
@@ -79,7 +79,7 @@ public class AppointmentController {
             list = appointmentService.selectAllTeacherAppointment(teacher.getId());
         }
 
-        if (list != null && list.size() != 0) {
+        if (list != null && !list.isEmpty()) {
             pageInfo = new PageInfo<>(list);
             return Msg.success("").add("pageInfo", pageInfo);
         }
@@ -95,11 +95,12 @@ public class AppointmentController {
         if (appointmentService.checkStatus(id)) {
             return Msg.error("该预约记录已确认，请不要重复确认");
         }
-
+        if (id == 2) {
+            return Msg.error("该预约记录已经预约失败，无法操作");
+        }
         Appointment appointment = new Appointment();
         appointment.setId(id);
         appointment.setStatus(1);
-
         List<Appointment> appointments = appointmentService.selectOtherFailAppointment(id);
         Teacher teacher = null;
         //查询该家教记录出其他未成功的教员，并把钱退回其账户,并且将其状态设为失败状态
@@ -141,10 +142,8 @@ public class AppointmentController {
     @ResponseBody
     public Msg applyAppointment(HttpSession session, Integer teacherRequirementId, Integer anotherId) {
         //先判断该家教单是否已被关闭
-        if (teacherRequirementId != null) {
-            if (teacherRequirementService.checkClosed(teacherRequirementId)) {
+        if (teacherRequirementId != null && teacherRequirementService.checkClosed(teacherRequirementId)) {
                 return Msg.error("该家教单已被关闭，无法预约！！！");
-            }
         }
         //获取当前登录人身份
         Integer organiser = (Integer) session.getAttribute("identity");
@@ -163,6 +162,8 @@ public class AppointmentController {
         }
         Appointment appointment = new Appointment();
         appointment.setTeacherId(teacher.getId());
+        appointment.setTeacherConcat(teacher.getPhone());
+        appointment.setStudentConcat(teacherRequirementService.selectByPrimaryKey(teacherRequirementId).getPhone());
         appointment.setTeacherName(teacher.getName());
         appointment.setStudentId(anotherId);
         appointment.setTeacherRequirementId(teacherRequirementId);

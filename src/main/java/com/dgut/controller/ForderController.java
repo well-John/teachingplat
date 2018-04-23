@@ -7,8 +7,7 @@ import com.dgut.entity.Teacher;
 import com.dgut.service.ForderService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,11 +20,12 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
+@Slf4j
 public class ForderController {
 
-	private Logger logger = LoggerFactory.getLogger(ForderController.class);
+
 	
-	private final Integer pageSize=5;
+	private static final Integer pageSize=5;
 	
 	@Autowired
 	ForderService forderService;

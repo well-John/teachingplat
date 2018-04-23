@@ -1,17 +1,16 @@
 package com.dgut.serviceImpl;
 
-import java.util.List;
-
+import com.dgut.dao.AppointmentMapper;
 import com.dgut.dao.TeacherRequirementMapper;
-import com.dgut.entity.TeacherRequirement;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.dgut.entity.Appointment;
 import com.dgut.entity.AppointmentExample;
 import com.dgut.entity.AppointmentExample.Criteria;
-import com.dgut.dao.AppointmentMapper;
+import com.dgut.entity.TeacherRequirement;
 import com.dgut.service.AppointmentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AppointmentServiceImpl extends BaseServiceImpl<Appointment, AppointmentExample> implements AppointmentService {

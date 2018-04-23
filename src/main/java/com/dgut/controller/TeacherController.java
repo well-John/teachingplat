@@ -8,8 +8,7 @@ import com.dgut.utils.MD5Util;
 import com.dgut.utils.SendMailUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +23,14 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/teacher")
+@Slf4j
 public class TeacherController {
 
-    private Logger logger = LoggerFactory.getLogger(TeacherController.class);
+    private static final String TEACHER = "teacher";
+
+    private static final String STUDENT = "student";
+
+    private static final String IDENTITY = "identity"; //当前身份 0 学员，1 教员
 
     private final static Integer PAGESIZE = 5;
 
@@ -38,7 +42,7 @@ public class TeacherController {
     public Msg login(HttpServletRequest request, String email, String password) {
         Teacher teacher;
         HttpSession session = request.getSession();
-        logger.info("当前请求ip为：{}", request.getRemoteAddr());
+        log.info("当前请求ip为：{}", request.getRemoteAddr());
         if ((teacher = teacherService.login(email, MD5Util.encode(password.trim()))) != null) {
             if (teacher.getIsabled() == 0) {
                 return Msg.error("您的邮箱还没有经过验证");
@@ -48,9 +52,10 @@ public class TeacherController {
                 teacher.setLoginTimes((teacher.getLoginTimes() == null ? 0 : teacher.getLoginTimes()) + 1);
                 teacher.setLastTime(new Date());
                 teacher.setLastIp(IPAddressUtil.getIpAdrress(request));
-                session.removeAttribute("student");
-                session.setAttribute("teacher", teacher);
-                session.setAttribute("identity", 2);
+                teacherService.updateByPrimaryKeySelective(teacher);
+                session.removeAttribute(STUDENT);
+                session.setAttribute(TEACHER, teacher);
+                session.setAttribute(IDENTITY, 2);
                 return Msg.success("登录成功");
             }
         }
@@ -73,7 +78,7 @@ public class TeacherController {
             String checkcode = MD5Util.generateCheckcode(teacher.getEmail(), teacher.getName());
             request.getSession().removeAttribute("RANDOM_CODE_KEY");
             request.getSession().setAttribute("checkcode", checkcode);
-            logger.info("发送参数：email：{}，id：{}，organiser:{},checkcode:{}", teacher.getEmail(), teacher.getId(), 2, checkcode);
+            log.info("发送参数：email：{}，id：{}，organiser:{},checkcode:{}", teacher.getEmail(), teacher.getId(), 2, checkcode);
             SendMailUtil.send(teacher.getEmail(), teacher.getId(), 2, checkcode);
             return Msg.success("注册成功");
         }
@@ -84,10 +89,8 @@ public class TeacherController {
     @ResponseBody
     public Msg selectAllTeacher(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum, String
             subject, String university, String area, Integer identity, Integer sex, Integer isverify) {
-        System.out.println("subject=" + subject + " university=" + university + " area=" + area + " identity=" + identity + " sex=" + sex);
         PageHelper.startPage(pageNum, PAGESIZE);
         List<Teacher> list = teacherService.selectTeachersByExample(subject, university, area, identity, sex, isverify);
-        System.out.println("list:" + list);
         if (list != null && !list.isEmpty()) {
             PageInfo<Teacher> pageInfo = new PageInfo<>(list);
             return Msg.success("").add("pageInfo", pageInfo);
@@ -100,10 +103,10 @@ public class TeacherController {
     public Msg selectTeacherById(@RequestParam(value = "id", required = true) Integer id) {
         Teacher teacher = teacherService.selectByPrimaryKey(id);
         if (teacher == null) {
-            logger.info("所查询的教师信息不存在！！！  id:{0}", id);
+            log.info("所查询的教师信息不存在！！！  id:{0}", id);
             return Msg.error("所查询的教师信息不存在！！！");
         }
-        return Msg.success("").add("teacher", teacher);
+        return Msg.success("").add(TEACHER, teacher);
     }
 
     @RequestMapping("/checkEmail")
@@ -126,10 +129,10 @@ public class TeacherController {
         Teacher teacher = null;
         if (id != null) {
             teacher = teacherService.selectByPrimaryKey(id);
-            return Msg.success("").add("teacher", teacher);
+            return Msg.success("").add(TEACHER, teacher);
         }
-        if ((teacher = (Teacher) session.getAttribute("teacher")) != null) {
-            return Msg.success("").add("teacher", teacher);
+        if ((teacher = (Teacher) session.getAttribute(TEACHER)) != null) {
+            return Msg.success("").add(TEACHER, teacher);
         }
         return Msg.error("");
     }
@@ -147,7 +150,7 @@ public class TeacherController {
     @RequestMapping(value = "/changePass", method = RequestMethod.POST)
     @ResponseBody
     public Msg updatePassword(HttpSession session, String password) {
-        Teacher teacher = (Teacher) session.getAttribute("teacher");
+        Teacher teacher = (Teacher) session.getAttribute(TEACHER);
         teacher.setPassword(MD5Util.encode(password.trim()));
         if (teacherService.updateByPrimaryKeySelective(teacher) == 1) {
             return Msg.success("更新密码成功");
