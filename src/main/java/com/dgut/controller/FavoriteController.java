@@ -25,7 +25,7 @@ public class FavoriteController {
 
     private Logger logger = LoggerFactory.getLogger(FavoriteController.class);
 
-    private final Integer pageSize = 5;
+    private static final Integer pageSize = 5;
 
     @Autowired
     FavoriteService favoriteService;

@@ -9,6 +9,7 @@ import com.dgut.utils.RandomValidateCode;
 import com.dgut.utils.SendMailUtil;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -89,7 +90,7 @@ public class StudentController {
     public Msg register(HttpServletRequest request, Student student, String pcode) {
         // 获取验证码
         String code = (String) request.getSession().getAttribute(RANDOM_CODE_KEY);
-        if (!code.equals(pcode)) {
+        if (StringUtils.isNotBlank(code)&&!code.equals(pcode)) {
             return Msg.error("验证码错误");
         }
         student.setPassword(MD5Util.encode(student.getPassword()));

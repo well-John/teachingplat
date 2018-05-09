@@ -31,6 +31,7 @@ public class MyController {
 
     private static final String CHECKCODE = "checkcode"; //邮箱checkCode校验，md5(用户邮箱+用户名)
 
+
     @Autowired
     private StudentService studentService;
 
@@ -110,7 +111,7 @@ public class MyController {
         if (organiser == null) {
             return Msg.error("");
         } else if (organiser == 1) {
-            Student student = (Student) session.getAttribute("student");
+            Student student = (Student) session.getAttribute(STUDENT);
             return Msg.success("").add("organiser", organiser).add("amount", student.getBalance());
         } else {
             Teacher teacher = (Teacher) session.getAttribute("teacher");
@@ -128,7 +129,7 @@ public class MyController {
                     student.setId(id);
                     student.setIsabled(2);
                     studentService.updateByPrimaryKeySelective(student);
-                    session.removeAttribute("checkcode");
+                    session.removeAttribute(CHECKCODE);
                     log.info("激活成功——————————————————");
                     return "redirect:/my?url=index";
                 } else if (organiser == 2) {
@@ -136,7 +137,7 @@ public class MyController {
                     teacher.setId(id);
                     teacher.setIsabled(2);
                     teacherService.updateByPrimaryKeySelective(teacher);
-                    session.removeAttribute("checkcode");
+                    session.removeAttribute(CHECKCODE);
                     log.info("激活成功——————————————————");
                     return "redirect:/my?url=index";
                 }
