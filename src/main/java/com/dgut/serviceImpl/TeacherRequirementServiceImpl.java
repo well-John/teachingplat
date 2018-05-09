@@ -86,7 +86,7 @@ public class TeacherRequirementServiceImpl extends BaseServiceImpl<TeacherRequir
             criteria.andRequireSexEqualTo(teacherRequirement.getRequireSex());
         }
         List<TeacherRequirement> teacherRequirements = teacherRequirementMapper.selectByExample(example);
-        if (teacherRequirements.size() == 0){
+        if (teacherRequirements.size() == 0) {
             teacherRequirements = teacherRequirementMapper.selectTop3(id);
         }
         return teacherRequirements;

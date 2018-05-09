@@ -494,7 +494,7 @@
   </update>
 
   <select id="selectTop3" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-      SELECT * from teacher_requirement where id != #{id}  ORDER BY release_time DESC limit 0,3
+      SELECT * from teacher_requirement where id != #{id} and release_status = 1 ORDER BY release_time DESC
   </select>
 
 

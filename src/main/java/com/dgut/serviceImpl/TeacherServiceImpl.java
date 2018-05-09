@@ -44,11 +44,11 @@ public class TeacherServiceImpl extends BaseServiceImpl<Teacher, TeacherExample>
 
 
     @Override
-    public List<Teacher> selectTeachersByExample(String subject, String university, String area,  Integer identity, Integer sex,Integer isverify) {
+    public List<Teacher> selectTeachersByExample(String subject, String university, String area, Integer identity, Integer sex, Integer isverify) {
         TeacherExample example = new TeacherExample();
         example.setOrderByClause("last_time desc");
         Criteria criteria = example.createCriteria();
-        if(isverify == 2){
+        if (isverify == 2) {
             criteria.andIsverifyEqualTo(isverify);
         }
         if (subject != null && !subject.equals("")) {
@@ -92,11 +92,12 @@ public class TeacherServiceImpl extends BaseServiceImpl<Teacher, TeacherExample>
         if (teacher.getUniversity() != null) {
             criteria.andUniversityEqualTo(teacher.getUniversity().trim());
         }
+        if (teacher.getTeachingArea() != null)
+            criteria.andTeachingAreaLike(teacher.getTeachingArea());
         List<Teacher> teachers = teacherMapper.selectByExample(example);
         if (teachers.isEmpty()) {
             teachers = teacherMapper.selectTop8(id);
         }
-
         return teachers;
     }
 
