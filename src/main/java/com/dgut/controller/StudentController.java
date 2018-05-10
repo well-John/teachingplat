@@ -34,7 +34,7 @@ public class StudentController {
 
     private static final String RANDOM_CODE_KEY = "RANDOM_CODE_KEY";//验证码
 
-    private static final String IDENTITY = "identity"; //当前身份 0 学员，1 教员
+    private static final String IDENTITY = "identity"; //当前身份 1学员，2 教员
 
     private static final String CHECKCODE = "checkcode"; //邮箱checkCode校验，md5(用户邮箱+用户名)
 

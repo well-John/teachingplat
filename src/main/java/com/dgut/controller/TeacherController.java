@@ -30,7 +30,7 @@ public class TeacherController {
 
     private static final String STUDENT = "student";
 
-    private static final String IDENTITY = "identity"; //当前身份 0 学员，1 教员
+    private static final String IDENTITY = "identity"; //当前身份 1 学员，2 教员
 
     private final static Integer PAGESIZE = 5;
 

@@ -1,10 +1,7 @@
 package com.dgut.entity;
 
-import lombok.ToString;
-
 import java.util.Date;
 
-@ToString
 public class Picture {
     private Integer id;
 
@@ -17,6 +14,8 @@ public class Picture {
     private Date uploadTime;
 
     private Integer status;
+
+    private Integer deleteStatus;
 
     public Integer getId() {
         return id;
@@ -64,5 +63,13 @@ public class Picture {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(Integer deleteStatus) {
+        this.deleteStatus = deleteStatus;
     }
 }
