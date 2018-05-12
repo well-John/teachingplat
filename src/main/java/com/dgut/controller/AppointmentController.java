@@ -111,8 +111,7 @@ public class AppointmentController {
                 teacherService.updateByPrimaryKeySelective(teacher);
                 appointment1.setStatus(2);
                 appointmentService.updateByPrimaryKeySelective(appointment1);
-            }
-        }
+            } }
 
         if (appointmentService.updateByPrimaryKeySelective(appointment) == 1) {
             //学员确认后，生成未支付订单
@@ -155,7 +154,7 @@ public class AppointmentController {
         Teacher teacher = (Teacher) session.getAttribute("teacher");
         //扣款
         if (teacher.getBalance().compareTo(new BigDecimal(10)) >= 0) {
-            teacher.setBalance(teacher.getBalance().subtract(new BigDecimal(10)));
+            teacher.setBalance(teacher.getBalance().add(new BigDecimal(-10)));
             teacherService.updateByPrimaryKeySelective(teacher);
         } else {
             return Msg.error("账户余额不足，请先充值！！！");

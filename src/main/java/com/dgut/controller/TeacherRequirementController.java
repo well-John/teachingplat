@@ -64,7 +64,7 @@ public class TeacherRequirementController {
     public Msg save(HttpSession session, TeacherRequirement teacherRequirement) {
         Student student = (Student) session.getAttribute("student");
         if (student.getBalance().compareTo(new BigDecimal(10)) >= 0) {
-            student.setBalance(student.getBalance().add(new BigDecimal(10)));
+            student.setBalance(student.getBalance().add(new BigDecimal(-10)));
             studentService.updateByPrimaryKeySelective(student);
         } else {
             return Msg.error("账户余额不足，请先充值!!!");
